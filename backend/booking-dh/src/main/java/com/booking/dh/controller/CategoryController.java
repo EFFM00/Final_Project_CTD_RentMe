@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/categories")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<Category>> listCategories(){
         return ResponseEntity.ok(categoryService.readAll());
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
         ResponseEntity<Category> response = null;
 
@@ -37,7 +37,7 @@ public class CategoryController {
         return response;
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable Long id) {
         ResponseEntity<String> response = null;
 
