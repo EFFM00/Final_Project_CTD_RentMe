@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import CloseIcon from "@mui/icons-material/Close";
+import SocialMedia from "../atoms/SocialMedia";
 
 function MenuMobile({ showMenu, setShowMenu }) {
   const MenuMobileStyle = styled.div`
@@ -12,6 +13,7 @@ function MenuMobile({ showMenu, setShowMenu }) {
     right: ${showMenu ? "0" : "-100%"};
     width: 75%;
     height: 100vh;
+    z-index: 10;
     // transition: 0.5s all ease;
   `;
 
@@ -30,6 +32,12 @@ function MenuMobile({ showMenu, setShowMenu }) {
     align-items: flex-end;
     padding: 10px;
   `;
+
+  const ContainerSM = styled.div`
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+  `
 
   return (
     <>
@@ -56,6 +64,9 @@ function MenuMobile({ showMenu, setShowMenu }) {
         type="text"
         fullwidth
         />
+      <ContainerSM>
+        <SocialMedia/>
+      </ContainerSM>
     </MenuMobileStyle>
     </>
   );

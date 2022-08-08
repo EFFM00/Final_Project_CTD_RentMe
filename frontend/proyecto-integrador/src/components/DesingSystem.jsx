@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from './atoms/Button'
+import SocialMedia from './atoms/SocialMedia'
 import Text from './atoms/Text'
+import Footer from './molecules/Footer'
 import MenuMobile from './molecules/MenuMobile'
 
 export default function DesingSystem() {
@@ -64,9 +66,18 @@ export default function DesingSystem() {
     <Text type="p1" text="Text 1"/>
     <Text type="p2" text="Text 2"/>
 
+    <h1>SocialMedia</h1>
+    <SocialMedia/>
+
+    <h1>Footer</h1>
+
+    <Footer/>
+
+    <h1>Menu para Mobile</h1>
     <div style={{position: "relative"}}>
         <MenuMobile showMenu={true}/>
     </div>
+
 
     </div>
   )

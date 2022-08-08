@@ -22,33 +22,33 @@ function Text({ type, color = "black", text }) {
       : theme.black
 
   const Heading1 = styled.h1`
-    font-size: 1.5rem;
+    font-size: 1.5rem; //24px
     color: ${textColor};
   `;
 
   const Heading2 = styled.h1`
-    font-size: 1.3rem;
+    font-size: 1.3rem; // 20px
     color: ${textColor};
   `;
 
   const Heading3 = styled.h1`
-    font-size: 1rem;
+    font-size: 1rem; // 16px
     color: ${textColor};
   `;
 
   const Heading4 = styled.h1`
-    font-size: 0.9rem;
+    font-size: 0.9rem; // 14px
     color: ${textColor};
   `;
 
   const Text1 = styled.p`
-    font-size: 0.9rem;
+    font-size: 0.9rem; // 14px
     font-weight: 500;
     color: ${textColor};
   `;
 
   const Text2 = styled.p`
-    font-size: 0.75rem;
+    font-size: 0.75rem; // 12px
     font-weight: 500;
     color: ${textColor};
   `;
