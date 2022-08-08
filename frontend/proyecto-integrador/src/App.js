@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import { Colors } from "./styles/Theme";
+import DesingSystem from "./components/DesingSystem";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <ThemeProvider theme={Colors}>
         <Header/>
         <Body/>
+        {/* <DesingSystem /> */}
       </ThemeProvider>
     </>
   );

@@ -4,7 +4,8 @@ const Colors = {
     tertiary: "#545776",
     quaternary: "#F3F1ED",
     fondo: "#FBFBFB",
-    titulos: "#FFFFFF"
+    white: "#FFFFFF",
+    black: "#000000"
 }
 
 export { Colors }
