@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-function GoTo({ argumentOne, argumentTwo }) {
+function GoTo({ irA, texto }) {
   return (
-    <Link style={{textDecoration: 'none', color: '#846FEF'}} to={argumentTwo}>
-        {argumentOne}
-    </Link>
+    <Link to={irA}>{texto}</Link>
   )
 }
 

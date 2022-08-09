@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../atoms/Button'
 import styled from "styled-components";
+import { useNavigate } from 'react-router-dom';
 
 function Menu() {
 
@@ -13,10 +14,11 @@ function Menu() {
     }
 `
 
+  const navigate = useNavigate();
 
   return (
     <MenuStyle>
-        <Button text="Crear cuenta" type="Outline" width="xs" />
+        <Button text="Crear cuenta" type="Outline" width="xs" click={() => navigate("/sign-up")}/>
         <Button text="Iniciar sesión" type="Outline" width="xs" />
     </MenuStyle>
   )

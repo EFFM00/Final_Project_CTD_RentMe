@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/molecules/Footer";
 import Home from "./pages/home/Home";
 import SingnUp from "./pages/login/SingnUp";
-import Buscador from "./components/molecules/Buscador";
+import About from "./pages/about/About";
 
 
 function App() {
@@ -17,13 +17,13 @@ function App() {
     <GlobalStyle/>
     <ThemeProvider theme={Colors}>
       <Header/>
-        <Buscador/>
         {/* <SingnUp/> */}
         {/* <Home/> */}
         {/* <DesingSystem/> */}
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Home/>}/>
-        </Routes> */}
+          <Route path="/sign-up" element={<SingnUp/>}/>
+        </Routes>
       <Footer/>
     </ThemeProvider>
     </BrowserRouter>

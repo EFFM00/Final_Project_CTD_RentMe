@@ -8,6 +8,7 @@ function Button({
   width = "m",
   fullwidth = false,
   style,
+  click
 }) {
   const widthButton =
     width == "xs" ? 164 : width == "s" ? 206 : width == "m" ? 296 : 346;
@@ -48,7 +49,7 @@ function Button({
     <>
       {/* TODO: Cambiar el ternario por un switch como en Text */}
       {type == "Outline" ? (
-        <ButtonNoBackgroundStyle style={style}>
+        <ButtonNoBackgroundStyle style={style} onClick={click}>
           <Text type="h3" color="primary" text={text} />
         </ButtonNoBackgroundStyle>
       ) : type == "text" ? (

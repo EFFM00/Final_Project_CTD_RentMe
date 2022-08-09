@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../atoms/Button";
-import Text from "../atoms/Text";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from "@mui/icons-material/Event";
+import Calendar from 'react-calendar';
+import Select from "react-select";
+import dataCiudades from '../dataCiudades.json'
 
 function Buscador() {
   const BuscadorStyle = styled.div`
@@ -24,6 +26,8 @@ function Buscador() {
     gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
+    position: relative;
+
     @media screen and (min-width: 1024px) {
       width: 900px;
       margin: auto;
@@ -41,6 +45,21 @@ function Buscador() {
     padding: 0 5px;
   `;
 
+  const LocationOnIconStyle = styled(LocationOnIcon)`
+    color: ${({ theme }) => theme.tertiary};
+  `;
+
+  const SelectStyle = styled(Select)`
+    width: 100%;
+    border: none
+  `
+
+  // const SelectStyle = styled.select`
+  //   height: 38px;
+  //   width: 100%;
+  //   border: none;
+  // `
+
   const InputStyle = styled.input`
     height: 38px;
     width: 100%;
@@ -51,13 +70,35 @@ function Buscador() {
     }
   `;
 
-  const LocationOnIconStyle = styled(LocationOnIcon)`
-    color: ${({ theme }) => theme.tertiary};
-  `;
+  const ContainerCalendar = styled.div`
+    border: 1px solid black;
+
+    display: ${({showCalendar}) => showCalendar ? "block" : "none"};
+    position: absolute;
+    top: 90px;
+
+    @media screen and (min-width: 768px) {
+      width: 495px;
+      top: 45px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 600px;
+      right: -110px;
+    }
+  `
+
+  const CalendarStyle = styled(Calendar)`
+    background-color: ${({ theme }) => theme.white};
+  `
+
+  
 
   const EventIconStyle = styled(EventIcon)`
     color: ${({ theme }) => theme.tertiary};
   `;
+
+  const [ showCalendar, setShowCalendar ] = useState(false);
 
   return (
     <BuscadorStyle>
@@ -65,12 +106,24 @@ function Buscador() {
       <ContainerInput>
         <Section>
           <LocationOnIconStyle />
-          <InputStyle placeholder="¿A dónde vamos?"></InputStyle>
+          <SelectStyle
+            options={dataCiudades.map(ciudad => ({key: ciudad.id, label: ciudad.nombre, value: ciudad.id}))}
+          />
+          {/* <SelectStyle
+            placeholder="¿A dónde vamos?">
+          </SelectStyle> */}
         </Section>
-        <Section>
+        <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
-          <InputStyle placeholder="Check in - Check out"></InputStyle>
+          <InputStyle
+            // type="date"
+            placeholder="Check in - Check out">
+          </InputStyle>
         </Section>
+        <ContainerCalendar showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
+          <CalendarStyle/>
+          <Button text="Aplicar"  fullwidth />
+        </ContainerCalendar>
         <Button text="Buscar" fullwidth />
       </ContainerInput>
     </BuscadorStyle>
