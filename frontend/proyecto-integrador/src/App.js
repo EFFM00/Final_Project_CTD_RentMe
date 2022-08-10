@@ -7,8 +7,9 @@ import DesingSystem from "./components/DesingSystem";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/molecules/Footer";
 import Home from "./pages/home/Home";
-import SingnUp from "./pages/login/SingnUp";
-import About from "./pages/about/About";
+import SignUp from "./pages/login/SignUp";
+import SignIn from "./pages/login/SignIn";
+
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
         {/* <DesingSystem/> */}
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/sign-up" element={<SingnUp/>}/>
+          <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/sign-in" element={<SignIn/>}/>
         </Routes>
       <Footer/>
     </ThemeProvider>
