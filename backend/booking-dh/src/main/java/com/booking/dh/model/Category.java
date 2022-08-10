@@ -13,20 +13,19 @@ import javax.persistence.*;
 public class Category {
 
     @Id
-    @SequenceGenerator(name = "category_sequence", sequenceName = "category_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
-    private String url;
+    private String imageUrl;
 
     public Category() {
     }
 
-    public Category(String title, String description, String url) {
+    public Category(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
-        this.url = url;
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -35,7 +34,7 @@ public class Category {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", url='" + url + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
