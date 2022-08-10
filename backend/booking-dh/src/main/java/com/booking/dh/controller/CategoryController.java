@@ -20,14 +20,14 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public ResponseEntity<List<Category>> listCategories(){
         return ResponseEntity.ok(categoryService.readAll());
     }
 
     @PutMapping("/update")
     public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
-        ResponseEntity<Category> response = null;
+        ResponseEntity<Category> response;
 
         if (category.getId() != null && categoryService.readCategoryById(category.getId()).isPresent())
             response = ResponseEntity.ok(categoryService.updateCategory(category));
@@ -39,11 +39,11 @@ public class CategoryController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable Long id) {
-        ResponseEntity<String> response = null;
+        ResponseEntity<String> response;
 
         if (categoryService.readCategoryById(id).isPresent()) {
             categoryService.deleteCategory(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Category successfully removed.");
+            response = ResponseEntity.ok("Category successfully removed.");
         } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

@@ -17,15 +17,15 @@ public class Category {
     private Long id;
     private String title;
     private String description;
-    private String urlImage;
+    private String imageUrl;
 
     public Category() {
     }
 
-    public Category(String title, String description, String urlImage) {
+    public Category(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
-        this.urlImage = urlImage;
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Category {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", urlImage='" + urlImage + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
