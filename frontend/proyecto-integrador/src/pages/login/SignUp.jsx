@@ -7,17 +7,21 @@ import  Icon  from "../../assets/icon-visibility.svg";
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 
 function SignUp() {
   const navigate = useNavigate();
+
   return (
-    <section className="formurarios">
+    <section className="formurarios" >
       <div style={{ padding: "100px 10px" }}>
         <div className="titulo">
           <Text type="h1" color="primary" text="Crear cuenta" />
         </div>
 
-        <form>
+        <form >
           <div className="nombre">
             <div>
               <div className="label">
