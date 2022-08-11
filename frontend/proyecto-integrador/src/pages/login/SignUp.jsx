@@ -7,6 +7,7 @@ import  Icon  from "../../assets/icon-visibility.svg";
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 function SignUp() {
   const navigate = useNavigate();
   return (
@@ -19,36 +20,56 @@ function SignUp() {
         <form>
           <div className="nombre">
             <div>
+              <div className="label">
               <Text type="p2" color="secondary" text="Nombre" />
+
+              </div>
               <div className="relative">
-                <input type="text" name="" id="" />
+                <input type="text" />
+                <p className="msg-error">Este campo es obligatorio</p>
               </div>
             </div>
             <div>
+              <div className="label">
               <Text type="p2" color="secondary" text="Apellido" />
+
+              </div>
               <div className="relative">
                 <input type="text" />
+                <p className="msg-error">Este campo es obligatorio</p>
               </div>
             </div>
           </div>
 
           <div>
+            <div className="label">
             <Text type="p2" color="secondary" text="Correo electrónico" />
+
+            </div>
             <div>
               <input type="email" />
+              <p className="msg-error">Este campo es obligatorio</p>
             </div>
           </div>
           <div className="password">
+            <div className="label">
             <Text type="p2" color="secondary" text="Contraseña" />
+
+            </div>
             <div>
               <input type="password" />
               <img className="visibility" src={ Icon} alt="icono" />
+              <p className="msg-error">Este campo es obligatorio</p>
             </div>
           </div>
           <div>
+            <div className="label">
             <Text type="p2" color="secondary" text="Confirmar contraseña" />
+
+            </div>
             <div>
               <input type="password" />
+              <p className="msg-error">Este campo es obligatorio</p>
             </div>
           </div>
         </form>

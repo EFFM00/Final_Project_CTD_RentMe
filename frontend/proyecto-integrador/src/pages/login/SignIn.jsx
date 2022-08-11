@@ -18,16 +18,22 @@ function SignIn() {
         </div>
         <form>
           <div>
+            <div className="label">
             <Text type="p2" color="secondary" text="Correo electrónico" />
+            </div>
             <div>
               <input type="email" />
+              <p className="msg-error">Este campo es obligatorio</p>
             </div>
           </div>
           <div className="password">
+            <div className="label"> 
             <Text type="p2" color="secondary" text="Contraseña" />
+            </div>
             <div>
               <input type="password" />
               <img className="visibility" src={ Icon} alt="icono" />
+              <p className="msg-error">Este campo es obligatorio</p>
             </div>
           </div>
         </form>
