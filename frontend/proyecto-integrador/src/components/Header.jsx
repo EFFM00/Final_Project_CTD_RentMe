@@ -30,7 +30,7 @@ function Header({showBtnSignIn,
           <img src={ iconoMenu }/>
         </IconoMenu>
         <Menu showBtnRegister={showBtnRegister} setShowBtnRegister={setShowBtnRegister} showBtnSignIn={showBtnSignIn} setShowBtnSignIn={setShowBtnSignIn}/>
-        <MenuMobile showMenu={showMenu} setShowMenu={setShowMenu}/>
+        <MenuMobile showMenu={showMenu} setShowMenu={setShowMenu} showBtnRegister={showBtnRegister} setShowBtnRegister={setShowBtnRegister} showBtnSignIn={showBtnSignIn} setShowBtnSignIn={setShowBtnSignIn}/>
     </Contenedor>
   )
 }

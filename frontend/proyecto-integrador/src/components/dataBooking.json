@@ -25,9 +25,9 @@
     },
     {
         "id": 4,
-        "crimg": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "category": "Hoteles",
-        "title": "Hotel modelo Lorem Ipsum",
+        "crimg": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "category": "Casas",
+        "title": "Casa modelo Lorem Ipsum",
         "location": "Cali",
         "description": "Hotel modelo Lorem Ipsum"
     },
@@ -57,9 +57,9 @@
     },
     {
         "id": 8,
-        "crimg": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        "category": "Hoteles",
-        "title": "Hotel modelo Lorem Ipsum Carioca",
+        "crimg": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "category": "Casas",
+        "title": "Casa modelo Lorem Ipsum Carioca",
         "location": "Brasilia",
         "description": "Hotel modelo Lorem Carioca"
     }

@@ -19,7 +19,7 @@ function Buscador() {
     margin-bottom: 20px;
   `;
 
-  const ContainerInput = styled.div`
+  const Formulario = styled.form`
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -51,12 +51,6 @@ function Buscador() {
     width: 100%;
     border: none
   `
-
-  // const SelectStyle = styled.select`
-  //   height: 38px;
-  //   width: 100%;
-  //   border: none;
-  // `
 
   const InputStyle = styled.input`
     height: 38px;
@@ -101,15 +95,12 @@ function Buscador() {
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
-      <ContainerInput>
+      <Formulario>
         <Section>
           <LocationOnIconStyle />
           <SelectStyle
             options={dataCiudades.map(ciudad => ({key: ciudad.id, label: ciudad.nombre, value: ciudad.id}))}
           />
-          {/* <SelectStyle
-            placeholder="¿A dónde vamos?">
-          </SelectStyle> */}
         </Section>
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
@@ -123,7 +114,7 @@ function Buscador() {
           <Button text="Aplicar"  fullwidth />
         </ContainerCalendar>
         <Button text="Buscar" fullwidth />
-      </ContainerInput>
+      </Formulario>
     </BuscadorStyle>
   );
 }
