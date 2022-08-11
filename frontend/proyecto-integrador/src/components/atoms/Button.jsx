@@ -57,7 +57,7 @@ function Button({
           <Text type="h3" color="secondary" text={text} />
         </ButtonMobilStyle>
       ) : (
-        <ButtonStyle style={style} onClick={click} tonStyle>
+        <ButtonStyle style={style} onClick={click}>
           <Text type="h3" color="white" text={text} />
         </ButtonStyle>
       )}
