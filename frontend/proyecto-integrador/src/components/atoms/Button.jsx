@@ -2,7 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Text from "./Text";
 
-function Button({ text, type = "default", width = "m", fullwidth = false }) {
+function Button({
+  text,
+  type = "default",
+  width = "m",
+  fullwidth = false,
+  style,
+  click
+}) {
   const widthButton =
     width == "xs" ? 164 : width == "s" ? 206 : width == "m" ? 296 : 346;
 
@@ -23,7 +30,7 @@ function Button({ text, type = "default", width = "m", fullwidth = false }) {
     border: none;
     border-radius: 5px;
     background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.white};
     font-weight: bold;
   `;
 
@@ -40,15 +47,19 @@ function Button({ text, type = "default", width = "m", fullwidth = false }) {
 
   return (
     <>
-    {/* TODO: Cambiar el ternario por un switch como en Text */}
+      {/* TODO: Cambiar el ternario por un switch como en Text */}
       {type == "Outline" ? (
-        <ButtonNoBackgroundStyle>{text}</ButtonNoBackgroundStyle>
+        <ButtonNoBackgroundStyle style={style} onClick={click}>
+          <Text type="h3" color="primary" text={text} />
+        </ButtonNoBackgroundStyle>
       ) : type == "text" ? (
-        <ButtonMobilStyle>
+        <ButtonMobilStyle style={style} onClick={click}>
           <Text type="h3" color="secondary" text={text} />
         </ButtonMobilStyle>
       ) : (
-        <ButtonStyle tonStyle>{text}</ButtonStyle>
+        <ButtonStyle style={style} onClick={click}>
+          <Text type="h3" color="white" text={text} />
+        </ButtonStyle>
       )}
     </>
   );
