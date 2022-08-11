@@ -9,8 +9,6 @@ import dataCiudades from '../dataCiudades.json'
 
 function Buscador() {
   const BuscadorStyle = styled.div`
-    border: 1px solid black;
-
     background-color: ${({ theme }) => theme.tertiary};
     padding: 110px 10px 15px;
     text-align: center;

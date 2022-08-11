@@ -1,4 +1,3 @@
-import Body from "./components/Body";
 import Header from "./components/Header";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
@@ -8,39 +7,32 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/molecules/Footer";
 import Home from "./pages/home/Home";
 import SingnUp from "./pages/login/SingnUp";
-import About from "./pages/about/About";
-
+import SingnIn from "./pages/login/SingnIn";
+import { useState } from "react";
 
 function App() {
+  const [showBtnRegister, setShowBtnRegister] = useState(true);
+  const [showBtnSignIn, setShowBtnSignIn] = useState(true);
+
   return (
     <BrowserRouter>
-    <GlobalStyle/>
-    <ThemeProvider theme={Colors}>
-      <Header/>
-        {/* <SingnUp/> */}
-        {/* <Home/> */}
-        {/* <DesingSystem/> */}
+      <GlobalStyle />
+      <ThemeProvider theme={Colors}>
+        <Header
+          showBtnRegister={showBtnRegister}
+          setShowBtnRegister={setShowBtnRegister}
+          showBtnSignIn={showBtnSignIn}
+          setShowBtnSignIn={setShowBtnSignIn}
+        />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/sign-up" element={<SingnUp/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-up" element={<SingnUp />} />
+          <Route path="/sign-in" element={<SingnIn/>} />
         </Routes>
-      <Footer/>
-    </ThemeProvider>
+        <Footer />
+      </ThemeProvider>
     </BrowserRouter>
-
-
-    // <>
-    //   <GlobalStyle/>
-    //   <ThemeProvider theme={Colors}>
-    //     <Header/>
-    //     {/* <Body/> */}
-    //     <DesingSystem />
-    //     <Footer/>
-    //   </ThemeProvider>
-    // </>
   );
 }
 
 export default App;
-
-

@@ -4,6 +4,7 @@ import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import SocialMedia from "../atoms/SocialMedia";
+import { useNavigate } from 'react-router-dom';
 
 function MenuMobile({ showMenu, setShowMenu }) {
   const MenuMobileStyle = styled.div`
@@ -38,6 +39,7 @@ function MenuMobile({ showMenu, setShowMenu }) {
     bottom: 20px;
     right: 10px;
   `
+  const navigate = useNavigate();
 
   return (
     <>
@@ -50,6 +52,7 @@ function MenuMobile({ showMenu, setShowMenu }) {
         text="Crear cuenta"
         type="text"
         fullwidth
+        click={() => navigate("/sign-up")}
         />
       <hr
         style={{
@@ -63,6 +66,7 @@ function MenuMobile({ showMenu, setShowMenu }) {
         text="Iniciar sesión" 
         type="text"
         fullwidth
+        click={() => navigate("/sign-in")}
         />
       <ContainerSM>
         <SocialMedia/>

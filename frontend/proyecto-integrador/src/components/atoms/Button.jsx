@@ -53,11 +53,11 @@ function Button({
           <Text type="h3" color="primary" text={text} />
         </ButtonNoBackgroundStyle>
       ) : type == "text" ? (
-        <ButtonMobilStyle style={style}>
+        <ButtonMobilStyle style={style} onClick={click}>
           <Text type="h3" color="secondary" text={text} />
         </ButtonMobilStyle>
       ) : (
-        <ButtonStyle style={style} tonStyle>
+        <ButtonStyle style={style} onClick={click}>
           <Text type="h3" color="white" text={text} />
         </ButtonStyle>
       )}
