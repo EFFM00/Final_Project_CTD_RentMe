@@ -129,7 +129,7 @@ function Buscador() {
     }
     &:active {
       background-color: ${({ theme }) => theme.primary};
-
+      color: ${({ theme }) => theme.white};
     }
   }
 
@@ -147,6 +147,7 @@ function Buscador() {
     }
     .react-calendar__tile--range {
       background-color: ${({ theme }) => theme.primary};
+      color: ${({ theme }) => theme.white};
     }
   }
 
