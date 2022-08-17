@@ -5,10 +5,11 @@ import SocialMedia from './atoms/SocialMedia'
 import Text from './atoms/Text'
 import Footer from './molecules/Footer'
 import MenuMobile from './molecules/MenuMobile'
+import AvatarMobile from './atoms/Avatar'
 
 export default function DesingSystem() {
   return (
-    <div  style={{display: "grid", gap: "10px" }}>
+  <div  style={{display: "grid", gap: "10px" }}>
     <h1>Botones</h1>
     <Button text="Default xs"  width="xs" />
     <Button text="Default s"  width="s" />
@@ -23,6 +24,7 @@ export default function DesingSystem() {
     <Button text="fullWidth" type="Outline" fullwidth />
 
     <Button text="text fullWidth" type="text" fullwidth />
+    <br/>
 
     <h1>Tipografia</h1>
     <Text type="h1" color='primary' text="Heading 1"/>
@@ -66,9 +68,15 @@ export default function DesingSystem() {
     <Text type="h4" text="Heading 4"/>
     <Text type="p1" text="Text 1"/>
     <Text type="p2" text="Text 2"/>
+    <br/>
 
     <h1>SocialMedia</h1>
     <SocialMedia/>
+    <br/>
+
+    <h1>Avatar para Mobile</h1>
+    <AvatarMobile/>
+    <br/>
 
     <h1>Footer</h1>
     <Footer/>
@@ -77,8 +85,8 @@ export default function DesingSystem() {
     <div style={{position: "relative"}}>
         <MenuMobile showMenu={true}/>
     </div>
+    
 
-
-    </div>
+  </div>
   )
 }
