@@ -19,7 +19,7 @@ function Buscador() {
     margin-bottom: 20px;
   `;
 
-  const Formulario = styled.form`
+  const Formulario = styled.div`
     display: grid;
     gap: 10px;
     

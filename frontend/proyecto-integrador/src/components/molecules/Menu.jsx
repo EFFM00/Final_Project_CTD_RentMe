@@ -16,6 +16,7 @@ function Menu({ showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true
 
   return (
     <MenuStyle>
+
       {showBtnRegister ? (
         <Button
           text="Crear cuenta"
@@ -43,7 +44,7 @@ function Menu({ showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true
             }}
           />
         ) : null
-      }      
+      }
 
     </MenuStyle>
   );
