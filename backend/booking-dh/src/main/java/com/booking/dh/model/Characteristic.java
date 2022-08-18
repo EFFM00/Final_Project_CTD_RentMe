@@ -30,6 +30,9 @@ public class Characteristic {
     @Column(name = "has_pool")
     private Boolean hasPool;
 
+    @Column(name = "has_kitchen")
+    private Boolean hasKitchen;
+
     @Column(name = "has_parking")
     private Boolean hasParking;
 
@@ -54,9 +57,6 @@ public class Characteristic {
     @Column(name = "has_gym")
     private Boolean hasGym;
 
-    @Column(name = "has_hot_water")
-    private Boolean hasHotWater;
-
     @Column(name = "has_tv")
     private Boolean hasTv;
 
@@ -78,11 +78,12 @@ public class Characteristic {
     public Characteristic() {
     }
 
-    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasHotWater, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowsPets) {
+    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasKitchen, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowsPets) {
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
         this.numBeds = numBeds;
         this.hasPool = hasPool;
+        this.hasKitchen = hasKitchen;
         this.hasParking = hasParking;
         this.hasGrill = hasGrill;
         this.hasChimney = hasChimney;
@@ -91,7 +92,6 @@ public class Characteristic {
         this.hasHeating = hasHeating;
         this.hasWasher = hasWasher;
         this.hasGym = hasGym;
-        this.hasHotWater = hasHotWater;
         this.hasTv = hasTv;
         this.hasLinens = hasLinens;
         this.hasFridge = hasFridge;
