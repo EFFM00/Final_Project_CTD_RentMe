@@ -2,14 +2,16 @@ package com.booking.dh.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Setter
 @Getter
 
+@ToString
 @Entity
-@Table(name = "characteristic")
+@Table(name = "characteristics")
 public class Characteristic {
 
     @Id
@@ -70,13 +72,13 @@ public class Characteristic {
     @Column(name = "has_hammocks")
     private Boolean hasHammocks;
 
-    @Column(name = "allow_pets")
-    private Boolean allowPets;
+    @Column(name = "allows_pets")
+    private Boolean allowsPets;
 
     public Characteristic() {
     }
 
-    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasHotWater, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowPets) {
+    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasHotWater, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowsPets) {
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
         this.numBeds = numBeds;
@@ -95,6 +97,6 @@ public class Characteristic {
         this.hasFridge = hasFridge;
         this.hasBasicsCookwares = hasBasicsCookwares;
         this.hasHammocks = hasHammocks;
-        this.allowPets = allowPets;
+        this.allowsPets = allowsPets;
     }
 }
