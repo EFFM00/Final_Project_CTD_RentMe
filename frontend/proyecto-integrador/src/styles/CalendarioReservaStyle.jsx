@@ -30,9 +30,11 @@ export const ContainerCalendar = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 20px;
     border-radius: 0px 0px 5px 5px;
+    position: relative;
 
     @media screen and (min-width: 1024px) {
         border-radius: 5px;
+        
     }
 
 
@@ -42,9 +44,13 @@ export const ContainerCalendar = styled.div`
 
       .react-calendar__navigation__label {
         font-weight: bold;
-        background: none;
-        border: none;
-        width: 7rem;
+        // background: none;
+        // border: none;
+        // width: 7rem;
+
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
       }
 
       .react-calendar__navigation__arrow {
@@ -54,11 +60,46 @@ export const ContainerCalendar = styled.div`
         padding: 1px;
         width: 15px;
         font-size: 1.4rem;
+
+        @media screen and (min-width: 1024px) {
+          background-color: ${({ theme }) => theme.primary};
+          color: ${({ theme }) => theme.white};
+          border-radius: 50%;
+        }
+        
       }
 
       .react-calendar__navigation__arrow:hover, .react-calendar__navigation__label:hover {
         color: ${({ theme }) => theme.primary};
       }
+
+      .react-calendar__navigation__prev-button {
+        @media screen and (min-width: 1024px) {
+          position: absolute;
+          top: 130px;
+          left: 10px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      .react-calendar__navigation__next-button {
+        @media screen and (min-width: 1024px) {
+          position: absolute;
+          right: 10px;
+          top: 130px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+
+      .react-calendar__navigation__prev2-button,
+      .react-calendar__navigation__next2-button {
+        display: none;
+      }
+
+      
+      
   }
 
   /* ~~~ label styles ~~~ */
@@ -95,7 +136,10 @@ export const ContainerCalendar = styled.div`
         display: flex;
         justify-content: space-around;
     }
+
+    
   }
+
 
   /* ~~~ day grid styles ~~~ */
   .react-calendar__month-view__days {
