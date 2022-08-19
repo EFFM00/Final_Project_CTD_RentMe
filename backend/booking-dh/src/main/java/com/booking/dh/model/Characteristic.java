@@ -75,10 +75,13 @@ public class Characteristic {
     @Column(name = "allows_pets", nullable = false)
     private Boolean allowsPets;
 
+    @OneToOne(mappedBy = "characteristic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Product product;
+
     public Characteristic() {
     }
 
-    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasKitchen, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowsPets) {
+    public Characteristic(Integer numBedrooms, Integer numBathrooms, Integer numBeds, Boolean hasPool, Boolean hasKitchen, Boolean hasParking, Boolean hasGrill, Boolean hasChimney, Boolean hasWifi, Boolean hasAirConditioner, Boolean hasHeating, Boolean hasWasher, Boolean hasGym, Boolean hasTv, Boolean hasLinens, Boolean hasFridge, Boolean hasBasicsCookwares, Boolean hasHammocks, Boolean allowsPets, Product product) {
         this.numBedrooms = numBedrooms;
         this.numBathrooms = numBathrooms;
         this.numBeds = numBeds;
@@ -98,5 +101,6 @@ public class Characteristic {
         this.hasBasicsCookwares = hasBasicsCookwares;
         this.hasHammocks = hasHammocks;
         this.allowsPets = allowsPets;
+        this.product = product;
     }
 }

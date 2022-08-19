@@ -1,6 +1,8 @@
 package com.booking.dh.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -19,13 +21,16 @@ public class Product {
     @Column(nullable = false)
     private int price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "characteristics_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "characteristics_id", nullable = false)
     private Characteristic characteristic;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categories_id")
     private Category category;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Image> images = new HashSet<>();
 
 
     //prueba
@@ -76,10 +81,14 @@ public class Product {
         this.price = price;
     }
 
-    public Product(String title, String description, Double longitude, Double latitude, int price){
-    this.title = title;
-    this.description = description;
-    this.latitude = latitude;
-    this.price = price;
+    public Product(String title, String description, Double longitude, Double latitude, int price, Characteristic characteristic, Category category, Set<Image> images) {
+        this.title = title;
+        this.description = description;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.price = price;
+        this.characteristic = characteristic;
+        this.category = category;
+        this.images = images;
     }
 }

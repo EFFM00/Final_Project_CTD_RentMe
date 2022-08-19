@@ -30,10 +30,11 @@ public class Category {
     public Category() {
     }
 
-    public Category(String title, String description, String imageUrl) {
+    public Category(String title, String description, String imageUrl, Set<Product> products) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.products = products;
     }
 
     @Override
