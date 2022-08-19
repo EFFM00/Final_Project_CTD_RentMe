@@ -23,6 +23,8 @@ public class Product {
     @JoinColumn(name = "characteristics_id")
     private Characteristic characteristic;
 
+
+    //prueba
     public Product() {
     }
 
