@@ -23,6 +23,10 @@ public class Product {
     @JoinColumn(name = "characteristics_id")
     private Characteristic characteristic;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categories_id")
+    private Category category;
+
 
     //prueba
     public Product() {
