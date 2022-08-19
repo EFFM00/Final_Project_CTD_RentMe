@@ -5,8 +5,9 @@ import Button from "../atoms/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import SocialMedia from "../atoms/SocialMedia";
 import { useNavigate } from 'react-router-dom';
+import Avatar from "../atoms/Avatar";
 
-function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true, setShowBtnSignIn }) {
+function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true, setShowBtnSignIn, user, setUser }) {
   const MenuMobileStyle = styled.div`
     background-color: ${({ theme }) => theme.fondo};
     position: absolute;
@@ -46,8 +47,14 @@ function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnR
     <MenuMobileStyle>
       <CloseIconStyle onClick={() => setShowMenu(false)} />
       <Titulo>
-        <Text type="h2" color="white" text="MENÚ" />
+        {
+          user==null ?
+          // TODO: Debe ir con los datos del user logeado
+          <Text type="h2" color="white" text="MENÚ" />
+          : <Avatar name="Bruno Diaz" initials="BD"/>
+        }
       </Titulo>
+      
       {
         showBtnRegister ? (
           <Button
