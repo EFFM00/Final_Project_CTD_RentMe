@@ -19,9 +19,12 @@ public class Product {
     @Column(nullable = false)
     private int price;
 
-public Product() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "characteristics_id")
+    private Characteristic characteristic;
 
-}
+    public Product() {
+    }
 
     public Long getId() {
         return id;
@@ -70,9 +73,7 @@ public Product() {
     public Product(String title, String description, Double longitude, Double latitude, int price){
     this.title = title;
     this.description = description;
-    this.id = id;
     this.latitude = latitude;
     this.price = price;
-
-}
+    }
 }
