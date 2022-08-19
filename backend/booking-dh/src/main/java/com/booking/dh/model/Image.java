@@ -12,7 +12,8 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "images")
-public class Image {
+public class
+Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +21,16 @@ public class Image {
     private String title;
     private String url;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "products_id")
+    private Product product;
+
     public Image() {
     }
 
-    public Image(String title, String url) {
+    public Image(String title, String url, Product product) {
         this.title = title;
         this.url = url;
+        this.product = product;
     }
 }
