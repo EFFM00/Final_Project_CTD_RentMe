@@ -2,6 +2,7 @@ package com.booking.dh.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 @Setter
 @Getter
+@ToString
 
 @Entity
 @Table(name = "categories")
@@ -35,15 +37,5 @@ public class Category {
         this.description = description;
         this.imageUrl = imageUrl;
         this.products = products;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
     }
 }

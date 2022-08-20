@@ -1,8 +1,16 @@
 package com.booking.dh.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+@Setter
+@Getter
+@ToString
 
 @Entity
 @Table(name = "products")
@@ -21,9 +29,8 @@ public class Product {
     @Column(nullable = false)
     private int price;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "characteristics_id", nullable = false)
-    private Characteristic characteristic;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<CharacteristicsXProduct> characteristicsXProductOfProduct;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categories_id")
@@ -32,62 +39,16 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Image> images = new HashSet<>();
 
-
-    //prueba
     public Product() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Product(String title, String description, Double longitude, Double latitude, int price, Characteristic characteristic, Category category, Set<Image> images) {
+    public Product(String title, String description, Double longitude, Double latitude, int price, Set<CharacteristicsXProduct> characteristicsXProductOfProduct, Category category, Set<Image> images) {
         this.title = title;
         this.description = description;
         this.longitude = longitude;
         this.latitude = latitude;
         this.price = price;
-        this.characteristic = characteristic;
+        this.characteristicsXProductOfProduct = characteristicsXProductOfProduct;
         this.category = category;
         this.images = images;
     }
