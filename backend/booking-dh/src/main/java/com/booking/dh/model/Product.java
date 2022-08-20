@@ -15,6 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "products")
 public class Product {
+
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
@@ -23,11 +24,13 @@ public class Product {
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
+    private String address;
+    @Column(nullable = false)
     private Double longitude;
     @Column(nullable = false)
     private Double latitude;
     @Column(nullable = false)
-    private int price;
+    private Double price;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<CharacteristicsXProduct> characteristicsXProductOfProduct;
@@ -42,9 +45,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String description, Double longitude, Double latitude, int price, Set<CharacteristicsXProduct> characteristicsXProductOfProduct, Category category, Set<Image> images) {
+    public Product(String title, String description, String address, Double longitude, Double latitude, Double price, Set<CharacteristicsXProduct> characteristicsXProductOfProduct, Category category, Set<Image> images) {
         this.title = title;
         this.description = description;
+        this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.price = price;

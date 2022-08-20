@@ -1,4 +1,3 @@
-/*
 package com.booking.dh;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +11,3 @@ class BookingDhApplicationTests {
 	}
 
 }
-
-
- */

@@ -12,8 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
+
     @Autowired
-    private CategoryService categoryService;
+    CategoryService categoryService;
 
     @PostMapping("/add")
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
@@ -29,11 +30,11 @@ public class CategoryController {
     public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
         ResponseEntity<Category> response;
 
-        if (category.getId() != null && categoryService.readCategoryById(category.getId()).isPresent())
+        if (category.getId() != null && categoryService.readCategoryById(category.getId()).isPresent()) {
             response = ResponseEntity.ok(categoryService.updateCategory(category));
-        else
+        } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
+        }
         return response;
     }
 
