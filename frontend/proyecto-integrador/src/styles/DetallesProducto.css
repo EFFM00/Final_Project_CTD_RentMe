@@ -3,7 +3,6 @@
     font-family: "Roboto";
     background-color: #545776;
     margin: 0;
-    justify-content: space-between;
     position: relative;
     height: 60px;
     width: 100%;
@@ -26,4 +25,30 @@
    right: 20px;
    cursor: pointer;
    width: 30px;
+ }
+
+ .Ubicacion {
+   background-color: whitesmoke;
+   position: relative;
+   height: 60px;
+   width: 100%;
+ }
+
+ .DatosUbi {
+   position: absolute;
+   left: 35px;
+   top: 17px;
+ }
+
+ .Distancia {
+   position: absolute;
+   left: 35px;
+   bottom: 8px;
+ }
+
+ .Ubi {
+   position: absolute;
+   color: #545776;
+   left: 15px;
+   top: 17px;
  }
