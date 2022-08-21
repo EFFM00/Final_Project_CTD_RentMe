@@ -1,6 +1,7 @@
 package com.booking.dh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -38,6 +39,7 @@ public class Product {
     private Set<CharacteristicXProduct> characteristicsXProducts = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
@@ -46,6 +48,7 @@ public class Product {
     private Set<Image> images = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 

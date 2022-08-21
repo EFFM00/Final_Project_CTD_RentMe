@@ -22,8 +22,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product returnProduct (@PathVariable(value = "id") Long id){
-        return productService.returnProduct(id);
+    public ResponseEntity<Product> findProductById(@PathVariable Long id) {
+        if(productService.findProductById(id).isPresent()){
+            return ResponseEntity.ok(productService.findProductById(id).get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @GetMapping
@@ -61,8 +65,9 @@ public class ProductController {
         return ResponseEntity.ok(productService.findProductByCityId(id));
     }
 
+
     @GetMapping("/home")
-    public List<Product> randomProductList() {
-        return productService.randomProductList();
+    public ResponseEntity<List<Product>> randomProductList() {
+        return ResponseEntity.ok(productService.randomProductList());
     }
 }
