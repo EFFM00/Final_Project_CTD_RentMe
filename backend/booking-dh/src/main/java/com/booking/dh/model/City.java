@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-
 @ToString
+
 @Entity
 @Table(name = "cities")
 public class City {
@@ -17,7 +17,9 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String country;
 
     public City() {
