@@ -13,9 +13,13 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public Product addProduct (Product product){return productRepository.save(product);}
+    public Product addProduct (Product product){
+        return productRepository.save(product);
+    }
 
-    public Optional<Product> findProductById(Long id){return productRepository.findById(id);}
+    public Optional<Product> findProductById(Long id){
+        return productRepository.findById(id);
+    }
 
     public Product returnProduct(Long id){
         if(findProductById(id).isPresent()){
@@ -25,7 +29,14 @@ public class ProductService {
         }
     }
 
-    public List<Product> productList(){return productRepository.findAll();}
+    public List<Product> findProductByCityId(Long id){
+        List<Product> productsByCity = productRepository.findProductByCityId(id);
+        return productsByCity;
+    }
+
+    public List<Product> productList(){
+        return productRepository.findAll();
+    }
 
     public Product editProduct(Product product){
         if (findProductById(product.getId()).isPresent()){

@@ -12,8 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/cities")
 public class CityController {
+
     @Autowired
-    private CityService cityService;
+    CityService cityService;
 
     @PostMapping("/add")
     public ResponseEntity<City> addCity(@RequestBody City city) {
@@ -29,11 +30,11 @@ public class CityController {
     public ResponseEntity<City> updateCity(@RequestBody City city) {
         ResponseEntity<City> response;
 
-        if (city.getId() != null && cityService.readCityById(city.getId()).isPresent())
+        if (city.getId() != null && cityService.readCityById(city.getId()).isPresent()) {
             response = ResponseEntity.ok(cityService.updateCategory(city));
-        else
+        } else {
             response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-
+        }
         return response;
     }
 
