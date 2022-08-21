@@ -23,7 +23,7 @@ public class Image {
     private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     public Image() {
