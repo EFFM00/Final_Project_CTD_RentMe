@@ -8,21 +8,22 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-
 @ToString
+
 @Entity
 @Table(name = "images")
-public class
-Image {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "products_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     public Image() {

@@ -1,5 +1,6 @@
 package com.booking.dh.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,6 +27,7 @@ public class Category {
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Product> products = new HashSet<>();
 

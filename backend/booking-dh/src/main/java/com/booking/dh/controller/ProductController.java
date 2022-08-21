@@ -3,6 +3,8 @@ package com.booking.dh.controller;
 import com.booking.dh.model.Product;
 import com.booking.dh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,14 +13,13 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    public ProductService productService;
-
     @Autowired
-    public ProductController() {
-    }
+    ProductService productService;
 
-    @PostMapping
-    public Product addProduct(@RequestBody Product product) {return productService.addProduct(product);}
+    @PostMapping("/add")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        return ResponseEntity.ok(productService.addProduct(product));
+    }
 
     @GetMapping("/{id}")
     public Product returnProduct (@PathVariable(value = "id") Long id){
@@ -26,14 +27,37 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<Product> productList(){return productService.productList();}
+    public ResponseEntity<List<Product>> productList(){
+        return ResponseEntity.ok(productService.productList());
+    }
 
-    @PutMapping("/{id}")
-    public Product editProduct(@RequestBody Product product){return productService.editProduct(product);}
+    @PutMapping("/update")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        ResponseEntity<Product> response;
 
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable(value = "id") Long id){productService.deleteProduct(id);}
+        if (product.getId() != null && productService.findProductById(product.getId()).isPresent()) {
+            response = ResponseEntity.ok(productService.editProduct(product));
+        } else {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
+        ResponseEntity<String> response;
+
+        if (productService.findProductById(id).isPresent()) {
+            productService.deleteProduct(id);
+            response = ResponseEntity.ok("Product successfully removed.");
+        } else {
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
+    }
 
     @GetMapping("/home")
-    public List<Product> randomProductList() {return productService.randomProductList();}
+    public List<Product> randomProductList() {
+        return productService.randomProductList();
+    }
 }

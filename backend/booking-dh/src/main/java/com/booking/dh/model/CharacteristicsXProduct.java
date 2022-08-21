@@ -19,11 +19,11 @@ public class CharacteristicsXProduct {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "characteristicsXProductOfCharacteristic")
+    @JoinColumn(name = "characteristic_id", nullable = false)
     private Characteristic characteristic;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "characteristicsXProductOfProduct")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     public CharacteristicsXProduct() {
