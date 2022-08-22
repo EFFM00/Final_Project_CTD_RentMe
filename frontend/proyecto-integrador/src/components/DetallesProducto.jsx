@@ -19,6 +19,7 @@ function DetallesProducto() {
   return (
     <>
       {/* Bloque Header */}
+
       <header className="BloqueHeader">
         <div className="CategoriaDelProducto">
           <Text type="h4" color="white" text="Hotel" />
@@ -30,7 +31,9 @@ function DetallesProducto() {
           <img className="arrow" src={Arrow} alt="arrow" />
         </div>
       </header>
+
       {/* Bloque Ubicacion */}
+
       <div className="BloqueUbicacion">
         <div className="DatosUbi">
           <Text
@@ -44,14 +47,18 @@ function DetallesProducto() {
           <Text type="p1" color="secondary" text="A 940 m del centro " />
         </div>
       </div>
+
       {/* Compartir Favoritos */}
+
       <div className="IconComp">
         <ShareIcon />
       </div>
       <div className="IconFav">
         <FavoriteBorderIcon />
       </div>
+
       {/* Carrusel */}
+
       <div className="carrusel">
         <img
           className="imagen"
@@ -59,7 +66,9 @@ function DetallesProducto() {
           alt=""
         />
       </div>
+
       {/* Bloque Descripcion */}
+
       <div className="BloqueDescripcion">
         <Text
           type="h1"
@@ -84,6 +93,7 @@ function DetallesProducto() {
           />
         </div>
       </div>
+
       {/* Bloque Caracteristicas */}
 
       <div className="TituloC">
@@ -120,6 +130,32 @@ function DetallesProducto() {
           <Text type="p1" text="Wifi" />
         </div>
       </div>
+
+      {/* Bloque de Politicas */}
+
+      <div className="TituloP">
+        <Text type="h1" color="secondary" text="Qué tenes que saber" />
+      </div>
+
+      <div className="BloqueDePoliticas">
+        <div className="normas">
+        <Text type="h3" color='secondary' text="Normas de la casa"/>
+        <p className="textoP"><Text type="p1" text="Check-out: 10:00"/></p><br />
+        <p><Text type="p1" text="No se permiten fiestas"/></p><br />
+        <p><Text type="p1" text="No fumar"/></p>
+        </div>
+        <div className="seguridad">
+        <Text type="h3" color='secondary' text="Salud y seguridad"/>
+        <p className="textoP"><Text type="p1" text="Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus"/></p><br />
+        <p><Text type="p1" text="Detector de humo"/></p><br />
+        <p><Text type="p1" text="Depósito de seguridad"/></p>
+        </div>
+        <div className="cancelacion">
+        <Text type="h3" color='secondary' text="Políticas de cancelación"/>
+        <p className="textoP"><Text type="p1" text="Agregá las fechas de tu viaje para obtener los detalles de cancelacion de esta estadía"/></p>
+        </div>
+      </div>
+
     </>
   );
 }

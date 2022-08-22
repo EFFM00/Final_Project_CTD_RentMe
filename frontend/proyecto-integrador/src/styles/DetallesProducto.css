@@ -77,10 +77,10 @@
 }
 
 .carrusel {
-  left: 40px;
+  padding-left: 40px;
   top: 95px;
   position: relative;
-  width: 640px;
+  width: 100%;
 }
 
 .imagen {
@@ -89,27 +89,39 @@
 
 .BloqueDescripcion {
 position: relative;
-left: 43px;
+padding-left: 43px;
 top: 110px;
 height: 280px;
-width: 1200px;
+width: 90%;
 }
 
 .TextoDeDescripcion {
   position: relative;
   top: 25px;
+  width: 90%;
+  
 }
 
 .TituloC {
   position: relative;
   top: 50px;
-  left: 43px;
+  padding-left: 43px;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #1DBEB4;
+}
+
+@media screen and (max-width: 778px) {
+  .TituloC {
+    padding-top: 50px;
+  }
 }
 
 .BloqueDeCaracteristicas {
   position: relative;
   top: 50px;
   left: 43px;
+  width: 80%;
   height: 150px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -117,6 +129,7 @@ width: 1200px;
 
 .caracteristicas {
   position: relative;
+  width: 100%;
   color: #1DBEB4;
   display: flex;
   align-items: flex-end;
@@ -125,3 +138,46 @@ width: 1200px;
 .iconosC {
   margin-right: 5px;
 }
+
+@media screen and (max-width: 778px) {
+  .BloqueDeCaracteristicas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.TituloP {
+  position: relative;
+  top: 100px;
+  padding-left: 43px;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #1DBEB4;
+}
+
+.BloqueDePoliticas {
+  position: relative;
+  height: 500px;
+  width: 60%;
+  top: 150px;
+  padding-left: 43px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.textoP {
+padding-top: 50px;
+padding-right: 20px;
+}
+
+@media screen and (max-width: 778px) {
+  .BloqueDePoliticas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .BloqueDePoliticas {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
