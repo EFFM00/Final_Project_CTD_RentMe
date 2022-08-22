@@ -11,27 +11,26 @@ import javax.persistence.*;
 @ToString
 
 @Entity
-@Table(name = "images")
-public class Image {
+@Table(name = "characteristics_x_product")
+public class CharacteristicXProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String title;
-    @Column(nullable = false)
-    private String url;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "characteristic_id", nullable = false)
+    private Characteristic characteristic;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    public Image() {
+    public CharacteristicXProduct() {
     }
 
-    public Image(String title, String url, Product product) {
-        this.title = title;
-        this.url = url;
+    public CharacteristicXProduct(Characteristic characteristic, Product product) {
+        this.characteristic = characteristic;
         this.product = product;
     }
 }

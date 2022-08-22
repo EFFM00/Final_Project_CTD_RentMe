@@ -1,8 +1,6 @@
 package com.booking.dh.service;
 
-import com.booking.dh.model.Category;
 import com.booking.dh.model.City;
-import com.booking.dh.repository.CategoryRepository;
 import com.booking.dh.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +12,7 @@ import java.util.Optional;
 public class CityService {
 
     @Autowired
-    private CityRepository cityRepository;
+    CityRepository cityRepository;
 
     public City createCity(City city) {
         return cityRepository.save(city);
