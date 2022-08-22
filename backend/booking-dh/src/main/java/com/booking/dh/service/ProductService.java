@@ -21,12 +21,9 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public Product returnProduct(Long id){
-        if(findProductById(id).isPresent()){
-            return productRepository.getById(id);
-        }else{
-            return null;
-        }
+    public List<Product> findProductByCityId(Long id){
+        List<Product> productsByCity = productRepository.findProductByCityId(id);
+        return productsByCity;
     }
 
     public List<Product> productList(){

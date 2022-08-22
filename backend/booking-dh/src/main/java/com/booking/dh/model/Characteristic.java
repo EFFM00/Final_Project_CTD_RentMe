@@ -25,13 +25,13 @@ public class Characteristic {
 
     @JsonIgnore
     @OneToMany(mappedBy = "characteristic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<CharacteristicsXProduct> characteristicsXProductOfCharacteristic = new HashSet<>();
+    private Set<CharacteristicXProduct> characteristicsXProducts = new HashSet<>();
 
     public Characteristic() {
     }
 
-    public Characteristic(String description, Set<CharacteristicsXProduct> characteristicsXProductOfCharacteristic) {
+    public Characteristic(String description, Set<CharacteristicXProduct> characteristicXProduct) {
         this.description = description;
-        this.characteristicsXProductOfCharacteristic = characteristicsXProductOfCharacteristic;
+        this.characteristicsXProducts = characteristicsXProducts;
     }
 }

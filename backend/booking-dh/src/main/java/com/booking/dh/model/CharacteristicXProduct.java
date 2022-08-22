@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "characteristics_x_product")
-public class CharacteristicsXProduct {
+public class CharacteristicXProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +26,10 @@ public class CharacteristicsXProduct {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    public CharacteristicsXProduct() {
+    public CharacteristicXProduct() {
     }
 
-    public CharacteristicsXProduct(Characteristic characteristic, Product product) {
+    public CharacteristicXProduct(Characteristic characteristic, Product product) {
         this.characteristic = characteristic;
         this.product = product;
     }

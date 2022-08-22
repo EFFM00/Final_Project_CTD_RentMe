@@ -1,6 +1,7 @@
 package com.booking.dh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -35,9 +36,10 @@ public class Product {
 
     @JsonIgnore
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<CharacteristicsXProduct> characteristicsXProductOfProduct = new HashSet<>();
+    private Set<CharacteristicXProduct> characteristicsXProducts = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
@@ -46,20 +48,21 @@ public class Product {
     private Set<Image> images = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     public Product() {
     }
 
-    public Product(String title, String description, String address, Double longitude, Double latitude, Double price, Set<CharacteristicsXProduct> characteristicsXProductOfProduct, Category category, Set<Image> images) {
+    public Product(String title, String description, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images) {
         this.title = title;
         this.description = description;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
         this.price = price;
-        this.characteristicsXProductOfProduct = characteristicsXProductOfProduct;
+        this.characteristicsXProducts = characteristicsXProducts;
         this.category = category;
         this.images = images;
     }
