@@ -1,54 +1,127 @@
+.BloqueHeader {
+  font-family: "Roboto";
+  background-color: #545776;
+  margin: 0;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  top: 90px;
+}
+.CategoriaDelProducto {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
 
- .BloqueHeader {
-    font-family: "Roboto";
-    background-color: #545776;
-    margin: 0;
-    position: relative;
-    height: 60px;
-    width: 100%;
- }
- .titulo1 {
-    position: absolute;
-    top: 10px;
-    left: 15px;
- }
+.TituloDelProducto {
+  left: 15px;
+  top: 25px;
+  position: absolute;
+}
 
- .titulo2 {
-    left: 15px;
-    top: 25px;
-    position: absolute;
- }
+.arrow {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  width: 30px;
+}
 
- .arrow {
-   position: absolute;
-   top: 15px;
-   right: 20px;
-   cursor: pointer;
-   width: 30px;
- }
+.BloqueUbicacion {
+  background-color: whitesmoke;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  top: 90px;
+}
 
- .Ubicacion {
-   background-color: whitesmoke;
-   position: relative;
-   height: 60px;
-   width: 100%;
- }
+.DatosUbi {
+  position: absolute;
+  left: 35px;
+  top: 17px;
+}
 
- .DatosUbi {
-   position: absolute;
-   left: 35px;
-   top: 17px;
- }
+.Distancia {
+  position: absolute;
+  left: 35px;
+  bottom: 8px;
+}
 
- .Distancia {
-   position: absolute;
-   left: 35px;
-   bottom: 8px;
- }
+@media screen and (max-width: 420px) {
+  .Distancia {
+    display: none;
+  }
+}
 
- .Ubi {
-   position: absolute;
-   color: #545776;
-   left: 15px;
-   top: 17px;
- }
+.Ubi {
+  position: absolute;
+  color: #545776;
+  left: 15px;
+  top: 17px;
+}
+
+.IconComp {
+  top: 110px;
+  position: relative;
+  left: 43px;
+  color: #545776;
+  width: 30px;
+}
+
+.IconFav {
+  top: 83px;
+  position: relative;
+  left: 80px;
+  color: #545776;
+  width: 30px;
+}
+
+.carrusel {
+  left: 40px;
+  top: 95px;
+  position: relative;
+  width: 640px;
+}
+
+.imagen {
+  width: 640px;
+}
+
+.BloqueDescripcion {
+position: relative;
+left: 43px;
+top: 110px;
+height: 280px;
+width: 1200px;
+}
+
+.TextoDeDescripcion {
+  position: relative;
+  top: 25px;
+}
+
+.TituloC {
+  position: relative;
+  top: 50px;
+  left: 43px;
+}
+
+.BloqueDeCaracteristicas {
+  position: relative;
+  top: 50px;
+  left: 43px;
+  height: 150px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.caracteristicas {
+  position: relative;
+  color: #1DBEB4;
+  display: flex;
+  align-items: flex-end;
+}
+
+.iconosC {
+  margin-right: 5px;
+}

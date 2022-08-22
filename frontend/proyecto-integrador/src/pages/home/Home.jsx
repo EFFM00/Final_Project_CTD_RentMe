@@ -4,7 +4,6 @@ import ListaBooking from '../../components/ListaBooking'
 import ListaCategorias from '../../components/ListaCategorias'
 import { ContenedorBooking, ContenedorCategorias, GridBooking, GridCategorias } from '../../styles/MainStyle'
 import Text from '../../components/atoms/Text'
-import DetallesProducto from '../../components/DetallesProducto'
 function Home() {
 
   return (
@@ -21,7 +20,6 @@ function Home() {
         <Text type="h1" color='black' text="Recomendaciones"/>
         <GridBooking>
           <ListaBooking/>
-         <DetallesProducto/> 
         </GridBooking>
       </ContenedorBooking>
     </>
