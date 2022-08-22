@@ -23,6 +23,7 @@ function Home() {
         </GridBooking>
       </ContenedorBooking>
     </>
+
   )
 }
 
