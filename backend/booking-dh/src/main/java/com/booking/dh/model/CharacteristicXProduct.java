@@ -11,7 +11,7 @@ import javax.persistence.*;
 @ToString
 
 @Entity
-@Table(name = "characteristics_x_product")
+@Table(name = "characteristics_x_products")
 public class CharacteristicXProduct {
 
     @Id

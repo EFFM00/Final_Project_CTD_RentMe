@@ -65,6 +65,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.findProductByCityId(id));
     }
 
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.findProductByCategoryId(id));
+    }
+
 
     @GetMapping("/home")
     public ResponseEntity<List<Product>> randomProductList() {

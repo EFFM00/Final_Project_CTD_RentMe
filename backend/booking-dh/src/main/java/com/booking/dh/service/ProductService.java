@@ -26,6 +26,11 @@ public class ProductService {
         return productsByCity;
     }
 
+    public List<Product> findProductByCategoryId(Long id){
+        List<Product> productsByCategory = productRepository.findProductByCategoryId(id);
+        return productsByCategory;
+    }
+
     public List<Product> productList(){
         return productRepository.findAll();
     }
