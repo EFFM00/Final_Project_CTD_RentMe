@@ -7,18 +7,19 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PetsIcon from "@mui/icons-material/Pets";
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import PoolIcon from '@mui/icons-material/Pool';
-import WifiIcon from '@mui/icons-material/Wifi';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import CountertopsIcon from '@mui/icons-material/Countertops';
-import TvIcon from '@mui/icons-material/Tv';
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import PoolIcon from "@mui/icons-material/Pool";
+import WifiIcon from "@mui/icons-material/Wifi";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import CountertopsIcon from "@mui/icons-material/Countertops";
+import TvIcon from "@mui/icons-material/Tv";
 import CalendarioReservas from "./molecules/CalendarioReservas";
 
 function DetallesProducto() {
   const navigate = useNavigate();
   return (
-    <div style={{width: "100%"}}>
+    <div style={{ width: "100%" }}>
+      
       {/* Bloque Header */}
 
       <header className="BloqueHeader">
@@ -30,7 +31,7 @@ function DetallesProducto() {
         </div>
         <div>
           <Link to={"/"}>
-          <img className="arrow" src={Arrow} alt="arrow" />
+            <img className="arrow" src={Arrow} alt="arrow" />
           </Link>
         </div>
       </header>
@@ -103,7 +104,6 @@ function DetallesProducto() {
         <Text type="h1" color="secondary" text="¿Qué ofrece este lugar?" />
       </div>
       <div className="BloqueDeCaracteristicas">
-       
         <div className="caracteristicas">
           <CountertopsIcon fontSize="small" className="iconosC" />
           <Text type="p1" text="Cocina" />
@@ -136,9 +136,9 @@ function DetallesProducto() {
 
       {/* Bloque Calendario */}
 
-{/* <div>
+      {/* <div>
       <CalendarioReservas/>
-</div> */}
+       </div> */}
 
       {/* Bloque de Politicas */}
 
@@ -147,24 +147,43 @@ function DetallesProducto() {
       </div>
 
       <div className="BloqueDePoliticas">
-        <div className="normas">
-        <Text type="h3" color='secondary' text="Normas de la casa"/>
-        <p className="textoP"><Text type="p1" text="Check-out: 10:00"/></p><br />
-        <p><Text type="p1" text="No se permiten fiestas"/></p><br />
-        <p><Text type="p1" text="No fumar"/></p>
+        <div className="politicas">
+          <Text type="h3" color="secondary" text="Normas de la casa" />
+          <p className="textoP">
+            <Text type="p1" text="Check-out: 10:00" />
+          </p>
+          <p className="textoP">
+            <Text type="p1" text="No se permiten fiestas" />
+          </p>
+          <p className="textoP">
+            <Text type="p1" text="No fumar" />
+          </p>
         </div>
-        <div className="seguridad">
-        <Text type="h3" color='secondary' text="Salud y seguridad"/>
-        <p className="textoP"><Text type="p1" text="Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus"/></p><br />
-        <p><Text type="p1" text="Detector de humo"/></p><br />
-        <p><Text type="p1" text="Depósito de seguridad"/></p>
+        <div className="politicas">
+          <Text type="h3" color="secondary" text="Salud y seguridad" />
+          <p className="textoP">
+            <Text
+              type="p1"
+              text="Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus"
+            />
+          </p>
+          <p className="textoP">
+            <Text type="p1" text="Detector de humo" />
+          </p>
+          <p className="textoP">
+            <Text type="p1" text="Depósito de seguridad" />
+          </p>
         </div>
-        <div className="cancelacion">
-        <Text type="h3" color='secondary' text="Políticas de cancelación"/>
-        <p className="textoP"><Text type="p1" text="Agregá las fechas de tu viaje para obtener los detalles de cancelacion de esta estadía"/></p>
+        <div className="politicas">
+          <Text type="h3" color="secondary" text="Políticas de cancelación" />
+          <p className="textoP">
+            <Text
+              type="p1"
+              text="Agregá las fechas de tu viaje para obtener los detalles de cancelacion de esta estadía"
+            />
+          </p>
         </div>
       </div>
-
     </div>
   );
 }
