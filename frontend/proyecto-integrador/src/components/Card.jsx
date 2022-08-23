@@ -2,7 +2,7 @@ import React from 'react'
 import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
 import Text from './atoms/Text'
 import Button from './atoms/Button'
-import Score from './molecules/Score'
+// import Score from './molecules/Score'
 
 function Card({ crimg, category, title, location, description }) {
   return (
