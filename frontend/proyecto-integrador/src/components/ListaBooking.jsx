@@ -8,7 +8,7 @@ function ListaBooking() {
 
   useEffect(() => {
     getProducts({setProducts});
-  })
+  }, [])
 
   return (
     <>
@@ -21,6 +21,7 @@ function ListaBooking() {
                 title={product.title}
                 address={product.address}
                 description={product.description}
+                id={product.id}
             />
             )
         }

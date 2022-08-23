@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
@@ -14,20 +14,30 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CountertopsIcon from "@mui/icons-material/Countertops";
 import TvIcon from "@mui/icons-material/Tv";
 import CalendarioReservas from "./molecules/CalendarioReservas";
+import { useParams } from 'react-router-dom';
+import { getProductDetail } from "../services/Products";
 
 function DetallesProducto() {
+  const { id } = useParams();
+  const [ dataProduct, setDataProduct ] = useState([]);
+  const [ dataCategory, setDataCategory ] = useState([]);
+  const [ dataCity, setDataCity ] = useState([]);
+
+  useEffect(() => {
+    getProductDetail({setDataProduct, id, setDataCategory, setDataCity});
+  }, [id])
+
   const navigate = useNavigate();
   return (
     <div style={{ width: "100%" }}>
       
       {/* Bloque Header */}
-
       <header className="BloqueHeader">
         <div className="CategoriaDelProducto">
-          <Text type="h4" color="white" text="Hotel" />
+          <Text type="h4" color="white" text={dataCategory.title} />
         </div>
         <div className="TituloDelProducto">
-          <Text type="h1" color="white" text="Hermitage Hotel" />
+          <Text type="h1" color="white" text={dataProduct.title} />
         </div>
         <div>
           <Link to={"/"}>
@@ -43,12 +53,12 @@ function DetallesProducto() {
           <Text
             type="p1"
             color="secondary"
-            text="Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina"
+            text={`${dataCity.name}, ${dataCity.country}`}
           />
         </div>
         <FmdGoodIcon fontSize="small" className="Ubi" />
         <div className="Distancia">
-          <Text type="p1" color="secondary" text="A 940 m del centro " />
+          <Text type="p1" color="secondary" text={dataProduct.address} />
         </div>
       </div>
 
@@ -82,9 +92,9 @@ function DetallesProducto() {
         <div className="TextoDeDescripcion">
           <Text
             type="p1"
-            text="Está situado a solo unas calles de la avenida Alvear, de la avenida Quintana, del parque San Martín y del distrito de Recoleta. En las inmediaciones también hay varios lugares de interés, como la calle Florida, el centro comercial Galerías Pacífico, la zona de Puerto Madero, la plaza de Mayo y el palacio Municipal."
+            text={dataProduct.description}
           />
-          <br />
+          {/* <br />
           <Text
             type="p1"
             text="Nuestros clientes dicen que esta parte de Buenos Aires es su favorita, según los comentarios independientes."
@@ -94,7 +104,7 @@ function DetallesProducto() {
             type="p1"
             text="El Hotel es un hotel sofisticado de 4 estrellas que goza de una ubicación tranquila, a poca distancia de prestigiosas galerías de arte, teatros, museos y zonas comerciales. Además, hay WiFi gratuita.
           El establecimiento sirve un desayuno variado de 07:00 a 10:30."
-          />
+          /> */}
         </div>
       </div>
 
