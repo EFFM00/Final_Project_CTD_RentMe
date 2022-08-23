@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
 import Arrow from "../assets/arrow.svg";
@@ -13,11 +13,12 @@ import WifiIcon from '@mui/icons-material/Wifi';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import CountertopsIcon from '@mui/icons-material/Countertops';
 import TvIcon from '@mui/icons-material/Tv';
+import CalendarioReservas from "./molecules/CalendarioReservas";
 
 function DetallesProducto() {
   const navigate = useNavigate();
   return (
-    <>
+    <div style={{width: "100%"}}>
       {/* Bloque Header */}
 
       <header className="BloqueHeader">
@@ -28,7 +29,9 @@ function DetallesProducto() {
           <Text type="h1" color="white" text="Hermitage Hotel" />
         </div>
         <div>
+          <Link to={"/"}>
           <img className="arrow" src={Arrow} alt="arrow" />
+          </Link>
         </div>
       </header>
 
@@ -59,13 +62,13 @@ function DetallesProducto() {
 
       {/* Carrusel */}
 
-      <div className="carrusel">
+      {/* <div className="carrusel">
         <img
           className="imagen"
           src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80"
           alt=""
         />
-      </div>
+      </div> */}
 
       {/* Bloque Descripcion */}
 
@@ -131,6 +134,12 @@ function DetallesProducto() {
         </div>
       </div>
 
+      {/* Bloque Calendario */}
+
+{/* <div>
+      <CalendarioReservas/>
+</div> */}
+
       {/* Bloque de Politicas */}
 
       <div className="TituloP">
@@ -156,7 +165,7 @@ function DetallesProducto() {
         </div>
       </div>
 
-    </>
+    </div>
   );
 }
 export default DetallesProducto;

@@ -113,7 +113,9 @@ width: 90%;
 }
 
 .BloqueDeCaracteristicas {
-  position: relative;
+  /* position: relative; */
+  padding: 30px 20px;
+    margin: 30px 0;
   top: 50px;
   left: 43px;
   width: 80%;
