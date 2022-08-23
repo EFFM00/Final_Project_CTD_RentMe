@@ -55,6 +55,10 @@ public class Product {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<Policy> policies = new HashSet<>();
+
     public Product() {
     }
 

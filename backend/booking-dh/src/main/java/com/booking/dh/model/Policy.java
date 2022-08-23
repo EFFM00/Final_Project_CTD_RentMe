@@ -13,30 +13,31 @@ import javax.persistence.*;
 @ToString
 
 @Entity
-@Table(name = "characteristics_x_products")
-public class CharacteristicXProduct {
+@Table(name = "policies")
+public class Policy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIncludeProperties({"id"})
-    @JoinColumn(name = "characteristic_id", nullable = false)
-    private Characteristic characteristic;
+    @JoinColumn(name = "policy_type_id", nullable = false)
+    private PolicyType policyType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIncludeProperties({"id"})
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @JoinColumn(name= "product_id", nullable = false)
+    Product product;
 
-    public CharacteristicXProduct() {
+    public Policy() {
     }
 
-    public CharacteristicXProduct(Characteristic characteristic, Product product) {
-        this.characteristic = characteristic;
-        this.product = product;
+    public Policy(String description) {
+        this.description = description;
     }
 }
