@@ -18,7 +18,7 @@ export const GridCategorias = styled.div`
 export const ContenedorBooking = styled.div`
     background-color: ${({ theme }) => theme.tertiary};
     padding: 30px 15px 70px;
-    text-aling: center;
+    text-align: center;
     
 
     @media screen and (min-width: 768px) {

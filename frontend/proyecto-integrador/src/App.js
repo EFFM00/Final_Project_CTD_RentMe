@@ -9,6 +9,7 @@ import SignUp from "./pages/login/SignUp";
 import SignIn from "./pages/login/SignIn";
 import { useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
+import DetallesProducto from "./components/DetallesProducto";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/sign-up" element={<SignUp showValues={handleRegistration}/>}/>
           <Route path="/sign-in" element={<SignIn {...signInProps}/>}/>
+          <Route path="/producto" element={<DetallesProducto/>} />
           <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
             <Route path="/" element={<Home/>}/>
           </Route>

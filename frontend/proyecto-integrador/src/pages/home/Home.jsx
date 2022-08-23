@@ -4,7 +4,6 @@ import ListaBooking from '../../components/ListaBooking'
 import ListaCategorias from '../../components/ListaCategorias'
 import { ContenedorBooking, ContenedorCategorias, GridBooking, GridCategorias } from '../../styles/MainStyle'
 import Text from '../../components/atoms/Text'
-
 function Home() {
 
   return (
