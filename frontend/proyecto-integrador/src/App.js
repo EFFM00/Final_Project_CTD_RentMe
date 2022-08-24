@@ -41,7 +41,7 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/sign-up" element={<SignUp showValues={handleRegistration}/>}/>
           <Route path="/sign-in" element={<SignIn {...signInProps}/>}/>
-          <Route path="/producto" element={<DetallesProducto/>} />
+          <Route path="/producto/:id" element={<DetallesProducto/>} />
           <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
             <Route path="/" element={<Home/>}/>
           </Route>

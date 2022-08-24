@@ -6,10 +6,9 @@ export const getProducts = async ({setProducts}) => {
     setProducts(resp.data);
   }
 
-// funcion para obtener los detalles de un solo producto por su id
-export const getProductDetail = async ({setDataProduct, id, setDataCategory, setDataCity}) => {
-  const resp = await api.get(`/products/${id}`);
-  setDataProduct(resp.data)
-  setDataCategory(resp.data.category)
-  setDataCity(resp.data.city)
+
+
+export const getProductById = async (productId) => {
+  const resp = await api.get(`/products/${productId}`);
+  return resp.data
 }

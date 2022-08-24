@@ -14,27 +14,49 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CountertopsIcon from "@mui/icons-material/Countertops";
 import TvIcon from "@mui/icons-material/Tv";
 import CalendarioReservas from "./molecules/CalendarioReservas";
-import { useParams } from 'react-router-dom';
-import { getProductDetail } from "../services/Products";
+import { useParams } from "react-router-dom";
+import { getProductById } from "../services/Products";
+import { getCharacteristicsByProductId } from "../services/Characteristics";
 
 function DetallesProducto() {
   const { id } = useParams();
-  const [ dataProduct, setDataProduct ] = useState([]);
-  const [ dataCategory, setDataCategory ] = useState([]);
-  const [ dataCity, setDataCity ] = useState([]);
+  const [dataProduct, setDataProduct] = useState([]);
+
+  // funcion para obtener los detalles de un solo producto por su id
+  const getProd = async () => {
+    const resp = await getProductById(id);
+
+    console.log(resp, "producto");
+
+    setDataProduct(resp);
+  };
 
   useEffect(() => {
-    getProductDetail({setDataProduct, id, setDataCategory, setDataCity});
-  }, [id])
+    getProd();
+  }, [id]);
+
+  // const getLista = async () => {
+
+  //   const lista = await getCharacteristicsByProductId(id)
+
+  //   console.log(lista,'lista')
+
+  //   setCharacteristics(lista)
+  // }
+
+  // useEffect(() => {
+  //   //getCharacteristics({setCharacteristics});
+  //   getLista()
+
+  // }, [])
 
   const navigate = useNavigate();
   return (
     <div style={{ width: "100%" }}>
-      
       {/* Bloque Header */}
       <header className="BloqueHeader">
         <div className="CategoriaDelProducto">
-          <Text type="h4" color="white" text={dataCategory.title} />
+          <Text type="h4" color="white" text={dataProduct?.category?.title} />
         </div>
         <div className="TituloDelProducto">
           <Text type="h1" color="white" text={dataProduct.title} />
@@ -53,7 +75,7 @@ function DetallesProducto() {
           <Text
             type="p1"
             color="secondary"
-            text={`${dataCity.name}, ${dataCity.country}`}
+            text={`${dataProduct?.city?.name}, ${dataProduct?.city?.country?.name}`}
           />
         </div>
         <FmdGoodIcon fontSize="small" className="Ubi" />
@@ -90,10 +112,7 @@ function DetallesProducto() {
           text="Alójate en el corazón de Buenos Aires"
         />
         <div className="TextoDeDescripcion">
-          <Text
-            type="p1"
-            text={dataProduct.description}
-          />
+          <Text type="p1" text={dataProduct.description} />
           {/* <br />
           <Text
             type="p1"
@@ -116,7 +135,7 @@ function DetallesProducto() {
       <div className="BloqueDeCaracteristicas">
         <div className="caracteristicas">
           <CountertopsIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Cocina" />
+          <Text type="p1" text="{characteristics.description}" />
         </div>
         <div className="caracteristicas">
           <TvIcon fontSize="small" className="iconosC" />
