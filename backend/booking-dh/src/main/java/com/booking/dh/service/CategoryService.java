@@ -10,12 +10,9 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
-    private final CategoryRepository categoryRepository;
 
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
+    CategoryRepository categoryRepository;
 
     public Category createCategory(Category category) {
         return categoryRepository.save(category);

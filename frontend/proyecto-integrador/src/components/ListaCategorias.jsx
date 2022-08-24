@@ -1,15 +1,23 @@
-import React from 'react'
-import dataCategorias from './dataCategorias.json'
 import Categoria from './Categoria'
+import React, { useState, useEffect } from 'react'
+
+import { getCategories } from '../services/Categories'
 
 function ListaCategorias() {
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    getCategories({setCategorias})
+  }, [])
+
+
   return (
     <>
         {
-            dataCategorias.map(item =>
+            categorias.map(item =>
             <Categoria
                 key={item.id}
-                image_url={item.image_url}
+                image_url={item.imageUrl}
                 title={item.title}
                 description={item.description}
             />

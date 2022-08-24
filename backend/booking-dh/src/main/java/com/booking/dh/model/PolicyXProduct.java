@@ -12,28 +12,28 @@ import javax.persistence.*;
 @ToString
 
 @Entity
-@Table(name = "images")
-public class Image {
+@Table(name = "policies_x_products")
+public class PolicyXProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String title;
-    @Column(nullable = false)
-    private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "policy_id", nullable = false)
+    private Policy policy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JoinColumn(name= "product_id", nullable = false)
     private Product product;
 
-    public Image() {
+    public PolicyXProduct() {
     }
 
-    public Image(String title, String url, Product product) {
-        this.title = title;
-        this.url = url;
+    public PolicyXProduct(Policy policy, Product product) {
+        this.policy = policy;
         this.product = product;
     }
 }
