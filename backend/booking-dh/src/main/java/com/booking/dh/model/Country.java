@@ -14,8 +14,8 @@ import java.util.Set;
 @ToString
 
 @Entity
-@Table(name = "policy_types")
-public class PolicyType {
+@Table(name = "countries")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +24,13 @@ public class PolicyType {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "policyType", fetch = FetchType.LAZY)
-    private Set<Policy> policies = new HashSet<>();
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
+    Set<City> cities = new HashSet<>();
 
-    public PolicyType() {
+    public Country() {
     }
 
-    public PolicyType(String name, Set<Policy> policies) {
+    public Country(String name) {
         this.name = name;
-        this.policies = policies;
     }
 }

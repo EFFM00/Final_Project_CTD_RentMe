@@ -30,7 +30,7 @@ public class Characteristic {
     public Characteristic() {
     }
 
-    public Characteristic(String description, Set<CharacteristicXProduct> characteristicXProduct) {
+    public Characteristic(String description, Set<CharacteristicXProduct> characteristicsXProducts) {
         this.description = description;
         this.characteristicsXProducts = characteristicsXProducts;
     }

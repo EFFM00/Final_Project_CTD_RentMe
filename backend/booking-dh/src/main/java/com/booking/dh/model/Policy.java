@@ -1,12 +1,14 @@
 package com.booking.dh.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -22,22 +24,20 @@ public class Policy {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIncludeProperties({"id"})
-    @JoinColumn(name = "policy_type_id", nullable = false)
-    private PolicyType policyType;
+    @JsonIgnore
+    @OneToMany(mappedBy = "policy", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<PolicyXProduct> policiesXProducts = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIncludeProperties({"id"})
-    @JoinColumn(name= "product_id", nullable = false)
-    Product product;
+    @JoinColumn(name= "policy_type_id", nullable = false)
+    private PolicyType policyType;
 
     public Policy() {
     }
 
-    public Policy(String description) {
+    public Policy(String description, Set<PolicyXProduct> policiesXProducts) {
         this.description = description;
+        this.policiesXProducts = policiesXProducts;
     }
 }

@@ -1,7 +1,6 @@
 package com.booking.dh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,13 +21,11 @@ public class CharacteristicXProduct {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIncludeProperties({"id"})
     @JoinColumn(name = "characteristic_id", nullable = false)
     private Characteristic characteristic;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JsonIncludeProperties({"id"})
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 

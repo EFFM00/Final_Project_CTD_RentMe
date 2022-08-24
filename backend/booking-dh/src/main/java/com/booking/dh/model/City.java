@@ -1,6 +1,7 @@
 package com.booking.dh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,8 +23,11 @@ public class City {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private String country;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="country_id", nullable = false)
+    Country country;
 
     @JsonIgnore
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
@@ -32,7 +36,7 @@ public class City {
     public City() {
     }
 
-    public City(String name, String country) {
+    public City(String name, Country country) {
         this.name = name;
         this.country = country;
     }

@@ -17,7 +17,7 @@ public class PolicyTypeController {
     PolicyTypeService policyTypeService;
 
     @PostMapping("/add")
-    public ResponseEntity<PolicyType> addPolicyType(@RequestBody PolicyType policyType) {
+    public ResponseEntity<PolicyType> addPolicy(@RequestBody PolicyType policyType) {
         return ResponseEntity.ok(policyTypeService.createPolicyType(policyType));
     }
 
@@ -31,7 +31,7 @@ public class PolicyTypeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PolicyType>> listPolicyTypes(){
+    public ResponseEntity<List<PolicyType>> listPoliceTypes(){
         return ResponseEntity.ok(policyTypeService.readAll());
     }
 
