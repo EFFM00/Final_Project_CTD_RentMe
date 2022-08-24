@@ -30,7 +30,6 @@ public class ProductController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Product>> productList(){
         return ResponseEntity.ok(productService.productList());

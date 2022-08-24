@@ -21,7 +21,6 @@ public class ImageController {
         return ResponseEntity.ok(imageService.createImage(image));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Image>> listImages(){
         return ResponseEntity.ok(imageService.readAll());
