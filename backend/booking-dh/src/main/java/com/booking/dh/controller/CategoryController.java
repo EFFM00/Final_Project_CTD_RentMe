@@ -21,6 +21,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Category>> listCategories(){
         return ResponseEntity.ok(categoryService.readAll());
