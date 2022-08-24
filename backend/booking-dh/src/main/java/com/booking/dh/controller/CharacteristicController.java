@@ -21,6 +21,15 @@ public class CharacteristicController {
         return ResponseEntity.ok(characteristicService.createCharacteristic(characteristic));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Characteristic> findCharacteristicById(@PathVariable Long id) {
+        if(characteristicService.readCharacteristicById(id).isPresent()){
+            return ResponseEntity.ok(characteristicService.readCharacteristicById(id).get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
     @GetMapping
     public ResponseEntity<List<Characteristic>> listCharacteristics(){
         return ResponseEntity.ok(characteristicService.readAll());
