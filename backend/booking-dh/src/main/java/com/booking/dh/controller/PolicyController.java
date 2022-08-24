@@ -31,7 +31,7 @@ public class PolicyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Policy>> listPolices(){
+    public ResponseEntity<List<Policy>> listPolicies(){
         return ResponseEntity.ok(policyService.readAll());
     }
 
