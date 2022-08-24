@@ -1,7 +1,7 @@
 package com.booking.dh.service;
 
 import com.booking.dh.model.Characteristic;
-import com.booking.dh.repository.CharacteristcRepository;
+import com.booking.dh.repository.CharacteristicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,29 +12,29 @@ import java.util.Optional;
 public class CharacteristicService {
 
     @Autowired
-    CharacteristcRepository characteristcRepository;
+    CharacteristicRepository characteristicRepository;
 
     public Characteristic createCharacteristic(Characteristic characteristic) {
-        return characteristcRepository.save(characteristic);
+        return characteristicRepository.save(characteristic);
     }
 
     public Optional<Characteristic> readCharacteristicById(Long id){
-        return characteristcRepository.findById(id);
+        return characteristicRepository.findById(id);
     }
 
     public List<Characteristic> readAll() {
-        return characteristcRepository.findAll();
+        return characteristicRepository.findAll();
     }
 
     public Characteristic updateCharacteristic(Characteristic characteristic) {
         if(readCharacteristicById(characteristic.getId()).isPresent()){
-            return characteristcRepository.save(characteristic);
+            return characteristicRepository.save(characteristic);
         }else{
             return null;
         }
     }
 
     public void deleteCharacteristic(Long id) {
-        characteristcRepository.deleteById(id);
+        characteristicRepository.deleteById(id);
     }
 }
