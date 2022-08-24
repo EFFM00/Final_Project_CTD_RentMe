@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
 import Text from './atoms/Text'
 import Button from './atoms/Button'
+import { getImages } from '../services/Images';
 // import Score from './molecules/Score'
 
-function Card({ crimg, category, title, address, description }) {
+function Card({ category, title, address, description }) {
+  const [ images, setImages ] = useState([]);
+
+  useEffect(() => {
+    getImages({setImages});
+  })
+
   return (
      <ContenedorCard>
             <div>
-              {/* <Imagen src={crimg} alt={title}/> */}
+              {/* {
+                images.map(image =>
+                  <Imagen key={image.id} src={image.url} alt={image.title}/>
+                )
+              } */}
               <h1>Aqui va una imagen</h1>
             </div>
             <Info>
