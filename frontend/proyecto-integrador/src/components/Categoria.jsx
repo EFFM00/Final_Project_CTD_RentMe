@@ -2,9 +2,16 @@ import React from "react";
 import Text from "./atoms/Text";
 import { ContenedorCtg, Imagen, Info } from "../styles/CategoriaStyle";
 
-function Categoria({ image_url, title, description }) {
+function Categoria({ image_url, title, description, clickCat, setClickCat}) {
+
+  // const navigate = useNavigate();
+  const clickear = () => {
+    alert(title)
+    setClickCat(true)
+  }
+
   return (
-    <ContenedorCtg>
+    <ContenedorCtg onClick={() => (clickear())}>
       <div>
         <Imagen src={image_url} alt={title} />
       </div>
