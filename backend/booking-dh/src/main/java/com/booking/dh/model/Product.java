@@ -1,6 +1,5 @@
 package com.booking.dh.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,7 +35,7 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<CharacteristicXProduct> characteristicsXProducts = new HashSet<>();
 
@@ -45,7 +44,7 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Image> images = new HashSet<>();
 
@@ -54,7 +53,7 @@ public class Product {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<PolicyXProduct> policiesXProducts = new HashSet<>();
 
