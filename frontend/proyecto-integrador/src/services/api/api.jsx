@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://api.rentmeup.ml:8080'
 })
