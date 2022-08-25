@@ -5,22 +5,11 @@ import Button from './atoms/Button'
 import { getImages } from '../services/Images';
 // import Score from './molecules/Score'
 
-function Card({ category, title, address, description }) {
-  const [ images, setImages ] = useState([]);
-
-  useEffect(() => {
-    getImages({setImages});
-  })
-
+function Card({ mainPictureUrl, category, title, address, description }) {
   return (
      <ContenedorCard>
             <div>
-              {/* {
-                images.map(image =>
-                  <Imagen key={image.id} src={image.url} alt={image.title}/>
-                )
-              } */}
-              <h1>Aqui va una imagen</h1>
+              <Imagen src={mainPictureUrl} alt={title}/>
             </div>
             <Info>
               {/* <Score score={8}/> */}

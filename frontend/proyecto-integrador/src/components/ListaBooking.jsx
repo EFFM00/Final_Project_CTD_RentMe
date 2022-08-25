@@ -17,6 +17,7 @@ function ListaBooking() {
             products.map(product =>
             <Card
                 key={product.id}
+                mainPictureUrl={product.mainPictureUrl}
                 category={product.category.title}
                 title={product.title}
                 address={product.address}
