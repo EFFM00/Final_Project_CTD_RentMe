@@ -58,7 +58,7 @@ function Buscador() {
           <SelectStyle
             // options={dataCiudades.map(ciudad => ({key: ciudad.id, label: ciudad.nombre, value: ciudad.id}))}
             placeholder="¿A donde vamos?"
-            options={cities.map(city => ({key: city.id, label: `${city.name} - ${city.country}`, value: city.id}))}
+            options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))}
           />
         </Section>
         <Section onClick={() => setShowCalendar(!showCalendar)}>
