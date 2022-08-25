@@ -10,22 +10,23 @@ const ProductsByCategory = () => {
         getProducts({setProducts})
     }, [])
 
-    
+    console.log(productos, "PROD");
 
     return (
         <>
             {
                 productos.map(item =>
-                // <Card
-                //     key={item.id}
-                //     crimg={item.crimg}
-                //     category={item.category}
-                //     title={item.title}
-                //     location={item.location}
-                //     description={item.description}
-                // />
-                console.log(item, "wii")
+                <Card
+                    key={item.id}
+                    crimg={item.crimg}
+                    category={item.category}
+                    title={item.title}
+                    location={item.location}
+                    description={item.description}
+                />
                 )
+                productos.map(item => <li key={item.id}>{item.category.title}</li>)
+
             }
         </>
     )
