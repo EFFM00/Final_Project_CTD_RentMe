@@ -9,15 +9,15 @@ function Text({ type, color = "black", text }) {
   //quaternary
   const theme = useTheme();
   const textColor =
-    color == "primary"
+    color === "primary"
       ? theme.primary
-      : color == "secondary"
+      : color === "secondary"
       ? theme.secondary
-      : color == "tertiary"
+      : color === "tertiary"
       ? theme.tertiary
-      : color == "quaternary"
+      : color === "quaternary"
       ? theme.quaternary
-      : color == "white"
+      : color === "white"
       ? theme.white
       : theme.black
 
