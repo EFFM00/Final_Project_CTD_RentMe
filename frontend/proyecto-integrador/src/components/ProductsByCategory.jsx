@@ -1,5 +1,8 @@
-// import Card from './Card'
 import React, { useState, useEffect } from 'react'
+import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
+import Text from './atoms/Text'
+import Button from './atoms/Button'
+// import Card from './Card'
 
 import { getProducts } from '../services/Products'
 
@@ -16,20 +19,32 @@ const ProductsByCategory = () => {
         <>
             {
                 productos.map(item =>
-                <Card
-                    key={item.id}
-                    crimg={item.crimg}
-                    category={item.category}
-                    title={item.title}
-                    location={item.location}
-                    description={item.description}
-                />
+                    <ContenedorCard key={item.id}>
+                        <div>
+                            <Imagen src={item.mainPictureUrl} alt={item.title}/>
+                        </div>
+                        <Info>
+                            {/* <Score score={8}/> */}
+                            <Text type="h4" color='secondary' text={item.category.title}/>
+                            <Text type="h1" color='secondary' text={item.title}/>
+                            <Text type="p1" color='secondary' text={item.address}/>
+                            <Text type="p1" color='secondary' text={item.description}/>
+                            <Button text="ver más"  fullwidth />
+                        </Info>
+                    </ContenedorCard> 
+                    // <p key={item.id} >{item.title}. {item.category.title}</p>
                 )
-                productos.map(item => <li key={item.id}>{item.category.title}</li>)
-
             }
+            
         </>
     )
 }
 
 export default ProductsByCategory
+
+
+
+
+
+
+

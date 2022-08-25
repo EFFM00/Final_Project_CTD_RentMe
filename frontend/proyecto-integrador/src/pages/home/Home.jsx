@@ -11,18 +11,16 @@ function Home() {
   const [categoryData, setCategoryData] = useState([]);
   const [clickCat, setClickCat] = useState(false);
 
-  // const changingView = (param) 
-
-  // const renderizar = () => {    
-  //   if(clickCat){
-  //     return
-  //   } else {
-  //     return(
-  //     <>
-  //       <p>H</p>
-  //     </>)
-  //   }
-  // }
+    const renderizar = () => {    
+    if(clickCat){
+      return <ProductsByCategory/>
+    } else {
+      return(
+      <>
+        <p>No clickeado :(</p>
+      </>)
+    }
+  }
 
   return (
     <>
@@ -36,12 +34,12 @@ function Home() {
 
       <div>
         <h3>Hola</h3>
-        <ProductsByCategory/>
+        
+        {
+          renderizar()
+        }
       </div>
 
-        {/* {
-          renderizar()
-        }            */}
 
       <ContenedorBooking>
         <Text type="h1" color='black' text="Recomendaciones"/>
