@@ -6,19 +6,21 @@ import Button from './atoms/Button'
 
 import { getProducts } from '../services/Products'
 
-const ProductsByCategory = () => {
+const ProductsByCategory = ({idCat}) => {
     const [productos, setProducts] = useState([]);
     
     useEffect(() => {
         getProducts({setProducts})
     }, [])
 
-    console.log(productos, "PROD");
-
+    
+    let productosFiltrados = productos.filter( prod => prod.category.id === idCat)
+    console.log(productosFiltrados, "Ahhhh");
+    
     return (
         <>
             {
-                productos.map(item =>
+                productosFiltrados.map(item =>
                     <ContenedorCard key={item.id}>
                         <div>
                             <Imagen src={item.mainPictureUrl} alt={item.title}/>

@@ -10,10 +10,14 @@ import ProductsByCategory from '../../components/ProductsByCategory'
 function Home() {
   const [categoryData, setCategoryData] = useState([]);
   const [clickCat, setClickCat] = useState(false);
+  const [titleCat, setTitleCat] = useState("");
+  const [idCat, setIdCat] = useState("");
 
-    const renderizar = () => {    
+  
+  const renderizar = () => {    
     if(clickCat){
-      return <ProductsByCategory/>
+      console.log(idCat, titleCat);
+      return <ProductsByCategory idCat={idCat} />
     } else {
       return(
       <>
@@ -28,13 +32,12 @@ function Home() {
       <ContenedorCategorias>
         <Text type="h1" color='secondary' text="Buscar por tipo de alojamiento"/>
         <GridCategorias>
-          <ListaCategorias categoryData={categoryData} setCategoryData={setCategoryData} clickCat={clickCat} setClickCat={setClickCat} />
+          <ListaCategorias categoryData={categoryData} setCategoryData={setCategoryData} clickCat={clickCat} setClickCat={setClickCat} setTitleCat={setTitleCat} setIdCat={setIdCat}/>
         </GridCategorias>
       </ContenedorCategorias>
 
       <div>
-        <h3>Hola</h3>
-        
+          <h3>{titleCat}</h3>
         {
           renderizar()
         }
