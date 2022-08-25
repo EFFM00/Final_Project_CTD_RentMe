@@ -20,7 +20,7 @@ function Card({ crimg, category, title, address, description, id }) {
               <Text type="h1" color='secondary' text={title}/>
               <Text type="p1" color='secondary' text={address}/>
               <Text type="p1" color='secondary' text={description}/>
-              <Button click={() => navigate(`/producto/${id}`)} text="ver más"  fullwidth />
+              <Button click={() => navigate(`/products/${id}`)} text="ver más"  fullwidth />
             </Info>
       </ContenedorCard> 
   )

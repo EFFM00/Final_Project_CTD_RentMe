@@ -15,7 +15,7 @@ import CountertopsIcon from "@mui/icons-material/Countertops";
 import TvIcon from "@mui/icons-material/Tv";
 import CalendarioReservas from "./molecules/CalendarioReservas";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../services/Products";
+import { getProduct, getProductById } from "../services/Products";
 import { getCharacteristicsByProductId } from "../services/Characteristics";
 
 function DetallesProducto() {
@@ -26,7 +26,8 @@ function DetallesProducto() {
   const getProd = async () => {
     const resp = await getProductById(id);
 
-    console.log(resp, "producto");
+
+    console.log(resp,'product');
 
     setDataProduct(resp);
   };
@@ -135,7 +136,13 @@ function DetallesProducto() {
       <div className="BloqueDeCaracteristicas">
         <div className="caracteristicas">
           <CountertopsIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="{characteristics.description}" />
+          <Text type="p1" text="{item.description}" />
+          {/* {
+            dataProduct.characteristics.map(item => {
+              return <Text type="p1" key={item.description} text={item.description} />
+            })
+          } */}
+          
         </div>
         <div className="caracteristicas">
           <TvIcon fontSize="small" className="iconosC" />
