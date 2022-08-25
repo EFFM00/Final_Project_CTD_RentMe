@@ -1,5 +1,3 @@
-image: maven:latest
-
 variables:
   MAVEN_CLI_OPTS: "--batch-mode -f backend/booking-dh/pom.xml"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
@@ -8,19 +6,58 @@ cache:
   paths:
     - .m2/repository/
     - target/
-build:
+
+build-backend:
+  image: maven:latest
   stage: build
+  rules:
+    - changes:
+        - backend/*
   script:
     - mvn $MAVEN_CLI_OPTS clean install
   artifacts:
     paths:
       - backend/booking-dh/target/*.jar
 
-deploy:
+deploy-backend:
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "development"
+      changes:
+        - backend/*
   script:
     - JAR_FILE=$(ls backend/booking-dh/target | grep -E ".+\.jar$")
     - aws s3 cp "backend/booking-dh/target/$JAR_FILE" s3://group12-rent-me-up-jar-files/$JAR_FILE
+
+build-fronted:
+  image: node:latest
+  stage: build
+  rules:
+    - changes:
+        - frontend/*
+  script:
+    - npm --prefix frontend/proyecto-integrador/ install
+    - npm --prefix frontend/proyecto-integrador/ run build
+  artifacts:
+    paths:
+      - frontend/proyecto-integrador/build/*
+
+deploy-frontend:
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+      changes:
+        - frontend/*
+  before_script:
+    - apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
+    - echo "en_US UTF-8" > /etc/locale.gen
+    - locale-gen en_US.UTF-8
+    - export LANG=en_US.UTF-8
+    - export LANGUAGE=en_US:en
+    - export LC_ALL=en_US.UTF-8
+
+  script:
+    - aws s3 --recursive rm s3://www.rentmeup.ml/
+    - aws s3 sync frontend/proyecto-integrador/build/ s3://www.rentmeup.ml/
