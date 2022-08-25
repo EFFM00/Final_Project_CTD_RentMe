@@ -30,6 +30,7 @@ public class ProductController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Product>> productList(){
         return ResponseEntity.ok(productService.productList());
@@ -72,7 +73,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.findProductByCategoryId(id));
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/home")
     public ResponseEntity<List<Product>> randomProductList() {
         return ResponseEntity.ok(productService.randomProductList());
