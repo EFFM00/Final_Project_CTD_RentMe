@@ -8,7 +8,6 @@ cache:
   paths:
     - .m2/repository/
     - target/
-
 build:
   stage: build
   script:
@@ -20,6 +19,8 @@ build:
 deploy:
   image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
   stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
   script:
     - JAR_FILE=$(ls backend/booking-dh/target | grep -E ".+\.jar$")
     - aws s3 cp "backend/booking-dh/target/$JAR_FILE" s3://group12-rent-me-up-jar-files/$JAR_FILE
