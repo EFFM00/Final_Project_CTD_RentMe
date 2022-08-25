@@ -25,6 +25,8 @@ public class Product {
     private String title;
     @Column(nullable = false)
     private String description;
+    @Column(name = "main_picture_url", nullable = false)
+    private String mainPictureUrl;
     @Column(nullable = false)
     private String address;
     @Column(nullable = false)
@@ -59,9 +61,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(String title, String description, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts) {
+    public Product(String title, String description, String mainPictureUrl, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts) {
         this.title = title;
         this.description = description;
+        this.mainPictureUrl = mainPictureUrl;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
