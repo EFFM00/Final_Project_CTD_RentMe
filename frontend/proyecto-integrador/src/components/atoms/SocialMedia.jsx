@@ -21,10 +21,10 @@ function SocialMedia() {
 
   return (
     <SocilaMediaStyle>
-        <img src={ iconFacebook }/>
-        <img src={ iconLinkedin }/>
-        <img src={ iconTwitter }/>
-        <img src={ iconInstagram }/>
+        <img src={ iconFacebook } alt={"icon-facebook"}/>
+        <img src={ iconLinkedin } alt={"icon-linkedin"}/>
+        <img src={ iconTwitter } alt={"icon-twitter"}/>
+        <img src={ iconInstagram } alt={"icon-instagram"}/>
     </SocilaMediaStyle>
   )
 }
