@@ -1,6 +1,7 @@
 import React from 'react'
 import Buscador from '../../components/molecules/Buscador'
 import ListaBooking from '../../components/ListaBooking'
+import ListaBookingRandom from '../../components/ListaBookingRandom'
 import ListaCategorias from '../../components/ListaCategorias'
 import { ContenedorBooking, ContenedorCategorias, GridBooking, GridCategorias } from '../../styles/MainStyle'
 import Text from '../../components/atoms/Text'
@@ -12,7 +13,8 @@ function Home() {
   const [clickCat, setClickCat] = useState(false);
   const [titleCat, setTitleCat] = useState("");
   const [idCat, setIdCat] = useState("");
-
+  // const [logueado, setLogueado] = useState(false);
+  const logueado = false;
   
   const renderizar = () => {    
     if(clickCat){
@@ -23,6 +25,14 @@ function Home() {
       <>
         <p>No clickeado :(</p>
       </>)
+    }
+  }
+
+  const renderizadoAleatorio = () => {
+    if(logueado) {
+      return <ListaBooking/>
+    } else {
+      return <ListaBookingRandom/>
     }
   }
 
@@ -47,7 +57,7 @@ function Home() {
       <ContenedorBooking>
         <Text type="h1" color='black' text="Recomendaciones"/>
         <GridBooking>
-          <ListaBooking/>
+          {renderizadoAleatorio()}
         </GridBooking>
       </ContenedorBooking>
     </>
