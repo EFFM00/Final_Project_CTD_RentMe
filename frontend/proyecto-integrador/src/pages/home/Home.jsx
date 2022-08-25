@@ -20,11 +20,6 @@ function Home() {
     if(clickCat){
       console.log(idCat, titleCat);
       return <ProductsByCategory idCat={idCat} />
-    } else {
-      return(
-      <>
-        <p>No clickeado :(</p>
-      </>)
     }
   }
 
