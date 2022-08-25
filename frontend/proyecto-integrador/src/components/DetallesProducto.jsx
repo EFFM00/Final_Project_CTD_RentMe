@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
 import Arrow from "../assets/arrow.svg";
@@ -13,10 +13,10 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import CountertopsIcon from "@mui/icons-material/Countertops";
 import TvIcon from "@mui/icons-material/Tv";
-import CalendarioReservas from "./molecules/CalendarioReservas";
+// import CalendarioReservas from "./molecules/CalendarioReservas";
 
 function DetallesProducto() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <div style={{ width: "100%" }}>
       

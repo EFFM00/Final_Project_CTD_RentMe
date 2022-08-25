@@ -11,10 +11,10 @@ function Button({
   click
 }) {
   const widthButton =
-    width == "xs" ? 164 : width == "s" ? 206 : width == "m" ? 296 : 346;
+    width === "xs" ? 164 : width === "s" ? 206 : width === "m" ? 296 : 346;
 
   const ButtonNoBackgroundStyle = styled.button`
-    width: ${fullwidth == true ? "100%" : widthButton + "px"};
+    width: ${fullwidth === true ? "100%" : widthButton + "px"};
     height: 40px;
     border: 1px solid;
     border-color: ${({ theme }) => theme.primary};
@@ -25,7 +25,7 @@ function Button({
   `;
 
   const ButtonStyle = styled.button`
-    width: ${fullwidth == true ? "100%" : widthButton + "px"};
+    width: ${fullwidth === true ? "100%" : widthButton + "px"};
     height: 40px;
     border: none;
     border-radius: 5px;
@@ -35,7 +35,7 @@ function Button({
   `;
 
   const ButtonMobilStyle = styled.button`
-    width: ${fullwidth == true ? "100%" : widthButton + "px"};
+    width: ${fullwidth === true ? "100%" : widthButton + "px"};
     height: 60px;
     border: none;
     text-align: right;
@@ -48,11 +48,11 @@ function Button({
   return (
     <>
       {/* TODO: Cambiar el ternario por un switch como en Text */}
-      {type == "Outline" ? (
+      {type === "Outline" ? (
         <ButtonNoBackgroundStyle style={style} onClick={click}>
           <Text type="h3" color="primary" text={text} />
         </ButtonNoBackgroundStyle>
-      ) : type == "text" ? (
+      ) : type === "text" ? (
         <ButtonMobilStyle style={style} onClick={click}>
           <Text type="h3" color="secondary" text={text} />
         </ButtonMobilStyle>
