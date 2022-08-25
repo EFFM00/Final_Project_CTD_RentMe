@@ -130,7 +130,7 @@
   top: 50px;
   left: 43px;
   width: 80%;
-  height: 150px;
+  /* height: 150px; */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -175,10 +175,11 @@
 
 .BloqueDePoliticas {
   position: relative;
-  height: 500px;
+  /* height: 400px; */
   width: 60%;
   top: 120px;
   padding-left: 43px;
+  padding-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
