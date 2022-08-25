@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://api.rentmeup.ml:8080'
+    baseURL: process.env.REACT_APP_BACKEND_URL
 })
