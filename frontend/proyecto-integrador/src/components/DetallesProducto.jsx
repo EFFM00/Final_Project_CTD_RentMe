@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
 import Arrow from "../assets/arrow.svg";
