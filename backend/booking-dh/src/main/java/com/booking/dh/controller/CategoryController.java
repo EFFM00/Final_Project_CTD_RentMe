@@ -20,7 +20,12 @@ public class CategoryController {
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
+<<<<<<< HEAD
+
+    @CrossOrigin(origins = "http://localhost:3000")
+=======
     
+>>>>>>> development
     @GetMapping
     public ResponseEntity<List<Category>> listCategories(){
         return ResponseEntity.ok(categoryService.readAll());

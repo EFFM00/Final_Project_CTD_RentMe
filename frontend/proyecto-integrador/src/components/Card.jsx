@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
 import Text from './atoms/Text'
 import Button from './atoms/Button'
-import { getImages } from '../services/Images';
+// import { getImages } from '../services/Images';
 // import Score from './molecules/Score'
 
 function Card({ mainPictureUrl, category, title, address, description }) {
   return (
-     <ContenedorCard>
+      <ContenedorCard>
             <div>
               <Imagen src={mainPictureUrl} alt={title}/>
             </div>
