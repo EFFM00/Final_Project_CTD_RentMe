@@ -1,2 +1,2 @@
 # Aplicacion Backend
-Carpeta asignada para el desarrollo de la aplicacion backend
+Carpeta aasignada para el desarrollo de la aplicacion backend
