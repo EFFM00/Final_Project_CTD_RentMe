@@ -30,7 +30,7 @@ function Header({
         <img src={logo} alt="logo" />
       </div>
       <IconoMenu onClick={() => setShowMenu(!showMenu)}>
-        <img src={iconoMenu} />
+        <img src={iconoMenu} alt={"img_alt"}/>
       </IconoMenu>
       
 

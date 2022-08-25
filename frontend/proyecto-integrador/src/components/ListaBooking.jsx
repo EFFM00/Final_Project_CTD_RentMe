@@ -5,6 +5,7 @@ import Card from './Card'
 
 function ListaBooking() {
   const [ products, setProducts ] = useState([]);
+  
 
   useEffect(() => {
     getProducts({setProducts});
@@ -16,7 +17,7 @@ function ListaBooking() {
             products.map(product =>
             <Card
                 key={product.id}
-                // crimg={product.crimg}
+                mainPictureUrl={product.mainPictureUrl}
                 category={product.category.title}
                 title={product.title}
                 address={product.address}

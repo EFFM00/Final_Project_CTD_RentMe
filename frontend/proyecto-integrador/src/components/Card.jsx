@@ -2,17 +2,13 @@ import React from 'react'
 import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
 import Text from './atoms/Text'
 import Button from './atoms/Button'
-import { useNavigate } from 'react-router-dom'
 // import Score from './molecules/Score'
 
-function Card({ crimg, category, title, address, description, id }) {
-  const navigate = useNavigate();
-
+function Card({ crimg, category, title, address, description }) {
   return (
-     <ContenedorCard>
+      <ContenedorCard>
             <div>
-              {/* <Imagen src={crimg} alt={title}/> */}
-              <h1>Aqui va una imagen</h1>
+              <Imagen src={mainPictureUrl} alt={title}/>
             </div>
             <Info>
               {/* <Score score={8}/> */}
