@@ -22,6 +22,7 @@ function ListaBooking() {
                 title={product.title}
                 address={product.address}
                 description={product.description}
+                id={product.id}
             />
             )
         }
