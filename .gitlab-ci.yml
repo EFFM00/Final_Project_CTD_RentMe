@@ -1,0 +1,25 @@
+image: maven:latest
+
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode -f backend/booking-dh/pom.xml"
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS clean install
+  artifacts:
+    paths:
+      - backend/booking-dh/target/*.jar
+
+deploy:
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  stage: deploy
+  script:
+    - JAR_FILE=$(ls backend/booking-dh/target | grep -E ".+\.jar$")
+    - aws s3 cp "backend/booking-dh/target/$JAR_FILE" s3://group12-rent-me-up-jar-files/$JAR_FILE
