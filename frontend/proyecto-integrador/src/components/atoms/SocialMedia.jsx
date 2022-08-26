@@ -3,29 +3,17 @@ import iconFacebook from '../../assets/icon-facebook.svg';
 import iconLinkedin from '../../assets/icon-linkedin.svg';
 import iconTwitter from '../../assets/icon-twitter.svg';
 import iconInstagram from '../../assets/icon-ig.svg';
-import styled from 'styled-components';
+import {SocialMediaStyle, IconStyle} from '../../styles/atoms/SocialMediaStyle'
 
 function SocialMedia() {
 
-    const SocilaMediaStyle = styled.div`
-        background: transparent;
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        width: 165px;
-    `
-
-    // const IconStyle = styled.img`
-    //   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(1%) hue-rotate(137deg) brightness(103%) contrast(101%);
-    // `
-
   return (
-    <SocilaMediaStyle>
-        <img src={ iconFacebook } alt={"icon-facebook"}/>
-        <img src={ iconLinkedin } alt={"icon-linkedin"}/>
-        <img src={ iconTwitter } alt={"icon-twitter"}/>
-        <img src={ iconInstagram } alt={"icon-instagram"}/>
-    </SocilaMediaStyle>
+    <SocialMediaStyle>
+        <IconStyle src={ iconFacebook } alt={"icon-facebook"}/>
+        <IconStyle src={ iconLinkedin } alt={"icon-linkedin"}/>
+        <IconStyle src={ iconTwitter } alt={"icon-twitter"}/>
+        <IconStyle src={ iconInstagram } alt={"icon-instagram"}/>
+    </SocialMediaStyle>
   )
 }
 
