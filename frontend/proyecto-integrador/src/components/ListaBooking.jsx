@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getProducts } from '../services/Products';
 import Card from './Card'
-// import dataBooking from './dataBooking.json'
 
 function ListaBooking() {
   const [ products, setProducts ] = useState([]);

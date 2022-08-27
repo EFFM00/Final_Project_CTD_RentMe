@@ -3,7 +3,7 @@
 
 .BloqueHeader {
   font-family: "Roboto";
-  background-color: #545776;
+  background-color: #F5C6AA;
   margin: 0;
   position: relative;
   height: 60px;
@@ -60,7 +60,7 @@
 
 .Ubi {
   position: absolute;
-  color: #545776;
+  color: #F5C6AA;
   left: 15px;
   top: 17px;
 }
@@ -71,7 +71,7 @@
   top: 110px;
   position: relative;
   left: 43px;
-  color: #545776;
+  color: #F5C6AA;
   width: 30px;
 }
 
@@ -79,7 +79,7 @@
   top: 83px;
   position: relative;
   left: 80px;
-  color: #545776;
+  color: #F5C6AA;
   width: 30px;
 }
 
@@ -121,7 +121,7 @@
   padding-left: 43px;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid #1dbeb4;
+  border-bottom: 1px solid #FD866E;
 }
 
 .BloqueDeCaracteristicas {
@@ -131,18 +131,25 @@
   left: 43px;
   width: 80%;
   /* height: 150px; */
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
 }
 
 .caracteristicas {
   position: relative;
   width: 100%;
-  color: #1dbeb4;
-  display: flex;
-  align-items: flex-end;
+  color: #172727;
+  /* display: flex;
+  align-items: flex-end; */
   padding-top: 20px;
   padding-right: 20px;
+}
+
+.listaCaracteristicas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.itemCaracteristica {
+  padding: 10px;
 }
 
 .iconosC {
@@ -170,7 +177,7 @@
   padding-left: 43px;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid #1dbeb4;
+  border-bottom: 1px solid #FD866E;
 }
 
 .BloqueDePoliticas {
@@ -180,12 +187,19 @@
   top: 120px;
   padding-left: 43px;
   padding-bottom: 100px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 }
 
 .politicas {
   padding-top: 30px;
+}
+
+.listaPoliticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.itemPolitica {
+  
 }
 
 .textoP {
