@@ -6,13 +6,6 @@ import Arrow from "../assets/arrow.svg";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-// import PetsIcon from "@mui/icons-material/Pets";
-// import AcUnitIcon from "@mui/icons-material/AcUnit";
-// import PoolIcon from "@mui/icons-material/Pool";
-// import WifiIcon from "@mui/icons-material/Wifi";
-// import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-// import CountertopsIcon from "@mui/icons-material/Countertops";
-// import TvIcon from "@mui/icons-material/Tv";
 import CalendarioReservas from "./molecules/CalendarioReservas";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/Products";
@@ -98,17 +91,6 @@ function DetallesProducto() {
         />
         <div className="TextoDeDescripcion">
           <Text type="p1" text={dataProduct.description} />
-          {/* <br />
-          <Text
-            type="p1"
-            text="Nuestros clientes dicen que esta parte de Buenos Aires es su favorita, según los comentarios independientes."
-          />
-          <br />
-          <Text
-            type="p1"
-            text="El Hotel es un hotel sofisticado de 4 estrellas que goza de una ubicación tranquila, a poca distancia de prestigiosas galerías de arte, teatros, museos y zonas comerciales. Además, hay WiFi gratuita.
-          El establecimiento sirve un desayuno variado de 07:00 a 10:30."
-          /> */}
         </div>
       </div>
 
@@ -119,40 +101,14 @@ function DetallesProducto() {
       </div>
       <div className="BloqueDeCaracteristicas">
         <div className="caracteristicas">
-          <ul style={{paddingLeft: "30px"}}>
+          <ul className="listaCaracteristicas" style={{paddingLeft: "30px"}}>
             {
               dataProduct?.characteristicsXProducts?.map(item =>
-                <li key={item.id}>{item?.characteristic?.description}</li>
+                <li className="itemCaracteristica" key={item.id}>{item?.characteristic?.description}</li>
               )
             }
           </ul>
-          {/* <CountertopsIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Cocina" />    */}
-        </div>
-        {/* <div className="caracteristicas">
-          <TvIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Televisor" />
-        </div>
-        <div className="caracteristicas">
-          <AcUnitIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Aire acondicionado" />
-        </div>
-        <div className="caracteristicas">
-          <PetsIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Apto mascotas" />
-        </div>
-        <div className="caracteristicas">
-          <DirectionsCarIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Estacionamiento gratuito" />
-        </div>
-        <div className="caracteristicas">
-          <PoolIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Pileta" />
-        </div>
-        <div className="caracteristicas">
-          <WifiIcon fontSize="small" className="iconosC" />
-          <Text type="p1" text="Wifi" />
-        </div> */}
+        </div> 
       </div>
 
       {/* Bloque Calendario */}
@@ -168,50 +124,14 @@ function DetallesProducto() {
       </div>
 
       <div className="BloqueDePoliticas">
-          <ul style={{paddingLeft: "30px"}}>
+          <ul className="listaPoliticas" style={{paddingLeft: "30px"}}>
             {
               dataProduct?.policiesXProducts?.map(item =>
                 
-                <li key={item.id}>{item?.policy?.policyType?.name} - {item?.policy?.description}</li>
+                <li className="itemPolitica" key={item.id}>{item?.policy?.policyType?.name} - {item?.policy?.description}</li>
               )
             }
           </ul>
-        {/* <div className="politicas">
-          <Text type="h3" color="secondary" text="Normas de la casa" />
-          <p className="textoP">
-            <Text type="p1" text="Check-out: 10:00" />
-          </p>
-          <p className="textoP">
-            <Text type="p1" text="No se permiten fiestas" />
-          </p>
-          <p className="textoP">
-            <Text type="p1" text="No fumar" />
-          </p>
-        </div>
-        <div className="politicas">
-          <Text type="h3" color="secondary" text="Salud y seguridad" />
-          <p className="textoP">
-            <Text
-              type="p1"
-              text="Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus"
-            />
-          </p>
-          <p className="textoP">
-            <Text type="p1" text="Detector de humo" />
-          </p>
-          <p className="textoP">
-            <Text type="p1" text="Depósito de seguridad" />
-          </p>
-        </div>
-        <div className="politicas">
-          <Text type="h3" color="secondary" text="Políticas de cancelación" />
-          <p className="textoP">
-            <Text
-              type="p1"
-              text="Agregá las fechas de tu viaje para obtener los detalles de cancelacion de esta estadía"
-            />
-          </p>
-        </div> */}
       </div>
     </div>
   );
