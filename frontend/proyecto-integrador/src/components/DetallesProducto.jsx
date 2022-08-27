@@ -17,10 +17,6 @@ function DetallesProducto() {
   // funcion para obtener los detalles de un solo producto por su id
   const getProd = async () => {
     const resp = await getProductById(id);
-
-
-    console.log(resp,'product');
-
     setDataProduct(resp);
   };
 
@@ -73,13 +69,14 @@ function DetallesProducto() {
 
       {/* Carrusel */}
 
-      {/* <div className="carrusel">
-        <img
-          className="imagen"
-          src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80"
-          alt=""
-        />
-      </div> */}
+      <div className="carrusel">
+        <h1>Aqui van las imagenes</h1>
+        {/* {
+          dataProduct?.images?.map(image => 
+            <img key={image.id} src={image.url} alt={image.title}/>
+          )
+        } */}
+      </div>
 
       {/* Bloque Descripcion */}
 
@@ -87,7 +84,7 @@ function DetallesProducto() {
         <Text
           type="h1"
           color="secondary"
-          text="Alójate en el corazón de Buenos Aires"
+          text={`Alójate en el corazón de ${dataProduct?.city?.name}`}
         />
         <div className="TextoDeDescripcion">
           <Text type="p1" text={dataProduct.description} />
