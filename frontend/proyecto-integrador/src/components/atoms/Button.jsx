@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import Text from "./Text";
+import { ButtonNoBackgroundStyle, ButtonStyle, ButtonMobilStyle } from '../../styles/atoms/ButtonStyle'
 
 function Button({
   text,
@@ -10,57 +10,38 @@ function Button({
   style,
   click
 }) {
+
   const widthButton =
     width === "xs" ? 164 : width === "s" ? 206 : width === "m" ? 296 : 346;
 
-  const ButtonNoBackgroundStyle = styled.button`
-    width: ${fullwidth === true ? "100%" : widthButton + "px"};
-    height: 40px;
-    border: 1px solid;
-    border-color: ${({ theme }) => theme.primary};
-    border-radius: 5px;
-    background-color: transparent;
-    color: ${({ theme }) => theme.primary};
-    font-weight: bold;
-  `;
+  const switchType = (type) => {
+    switch (type) {
+      case "Outline":
+        return (
+          <ButtonNoBackgroundStyle style={style} onClick={click} fullwidth={fullwidth} width={width} widthButton={widthButton}>
+            <Text type="h3" color="primary" text={text} />
+          </ButtonNoBackgroundStyle>
+        );
 
-  const ButtonStyle = styled.button`
-    width: ${fullwidth === true ? "100%" : widthButton + "px"};
-    height: 40px;
-    border: none;
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
-    font-weight: bold;
-  `;
-
-  const ButtonMobilStyle = styled.button`
-    width: ${fullwidth === true ? "100%" : widthButton + "px"};
-    height: 60px;
-    border: none;
-    text-align: right;
-    padding: 15px;
-    background-color: transparent;
-    color: ${({ theme }) => theme.secondary};
-    font-weight: bold;
-  `;
+      case "text":
+        return (
+          <ButtonMobilStyle style={style} onClick={click} fullwidth={fullwidth} width={width} widthButton={widthButton}>
+            <Text type="h3" color="secondary" text={text} />
+          </ButtonMobilStyle>
+        )
+      
+      default:
+        return (
+          <ButtonStyle style={style} onClick={click}  fullwidth={fullwidth} width={width} widthButton={widthButton}>
+            <Text type="h3" color="white" text={text} />
+          </ButtonStyle>
+        )
+      }
+    }
 
   return (
     <>
-      {/* TODO: Cambiar el ternario por un switch como en Text */}
-      {type === "Outline" ? (
-        <ButtonNoBackgroundStyle style={style} onClick={click}>
-          <Text type="h3" color="primary" text={text} />
-        </ButtonNoBackgroundStyle>
-      ) : type === "text" ? (
-        <ButtonMobilStyle style={style} onClick={click}>
-          <Text type="h3" color="secondary" text={text} />
-        </ButtonMobilStyle>
-      ) : (
-        <ButtonStyle style={style} onClick={click}>
-          <Text type="h3" color="white" text={text} />
-        </ButtonStyle>
-      )}
+      {switchType(type)}
     </>
   );
 }
