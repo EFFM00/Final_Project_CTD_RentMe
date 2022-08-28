@@ -19,9 +19,13 @@ export const Formulario = styled.div`
 
     position: relative;
 
+    @media screen and (min-width: 768px) {
+      justify-content: center;
+      grid-template-columns: 285px 285px 150px;
+    }
+
     @media screen and (min-width: 1024px) {
-      width: 900px;
-      margin: auto;
+      justify-content: center;
       grid-template-columns: 400px 400px 164px;
     }
   `;
@@ -36,10 +40,6 @@ export const Section = styled.div`
     padding: 0 5px;
   `;
 
-
-
-
-
 export const InputStyle = styled.input`
     height: 38px;
     width: 100%;
@@ -49,23 +49,28 @@ export const InputStyle = styled.input`
       outline: none;
     }
   `;
-  
+
+export const Contenedor = styled.div`
+background-color: ${({ theme }) => theme.white};
+padding: 10px;
+border-radius: 0px 0px 5px 5px;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+display: ${({showCalendar}) => showCalendar ? "block" : "none"};
+position: absolute;
+top: 90px;
+width: 100%;
+
+@media screen and (min-width: 768px) {
+  top: 50px;
+}
+
+@media screen and (min-width: 1024px) {
+  width: 750px;
+  left: calc(50% - 81px);
+}
+`
 
 export const ContainerCalendar = styled.div`
-
-    /* ~~~ container styles ~~~ */
-    margin: auto;
-    margin-top: 20px;
-    background-color: ${({ theme }) => theme.white};
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid black;
-    display: ${({showCalendar}) => showCalendar ? "block" : "none"};
-    position: absolute;
-    top: 1px;
-
-
-
     /* ~~~ navigation styles ~~~ */
     .react-calendar__navigation {
       display: flex;
@@ -75,6 +80,10 @@ export const ContainerCalendar = styled.div`
         background: none;
         border: none;
         width: 7rem;
+
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
       }
 
       .react-calendar__navigation__arrow {
@@ -89,6 +98,11 @@ export const ContainerCalendar = styled.div`
       .react-calendar__navigation__arrow:hover, .react-calendar__navigation__label:hover {
         color: ${({ theme }) => theme.primary};
       }
+  }
+
+  .react-calendar__navigation__prev2-button,
+  .react-calendar__navigation__next2-button {
+    display: none;
   }
 
   /* ~~~ label styles ~~~ */
@@ -119,6 +133,14 @@ export const ContainerCalendar = styled.div`
       color: ${({ theme }) => theme.white};
     }
   }
+
+  .react-calendar__viewContainer {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: space-around;
+    }
+  }
+
 
   /* ~~~ day grid styles ~~~ */
   .react-calendar__month-view__days {
@@ -162,13 +184,13 @@ export const ContainerCalendar = styled.div`
     }
   }
 
-  @media screen and (min-width: 768px) {
-    width: 495px;
-    top: 45px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   width: 495px;
+  //   top: 45px;
+  // }
 
-  @media screen and (min-width: 1024px) {
-    width: 600px;
-    right: -110px;
-  }
+  // @media screen and (min-width: 1024px) {
+  //   width: 600px;
+  //   right: -110px;
+  // }
 `

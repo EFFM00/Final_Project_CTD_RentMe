@@ -136,8 +136,6 @@ export const ContainerCalendar = styled.div`
         display: flex;
         justify-content: space-around;
     }
-
-    
   }
 
 
