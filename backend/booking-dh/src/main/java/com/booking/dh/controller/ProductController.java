@@ -18,9 +18,6 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    BookingService bookingService;
-
     @PostMapping("/add")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         return ResponseEntity.ok(productService.addProduct(product));
