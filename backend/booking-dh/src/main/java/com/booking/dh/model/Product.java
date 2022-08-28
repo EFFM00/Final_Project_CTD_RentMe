@@ -57,10 +57,15 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<PolicyXProduct> policiesXProducts = new HashSet<>();
 
+    @JsonIgnoreProperties({"product"})
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<BookingXProduct> bookingXProducts = new HashSet<>();
+
+
     public Product() {
     }
 
-    public Product(String title, String description, String mainPictureUrl, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts) {
+    public Product(String title, String description, String mainPictureUrl, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts, Set<BookingXProduct> bookingXProducts) {
         this.title = title;
         this.description = description;
         this.mainPictureUrl = mainPictureUrl;
@@ -73,5 +78,6 @@ public class Product {
         this.images = images;
         this.city = city;
         this.policiesXProducts = policiesXProducts;
+        this.bookingXProducts = bookingXProducts;
     }
 }
