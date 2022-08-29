@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { BuscadorStyle, Titulo, Formulario, Section, ContainerCalendar, Contenedor,  } from "../../styles/BuscadorStyle";
+import { BuscadorStyle, Titulo, Formulario, Section, ContainerCalendar, Contenedor, InputStyle } from "../../styles/BuscadorStyle";
 import Button from "../atoms/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from "@mui/icons-material/Event";
@@ -79,7 +79,13 @@ function Buscador() {
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
-      <Formulario>
+      
+      <Formulario onSubmit={ev => {
+        ev.preventDefault();
+
+        const startDates = ev.target.startDate;
+        alert(startDates);
+      }}>
 
         <Section>
           <LocationOnIconStyle />
@@ -88,12 +94,14 @@ function Buscador() {
 
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
-          <p>Ida: {formatDate(dateValue[0])}</p>
+          <label htmlFor="startDate">Ida</label>
+          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)}/>
         </Section>
 
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
-          <p>Vuelta: {formatDate(dateValue[1])}</p>
+          <label htmlFor="endDate">Vuelta</label>
+          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)}/>
         </Section>
 
         <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
@@ -105,7 +113,7 @@ function Buscador() {
                 }
               </ContainerCalendar>
             </Contenedor>
-        <Button text="Buscar" fullwidth />
+        <Button text="Buscar" type='submit' fullwidth />
       </Formulario>
     </BuscadorStyle>
   );
