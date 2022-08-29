@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { BuscadorStyle, Titulo, Formulario, Section, InputStyle, ContainerCalendar, Contenedor,  } from "../../styles/BuscadorStyle";
+import { BuscadorStyle, Titulo, Formulario, Section, ContainerCalendar, Contenedor,  } from "../../styles/BuscadorStyle";
 import Button from "../atoms/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from "@mui/icons-material/Event";
 import Calendar from 'react-calendar';
 import Select from "react-select";
+import dayjs from "dayjs"; // ES 2015
 // import dataCiudades from '../dataCiudades.json'
 
 import { getCities } from "../../services/Cities";
+
+
+
+
+
 
 function Buscador() {
 
@@ -43,6 +49,10 @@ function Buscador() {
 
   const [ showCalendar, setShowCalendar ] = useState(false);
   const [ cities, setCities] = useState([]);
+  const [dateValue, setDateValue] = useState(new Date());
+
+  const minDate = new Date();
+
 
   useEffect(() => {
     getCities({setCities});
@@ -58,37 +68,43 @@ function Buscador() {
     }, [])
   
 
+    const formatDate = (date) => {
+      return dayjs(date).format("DD/MM/YYYY");
+    }  
+
+
+
+
+
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
       <Formulario>
+
         <Section>
           <LocationOnIconStyle />
-          <SelectStyle
-            // options={dataCiudades.map(ciudad => ({key: ciudad.id, label: ciudad.nombre, value: ciudad.id}))}
-            placeholder="¿A donde vamos?"
-            options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))}
-          />
+          <SelectStyle placeholder="¿A donde vamos?" options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))} />
         </Section>
+
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
-          <InputStyle
-            // type="date"
-            placeholder="Check in - Check out">
-          </InputStyle>
+          <p>Ida: {formatDate(dateValue[0])}</p>
         </Section>
+
+        <Section onClick={() => setShowCalendar(!showCalendar)}>
+          <EventIconStyle />
+          <p>Vuelta: {formatDate(dateValue[1])}</p>
+        </Section>
+
         <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
-          <ContainerCalendar>
-            {
-              tablet ? <CalendarStyle showDoubleView={true} selectRange={true}/>
-              : <CalendarStyle showDoubleView={false} selectRange={true}/>
-            }
-          </ContainerCalendar>
-          {
-            tablet ? <Button text="Aplicar"  width="m" />
-            : <Button text="Aplicar" fullwidth />
-          }
-        </Contenedor>
+              <ContainerCalendar>
+                {
+                  tablet ? <CalendarStyle showDoubleView={true} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)} value={dateValue}/>
+                  : <CalendarStyle showDoubleView={false} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)}
+                  value={dateValue} />
+                }
+              </ContainerCalendar>
+            </Contenedor>
         <Button text="Buscar" fullwidth />
       </Formulario>
     </BuscadorStyle>
