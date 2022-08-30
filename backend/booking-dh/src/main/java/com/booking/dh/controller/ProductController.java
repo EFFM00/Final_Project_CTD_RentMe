@@ -32,7 +32,6 @@ public class ProductController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Product>> productList(){
         return ResponseEntity.ok(productService.randomProductList());
@@ -63,13 +62,11 @@ public class ProductController {
         return response;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/city/{id}")
     public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) {
         return ResponseEntity.ok(productService.findProductByCityId(id));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/category/{id}")
     public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) {
         return ResponseEntity.ok(productService.findProductByCategoryId(id));
