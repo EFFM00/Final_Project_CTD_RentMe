@@ -1,10 +1,14 @@
 package com.booking.dh.security.model;
 
+import com.booking.dh.model.Image;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -19,6 +23,10 @@ public class Role {
     private Long id;
     @Column(nullable = false)
     private String name;
+
+    @JsonIgnoreProperties({"role"})
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<User> users = new HashSet<>();
 
     public Role() {
     }
