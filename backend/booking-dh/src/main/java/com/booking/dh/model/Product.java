@@ -61,7 +61,6 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<BookingXProduct> bookingXProducts = new HashSet<>();
 
-
     public Product() {
     }
 
