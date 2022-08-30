@@ -22,6 +22,8 @@ public class Characteristic {
     private Long id;
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private String icon;
 
     @JsonIgnore
     @OneToMany(mappedBy = "characteristic", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -30,8 +32,9 @@ public class Characteristic {
     public Characteristic() {
     }
 
-    public Characteristic(String description, Set<CharacteristicXProduct> characteristicsXProducts) {
+    public Characteristic(String description, String icon, Set<CharacteristicXProduct> characteristicsXProducts) {
         this.description = description;
+        this.icon = icon;
         this.characteristicsXProducts = characteristicsXProducts;
     }
 }
