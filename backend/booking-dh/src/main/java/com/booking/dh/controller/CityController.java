@@ -20,7 +20,7 @@ public class CityController {
     public ResponseEntity<City> addCity(@RequestBody City city) {
         return ResponseEntity.ok(cityService.createCity(city));
     }
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping
     public ResponseEntity<List<City>> listCities(){
         return ResponseEntity.ok(cityService.readAll());

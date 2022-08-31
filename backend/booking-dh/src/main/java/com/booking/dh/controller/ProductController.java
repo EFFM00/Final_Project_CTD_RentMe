@@ -20,7 +20,7 @@ public class ProductController {
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         return ResponseEntity.ok(productService.addProduct(product));
     }
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping("/{id}")
     public ResponseEntity<Product> findProductById(@PathVariable Long id) {
         if(productService.findProductById(id).isPresent()){
@@ -29,7 +29,7 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping
     public ResponseEntity<List<Product>> productList(){
         return ResponseEntity.ok(productService.productList());
@@ -59,18 +59,18 @@ public class ProductController {
         }
         return response;
     }
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping("/city/{id}")
     public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) {
         return ResponseEntity.ok(productService.findProductByCityId(id));
     }
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping("/category/{id}")
     public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) {
         return ResponseEntity.ok(productService.findProductByCategoryId(id));
     }
 
-
+    @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping("/home")
     public ResponseEntity<List<Product>> randomProductList() {
         return ResponseEntity.ok(productService.randomProductList());
