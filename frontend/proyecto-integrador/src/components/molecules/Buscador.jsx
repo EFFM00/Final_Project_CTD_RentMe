@@ -67,30 +67,6 @@ function Buscador() {
       return dayjs(date).format("DD/MM/YYYY");
     }  
 
-
-    // const mostrarCalendario = () => {
-    //   document.addEventListener("click", function(event){
-    //     let clickEStart = document.getElementById("calendarContStart");
-    //     let clickEEnd = document.getElementById("calendarContEnd");
-    //     let calendarCont1 = document.getElementById("calendarCont1");
-    //     let calendarCont2 = document.getElementById("calendarCont2");
-    //     let calendarCont3 = document.getElementById("calendarCont3");
-    //     let calendarCont4 = document.getElementById("calendarCont4");
-
-    //     if(clickEStart.contains(event.target) || clickEEnd.contains(event.target || calendarCont1.contains(event.target) || calendarCont2.contains(event.target) || calendarCont3.contains(event.target) || calendarCont4.contains(event.target))) {
-    //       console.log("Click adentro")
-    //       setShowCalendar(true)
-    //       console.log(showCalendar, "dentro");
-    //     } else {
-    //       console.log("Click fuera")
-    //       setShowCalendar(false)
-    //       console.log(showCalendar, "fuera");
-    //     }
-    //   })
-    // }
-
-
-
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
@@ -107,26 +83,24 @@ function Buscador() {
           <SelectStyle placeholder="¿A donde vamos?" options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))} />
         </Section>
 
-        <Section onClick={() => setShowCalendar(!showCalendar)} id="calendarCont" >
-        {/* <Section onClick={mostrarCalendario} id="calendarContStart" > */}
+        <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
           <label htmlFor="startDate">Ida</label>
-          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)}/>
+          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
-        {/* <Section onClick={mostrarCalendario} id="calendarContEnd" > */}
-        <Section onClick={() => setShowCalendar(!showCalendar)} id="calendarCont" >
+        <Section onClick={() => setShowCalendar(!showCalendar)} >
           <EventIconStyle />
           <label htmlFor="endDate">Vuelta</label>
-          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)}/>
+          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
-        <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar} id="calendarCont1">
-              <ContainerCalendar id="calendarCont2">
+        <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
+              <ContainerCalendar>
                 {
-                  tablet ? <CalendarStyle showDoubleView={true} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)} value={dateValue} id="calendarCont3"/>
+                  tablet ? <CalendarStyle showDoubleView={true} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)} value={dateValue}/>
                   : <CalendarStyle showDoubleView={false} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)}
-                  value={dateValue} id="calendarCont4"/>
+                  value={dateValue}/>
                 }
               </ContainerCalendar>
               <Button text="Cerrar calendario" click={() => setShowCalendar(!showCalendar)} fullwidth />
