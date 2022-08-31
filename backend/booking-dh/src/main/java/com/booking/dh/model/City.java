@@ -1,5 +1,6 @@
 package com.booking.dh.model;
 
+import com.booking.dh.security.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -32,6 +33,10 @@ public class City {
     @JsonIgnore
     @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private Set<Product> products = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private Set<User> users = new HashSet<>();
 
     public City() {
     }
