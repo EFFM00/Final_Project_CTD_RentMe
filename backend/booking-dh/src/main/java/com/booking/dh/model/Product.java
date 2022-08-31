@@ -1,6 +1,5 @@
 package com.booking.dh.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +24,8 @@ public class Product {
     private String title;
     @Column(nullable = false)
     private String description;
+    @Column(name = "main_picture_url", nullable = false)
+    private String mainPictureUrl;
     @Column(nullable = false)
     private String address;
     @Column(nullable = false)
@@ -34,7 +35,7 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<CharacteristicXProduct> characteristicsXProducts = new HashSet<>();
 
@@ -43,7 +44,7 @@ public class Product {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Image> images = new HashSet<>();
 
@@ -52,16 +53,21 @@ public class Product {
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"product"})
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<PolicyXProduct> policiesXProducts = new HashSet<>();
+
+    @JsonIgnoreProperties({"product"})
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Booking> bookings = new HashSet<>();
 
     public Product() {
     }
 
-    public Product(String title, String description, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts) {
+    public Product(String title, String description, String mainPictureUrl, String address, Double longitude, Double latitude, Double price, Set<CharacteristicXProduct> characteristicsXProducts, Category category, Set<Image> images, City city, Set<PolicyXProduct> policiesXProducts) {
         this.title = title;
         this.description = description;
+        this.mainPictureUrl = mainPictureUrl;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;

@@ -30,7 +30,7 @@ export default function Footer() {
 
   return (
     <FooterStyle>
-        <Text type="h4" color='white' text="©2021 Digital Booking"/>
+        <Text type="h4" color='white' text="©2022 Digital Booking"/>
         <ContenedorSM>
           <SocialMedia/>
         </ContenedorSM>

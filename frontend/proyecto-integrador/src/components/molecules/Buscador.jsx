@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { BuscadorStyle, Titulo, Formulario, Section, InputStyle, ContainerCalendar,  } from "../../styles/BuscadorStyle";
+import { BuscadorStyle, Titulo, Formulario, Section, ContainerCalendar, Contenedor, InputStyle } from "../../styles/BuscadorStyle";
 import Button from "../atoms/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EventIcon from "@mui/icons-material/Event";
 import Calendar from 'react-calendar';
 import Select from "react-select";
-// import dataCiudades from '../dataCiudades.json'
-
+import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
+import { click } from "@testing-library/user-event/dist/click";
+
 
 function Buscador() {
 
@@ -43,35 +44,68 @@ function Buscador() {
 
   const [ showCalendar, setShowCalendar ] = useState(false);
   const [ cities, setCities] = useState([]);
+  const [dateValue, setDateValue] = useState(new Date());
+
+  const minDate = new Date();
+
 
   useEffect(() => {
     getCities({setCities});
   }, [])
+
+
+  const [ tablet, setTablet ] = useState(false);
+
+    useEffect(() => {
+        const responsive = () => window.innerWidth >= 768 ? setTablet(true) : setTablet(false)
+        responsive();
+        window.addEventListener("resize", ()=>responsive())
+    }, [])
   
+
+    const formatDate = (date) => {
+      return dayjs(date).format("DD/MM/YYYY");
+    }  
 
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
-      <Formulario>
+      
+      <Formulario onSubmit={ev => {
+        ev.preventDefault();
+
+        const startDates = ev.target.startDate;
+        alert(startDates);
+      }}>
+
         <Section>
           <LocationOnIconStyle />
-          <SelectStyle
-            // options={dataCiudades.map(ciudad => ({key: ciudad.id, label: ciudad.nombre, value: ciudad.id}))}
-            placeholder="¿A donde vamos?"
-            options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))}
-          />
+          <SelectStyle placeholder="¿A donde vamos?" options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))} />
         </Section>
+
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
-          <InputStyle
-            // type="date"
-            placeholder="Check in - Check out">
-          </InputStyle>
+          <label htmlFor="startDate">Ida</label>
+          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
-        <ContainerCalendar showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
-          <CalendarStyle/>
-          </ContainerCalendar>
-        <Button text="Buscar" fullwidth />
+
+        <Section onClick={() => setShowCalendar(!showCalendar)} >
+          <EventIconStyle />
+          <label htmlFor="endDate">Vuelta</label>
+          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)} readOnly/>
+        </Section>
+
+        <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
+              <ContainerCalendar>
+                {
+                  tablet ? <CalendarStyle showDoubleView={true} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)} value={dateValue}/>
+                  : <CalendarStyle showDoubleView={false} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)}
+                  value={dateValue}/>
+                }
+              </ContainerCalendar>
+              <Button text="Cerrar calendario" click={() => setShowCalendar(!showCalendar)} fullwidth />
+            </Contenedor>
+        <Button text="Buscar" type='submit' fullwidth />
       </Formulario>
     </BuscadorStyle>
   );

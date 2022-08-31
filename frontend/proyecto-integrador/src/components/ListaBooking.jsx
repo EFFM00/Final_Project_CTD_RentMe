@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getProducts, getProductsRandom } from '../services/Products';
 import Card from './Card'
-import dataBooking from './dataBooking.json'
 
-function ListaBooking() {
+function ListaBooking({idCat, tipoProducto}) {
+  const [ products, setProducts ] = useState([]);
+  
+
+  let productosFiltrados = products.filter( prod => prod.category.id === idCat)
+
+  useEffect(() => {
+    getProducts({setProducts});
+  }, [])
+
   return (
     <>
         {
-            dataBooking.map(item =>
+            productosFiltrados.map(product =>
             <Card
-                key={item.id}
-                crimg={item.crimg}
-                category={item.category}
-                title={item.title}
-                location={item.location}
-                description={item.description}
+                key={product.id}
+                mainPictureUrl={product.mainPictureUrl}
+                category={product.category.title}
+                title={product.title}
+                address={product.address}
+                description={product.description}
+                id={product.id}
             />
             )
         }
