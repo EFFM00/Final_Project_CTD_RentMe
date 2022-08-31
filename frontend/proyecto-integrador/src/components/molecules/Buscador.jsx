@@ -68,26 +68,26 @@ function Buscador() {
     }  
 
 
-    const mostrarCalendario = () => {
-      document.addEventListener("click", function(event){
-        let clickEStart = document.getElementById("calendarContStart");
-        let clickEEnd = document.getElementById("calendarContEnd");
-        let calendarCont1 = document.getElementById("calendarCont1");
-        let calendarCont2 = document.getElementById("calendarCont2");
-        let calendarCont3 = document.getElementById("calendarCont3");
-        let calendarCont4 = document.getElementById("calendarCont4");
+    // const mostrarCalendario = () => {
+    //   document.addEventListener("click", function(event){
+    //     let clickEStart = document.getElementById("calendarContStart");
+    //     let clickEEnd = document.getElementById("calendarContEnd");
+    //     let calendarCont1 = document.getElementById("calendarCont1");
+    //     let calendarCont2 = document.getElementById("calendarCont2");
+    //     let calendarCont3 = document.getElementById("calendarCont3");
+    //     let calendarCont4 = document.getElementById("calendarCont4");
 
-        if(clickEStart.contains(event.target) || clickEEnd.contains(event.target || calendarCont1.contains(event.target) || calendarCont2.contains(event.target) || calendarCont3.contains(event.target) || calendarCont4.contains(event.target))) {
-          console.log("Click adentro")
-          setShowCalendar(true)
-          console.log(showCalendar, "dentro");
-        } else {
-          console.log("Click fuera")
-          setShowCalendar(false)
-          console.log(showCalendar, "fuera");
-        }
-      })
-    }
+    //     if(clickEStart.contains(event.target) || clickEEnd.contains(event.target || calendarCont1.contains(event.target) || calendarCont2.contains(event.target) || calendarCont3.contains(event.target) || calendarCont4.contains(event.target))) {
+    //       console.log("Click adentro")
+    //       setShowCalendar(true)
+    //       console.log(showCalendar, "dentro");
+    //     } else {
+    //       console.log("Click fuera")
+    //       setShowCalendar(false)
+    //       console.log(showCalendar, "fuera");
+    //     }
+    //   })
+    // }
 
 
 
@@ -107,14 +107,15 @@ function Buscador() {
           <SelectStyle placeholder="¿A donde vamos?" options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))} />
         </Section>
 
-        {/* <Section onClick={() => setShowCalendar(!showCalendar)} id="calendarCont" > */}
-        <Section onClick={mostrarCalendario} id="calendarContStart" >
+        <Section onClick={() => setShowCalendar(!showCalendar)} id="calendarCont" >
+        {/* <Section onClick={mostrarCalendario} id="calendarContStart" > */}
           <EventIconStyle />
           <label htmlFor="startDate">Ida</label>
           <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)}/>
         </Section>
 
-        <Section onClick={mostrarCalendario} id="calendarContEnd" >
+        {/* <Section onClick={mostrarCalendario} id="calendarContEnd" > */}
+        <Section onClick={() => setShowCalendar(!showCalendar)} id="calendarCont" >
           <EventIconStyle />
           <label htmlFor="endDate">Vuelta</label>
           <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)}/>
@@ -128,6 +129,7 @@ function Buscador() {
                   value={dateValue} id="calendarCont4"/>
                 }
               </ContainerCalendar>
+              <Button text="Cerrar calendario" click={() => setShowCalendar(!showCalendar)} fullwidth />
             </Contenedor>
         <Button text="Buscar" type='submit' fullwidth />
       </Formulario>
