@@ -1,6 +1,5 @@
 package com.booking.dh.model;
 
-import com.booking.dh.security.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
