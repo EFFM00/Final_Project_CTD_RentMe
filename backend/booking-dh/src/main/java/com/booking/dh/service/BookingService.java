@@ -1,7 +1,7 @@
 package com.booking.dh.service;
 
 import com.booking.dh.model.Booking;
-import com.booking.dh.model.Policy;
+import com.booking.dh.model.Product;
 import com.booking.dh.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,27 +15,32 @@ public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
-    public Booking save(Booking booking) {
+    public Booking saveBooking (Booking booking) {
         return bookingRepository.save(booking);
     }
 
-    public Optional<Booking> findById(Long id){
+    public Optional<Booking> findBookingById(Long id){
         return bookingRepository.findById(id);
+    }
+
+    public List<Booking> findBookingByProductId(Long id){
+        List<Booking> bookingsByProduct = bookingRepository.findBookingByProductId(id);
+        return bookingsByProduct;
     }
 
     public List<Booking> readAll() {
         return bookingRepository.findAll();
     }
 
-    public Booking update(Booking booking) {
-        if(findById(booking.getId()).isPresent()){
+    public Booking updateBooking (Booking booking) {
+        if(findBookingById(booking.getId()).isPresent()){
             return bookingRepository.save(booking);
         }else{
             return null;
         }
     }
 
-    public void delete(Long id){
+    public void deleteBooking (Long id){
         bookingRepository.deleteById(id);
     }
 }
