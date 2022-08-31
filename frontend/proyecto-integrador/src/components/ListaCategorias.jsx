@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import { getCategories } from '../services/Categories'
 
-function ListaCategorias({setTitleCat, categoryData, setCategoryData, clickCat, setClickCat, setIdCat}) {
+function ListaCategorias({setTitleCat, setCategoryData, setClickCat, setIdCat}) {
   const [categorias, setCategorias] = useState([]);
   
   useEffect(() => {
@@ -22,9 +22,8 @@ function ListaCategorias({setTitleCat, categoryData, setCategoryData, clickCat, 
                   image_url={item.imageUrl}
                   title={item.title}
                   description={item.description}
-                  categoryData={categoryData}
-                  setCategoryData={setCategoryData}
-                  clickCat={clickCat}
+                  // categoryData={categoryData}
+                  // setCategoryData={setCategoryData}
                   setClickCat={setClickCat} 
                   setTitleCat={setTitleCat}
                   setIdCat={setIdCat}

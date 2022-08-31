@@ -5,7 +5,6 @@ import ListaCategorias from '../../components/ListaCategorias'
 import { ContenedorBooking, ContenedorCategorias, GridBooking, GridCategorias } from '../../styles/MainStyle'
 import Text from '../../components/atoms/Text'
 import { useState } from 'react'
-import ProductsByCategory from '../../components/ProductsByCategory'
 
 function Home() {
   const [categoryData, setCategoryData] = useState([]);
@@ -16,7 +15,6 @@ function Home() {
   
   const renderizar = () => {    
     if(clickCat){
-      console.log(idCat, titleCat);
       // return <ProductsByCategory idCat={idCat} />
       return <ListaBooking idCat={idCat} />
     }

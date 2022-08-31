@@ -2,14 +2,13 @@ import React from "react";
 import Text from "./atoms/Text";
 import { ContenedorCtg, Imagen, Info } from "../styles/CategoriaStyle";
 
-function Categoria({ image_url, title, description, clickCat, setClickCat, setTitleCat, setIdCat, id}) {
+function Categoria({ image_url, title, description, setClickCat, setTitleCat, setIdCat, id}) {
 
   // const navigate = useNavigate();
   const clickear = () => {
     setTitleCat(title)
     setClickCat(true)
     setIdCat(id)
-    console.log(id, title);
   }
 
   return (
