@@ -7,13 +7,8 @@ import EventIcon from "@mui/icons-material/Event";
 import Calendar from 'react-calendar';
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
-// import dataCiudades from '../dataCiudades.json'
-
 import { getCities } from "../../services/Cities";
-
-
-
-
+import { click } from "@testing-library/user-event/dist/click";
 
 
 function Buscador() {
@@ -72,10 +67,6 @@ function Buscador() {
       return dayjs(date).format("DD/MM/YYYY");
     }  
 
-
-
-
-
   return (
     <BuscadorStyle>
       <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
@@ -95,13 +86,13 @@ function Buscador() {
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
           <label htmlFor="startDate">Ida</label>
-          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)}/>
+          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
-        <Section onClick={() => setShowCalendar(!showCalendar)}>
+        <Section onClick={() => setShowCalendar(!showCalendar)} >
           <EventIconStyle />
           <label htmlFor="endDate">Vuelta</label>
-          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)}/>
+          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
         <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
@@ -109,9 +100,10 @@ function Buscador() {
                 {
                   tablet ? <CalendarStyle showDoubleView={true} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)} value={dateValue}/>
                   : <CalendarStyle showDoubleView={false} selectRange={true} minDate={minDate} onChange={(value) => setDateValue(value)}
-                  value={dateValue} />
+                  value={dateValue}/>
                 }
               </ContainerCalendar>
+              <Button text="Cerrar calendario" click={() => setShowCalendar(!showCalendar)} fullwidth />
             </Contenedor>
         <Button text="Buscar" type='submit' fullwidth />
       </Formulario>
