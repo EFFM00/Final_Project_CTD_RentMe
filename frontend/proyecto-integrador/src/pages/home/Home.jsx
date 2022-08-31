@@ -12,11 +12,13 @@ function Home() {
   const [clickCat, setClickCat] = useState(false);
   const [titleCat, setTitleCat] = useState("");
   const [idCat, setIdCat] = useState("");
+  // const []
   
   const renderizar = () => {    
     if(clickCat){
       console.log(idCat, titleCat);
-      return <ProductsByCategory idCat={idCat} />
+      // return <ProductsByCategory idCat={idCat} />
+      return <ListaBooking idCat={idCat} />
     }
   }
 

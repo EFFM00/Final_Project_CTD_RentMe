@@ -7,14 +7,8 @@ import EventIcon from "@mui/icons-material/Event";
 import Calendar from 'react-calendar';
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
-// import dataCiudades from '../dataCiudades.json'
-
 import { getCities } from "../../services/Cities";
 import { click } from "@testing-library/user-event/dist/click";
-
-
-
-
 
 
 function Buscador() {
@@ -74,15 +68,6 @@ function Buscador() {
     }  
 
 
-    // document.addEventListener("click", function(event){
-    //   let clickE = document.getElementById("calendarCont");
-    //   if(!clickE.contains(event.target)) {
-    //     alert("Click fuera")
-    //   } else {
-    //     alert("Click adentro")
-    //   }
-    // })
-
     const mostrarCalendario = () => {
       document.addEventListener("click", function(event){
         let clickEStart = document.getElementById("calendarContStart");
@@ -91,6 +76,7 @@ function Buscador() {
         let calendarCont2 = document.getElementById("calendarCont2");
         let calendarCont3 = document.getElementById("calendarCont3");
         let calendarCont4 = document.getElementById("calendarCont4");
+
         if(clickEStart.contains(event.target) || clickEEnd.contains(event.target || calendarCont1.contains(event.target) || calendarCont2.contains(event.target) || calendarCont3.contains(event.target) || calendarCont4.contains(event.target))) {
           console.log("Click adentro")
           setShowCalendar(true)
