@@ -15,8 +15,7 @@ function Home() {
   
   const renderizar = () => {    
     if(clickCat){
-      // return <ProductsByCategory idCat={idCat} />
-      return <ListaBooking idCat={idCat} />
+      return <ListaBooking idCat={idCat} tipoProd={"productosFiltrados"}/>
     }
   }
 
@@ -41,7 +40,7 @@ function Home() {
       <ContenedorBooking>
         <Text type="h1" color='black' text="Recomendaciones"/>
         <GridBooking>
-          <ListaBooking/>
+          <ListaBooking tipoProd={"productsRandom"}/>
         </GridBooking>
       </ContenedorBooking>
     </>
