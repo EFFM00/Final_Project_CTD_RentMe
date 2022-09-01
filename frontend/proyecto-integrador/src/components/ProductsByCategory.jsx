@@ -15,7 +15,6 @@ const ProductsByCategory = ({idCat}) => {
 
     
     let productosFiltrados = productos.filter( prod => prod.category.id === idCat)
-    console.log(productosFiltrados, "Ahhhh");
     
     return (
         <>

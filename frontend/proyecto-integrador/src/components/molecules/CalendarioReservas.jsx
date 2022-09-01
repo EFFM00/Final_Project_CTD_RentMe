@@ -5,7 +5,7 @@ import { ContainerCalendar, ContenedorBoton, SeccionReserva, Titulo } from '../.
 import Button from '../atoms/Button';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import dayjs from "dayjs"; // ES 2015
+// import dayjs from "dayjs"; // ES 2015
 
 
 function CalendarioReservas() {
@@ -20,9 +20,9 @@ function CalendarioReservas() {
     }, [])
 
 
-    const formatDate = (date) => {
-        return dayjs(date).format("DD/MM/YYYY");
-    }
+    // const formatDate = (date) => {
+    //     return dayjs(date).format("DD/MM/YYYY");
+    // }
 
 
 
