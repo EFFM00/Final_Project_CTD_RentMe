@@ -35,7 +35,7 @@ export default function Reserva({ mainPictureUrl, category, title, address }) {
                 <Imagen src={mainPictureUrl} alt={title}/>
             </CajaImagen>
             <div>
-                <Text type="h2" color='tertiary' text={category}/>
+                <Text type="h2" color='secondary' text={category}/>
                 <Text type="h1" color='secondary' text={title}/>
                 <Text type="p1" color='secondary' text={address}/>
             </div>
