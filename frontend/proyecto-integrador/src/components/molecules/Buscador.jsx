@@ -8,7 +8,7 @@ import Calendar from 'react-calendar';
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
-import { click } from "@testing-library/user-event/dist/click";
+// import { click } from "@testing-library/user-event/dist/click";
 
 
 function Buscador() {
