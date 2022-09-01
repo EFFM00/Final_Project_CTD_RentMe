@@ -14,6 +14,6 @@ export const getProductById = async (productId) => {
 }
 
 export const getProductsRandom = async ({setProductsRandom}) => {
-  const resp = await api.get('/products/home');
+  const resp = await api.get('/products');
   setProductsRandom(resp.data);
 }
