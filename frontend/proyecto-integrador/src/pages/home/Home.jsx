@@ -5,18 +5,17 @@ import ListaCategorias from '../../components/ListaCategorias'
 import { ContenedorBooking, ContenedorCategorias, GridBooking, GridCategorias } from '../../styles/MainStyle'
 import Text from '../../components/atoms/Text'
 import { useState } from 'react'
-import ProductsByCategory from '../../components/ProductsByCategory'
 
 function Home() {
   const [categoryData, setCategoryData] = useState([]);
   const [clickCat, setClickCat] = useState(false);
   const [titleCat, setTitleCat] = useState("");
   const [idCat, setIdCat] = useState("");
+  // const []
   
   const renderizar = () => {    
     if(clickCat){
-      console.log(idCat, titleCat);
-      return <ProductsByCategory idCat={idCat} />
+      return <ListaBooking idCat={idCat} tipoProd={"productosFiltrados"}/>
     }
   }
 
@@ -41,7 +40,7 @@ function Home() {
       <ContenedorBooking>
         <Text type="h1" color='black' text="Recomendaciones"/>
         <GridBooking>
-          <ListaBooking/>
+          <ListaBooking tipoProd={"productsRandom"}/>
         </GridBooking>
       </ContenedorBooking>
     </>

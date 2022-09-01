@@ -1,19 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { getProducts } from '../services/Products';
+import { getProducts, getProductsRandom } from '../services/Products';
 import Card from './Card'
 
-function ListaBooking() {
+function ListaBooking({idCat, tipoProd}) {
   const [ products, setProducts ] = useState([]);
+  const [ productsRandom, setProductsRandom ] = useState([]);
   
+
+  let productosFiltrados = products.filter( prod => prod.category.id === idCat)
 
   useEffect(() => {
     getProducts({setProducts});
   }, [])
 
+  useEffect(() => {
+    getProductsRandom({setProductsRandom});
+  }, [])
+
+
+  const tipoProdRenderizar = (tipo) => {
+    if(tipo === "productosFiltrados") {
+      return productosFiltrados;
+    } else if(tipo === "productsRandom") {
+      return productsRandom
+    }
+  }
+
+
   return (
     <>
         {
-            products.map(product =>
+            tipoProdRenderizar(tipoProd).map(product =>
             <Card
                 key={product.id}
                 mainPictureUrl={product.mainPictureUrl}
