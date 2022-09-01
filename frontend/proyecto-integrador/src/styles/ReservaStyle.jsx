@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const Section = styled.section`
     background-color: rgba(56, 59, 88, 0.1);
-    display: flex;
-    justify-content: center;
+
+    @media screen and (min-width: 1024px) {
+        display: flex;
+        justify-content: center;
+    }
 `
 
 export const PaginaReserva = styled.div`
