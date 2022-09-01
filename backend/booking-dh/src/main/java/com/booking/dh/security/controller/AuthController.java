@@ -2,9 +2,9 @@ package com.booking.dh.security.controller;
 
 import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.Role;
-import com.booking.dh.security.model.User;
+import com.booking.dh.security.model.BookingUser;
 import com.booking.dh.security.service.RoleService;
-import com.booking.dh.security.service.UserService;
+import com.booking.dh.security.service.BookingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,28 +30,28 @@ public class AuthController {
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
-    UserService userService;
+    BookingUserService bookingUserService;
     @Autowired
     RoleService roleService;
 
     @PostMapping(path = "/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody User registerUser) {
-        if (userService.existsByEmail(registerUser.getEmail())) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody BookingUser registerBookingUser) {
+        if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
             return ResponseEntity.ok("email alredy exists");
         }
-       User user = new User(registerUser.getName(), registerUser.getLastName(), registerUser.getEmail(), passwordEncoder.encode(registerUser.getPassword()), registerUser.getCity());
+       BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getCity());
        Role role = new Role();
        role = roleService.findByName(String.valueOf(RoleName.client)).get();
-       if(registerUser.getRole().equals("ADMIN"))
+       if(registerBookingUser.getRole().equals("ADMIN"))
            role = roleService.findByName(String.valueOf(RoleName.admin)).get();
-       user.setRole(role);
-       userService.createUser(user);
+       bookingUser.setRole(role);
+       bookingUserService.createUser(bookingUser);
        return ResponseEntity.status(HttpStatus.CREATED).body("User created succesfully");
     }
 
     @PostMapping(path = "/login")
-    public ResponseEntity<?> loginUser(@RequestBody User loginUser){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getEmail(), loginUser.getPassword()));
+    public ResponseEntity<?> loginUser(@RequestBody BookingUser loginBookingUser){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginBookingUser.getEmail(), loginBookingUser.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token =  "token" /*inserte aquí su método de creación de token*/;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
