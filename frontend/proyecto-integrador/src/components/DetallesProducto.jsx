@@ -9,10 +9,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CalendarioReservas from "./molecules/CalendarioReservas";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/Products";
+import Button from "./atoms/Button";
+import { ContenedorBoton, SeccionReserva } from "../styles/CalendarioReservaStyle";
+import Reserva from "../pages/home/Reserva";
+
 
 function DetallesProducto() {
   const { id } = useParams();
   const [dataProduct, setDataProduct] = useState([]);
+  const [ showReservation, setShowReservation ] = useState(false);
 
   // funcion para obtener los detalles de un solo producto por su id
   const getProd = async () => {
@@ -41,6 +46,12 @@ function DetallesProducto() {
           </Link>
         </div>
       </header>
+
+    {
+
+    showReservation === false ?
+
+    <div>
 
       {/* Bloque Ubicacion */}
 
@@ -110,9 +121,25 @@ function DetallesProducto() {
 
       {/* Bloque Calendario */}
 
-      <div>
+      <SeccionReserva>
         <CalendarioReservas/>
-      </div>
+        <ContenedorBoton>
+            <Text type="h3" color='tertiary' text="Agregá tus fechas de viaje para obtener precios exactos"/>
+            <Button text="Iniciar reserva" fullwidth click={() => setShowReservation(true)}/>
+        </ContenedorBoton>
+      </SeccionReserva>
+
+    </div>
+
+    : <Reserva
+        mainPictureUrl={dataProduct.mainPictureUrl}
+        category={dataProduct?.category?.title}
+        title={dataProduct.title}
+        address={dataProduct.address}
+      />
+    }
+
+    
 
       {/* Bloque de Politicas */}
 
