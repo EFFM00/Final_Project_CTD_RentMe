@@ -1,11 +1,15 @@
 package com.booking.dh.security.controller;
 
+import com.booking.dh.security.JWTUtil;
 import com.booking.dh.security.enums.RoleName;
+import com.booking.dh.security.model.AuthenticationRequest;
+import com.booking.dh.security.model.AuthenticationResponse;
 import com.booking.dh.security.model.Role;
 import com.booking.dh.security.model.BookingUser;
 import com.booking.dh.security.service.RoleService;
 import com.booking.dh.security.service.BookingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +38,10 @@ public class AuthController {
     @Autowired
     RoleService roleService;
 
+    @Autowired
+    JWTUtil jwtUtil;
+
+
     @PostMapping(path = "/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody BookingUser registerBookingUser) {
         if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
@@ -49,12 +57,28 @@ public class AuthController {
        return ResponseEntity.status(HttpStatus.CREATED).body("User created succesfully");
     }
 
+    /*
     @PostMapping(path = "/login")
     public ResponseEntity<?> loginUser(@RequestBody BookingUser loginBookingUser){
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginBookingUser.getEmail(), loginBookingUser.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token =  "token" /*inserte aquí su método de creación de token*/;
+        String token =  "token" /*inserte aquí su método de creación de token;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return new ResponseEntity(HttpStatus.OK);
     }
+    */
+
+    @PostMapping(path = "/login")
+    public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
+        try{
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
+            String jwt =jwtUtil.generateToken(userDetails);
+            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
+
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+    }
+
 }

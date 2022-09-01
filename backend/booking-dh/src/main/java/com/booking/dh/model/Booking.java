@@ -42,7 +42,7 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "bookingUser_id", nullable = false)
     private BookingUser bookingUser;
 
     public Booking() {

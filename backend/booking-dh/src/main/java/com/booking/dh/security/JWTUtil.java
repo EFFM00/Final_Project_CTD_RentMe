@@ -3,10 +3,10 @@ package com.booking.dh.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Calendar;
+import org.springframework.stereotype.Component;
 import java.util.Date;
 
+@Component
 public class JWTUtil {
 
     private static final String KEY = "mG9\\n2,^obBu[8n.~MpVzbB5tHnuYF<KRE/LnQrQ<q@]wQP46vo^x{3vEN?3uN/E";

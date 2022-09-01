@@ -47,7 +47,7 @@ public class BookingUser implements UserDetails {
     private Role role;
 
     @JsonIgnoreProperties({"user"})
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bookingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
 
     public BookingUser() {

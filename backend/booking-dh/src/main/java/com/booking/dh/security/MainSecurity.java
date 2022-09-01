@@ -45,6 +45,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(bookingUserService);
     }
 
+    /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -59,5 +60,22 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+     */
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/products/**").permitAll()
+                .antMatchers("/categories/**").permitAll()
+                .antMatchers("/cities/**").permitAll()
+                .antMatchers("/auth/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/booking/add").hasAuthority("client")
+                .and()
+                //.exceptionHandling().authenticationEntryPoint(¡tokenEntryPoint)
+                //.and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }
