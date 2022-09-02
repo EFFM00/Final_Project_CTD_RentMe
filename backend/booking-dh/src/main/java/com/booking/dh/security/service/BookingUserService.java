@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookingUserService implements UserDetailsService {
+public class BookingUserService {
 
     @Autowired
     BookingUserRepository bookingUserRepository;
@@ -47,15 +47,23 @@ public class BookingUserService implements UserDetailsService {
         return bookingUserRepository.existsByEmail(email);
     }
 
+    public Optional<BookingUser> findByEmail(String email) {
+        return bookingUserRepository.findByEmail(email);
+    }
+
     /*
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return bookingUserRepository.findByEmail(email).orElseThrow((() -> new UsernameNotFoundException("user email not found")));
     }
+
      */
 
+    /*
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return new BookingUser("elena", "elena@gmail.com", "{noop}password", new Role(RoleName.admin));
     }
+
+     */
 }

@@ -3,7 +3,6 @@ package com.booking.dh.security.controller;
 import com.booking.dh.security.JWTUtil;
 import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.AuthenticationRequest;
-import com.booking.dh.security.model.AuthenticationResponse;
 import com.booking.dh.security.model.Role;
 import com.booking.dh.security.model.BookingUser;
 import com.booking.dh.security.service.RoleService;
@@ -24,6 +23,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.awt.print.Book;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -47,10 +48,10 @@ public class AuthController {
         if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
             return ResponseEntity.ok("email alredy exists");
         }
-       BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getCity());
+       BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getCity(), registerBookingUser.getRole());
        Role role = new Role();
        role = roleService.findByName(String.valueOf(RoleName.client)).get();
-       if(registerBookingUser.getRole().equals("ADMIN"))
+       if(registerBookingUser.getRole().equals("admin"))
            role = roleService.findByName(String.valueOf(RoleName.admin)).get();
        bookingUser.setRole(role);
        bookingUserService.createUser(bookingUser);
@@ -70,12 +71,17 @@ public class AuthController {
 
     @Deprecated
     @PostMapping(path = "/login")
-    public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<?> loginUser(@RequestBody AuthenticationRequest request) {
         try{
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
-            String jwt =jwtUtil.generateToken(userDetails);
-            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.CREATED);
+
+            Optional<BookingUser> user = bookingUserService.findByEmail(request.getEmail());
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            //UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
+            String jwt =jwtUtil.generateToken(authentication);
+            //user = (Optional<BookingUser>) authentication.getPrincipal();
+
+            return ResponseEntity.ok(String.valueOf(jwt));
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);

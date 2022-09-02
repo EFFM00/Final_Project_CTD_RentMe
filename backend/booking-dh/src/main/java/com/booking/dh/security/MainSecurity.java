@@ -27,6 +27,9 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     @Autowired
     private BookingUserService bookingUserService;
 
+    @Autowired
+    private JwtEntryPoint jwtEntryPoint;
+
     @Bean
     public PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder();}
 
@@ -41,10 +44,13 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
     }
 
+    /*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(bookingUserService);
     }
+
+     */
 
     @Autowired
     private JwtFilterRequest jwtFilterRequest;
@@ -76,9 +82,10 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                 .antMatchers("/cities/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/booking/add").hasAuthority("client")
+                .anyRequest().permitAll()
                 .and()
-                //.exceptionHandling().authenticationEntryPoint(¡tokenEntryPoint)
-                //.and()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
