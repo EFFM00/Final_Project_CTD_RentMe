@@ -10,6 +10,7 @@ import SignIn from "./pages/login/SignIn";
 import { useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import DetallesProducto from "./components/DetallesProducto";
+import { saveUser } from "./services/User"
 
 
 function App() {
@@ -17,8 +18,9 @@ function App() {
   const [showBtnSignIn, setShowBtnSignIn] = useState(true);
   const [ user, setUser ] = useState(null);
 
-  const handleRegistration = (values) => {
-    setUser({ email: values.email, passwordr: values.passwordr })
+  const handleRegistration = (data) => {
+    setUser({ email: data.email, passwordr: data.passwordr })
+    saveUser(data)
   };
   const signInProps = {
     user,
