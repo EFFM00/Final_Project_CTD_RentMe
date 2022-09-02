@@ -1,5 +1,6 @@
 package com.booking.dh.security;
 
+import com.booking.dh.security.filter.JwtFilterRequest;
 import com.booking.dh.security.service.BookingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +46,9 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(bookingUserService);
     }
 
+    @Autowired
+    private JwtFilterRequest jwtFilterRequest;
+
     /*
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -76,6 +80,6 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                 //.exceptionHandling().authenticationEntryPoint(¡tokenEntryPoint)
                 //.and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        //http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
 }
