@@ -133,7 +133,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/",
+					"name": "localhost:8080/categories",
 					"event": [
 						{
 							"listen": "test",
@@ -213,7 +213,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/delete/1",
+					"name": "localhost:8080/categories/delete/4",
 					"event": [
 						{
 							"listen": "test",
@@ -253,7 +253,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/update Copy",
+					"name": "localhost:8080/categories/update",
 					"event": [
 						{
 							"listen": "test",
@@ -292,7 +292,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/delete/18",
+					"name": "localhost:8080/categories/delete/3",
 					"event": [
 						{
 							"listen": "test",
@@ -365,7 +365,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/countries/",
+					"name": "localhost:8080/countries",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -423,7 +423,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/countries/delete/3",
+					"name": "localhost:8080/countries/delete/1",
 					"event": [
 						{
 							"listen": "test",
@@ -774,7 +774,7 @@
 			"name": "Characteristics",
 			"item": [
 				{
-					"name": "localhost:8080/characteristics",
+					"name": "localhost:8080/characteristics/add",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -802,7 +802,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/characteristics Copy",
+					"name": "localhost:8080/characteristics/add",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1584,7 +1584,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/policy-types/delete/2 Copy",
+					"name": "localhost:8080/policies/delete/1",
 					"event": [
 						{
 							"listen": "test",

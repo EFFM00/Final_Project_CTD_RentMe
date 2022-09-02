@@ -1,6 +1,6 @@
 package com.booking.dh.model;
 
-import com.booking.dh.security.model.User;
+import com.booking.dh.security.model.BookingUser;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -42,17 +42,17 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "bookingUser_id", nullable = false)
+    private BookingUser bookingUser;
 
     public Booking() {
     }
 
-    public Booking(LocalTime checkInTime, LocalDate checkInDate, LocalDate checkOutDate, Product product, User user) {
+    public Booking(LocalTime checkInTime, LocalDate checkInDate, LocalDate checkOutDate, Product product, BookingUser bookingUser) {
         this.checkInTime = checkInTime;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.product = product;
-        this.user = user;
+        this.bookingUser = bookingUser;
     }
 }
