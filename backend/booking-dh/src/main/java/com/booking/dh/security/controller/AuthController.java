@@ -68,13 +68,14 @@ public class AuthController {
     }
     */
 
+    @Deprecated
     @PostMapping(path = "/login")
     public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
             String jwt =jwtUtil.generateToken(userDetails);
-            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
+            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.CREATED);
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
