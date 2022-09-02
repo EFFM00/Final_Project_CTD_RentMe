@@ -27,7 +27,7 @@ function Header({
           navigate("/");
         }}
       >
-        <img style={{width: "150px"}} src={logo} alt="logo" />
+        <img style={{width: "150px", marginTop: "10px"}} src={logo} alt="logo" />
       </div>
       <IconoMenu onClick={() => setShowMenu(!showMenu)}>
         <img src={iconoMenu} alt={"img_alt"}/>
