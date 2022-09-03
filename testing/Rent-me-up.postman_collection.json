@@ -133,7 +133,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/",
+					"name": "localhost:8080/categories",
 					"event": [
 						{
 							"listen": "test",
@@ -213,7 +213,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/delete/1",
+					"name": "localhost:8080/categories/delete/4",
 					"event": [
 						{
 							"listen": "test",
@@ -253,7 +253,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/update Copy",
+					"name": "localhost:8080/categories/update",
 					"event": [
 						{
 							"listen": "test",
@@ -270,7 +270,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 18,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"title\": \"PH\",\r\n    \"description\": \"Todas los PH disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,7 +292,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/categories/delete/18",
+					"name": "localhost:8080/categories/delete/3",
 					"event": [
 						{
 							"listen": "test",
@@ -317,7 +317,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/18",
+							"raw": "localhost:8080/categories/delete/3",
 							"host": [
 								"localhost"
 							],
@@ -325,7 +325,7 @@
 							"path": [
 								"categories",
 								"delete",
-								"18"
+								"3"
 							]
 						}
 					},
@@ -343,7 +343,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"nombre1\",\r\n    \"country\": \"pais1\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Argentina\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -351,13 +351,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/cities/add",
+							"raw": "localhost:8080/countries/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"cities",
+								"countries",
 								"add"
 							]
 						}
@@ -365,10 +365,21 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/countries/",
+					"name": "localhost:8080/countries",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/countries/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"countries",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -390,7 +401,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Uruguay\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -398,13 +409,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/countries/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"countries",
 								"update"
 							]
 						}
@@ -412,7 +423,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/countries/delete/3",
+					"name": "localhost:8080/countries/delete/1",
 					"event": [
 						{
 							"listen": "test",
@@ -437,15 +448,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/18",
+							"raw": "localhost:8080/countries/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"countries",
 								"delete",
-								"18"
+								"1"
 							]
 						}
 					},
@@ -463,7 +474,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"nombre1\",\r\n    \"country\": \"pais1\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Buenos Aires\",\r\n    \"country\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -513,13 +524,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/cities",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"cities"
 							]
 						}
 					},
@@ -543,7 +554,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Mar del Plata\",\r\n    \"country\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -551,13 +562,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/cities/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"cities",
 								"update"
 							]
 						}
@@ -590,15 +601,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/cities/delete/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"cities",
 								"delete",
-								"4"
+								"2"
 							]
 						}
 					},
@@ -616,7 +627,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title2\",\r\n    \"description\": \"description1\",\r\n    \"address\": \"address1\",\r\n    \"longitude\": 0.4,\r\n    \"latitude\": 0.6,\r\n    \"price\": 43.6,\r\n    \"category\": {\r\n        \"id\": 1\r\n    },\r\n    \"city\":{\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"title\": \"Departamento en Buenos Aires\",\r\n    \"description\": \"Hemoso departamento luminoso de 4 ambientes\",\r\n    \"mainPictureUrl\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/1451655_0.jpg\",\r\n    \"address\": \"Billinghurst 1234\",\r\n    \"longitude\": 0.4324563,\r\n    \"latitude\": 0.6435678,\r\n    \"price\": 43.6,\r\n    \"category\": {\r\n        \"id\": 1\r\n    },\r\n    \"city\":{\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -666,13 +677,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/products",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"products"
 							]
 						}
 					},
@@ -696,7 +707,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Departamento en Palermo\",\r\n    \"description\": \"Hemoso departamento luminoso de 4 ambientes\",\r\n    \"mainPictureUrl\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/1451655_0.jpg\",\r\n    \"address\": \"Billinghurst 1234\",\r\n    \"longitude\": 0.4324563,\r\n    \"latitude\": 0.6435678,\r\n    \"price\": 43.6,\r\n    \"category\": {\r\n        \"id\": 1\r\n    },\r\n    \"city\":{\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -704,13 +715,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/products/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"products",
 								"update"
 							]
 						}
@@ -743,15 +754,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/products/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"products",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -763,13 +774,13 @@
 			"name": "Characteristics",
 			"item": [
 				{
-					"name": "localhost:8080/characteristics",
+					"name": "localhost:8080/characteristics/add",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"description\": \"description2\"\r\n}",
+							"raw": "{\r\n  \"description\": \"Wifi\",\r\n  \"icon\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/iconos/icon-wifi.svg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -791,13 +802,13 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/characteristics Copy",
+					"name": "localhost:8080/characteristics/add",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"description\": \"description2\"\r\n}",
+							"raw": "{\r\n  \"description\": \"Televisor\",\r\n  \"icon\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/iconos/icon-tv.svg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -822,7 +833,18 @@
 					"name": "localhost:8080/characteristics",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/characteristics/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"characteristics",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -844,7 +866,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"description\": \"Aire acondicionado frío\",\r\n    \"icon\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/iconos/icon-air-3.svg\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -852,13 +874,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/characteristics/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"characteristics",
 								"update"
 							]
 						}
@@ -891,15 +913,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/characteristics/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"characteristics",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -917,7 +939,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"nombre1\",\r\n    \"country\": \"pais1\"\r\n}",
+							"raw": "{\r\n    \"characteristic\": {\r\n        \"id\": 2\r\n    },\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -925,13 +947,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/cities/add",
+							"raw": "localhost:8080/product-characteristics/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"cities",
+								"product-characteristics",
 								"add"
 							]
 						}
@@ -967,13 +989,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/product-characteristics",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"product-characteristics"
 							]
 						}
 					},
@@ -997,7 +1019,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"characteristic\": {\r\n        \"id\": 3\r\n    },\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1005,13 +1027,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/product-characteristics/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"product-characteristics",
 								"update"
 							]
 						}
@@ -1044,15 +1066,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/product-characteristics/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"product-characteristics",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -1070,7 +1092,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"title\": \"Departamento de dos ambientes\",\r\n    \"url\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/2766491_0.jpg\",\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1120,13 +1142,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/images",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"images"
 							]
 						}
 					},
@@ -1150,7 +1172,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Departamento de tres ambientes\",\r\n    \"url\": \"https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/2766491_0.jpg\",\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1158,13 +1180,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/images/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"images",
 								"update"
 							]
 						}
@@ -1197,15 +1219,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/images/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"images",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -1223,7 +1245,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"Normas de la casa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1231,13 +1253,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/policy-types/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"policy-types",
 								"add"
 							]
 						}
@@ -1251,7 +1273,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"Política de cancelación\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1259,13 +1281,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/policy-types/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"policy-types",
 								"add"
 							]
 						}
@@ -1301,13 +1323,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/policy-types",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"policy-types"
 							]
 						}
 					},
@@ -1331,7 +1353,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"Salud y seguridad\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1339,13 +1361,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/policy-types/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"policy-types",
 								"update"
 							]
 						}
@@ -1378,15 +1400,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/policy-types/delete/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"policy-types",
 								"delete",
-								"4"
+								"2"
 							]
 						}
 					},
@@ -1404,7 +1426,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"description\": \"No se admiten mascotas\",\r\n    \"policyType\": {\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1412,13 +1434,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/policies/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"policies",
 								"add"
 							]
 						}
@@ -1432,7 +1454,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"description\": \"No se permiten fiestas\",\r\n    \"policyType\": {\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1440,13 +1462,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/policies/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"policies",
 								"add"
 							]
 						}
@@ -1460,7 +1482,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"description\": \"No apto para niños ni bebés\",\r\n    \"policyType\": {\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1468,13 +1490,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/policies/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"policies",
 								"add"
 							]
 						}
@@ -1510,13 +1532,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/policies",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"policies"
 							]
 						}
 					},
@@ -1540,7 +1562,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"description\": \"No se permite fumar\",\r\n    \"policyType\": {\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1548,13 +1570,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/policies/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"policies",
 								"update"
 							]
 						}
@@ -1562,7 +1584,7 @@
 					"response": []
 				},
 				{
-					"name": "localhost:8080/policy-types/delete/2 Copy",
+					"name": "localhost:8080/policies/delete/1",
 					"event": [
 						{
 							"listen": "test",
@@ -1587,15 +1609,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/policies/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"policies",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -1613,7 +1635,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title1\",\r\n    \"url\": \"url1\",\r\n    \"product\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"raw": "{\r\n    \"policy\": {\r\n        \"id\": 2\r\n    },\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1621,13 +1643,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/images/add",
+							"raw": "localhost:8080/product-polices/add",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"images",
+								"product-polices",
 								"add"
 							]
 						}
@@ -1663,13 +1685,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories",
+							"raw": "localhost:8080/product-polices",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories"
+								"product-polices"
 							]
 						}
 					},
@@ -1693,7 +1715,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 4,\r\n    \"title\": \"Casas rodantes\",\r\n    \"description\": \"Todas las casas rodantes disponibles\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1596470693312-9a3686a0af0f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80\"\r\n}",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"policy\": {\r\n        \"id\": 3\r\n    },\r\n    \"product\": {\r\n        \"id\": 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1701,13 +1723,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/update",
+							"raw": "localhost:8080/product-polices/update",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"product-polices",
 								"update"
 							]
 						}
@@ -1740,15 +1762,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/categories/delete/4",
+							"raw": "localhost:8080/product-polices/delete/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"categories",
+								"product-polices",
 								"delete",
-								"4"
+								"1"
 							]
 						}
 					},
