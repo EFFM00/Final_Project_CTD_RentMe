@@ -7,6 +7,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -23,9 +24,9 @@ public class JWTUtil {
     private static final String KEY = "mG9\\n2,^obBu[8n.~MpVzbB5tHnuYF<KRE/LnQrQ<q@]wQP46vo^x{3vEN?3uN/E";
 
     @Deprecated
-    public String generateToken(Authentication authentication) {
-        BookingUser user = (BookingUser) authentication.getPrincipal();
-        return Jwts.builder().setSubject(user.getName()).setIssuedAt(new Date())
+    public String generateToken(UserDetails userDetails) {
+        //BookingUser user = (BookingUser) authentication.getPrincipal();
+        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, KEY).compact();
     }

@@ -3,6 +3,7 @@ package com.booking.dh.security.controller;
 import com.booking.dh.security.JWTUtil;
 import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.AuthenticationRequest;
+import com.booking.dh.security.model.AuthenticationResponse;
 import com.booking.dh.security.model.Role;
 import com.booking.dh.security.model.BookingUser;
 import com.booking.dh.security.service.RoleService;
@@ -30,8 +31,10 @@ import java.util.Optional;
 @RequestMapping("/auth")
 @CrossOrigin
 public class AuthController {
+
     @Autowired
     PasswordEncoder passwordEncoder;
+
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
@@ -71,17 +74,15 @@ public class AuthController {
 
     @Deprecated
     @PostMapping(path = "/login")
-    public ResponseEntity<?> loginUser(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
         try{
-
-            Optional<BookingUser> user = bookingUserService.findByEmail(request.getEmail());
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            //UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
-            String jwt =jwtUtil.generateToken(authentication);
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            //SecurityContextHolder.getContext().setAuthentication(authentication);
+            UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
+            String jwt =jwtUtil.generateToken(userDetails);
             //user = (Optional<BookingUser>) authentication.getPrincipal();
 
-            return ResponseEntity.ok(String.valueOf(jwt));
+            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);

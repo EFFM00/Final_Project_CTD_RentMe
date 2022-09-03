@@ -1,5 +1,3 @@
-/*
-
 package com.booking.dh.security.model;
 
 import lombok.Getter;
@@ -15,6 +13,3 @@ public class AuthenticationResponse {
         this.jwt = jwt;
     }
 }
-
-
- */

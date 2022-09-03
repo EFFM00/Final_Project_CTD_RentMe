@@ -24,7 +24,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class BookingUser {
+public class BookingUser implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,7 +66,6 @@ public class BookingUser {
         this.role = role;
     }
 
-    /*
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.getName());
@@ -75,7 +74,7 @@ public class BookingUser {
 
     @Override
     public String getUsername() {
-        return email;
+        return null;
     }
 
     @Override
@@ -90,13 +89,11 @@ public class BookingUser {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
         return true;
     }
-
-     */
 }

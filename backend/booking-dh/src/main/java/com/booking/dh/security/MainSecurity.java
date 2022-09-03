@@ -28,6 +28,12 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     private BookingUserService bookingUserService;
 
     @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private JwtFilterRequest jwtFilterRequest;
+
+    @Autowired
     private JwtEntryPoint jwtEntryPoint;
 
     @Bean
@@ -51,9 +57,6 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     }
 
      */
-
-    @Autowired
-    private JwtFilterRequest jwtFilterRequest;
 
     /*
     @Override
@@ -83,8 +86,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                 .antMatchers("/auth/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/booking/add").hasAuthority("client")
                 .anyRequest().permitAll()
-                .and()
-                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
+                //.and()
+                //.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);

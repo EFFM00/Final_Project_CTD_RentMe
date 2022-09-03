@@ -1,3 +1,4 @@
+/*
 package com.booking.dh.security.service;
 
 import com.booking.dh.security.model.BookingUser;
@@ -24,3 +25,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         return (UserDetails) user;
     }
 }
+
+
+ */
