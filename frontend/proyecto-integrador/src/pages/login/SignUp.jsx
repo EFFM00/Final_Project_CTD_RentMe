@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { register } from "../../services/User"
+import { api } from "../../services/api/api";
 
 
-function SignUp({ showValues }) {
+function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -47,10 +49,30 @@ function SignUp({ showValues }) {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit(values){
-      showValues(values);
+      handleRegistration(values);
       navigate("/sign-in");
     }
   });
+
+  const handleRegistration = async (values) => {
+    try {
+      let config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      }
+
+      let resp = await api.post("/auth/register", config)
+      let json = await resp.json()
+
+      console.log(json)
+    } catch {
+
+    }
+  };
 
   return (
     <section className="formurarios" >

@@ -10,22 +10,19 @@ import SignIn from "./pages/login/SignIn";
 import { useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import DetallesProducto from "./components/DetallesProducto";
-import { saveUser } from "./services/User"
+// import { register } from "./services/User"
 
 
 function App() {
   const [showBtnRegister, setShowBtnRegister] = useState(true);
   const [showBtnSignIn, setShowBtnSignIn] = useState(true);
-  const [ user, setUser ] = useState(null);
+  // const [ user, setUser ] = useState(null);
 
-  const handleRegistration = (data) => {
-    setUser({ email: data.email, passwordr: data.passwordr })
-    saveUser(data)
-  };
-  const signInProps = {
-    user,
-    setUser
-  };
+  
+  // const signInProps = {
+  //   user,
+  //   setUser
+  // };
 
   return (
     <BrowserRouter>
@@ -36,15 +33,15 @@ function App() {
           setShowBtnRegister={setShowBtnRegister}
           showBtnSignIn={showBtnSignIn}
           setShowBtnSignIn={setShowBtnSignIn}
-          user={user}
-          setUser={setUser}
+          // user={user}
+          // setUser={setUser}
         />
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/sign-up" element={<SignUp showValues={handleRegistration}/>}/>
-          <Route path="/sign-in" element={<SignIn {...signInProps}/>}/>
+          <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
-          <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
+          <Route element={<ProtectedRoutes/>}>
             <Route path="/" element={<Home/>}/>
           </Route>
         </Routes>

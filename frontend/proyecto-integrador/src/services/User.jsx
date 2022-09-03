@@ -1,11 +1,15 @@
 import { api } from "./api/api";
 
-export const saveUser = async (userData) => {
+export const register = async (newUser) => {
+    let resp = await api.post("/auth/register", newUser)
 
-    // const data = {userData}
+    return resp;
 
-    // const resp = await api.post('/user', data);
-    
-    console.log(userData);
+    // console.log(newUser)
+}
 
+export const login = async (credentials) => {
+    let resp = await api.post("/auth/login", credentials)
+
+    return resp;
 }
