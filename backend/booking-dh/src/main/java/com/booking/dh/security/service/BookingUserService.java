@@ -1,9 +1,7 @@
 package com.booking.dh.security.service;
 
-import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.BookingUser;
-import com.booking.dh.security.model.Role;
-import com.booking.dh.security.repository.BookingUserRepository;
+import com.booking.dh.security.model.repository.BookingUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

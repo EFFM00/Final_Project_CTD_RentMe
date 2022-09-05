@@ -4,7 +4,6 @@ import com.booking.dh.model.Booking;
 import com.booking.dh.model.City;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.lang.Nullable;
@@ -49,7 +48,7 @@ public class BookingUser implements UserDetails{
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"bookingUser"})
     @OneToMany(mappedBy = "bookingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
 

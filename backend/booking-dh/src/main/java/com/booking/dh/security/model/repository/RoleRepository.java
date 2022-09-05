@@ -1,4 +1,4 @@
-package com.booking.dh.security.repository;
+package com.booking.dh.security.model.repository;
 
 import com.booking.dh.security.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

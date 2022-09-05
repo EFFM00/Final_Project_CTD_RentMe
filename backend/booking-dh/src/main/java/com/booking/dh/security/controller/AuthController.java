@@ -11,8 +11,6 @@ import com.booking.dh.security.service.BookingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +22,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.print.Book;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -49,7 +45,7 @@ public class AuthController {
     @PostMapping(path = "/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody BookingUser registerBookingUser) {
         if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
-            return ResponseEntity.ok("email alredy exists");
+            return ResponseEntity.ok("Email already exists");
         }
        BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getCity(), registerBookingUser.getRole());
        Role role = new Role();
@@ -58,7 +54,7 @@ public class AuthController {
            role = roleService.findByName(String.valueOf(RoleName.admin)).get();
        bookingUser.setRole(role);
        bookingUserService.createUser(bookingUser);
-       return ResponseEntity.status(HttpStatus.CREATED).body("User created succesfully");
+       return ResponseEntity.status(HttpStatus.CREATED).body("User successfully created");
     }
 
     /*
@@ -82,11 +78,10 @@ public class AuthController {
             String jwt =jwtUtil.generateToken(userDetails);
             //user = (Optional<BookingUser>) authentication.getPrincipal();
 
-            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
+            return ResponseEntity.ok(new AuthenticationResponse((jwt)));
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
-
 }
