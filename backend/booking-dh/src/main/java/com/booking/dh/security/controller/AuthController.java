@@ -69,15 +69,16 @@ public class AuthController {
 
     @PostMapping(path = "/login")
     public ResponseEntity<String> loginUser(@RequestBody AuthenticationRequest request) {
-
-        Authentication a =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        try {
+            Authentication a =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(a);
             UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
             String jwt = jwtUtil.generateToken(a,userDetails);
             //user = (Optional<BookingUser>) authentication.getPrincipal();
-
             return ResponseEntity.ok(jwt);
 
-
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 }

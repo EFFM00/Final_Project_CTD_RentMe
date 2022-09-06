@@ -43,7 +43,7 @@ public class BookingUser implements UserDetails{
     @Nullable
     private City city;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
