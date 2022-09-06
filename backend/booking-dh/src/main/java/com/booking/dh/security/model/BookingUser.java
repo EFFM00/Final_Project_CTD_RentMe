@@ -73,7 +73,7 @@ public class BookingUser implements UserDetails{
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
@@ -88,7 +88,7 @@ public class BookingUser implements UserDetails{
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override

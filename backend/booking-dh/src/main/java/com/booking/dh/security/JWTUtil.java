@@ -1,24 +1,34 @@
 package com.booking.dh.security;
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JWTUtil {
 
     private static final String KEY = "mG9\\n2,^obBu[8n.~MpVzbB5tHnuYF<KRE/LnQrQ<q@]wQP46vo^x{3vEN?3uN/E";
+    int expiration =3600;
 
-    @Deprecated
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(Authentication auth,UserDetails us) {
         //BookingUser user = (BookingUser) authentication.getPrincipal();
-        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(SignatureAlgorithm.HS256, KEY).compact();
+        Map<String,Object>claims = new HashMap<>();
+        claims.put("usuario",us);
+        UserDetails u = (UserDetails) auth.getPrincipal();
+        String jwt= Jwts .builder().setSubject(u.getUsername())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(new Date().getTime()+expiration*1000))
+                .addClaims(claims)
+                .signWith(SignatureAlgorithm.HS256,KEY).compact();
+        return jwt;
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
