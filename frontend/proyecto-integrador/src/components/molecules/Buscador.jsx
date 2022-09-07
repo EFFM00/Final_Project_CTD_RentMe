@@ -40,14 +40,29 @@ function Buscador() {
   
   const EventIconStyle = styled(EventIcon)`
     color: ${({ theme }) => theme.tertiary};
-  `;
+    `;
+    
+      const formatDate = (date) => {
+        return dayjs(date).format("DD-MM-YYYY");
+      }  
+      const [dateValue, setDateValue] = useState(new Date());
+    
+      const minDate = new Date();
+      const startDateVar = formatDate(dateValue[0]);
+      const endDateVar = formatDate(dateValue[1]);
+      console.log(startDateVar, endDateVar);
 
-  const [ showCalendar, setShowCalendar ] = useState(false);
-  const [ cities, setCities] = useState([]);
-  const [dateValue, setDateValue] = useState(new Date());
-
-  const minDate = new Date();
-
+      
+      const [ showCalendar, setShowCalendar ] = useState(false);
+      const [ cities, setCities] = useState([]);
+      const [cityValue, setCityValue] = useState("equis");
+      const [objSearch, setObjSearch] = useState({
+        city: cityValue,
+        startDate: startDateVar,
+        endDate: endDateVar
+      });
+      
+      
 
   useEffect(() => {
     getCities({setCities});
@@ -61,11 +76,6 @@ function Buscador() {
         responsive();
         window.addEventListener("resize", ()=>responsive())
     }, [])
-  
-
-    const formatDate = (date) => {
-      return dayjs(date).format("DD/MM/YYYY");
-    }  
 
   return (
     <BuscadorStyle>
@@ -74,25 +84,30 @@ function Buscador() {
       <Formulario onSubmit={ev => {
         ev.preventDefault();
 
-        const startDates = ev.target.startDate;
-        alert(startDates);
+        console.log(ev.target.city);
+
       }}>
 
         <Section>
           <LocationOnIconStyle />
-          <SelectStyle placeholder="¿A donde vamos?" options={cities.map(city => ({key: city.id, label: city.name, value: city.id}))} />
+          <SelectStyle placeholder="¿A donde vamos?" 
+          options={cities.map(
+            city => (
+              {key: city.id, label: city.name, value: city.id}
+              ))} 
+          onChange={(value) => setCityValue(value)} name="city"/>
         </Section>
 
         <Section onClick={() => setShowCalendar(!showCalendar)}>
           <EventIconStyle />
           <label htmlFor="startDate">Ida</label>
-          <InputStyle type="text" name="startDate" value={formatDate(dateValue[0])} placeholder='Ida' onChange={(value) => setDateValue(value)} readOnly/>
+          <InputStyle type="text" name="startDate" value={startDateVar} placeholder='Ida' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
         <Section onClick={() => setShowCalendar(!showCalendar)} >
           <EventIconStyle />
           <label htmlFor="endDate">Vuelta</label>
-          <InputStyle type="text" name="endDate" value={formatDate(dateValue[1])} placeholder='Vuelta' onChange={(value) => setDateValue(value)} readOnly/>
+          <InputStyle type="text" name="endDate" value={endDateVar} placeholder='Vuelta' onChange={(value) => setDateValue(value)} readOnly/>
         </Section>
 
         <Contenedor showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
