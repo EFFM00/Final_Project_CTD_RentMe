@@ -15,7 +15,6 @@ import {
   SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
 import Reserva from "../pages/home/Reserva";
-import Gallery from "react-grid-gallery";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -29,6 +28,8 @@ function DetallesProducto() {
   const [showReservation, setShowReservation] = useState(false);
   const [images, setImages] = useState([{ source: "", caption: "image" }]);
   const [index, setIndex] = useState(-1);
+  const [imageCount, setImageCount] = useState(0);
+  
 
   // funcion para obtener los detalles de un solo producto por su id
   const getProd = async () => {
@@ -44,6 +45,7 @@ function DetallesProducto() {
       };
     });
     setImages(img);
+    setImageCount(img.length - 2);
   };
 
   useEffect(() => {
@@ -97,35 +99,32 @@ function DetallesProducto() {
 
           {/* Carrusel */}
 
-          <div className="carrusel">
-            <div
-              style={{
-                display: "block",
-                minHeight: "1px",
-                width: "100%",
-                border: "1px solid #ddd",
-                overflow: "auto",
-              }}
-            >
-              <Gallery
-                enableLightbox={false}
-                enableImageSelection={false}
-                images={images}
-                onClickThumbnail={(index) => setIndex(index)}
-              />
-            </div>
-            <Lightbox
-              open={index >= 0}
-              close={() => setIndex(-1)}
-              index={index}
-              carousel={2}
-              slides={images}
-              plugins={[Thumbnails, Zoom, Fullscreen]}
-              zoom={{
-                maxZoomPixelRatio: 3,
-              }}
-            />
+          <div className="image-gallery three-cols-gallery">
+            {dataProduct?.images?.map((img, index) => (
+              <div
+                className="gallery-item"
+                data-see-more={imageCount + "+ See more"}
+                onClick={() => setIndex(index)}
+              >
+                <img
+                  src={img.url}
+                  alt={img.title}
+                  className="gallery-item-image"
+                />
+              </div>
+            ))}
           </div>
+          <Lightbox
+            open={index >= 0}
+            close={() => setIndex(-1)}
+            index={index}
+            carousel={2}
+            slides={images}
+            plugins={[Thumbnails, Zoom, Fullscreen]}
+            zoom={{
+              maxZoomPixelRatio: 3,
+            }}
+          />
 
           {/* Bloque Descripcion */}
 
