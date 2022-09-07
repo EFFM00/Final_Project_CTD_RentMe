@@ -6,8 +6,8 @@ import com.booking.dh.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class BookingService {
@@ -42,5 +42,19 @@ public class BookingService {
 
     public void deleteBooking (Long id){
         bookingRepository.deleteById(id);
+    }
+
+    public Collection<Booking> findNotAvailable(LocalDate checkInDate, LocalDate checkOutDate) {
+        Collection<Booking> bookings = bookingRepository.findAll();
+        Set<Booking> notAvailable = new HashSet<>();
+        for (Booking booking : bookings) {
+            if (booking.getCheckInDate().isBefore(checkOutDate) && booking.getCheckOutDate().isAfter(checkInDate)) {
+                notAvailable.add(booking);
+            }
+            if (booking.getCheckInDate().isEqual(checkOutDate) || booking.getCheckOutDate().isEqual(checkInDate)) {
+                notAvailable.add(booking);
+            }
+        }
+        return notAvailable;
     }
 }
