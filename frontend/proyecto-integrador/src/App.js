@@ -10,6 +10,7 @@ import SignIn from "./pages/login/SignIn";
 import { useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import DetallesProducto from "./components/DetallesProducto";
+import ReservaExitosa from "./components/ReservaExitosa";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp showValues={handleRegistration}/>}/>
           <Route path="/sign-in" element={<SignIn {...signInProps}/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
+          <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
           <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
             <Route path="/" element={<Home/>}/>
           </Route>

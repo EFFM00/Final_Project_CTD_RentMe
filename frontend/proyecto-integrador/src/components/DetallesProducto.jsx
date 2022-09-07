@@ -15,13 +15,13 @@ import {
   SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
 import Reserva from "../pages/home/Reserva";
-import Gallery from "react-grid-gallery";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+// import Gallery from "react-grid-gallery";
+// import Lightbox from "yet-another-react-lightbox";
+// import "yet-another-react-lightbox/styles.css";
+// import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+// import "yet-another-react-lightbox/plugins/thumbnails.css";
+// import Zoom from "yet-another-react-lightbox/plugins/zoom";
+// import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 
 function DetallesProducto() {
   const { id } = useParams();
@@ -97,7 +97,7 @@ function DetallesProducto() {
 
           {/* Carrusel */}
 
-          <div className="carrusel">
+          {/* <div className="carrusel">
             <div
               style={{
                 display: "block",
@@ -125,7 +125,7 @@ function DetallesProducto() {
                 maxZoomPixelRatio: 3,
               }}
             />
-          </div>
+          </div> */}
 
           {/* Bloque Descripcion */}
 
