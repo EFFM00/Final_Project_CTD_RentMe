@@ -5,10 +5,12 @@ import com.booking.dh.model.Product;
 import com.booking.dh.service.BookingService;
 import com.booking.dh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -35,6 +37,11 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<Product>> productList(){
         return ResponseEntity.ok(productService.randomProductList());
+    }
+
+    @GetMapping("/city-dates/{id}/{startDate}/{endDate}")
+    public ResponseEntity<List<Product>> findProductByCityAndDates(@PathVariable Long id, @PathVariable("startDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, @PathVariable("endDate") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ) {
+        return ResponseEntity.ok(productService.findByCityAndDates(id, startDate, endDate));
     }
 
     @PutMapping("/update")
