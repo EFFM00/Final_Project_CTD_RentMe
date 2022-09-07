@@ -66,8 +66,19 @@ function Buscador() {
     }));
 
     const minDate = new Date();
-    const startDateVar = formatDate(dateValue[0]);
-    const endDateVar = formatDate(dateValue[1]);
+    const startDateVar = () => {
+        if (conFecha === false) {
+            return "";
+        }
+        return formatDate(dateValue[0]).toString();
+    };
+
+    const endDateVar = () => {
+        if (conFecha === false) {
+            return "";
+        }
+        return formatDate(dateValue[1]).toString();
+    };
 
     useEffect(() => {
         getCities({ setCities });
@@ -80,24 +91,14 @@ function Buscador() {
         window.addEventListener("resize", () => responsive());
     }, []);
 
-    const sinCiudadDecidida = () => {
-      setConCiudad(!conCiudad)
-      console.log(conCiudad)
+    const cambiarDecisionCiudad = () => {
+        setConCiudad(!conCiudad);
     };
+
     const sinFechaDecidida = () => {
-      setConFecha(!conFecha)
-      console.log(conFecha)
+        setConFecha(!conFecha);
+        console.log(conFecha);
     };
-
-    const busquedaSinCiudad = () => {
-      if(!conCiudad){
-        setCityValue("");
-        console.log("Ciudad: " + cityValue, "Estado: " + conCiudad);
-      }
-    }
-
-
-
 
     const handleSelectChange = (event) => {
         console.log(event.value, cityValue);
@@ -106,8 +107,8 @@ function Buscador() {
 
     let objSearch = {
         city: cityValue,
-        startDate: startDateVar,
-        endDate: endDateVar,
+        startDate: startDateVar(),
+        endDate: endDateVar(),
     };
 
     return (
@@ -123,50 +124,63 @@ function Buscador() {
                     <LocationOnIconStyle />
                     <SelectStyle
                         value={optionsCity.filter(function (option) {
-                          return option.value === cityValue;
+                            return option.value === cityValue || "";
                         })}
                         onChange={handleSelectChange}
                         options={optionsCity}
                         //placeholder="¿A donde vamos?"
                         isDisabled={!conCiudad}
                     />
-                    {busquedaSinCiudad}
                 </Section>
-                <div>
-                  <input type="checkbox" id="buscarCiudad" value={conCiudad} onChange={sinCiudadDecidida}/>
-                  <label htmlFor="buscarCiudad">Aún no he decidido mi destino</label>
+                <div onClick={() => setCityValue("")}>
+                    <input
+                        type="checkbox"
+                        id="buscarCiudad"
+                        value={conCiudad}
+                        onChange={cambiarDecisionCiudad}
+                    />
+                    <label htmlFor="buscarCiudad">
+                        Aún no he decidido mi destino
+                    </label>
                 </div>
 
-
-                <Section onClick={() => setShowCalendar(!showCalendar)} disabled={true}>
+                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
                     <EventIconStyle />
-                    <label htmlFor="startDate" disabled={true}>Ida</label>
+                    <label htmlFor="startDate" disabled={true}>
+                        Ida
+                    </label>
                     <InputStyle
                         type="text"
                         name="startDate"
-                        value={startDateVar}
+                        value={formatDate(dateValue[0])}
                         placeholder="Ida"
                         onChange={(value) => setDateValue(value)}
                         readOnly
-                        disabled={true}
                     />
                 </Section>
 
-                <Section onClick={() => setShowCalendar(!showCalendar)}>
+                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
                     <EventIconStyle />
                     <label htmlFor="endDate">Vuelta</label>
                     <InputStyle
                         type="text"
                         name="endDate"
-                        value={endDateVar}
+                        value={formatDate(dateValue[1])}
                         placeholder="Vuelta"
                         onChange={(value) => setDateValue(value)}
                         readOnly
                     />
                 </Section>
                 <div>
-                  <input type="checkbox" id="buscarFecha" value={conFecha} onChange={sinFechaDecidida}/>
-                  <label htmlFor="buscarFecha">Aún no he decidido  mis fechas</label>
+                    <input
+                        type="checkbox"
+                        id="buscarFecha"
+                        value={conFecha}
+                        onChange={sinFechaDecidida}
+                    />
+                    <label htmlFor="buscarFecha">
+                        Aún no he decidido mis fechas
+                    </label>
                 </div>
 
                 <Contenedor
