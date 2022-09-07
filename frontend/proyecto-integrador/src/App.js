@@ -10,19 +10,13 @@ import SignIn from "./pages/login/SignIn";
 import { useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes/ProtectedRoutes";
 import DetallesProducto from "./components/DetallesProducto";
-// import { register } from "./services/User"
 
 
 function App() {
   const [showBtnRegister, setShowBtnRegister] = useState(true);
   const [showBtnSignIn, setShowBtnSignIn] = useState(true);
-  // const [ user, setUser ] = useState(null);
-
+ 
   
-  // const signInProps = {
-  //   user,
-  //   setUser
-  // };
 
   return (
     <BrowserRouter>

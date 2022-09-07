@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { register } from "../../services/User"
 import { api } from "../../services/api/api";
 
 
@@ -23,24 +22,25 @@ function SignUp() {
       name: "",
       lastName: "",
       email: "",
-      passwordr: "",
-      passwordrd: ""
+      password: "",
+      city: 1,
+      role: 1
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Campo Requerido"),
       lastName: Yup.string().required("Campo Requerido"),
       email: Yup.string().email("Ingresar email valido").required("Campo Requerido"),
-      passwordr: Yup.string()
+      password: Yup.string()
       .min(6, "La contraseña debe tener al menos 6 caracteres")
       .required("Campo Obligatorio")
       .matches(
         /^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{6,}$/,
         "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial"
       ),
-      passwordrd: Yup.string()
+      password2: Yup.string()
       .min(6, "La contraseña debe tener al menos 6 caracteres")
       .required("Campo Obligatorio")
-      .oneOf([Yup.ref('passwordr'), null], "La constraseña no coincide")
+      .oneOf([Yup.ref('password'), null], "La constraseña no coincide")
       .matches(
         /^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{6,}$/,
         "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial"
@@ -55,23 +55,22 @@ function SignUp() {
   });
 
   const handleRegistration = async (values) => {
-    try {
-      let config = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      }
-
-      let resp = await api.post("/auth/register", config)
-      let json = await resp.json()
-
-      console.log(json)
-    } catch {
-
+    const userData = {
+      name: values.name,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+      city: {id: values.city},
+      role: {id: values.role}
     }
+
+    const resp = await api.post("/auth/register", JSON.stringify (userData),
+    {
+      headers: {'Content-Type': 'application/json'}
+    }
+    )
+
+    console.log(resp)
   };
 
   return (
@@ -138,11 +137,11 @@ function SignUp() {
             <div>
               <input
                 type={showPassword ? "text" : "password"}
-                name='passwordr'
+                name='password'
                 onChange={formik.handleChange}
-                value={formik.values.passwordr}
+                value={formik.values.password}
               />
-              { formik.errors.passwordr && <p className="msg-error">{formik.errors.passwordr}</p>}
+              { formik.errors.password && <p className="msg-error">{formik.errors.password}</p>}
               {
                 showPassword === false ?
                 <VisibilityOffIcon className="visibility" onClick={() => {setShowPassword(!showPassword)} }/> : 
@@ -158,11 +157,11 @@ function SignUp() {
             <div>
               <input
                 type="password"
-                name='passwordrd'
+                name='password2'
                 onChange={formik.handleChange}
-                value={formik.values.passwordrd}
+                value={formik.values.password2}
               />
-              { formik.errors.passwordrd && <p className="msg-error">{formik.errors.passwordrd}</p>}
+              { formik.errors.password2 && <p className="msg-error">{formik.errors.password2}</p>}
             </div>
           </div>
 
