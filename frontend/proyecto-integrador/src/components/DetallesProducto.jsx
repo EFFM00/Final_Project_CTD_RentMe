@@ -15,7 +15,7 @@ import {
   SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
 import Reserva from "../pages/home/Reserva";
-import Gallery from "react-grid-gallery";
+// import Gallery from "react-grid-gallery";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -107,12 +107,12 @@ function DetallesProducto() {
                 overflow: "auto",
               }}
             >
-              <Gallery
+              {/* <Gallery
                 enableLightbox={false}
                 enableImageSelection={false}
                 images={images}
                 onClickThumbnail={(index) => setIndex(index)}
-              />
+              /> */}
             </div>
             <Lightbox
               open={index >= 0}
