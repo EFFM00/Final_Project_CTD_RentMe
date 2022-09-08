@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +23,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class BookingUser implements UserDetails {
+public class BookingUser implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,48 +39,35 @@ public class BookingUser implements UserDetails {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "city_id", nullable = false)
+    @JoinColumn(name = "city_id")
+    @Nullable
     private City city;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"bookingUser"})
     @OneToMany(mappedBy = "bookingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
 
     public BookingUser() {
     }
 
-    public BookingUser(String name, String email, String password, Role role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
 
-    public BookingUser(String name, String lastName, String email, String password, City city) {
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
-
-    public BookingUser(String name, String lastName, String email, String password, City city, Role role, Set<Booking> bookings) {
+    public BookingUser(String name, String lastName, String email, String password, @Nullable City city, Role role) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.city = city;
         this.role = role;
-        this.bookings = bookings;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.getName().name());
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.getName());
         return Collections.singletonList(simpleGrantedAuthority);
     }
 

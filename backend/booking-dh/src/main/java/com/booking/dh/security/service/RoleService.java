@@ -1,7 +1,7 @@
 package com.booking.dh.security.service;
 
 import com.booking.dh.security.model.Role;
-import com.booking.dh.security.repository.RoleRepository;
+import com.booking.dh.security.model.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

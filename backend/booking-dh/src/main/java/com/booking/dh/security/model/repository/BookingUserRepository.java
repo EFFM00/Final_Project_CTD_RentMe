@@ -1,4 +1,4 @@
-package com.booking.dh.security.repository;
+package com.booking.dh.security.model.repository;
 
 import com.booking.dh.security.model.BookingUser;
 import org.springframework.data.jpa.repository.JpaRepository;

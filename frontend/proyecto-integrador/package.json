@@ -23,6 +23,7 @@
     "react-select": "^5.4.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
+    "yet-another-react-lightbox": "^2.1.0",
     "yup": "^0.32.11"
   },
   "scripts": {

@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -27,8 +26,22 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     @Autowired
     private BookingUserService bookingUserService;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private JwtFilterRequest jwtFilterRequest;
+
+    @Autowired
+    private JwtEntryPoint jwtEntryPoint;
+
     @Bean
     public PasswordEncoder passwordEncoder() {return new BCryptPasswordEncoder();}
+
+    @Override
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.userDetailsService(bookingUserService).passwordEncoder(passwordEncoder());
+    }
 
     @Bean
     @Override
@@ -41,13 +54,13 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
     }
 
+    /*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(bookingUserService);
     }
 
-    @Autowired
-    private JwtFilterRequest jwtFilterRequest;
+     */
 
     /*
     @Override
@@ -72,13 +85,16 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/products/**").permitAll()
+                .antMatchers("/bookings/**").permitAll()
                 .antMatchers("/categories/**").permitAll()
                 .antMatchers("/cities/**").permitAll()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/booking/add").hasAuthority("client")
+                .antMatchers(HttpMethod.POST, "/bookings/add").hasAuthority("client")
+                .antMatchers(HttpMethod.GET, "/bookings").hasAuthority("admin")
+                .anyRequest().permitAll()
                 .and()
-                //.exceptionHandling().authenticationEntryPoint(¡tokenEntryPoint)
-                //.and()
+                .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
