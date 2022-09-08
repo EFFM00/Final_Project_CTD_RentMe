@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -17,7 +19,19 @@ public class BookingController {
     BookingService bookingService;
 
     @PostMapping("/add")
-    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
+    public ResponseEntity<?> createBooking(@RequestBody Booking booking) {
+        if (booking.getCheckOutDate().isBefore(booking.getCheckInDate())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Check-out date cannot be earlier than check-in date.");
+        }
+        if (booking.getCheckInDate().isBefore(LocalDate.now())){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Check-in date cannot be earlier than today.");
+        }
+        Collection<Booking> notAvailable = bookingService.findNotAvailable(booking.getCheckInDate(), booking.getCheckOutDate());
+        for (Booking notAvailableBooking: notAvailable) {
+            if (notAvailableBooking.getProduct().getId() == booking.getProduct().getId()){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("This product is not available between selected dates.");
+            }
+        }
         return ResponseEntity.ok(bookingService.saveBooking(booking));
     }
 

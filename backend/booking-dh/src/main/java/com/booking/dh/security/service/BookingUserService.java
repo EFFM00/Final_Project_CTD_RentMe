@@ -1,9 +1,7 @@
 package com.booking.dh.security.service;
 
-import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.BookingUser;
-import com.booking.dh.security.model.Role;
-import com.booking.dh.security.repository.BookingUserRepository;
+import com.booking.dh.security.model.repository.BookingUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookingUserService implements UserDetailsService {
+public class BookingUserService implements UserDetailsService{
 
     @Autowired
     BookingUserRepository bookingUserRepository;
@@ -47,15 +45,12 @@ public class BookingUserService implements UserDetailsService {
         return bookingUserRepository.existsByEmail(email);
     }
 
-    /*
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return bookingUserRepository.findByEmail(email).orElseThrow((() -> new UsernameNotFoundException("user email not found")));
+    public Optional<BookingUser> findByEmail(String email) {
+        return bookingUserRepository.findByEmail(email);
     }
-     */
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return new BookingUser("elena", "elena@gmail.com", "{noop}password", new Role(RoleName.admin));
+        return bookingUserRepository.findByEmail(email).orElseThrow((() -> new UsernameNotFoundException("user email not found")));
     }
 }
