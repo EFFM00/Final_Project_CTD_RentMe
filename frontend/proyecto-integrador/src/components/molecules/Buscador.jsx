@@ -66,7 +66,7 @@ function Buscador({setDataFilterProd, setClickProd}) {
     const [conFecha, setConFecha] = useState(true);
     const [conCiudad, setConCiudad] = useState(true);
 
-    const [dataApiProducts, setDataApiProducts] = useState([]);
+    //const [dataApiProducts, setDataApiProducts] = useState([]);
 
     const optionsCity = cities.map((city) => ({
         label: city.name,
@@ -128,7 +128,7 @@ function Buscador({setDataFilterProd, setClickProd}) {
             startDateApi,
             endDateApi
         });
-        setDataApiProducts(resp);
+        //setDataApiProducts(resp);
         setDataFilterProd(resp);
         //console.log(resp, "RESP");
         //console.log(dataApiProducts, "DATAAPIPRODUCTS");
