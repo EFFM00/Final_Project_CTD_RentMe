@@ -146,6 +146,7 @@
 .listaCaracteristicas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  list-style: none;
 }
 
 .itemCaracteristica {
@@ -157,13 +158,13 @@
 }
 
 @media screen and (max-width: 778px) {
-  .BloqueDeCaracteristicas {
+  .listaCaracteristicas {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 425px) {
-  .BloqueDeCaracteristicas {
+  .listaCaracteristicas {
     grid-template-columns: repeat(1, 1fr);
     margin-bottom: 90px;
   }
@@ -196,11 +197,13 @@
 .listaPoliticas {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  gap: 15px;
 }
 
-.itemPolitica {
+/* .itemPolitica {
   
-}
+} */
 
 .textoP {
   padding-top: 20px;
@@ -208,13 +211,13 @@
 }
 
 @media screen and (max-width: 778px) {
-  .BloqueDePoliticas {
+  .listaPoliticas {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 425px) {
-  .BloqueDePoliticas {
+  .listaPoliticas {
     grid-template-columns: repeat(1, 1fr);
   }
 }
