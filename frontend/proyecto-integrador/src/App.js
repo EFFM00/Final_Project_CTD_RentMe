@@ -16,15 +16,8 @@ import ReservaExitosa from "./components/ReservaExitosa";
 function App() {
   const [showBtnRegister, setShowBtnRegister] = useState(true);
   const [showBtnSignIn, setShowBtnSignIn] = useState(true);
-  const [ user, setUser ] = useState(null);
-
-  const handleRegistration = (values) => {
-    setUser({ email: values.email, passwordr: values.passwordr })
-  };
-  const signInProps = {
-    user,
-    setUser
-  };
+ 
+  
 
   return (
     <BrowserRouter>
@@ -35,13 +28,11 @@ function App() {
           setShowBtnRegister={setShowBtnRegister}
           showBtnSignIn={showBtnSignIn}
           setShowBtnSignIn={setShowBtnSignIn}
-          user={user}
-          setUser={setUser}
         />
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/sign-up" element={<SignUp showValues={handleRegistration}/>}/>
-          <Route path="/sign-in" element={<SignIn {...signInProps}/>}/>
+          <Route path="/sign-up" element={<SignUp/>}/>
+          <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
           <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
