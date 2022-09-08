@@ -111,27 +111,30 @@ function Buscador() {
         setCityValue(event.value);
     };
 
-    let objSearch = {
-        city: cityValue,
-        startDate: startDateVar(),
-        endDate: endDateVar(),
-    };
+    // let objSearch = {
+    //     city: cityValue,
+    //     startDate: startDateVar(),
+    //     endDate: endDateVar(),
+    // };
 
-    let cityApi = objSearch.city;
-    let startDateApi = objSearch.startDate;
-    let endDateApi = objSearch.endDate;
+    let cityApi = cityValue;
+    let startDateApi = startDateVar();
+    let endDateApi = endDateVar();
 
     // LLAMADO API GET
     const getProdApi = async () => {
-        const resp = await getProductByCityOrDates({cityApi, startDateApi, endDateApi});
+        const resp = await getProductByCityOrDates({
+            cityApi,
+            startDateApi,
+            endDateApi
+        });
         setDataApiProducts(resp);
-        // console.log(resp);
-        // console.log(dataApiProducts);
+        // console.log(resp, "RESP");
+        console.log(dataApiProducts, "DATAAPIPRODUCTS");
     };
 
     useEffect(() => {
-        getProdApi();
-    }, []);
+    }, [cityApi, startDateApi, endDateApi]);
 
     const enviarDatos = (event) => {
         event.preventDefault();
@@ -143,7 +146,11 @@ function Buscador() {
         <BuscadorStyle>
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
 
-            <form onSubmit={enviarDatos} id="enviarElementosGet" style={{width: '100%'}}>
+            <form
+                onSubmit={enviarDatos}
+                id="enviarElementosGet"
+                style={{ width: "100%" }}
+            >
                 <Formulario>
                     <Section>
                         <LocationOnIconStyle />
