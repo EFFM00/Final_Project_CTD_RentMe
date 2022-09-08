@@ -27,8 +27,6 @@ function App() {
           setShowBtnRegister={setShowBtnRegister}
           showBtnSignIn={showBtnSignIn}
           setShowBtnSignIn={setShowBtnSignIn}
-          // user={user}
-          // setUser={setUser}
         />
         <Routes>
           <Route path="/" element={<Home/>}/>

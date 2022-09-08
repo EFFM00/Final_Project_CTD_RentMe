@@ -50,7 +50,6 @@ function SignUp() {
     validateOnBlur: false,
     onSubmit(values){
       handleRegistration(values);
-      navigate("/sign-in");
     }
   });
 
@@ -64,13 +63,23 @@ function SignUp() {
       role: {id: values.role}
     }
 
-    const resp = await api.post("/auth/register", JSON.stringify (userData),
-    {
-      headers: {'Content-Type': 'application/json'}
-    }
-    )
+    try{
+      const resp = await api.post("/auth/register", JSON.stringify (userData),
+      {
+        headers: {'Content-Type': 'application/json'}
+      }
+      )
 
-    console.log(resp)
+      if(resp.status === 200) {
+        alert("El email ya existe")
+      } else if(resp.status === 201) {
+        navigate("/sign-in");
+      }
+      
+    } catch (error) {
+      alert("Lamentablemente no ha podido registrarse. Por favor intente más tarde")
+    }
+
   };
 
   return (
