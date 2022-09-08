@@ -16,8 +16,6 @@ function App() {
   const [showBtnRegister, setShowBtnRegister] = useState(true);
   const [showBtnSignIn, setShowBtnSignIn] = useState(true);
  
-  
-
   return (
     <BrowserRouter>
       <GlobalStyle />
