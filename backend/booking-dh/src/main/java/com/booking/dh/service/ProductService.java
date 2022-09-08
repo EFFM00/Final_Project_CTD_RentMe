@@ -5,6 +5,7 @@ import com.booking.dh.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -53,5 +54,15 @@ public class ProductService {
         List<Product> list = productRepository.findAll();
         Collections.shuffle(list);
         return list;
+    }
+
+    public List<Product> findByCityAndDates(Long id, LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
+        List<Product> productsList = productRepository.findProductsByCityAndDates(id, wantedCheckInDate, wantedCheckOutDate);
+        return productsList;
+    }
+
+    public List<Product> findByDates(LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
+        List<Product> productsList = productRepository.findProductsByDates(wantedCheckInDate, wantedCheckOutDate);
+        return productsList;
     }
 }
