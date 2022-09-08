@@ -7,6 +7,7 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CalendarioReservas from "./molecules/CalendarioReservas";
+import ImageGallery from "./molecules/ImageGallery";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/Products";
 import Button from "./atoms/Button";
@@ -15,37 +16,27 @@ import {
   SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
 import Reserva from "../pages/home/Reserva";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 
 function DetallesProducto() {
   const { id } = useParams();
   const [dataProduct, setDataProduct] = useState([]);
   const [showReservation, setShowReservation] = useState(false);
   const [images, setImages] = useState([{ source: "", caption: "image" }]);
-  const [index, setIndex] = useState(-1);
-  const [imageCount, setImageCount] = useState(0);
-  
-
   // funcion para obtener los detalles de un solo producto por su id
   const getProd = async () => {
     const resp = await getProductById(id);
     setDataProduct(resp);
-
-    let img = resp.images.map((item) => {
+    const imageLength = resp.images.length;
+    let img = resp.images.map((item, index) => {
       return {
         src: item.url,
         thumbnail: item.url,
         thumbnailWidth: 320,
         thumbnailHeight: 174,
+        title: (index + 1)  + "/" + imageLength,
       };
     });
     setImages(img);
-    setImageCount(img.length - 2);
   };
 
   useEffect(() => {
@@ -98,33 +89,9 @@ function DetallesProducto() {
           </div>
 
           {/* Carrusel */}
-
-          <div className="image-gallery three-cols-gallery">
-            {dataProduct?.images?.map((img, index) => (
-              <div
-                className="gallery-item"
-                data-see-more={imageCount + "+ See more"}
-                onClick={() => setIndex(index)}
-              >
-                <img
-                  src={img.url}
-                  alt={img.title}
-                  className="gallery-item-image"
-                />
-              </div>
-            ))}
+          <div className="carrusel">
+            <ImageGallery images={images} />
           </div>
-          <Lightbox
-            open={index >= 0}
-            close={() => setIndex(-1)}
-            index={index}
-            carousel={2}
-            slides={images}
-            plugins={[Thumbnails, Zoom, Fullscreen]}
-            zoom={{
-              maxZoomPixelRatio: 3,
-            }}
-          />
 
           {/* Bloque Descripcion */}
 
