@@ -33,7 +33,7 @@ function App() {
           <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
-          <Route element={<ProtectedRoutes isLogged={user!=null}/>}>
+          <Route element={<ProtectedRoutes/>}>
             <Route path="/" element={<Home/>}/>
           </Route>
         </Routes>
