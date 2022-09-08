@@ -20,7 +20,7 @@ export const getProductsRandom = async ({setProductsRandom}) => {
   setProductsRandom(resp.data);
 }
 
-export const getProductByCityOrDates = async ({dataProducts}) => {
+export const getProductByCityOrDates = async (dataProducts) => {
   const resp = await api.get(`/products/city-dates?city_id=${dataProducts.city}&checkInDate=${dataProducts.startDate}&checkOutDate=${dataProducts.endDate}`);
 
   return resp.data;
