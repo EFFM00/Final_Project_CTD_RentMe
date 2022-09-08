@@ -23,6 +23,8 @@ function ListaBooking({idCat, tipoProd}) {
       return productosFiltrados;
     } else if(tipo === "productsRandom") {
       return productsRandom
+    } else if(tipo==="productsRandom") {
+      return ""
     }
   }
 

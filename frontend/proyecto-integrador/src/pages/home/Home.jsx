@@ -22,12 +22,19 @@ function Home() {
   return (
     <>
       <Buscador/>
+
       <ContenedorCategorias>
         <Text type="h1" color='secondary' text="Buscar por tipo de alojamiento"/>
         <GridCategorias>
           <ListaCategorias categoryData={categoryData} setCategoryData={setCategoryData} clickCat={clickCat} setClickCat={setClickCat} setTitleCat={setTitleCat} setIdCat={setIdCat}/>
         </GridCategorias>
       </ContenedorCategorias>
+
+{/* 
+      <div className='prodSearchedContainer'>
+      <ListaBooking tipoProd={"productsDateCity"}/>
+      </div> */}
+
 
       <div>
           <h3>{titleCat}</h3>

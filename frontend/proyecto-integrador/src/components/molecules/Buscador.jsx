@@ -15,7 +15,7 @@ import EventIcon from "@mui/icons-material/Event";
 import Calendar from "react-calendar";
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
-import { getCities } from "../../services/Cities";
+import { getCities, getProductByCityOrDates } from "../../services/Cities";
 // import { click } from "@testing-library/user-event/dist/click";
 
 function Buscador() {
@@ -59,6 +59,7 @@ function Buscador() {
     const [cityValue, setCityValue] = useState("");
     const [conFecha, setConFecha] = useState(true);
     const [conCiudad, setConCiudad] = useState(true);
+    const [dataProductsDateCity, setDataProductsDateCity] = useState([]);
 
     const optionsCity = cities.map((city) => ({
         label: city.name,
@@ -84,6 +85,8 @@ function Buscador() {
         getCities({ setCities });
     }, []);
 
+    
+    
     useEffect(() => {
         const responsive = () =>
             window.innerWidth >= 768 ? setTablet(true) : setTablet(false);
@@ -99,7 +102,7 @@ function Buscador() {
         setConFecha(!conFecha);
         console.log(conFecha);
     };
-
+    
     const handleSelectChange = (event) => {
         console.log(event.value, cityValue);
         setCityValue(event.value);
@@ -108,8 +111,30 @@ function Buscador() {
     let objSearch = {
         city: cityValue,
         startDate: startDateVar(),
-        endDate: endDateVar(),
+        endDate: endDateVar()
     };
+
+
+
+
+    const getProdByDateAndCity = async () => {
+        const resp = await getProdByDateAndCity(objSearch);
+        setDataProductsDateCity(resp);
+
+    }
+
+    useEffect(() => {
+        getProdByDateAndCity();
+    }, []);
+
+    
+
+
+
+
+
+
+
 
     return (
         <BuscadorStyle>
@@ -144,7 +169,13 @@ function Buscador() {
                     </label>
                 </div>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
+                <Section
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
                     <EventIconStyle />
                     <label htmlFor="startDate" disabled={true}>
                         Ida
@@ -159,7 +190,13 @@ function Buscador() {
                     />
                 </Section>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
+                <Section
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
                     <EventIconStyle />
                     <label htmlFor="endDate">Vuelta</label>
                     <InputStyle
@@ -214,7 +251,7 @@ function Buscador() {
                 </Contenedor>
                 <Button
                     text="Buscar"
-                    click={() => console.log(objSearch)}
+                    type="submit"
                     fullwidth
                 />
             </Formulario>
