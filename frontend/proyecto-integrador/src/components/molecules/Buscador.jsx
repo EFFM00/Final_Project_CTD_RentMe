@@ -16,9 +16,11 @@ import Calendar from "react-calendar";
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
+import { getProductByCityOrDates } from "../../services/Products";
+
 // import { click } from "@testing-library/user-event/dist/click";
 
-function Buscador() {
+function Buscador({setDataFilterProd, setClickProd}) {
     const LocationOnIconStyle = styled(LocationOnIcon)`
         color: ${({ theme }) => theme.tertiary};
     `;
@@ -52,6 +54,10 @@ function Buscador() {
         return dayjs(date).format("DD-MM-YYYY");
     };
 
+    const formatDateApi = (date) => {
+        return dayjs(date).format("YYYY-MM-DD");
+    };
+
     const [dateValue, setDateValue] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
     const [cities, setCities] = useState([]);
@@ -60,9 +66,11 @@ function Buscador() {
     const [conFecha, setConFecha] = useState(true);
     const [conCiudad, setConCiudad] = useState(true);
 
+    const [dataApiProducts, setDataApiProducts] = useState([]);
+
     const optionsCity = cities.map((city) => ({
         label: city.name,
-        value: city.name,
+        value: city.id,
     }));
 
     const minDate = new Date();
@@ -70,14 +78,14 @@ function Buscador() {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[0]).toString();
+        return formatDateApi(dateValue[0]).toString();
     };
 
     const endDateVar = () => {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[1]).toString();
+        return formatDateApi(dateValue[1]).toString();
     };
 
     useEffect(() => {
@@ -97,127 +105,169 @@ function Buscador() {
 
     const sinFechaDecidida = () => {
         setConFecha(!conFecha);
-        console.log(conFecha);
     };
 
     const handleSelectChange = (event) => {
-        console.log(event.value, cityValue);
         setCityValue(event.value);
     };
 
-    let objSearch = {
-        city: cityValue,
-        startDate: startDateVar(),
-        endDate: endDateVar(),
+    // let objSearch = {
+    //     city: cityValue,
+    //     startDate: startDateVar(),
+    //     endDate: endDateVar(),
+    // };
+
+    let cityApi = cityValue;
+    let startDateApi = startDateVar();
+    let endDateApi = endDateVar();
+
+    // LLAMADO API GET
+    const getProdApi = async () => {
+        const resp = await getProductByCityOrDates({
+            cityApi,
+            startDateApi,
+            endDateApi
+        });
+        setDataApiProducts(resp);
+        setDataFilterProd(resp);
+        //console.log(resp, "RESP");
+        //console.log(dataApiProducts, "DATAAPIPRODUCTS");
+    };
+
+    useEffect(() => {
+    }, [cityApi, startDateApi, endDateApi]);
+
+    const enviarDatos = (event) => {
+        event.preventDefault();
+        getProdApi();
+        setClickProd(true);
+        //console.log(objSearch, "OBJ");
+        //console.log(dataApiProducts, "ENVIAR DATOS");
     };
 
     return (
         <BuscadorStyle>
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
 
-            <Formulario
-                onSubmit={(ev) => {
-                    ev.preventDefault();
-                }}
+            <form
+                onSubmit={enviarDatos}
+                id="enviarElementosGet"
+                style={{ width: "100%" }}
             >
-                <Section>
-                    <LocationOnIconStyle />
-                    <SelectStyle
-                        value={optionsCity.filter(function (option) {
-                            return option.value === cityValue || "";
-                        })}
-                        onChange={handleSelectChange}
-                        options={optionsCity}
-                        //placeholder="¿A donde vamos?"
-                        isDisabled={!conCiudad}
-                    />
-                </Section>
-                <div onClick={() => setCityValue("")}>
-                    <input
-                        type="checkbox"
-                        id="buscarCiudad"
-                        value={conCiudad}
-                        onChange={cambiarDecisionCiudad}
-                    />
-                    <label htmlFor="buscarCiudad">
-                        Aún no he decidido mi destino
-                    </label>
-                </div>
+                <Formulario>
+                    <Section>
+                        <LocationOnIconStyle />
+                        <SelectStyle
+                            value={optionsCity.filter(function (option) {
+                                return option.value === cityValue || "";
+                            })}
+                            onChange={handleSelectChange}
+                            options={optionsCity}
+                            //placeholder="¿A donde vamos?"
+                            isDisabled={!conCiudad}
+                        />
+                    </Section>
+                    <div onClick={() => setCityValue("")}>
+                        <input
+                            type="checkbox"
+                            id="buscarCiudad"
+                            value={conCiudad}
+                            onChange={cambiarDecisionCiudad}
+                        />
+                        <label htmlFor="buscarCiudad">
+                            Aún no he decidido mi destino
+                        </label>
+                    </div>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
-                    <EventIconStyle />
-                    <label htmlFor="startDate" disabled={true}>
-                        Ida
-                    </label>
-                    <InputStyle
-                        type="text"
-                        name="startDate"
-                        value={formatDate(dateValue[0])}
-                        placeholder="Ida"
-                        onChange={(value) => setDateValue(value)}
-                        readOnly
-                    />
-                </Section>
+                    <Section
+                        onClick={() =>
+                            conFecha === true
+                                ? setShowCalendar(!showCalendar)
+                                : setShowCalendar(false)
+                        }
+                    >
+                        <EventIconStyle />
+                        <label htmlFor="startDate" disabled={true}>
+                            Ida
+                        </label>
+                        <InputStyle
+                            type="text"
+                            name="startDate"
+                            value={formatDate(dateValue[0])}
+                            placeholder="Ida"
+                            onChange={(value) => setDateValue(value)}
+                            readOnly
+                        />
+                    </Section>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
-                    <EventIconStyle />
-                    <label htmlFor="endDate">Vuelta</label>
-                    <InputStyle
-                        type="text"
-                        name="endDate"
-                        value={formatDate(dateValue[1])}
-                        placeholder="Vuelta"
-                        onChange={(value) => setDateValue(value)}
-                        readOnly
-                    />
-                </Section>
-                <div>
-                    <input
-                        type="checkbox"
-                        id="buscarFecha"
-                        value={conFecha}
-                        onChange={sinFechaDecidida}
-                    />
-                    <label htmlFor="buscarFecha">
-                        Aún no he decidido mis fechas
-                    </label>
-                </div>
+                    <Section
+                        onClick={() =>
+                            conFecha === true
+                                ? setShowCalendar(!showCalendar)
+                                : setShowCalendar(false)
+                        }
+                    >
+                        <EventIconStyle />
+                        <label htmlFor="endDate">Vuelta</label>
+                        <InputStyle
+                            type="text"
+                            name="endDate"
+                            value={formatDate(dateValue[1])}
+                            placeholder="Vuelta"
+                            onChange={(value) => setDateValue(value)}
+                            readOnly
+                        />
+                    </Section>
+                    <div>
+                        <input
+                            type="checkbox"
+                            id="buscarFecha"
+                            value={conFecha}
+                            onChange={sinFechaDecidida}
+                        />
+                        <label htmlFor="buscarFecha">
+                            Aún no he decidido mis fechas
+                        </label>
+                    </div>
 
-                <Contenedor
-                    showCalendar={showCalendar}
-                    setShowCalendar={setShowCalendar}
-                >
-                    <ContainerCalendar>
-                        {tablet ? (
-                            <CalendarStyle
-                                showDoubleView={true}
-                                selectRange={true}
-                                minDate={minDate}
-                                onChange={(value) => setDateValue(value)}
-                                value={dateValue}
-                            />
-                        ) : (
-                            <CalendarStyle
-                                showDoubleView={false}
-                                selectRange={true}
-                                minDate={minDate}
-                                onChange={(value) => setDateValue(value)}
-                                value={dateValue}
-                            />
-                        )}
-                    </ContainerCalendar>
+                    <Contenedor
+                        showCalendar={showCalendar}
+                        setShowCalendar={setShowCalendar}
+                    >
+                        <ContainerCalendar>
+                            {tablet ? (
+                                <CalendarStyle
+                                    showDoubleView={true}
+                                    selectRange={true}
+                                    minDate={minDate}
+                                    onChange={(value) => setDateValue(value)}
+                                    value={dateValue}
+                                />
+                            ) : (
+                                <CalendarStyle
+                                    showDoubleView={false}
+                                    selectRange={true}
+                                    minDate={minDate}
+                                    onChange={(value) => setDateValue(value)}
+                                    value={dateValue}
+                                />
+                            )}
+                        </ContainerCalendar>
+                        <Button
+                            text="Cerrar calendario"
+                            click={() => setShowCalendar(!showCalendar)}
+                            fullwidth
+                        />
+                    </Contenedor>
                     <Button
-                        text="Cerrar calendario"
-                        click={() => setShowCalendar(!showCalendar)}
+                        text="Buscar"
+                        type="submit"
+                        value="Submit"
+                        form="enviarElementosGet"
                         fullwidth
                     />
-                </Contenedor>
-                <Button
-                    text="Buscar"
-                    click={() => console.log(objSearch)}
-                    fullwidth
-                />
-            </Formulario>
+                </Formulario>
+            </form>
         </BuscadorStyle>
     );
 }

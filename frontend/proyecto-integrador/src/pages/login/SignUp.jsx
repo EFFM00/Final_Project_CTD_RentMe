@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
