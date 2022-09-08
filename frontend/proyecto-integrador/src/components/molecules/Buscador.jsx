@@ -54,6 +54,10 @@ function Buscador() {
         return dayjs(date).format("DD-MM-YYYY");
     };
 
+    const formatDateApi = (date) => {
+        return dayjs(date).format("YYYY-MM-DD");
+    };
+
     const [dateValue, setDateValue] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
     const [cities, setCities] = useState([]);
@@ -74,14 +78,14 @@ function Buscador() {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[0]).toString();
+        return formatDateApi(dateValue[0]).toString();
     };
 
     const endDateVar = () => {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[1]).toString();
+        return formatDateApi(dateValue[1]).toString();
     };
 
     useEffect(() => {
@@ -113,29 +117,33 @@ function Buscador() {
         endDate: endDateVar(),
     };
 
+    let cityApi = objSearch.city;
+    let startDateApi = objSearch.startDate;
+    let endDateApi = objSearch.endDate;
+
     // LLAMADO API GET
     const getProdApi = async () => {
-        const resp = await getProductByCityOrDates(objSearch);
+        const resp = await getProductByCityOrDates({cityApi, startDateApi, endDateApi});
         setDataApiProducts(resp);
-        console.log(resp);
-        console.log(dataApiProducts);
+        // console.log(resp);
+        // console.log(dataApiProducts);
     };
 
     useEffect(() => {
         getProdApi();
-    });
+    }, []);
 
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
-        console.log(objSearch, "OBJ");
+        //console.log(objSearch, "OBJ");
     };
 
     return (
         <BuscadorStyle>
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
 
-            <form onSubmit={enviarDatos} id="enviarElementosGet">
+            <form onSubmit={enviarDatos} id="enviarElementosGet" style={{width: '100%'}}>
                 <Formulario>
                     <Section>
                         <LocationOnIconStyle />

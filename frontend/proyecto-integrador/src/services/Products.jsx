@@ -12,6 +12,7 @@ export const getProducts = async ({setProducts}) => {
 export const getProductById = async (productId) => {
   const resp = await api.get(`/products/${productId}`);
 
+  console.log(resp.data);
   return resp.data;
 }
 
@@ -20,8 +21,8 @@ export const getProductsRandom = async ({setProductsRandom}) => {
   setProductsRandom(resp.data);
 }
 
-export const getProductByCityOrDates = async (dataProducts) => {
-  const resp = await api.get(`/products/city-dates?city_id=${dataProducts.city}&checkInDate=${dataProducts.startDate}&checkOutDate=${dataProducts.endDate}`);
+export const getProductByCityOrDates = async ({cityApi, startDateApi, endDateApi}) => {
+  const resp = await api.get(`/products/city-dates?city_id=${cityApi}&checkInDate=${startDateApi}&checkOutDate=${endDateApi}`);
 
   return resp.data;
 }
