@@ -2,10 +2,7 @@ package com.booking.dh.security.controller;
 
 import com.booking.dh.security.JWTUtil;
 import com.booking.dh.security.enums.RoleName;
-import com.booking.dh.security.model.AuthenticationRequest;
-import com.booking.dh.security.model.AuthenticationResponse;
-import com.booking.dh.security.model.BookingUser;
-import com.booking.dh.security.model.Role;
+import com.booking.dh.security.model.*;
 import com.booking.dh.security.service.BookingUserService;
 import com.booking.dh.security.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -56,26 +56,19 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User successfully created");
     }
 
-    /*
     @PostMapping(path = "/login")
-    public ResponseEntity<?> loginUser(@RequestBody BookingUser loginBookingUser){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginBookingUser.getEmail(), loginBookingUser.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token =  "token" /*inserte aquí su método de creación de token;
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return new ResponseEntity(HttpStatus.OK);
-    }
-    */
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody AuthenticationRequest request) {
+        Map<String, Object> response = new HashMap<>();
 
-    @PostMapping(path = "/login")
-    public ResponseEntity<String> loginUser(@RequestBody AuthenticationRequest request) {
         try {
             Authentication a =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(a);
             UserDetails userDetails = bookingUserService.loadUserByUsername(request.getEmail());
             String jwt = jwtUtil.generateToken(a,userDetails);
+            JwtContainer jwtContainer = new JwtContainer(jwt, "Bearer", userDetails.getUsername(), userDetails.getAuthorities());
+            response.put("respuesta", jwtContainer);
             //user = (Optional<BookingUser>) authentication.getPrincipal();
-            return ResponseEntity.ok(jwt);
+            return ResponseEntity.ok(response);
 
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
