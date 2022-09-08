@@ -57,7 +57,12 @@ public class ProductService {
     }
 
     public List<Product> findByCityAndDates(Long id, LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
-        List<Product> productsList = productRepository.findProductByCityAndDates(id, wantedCheckInDate, wantedCheckOutDate);
+        List<Product> productsList = productRepository.findProductsByCityAndDates(id, wantedCheckInDate, wantedCheckOutDate);
+        return productsList;
+    }
+
+    public List<Product> findByDates(LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
+        List<Product> productsList = productRepository.findProductsByDates(wantedCheckInDate, wantedCheckOutDate);
         return productsList;
     }
 }
