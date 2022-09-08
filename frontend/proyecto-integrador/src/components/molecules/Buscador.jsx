@@ -20,7 +20,7 @@ import { getProductByCityOrDates } from "../../services/Products";
 
 // import { click } from "@testing-library/user-event/dist/click";
 
-function Buscador() {
+function Buscador({setDataFilterProd, setClickProd}) {
     const LocationOnIconStyle = styled(LocationOnIcon)`
         color: ${({ theme }) => theme.tertiary};
     `;
@@ -129,8 +129,9 @@ function Buscador() {
             endDateApi
         });
         setDataApiProducts(resp);
-        // console.log(resp, "RESP");
-        console.log(dataApiProducts, "DATAAPIPRODUCTS");
+        setDataFilterProd(resp);
+        //console.log(resp, "RESP");
+        //console.log(dataApiProducts, "DATAAPIPRODUCTS");
     };
 
     useEffect(() => {
@@ -139,7 +140,9 @@ function Buscador() {
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
+        setClickProd(true);
         //console.log(objSearch, "OBJ");
+        //console.log(dataApiProducts, "ENVIAR DATOS");
     };
 
     return (
