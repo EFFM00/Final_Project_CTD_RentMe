@@ -1,11 +1,12 @@
 import React from "react";
-import { Contenedor, IconoMenu } from "../styles/HeaderStyle";
+import { CloseIconStyle, Contenedor, IconoMenu, Navegador } from "../styles/HeaderStyle";
 import { useState } from "react";
 import logo from "../assets/logo-db.png";
 import iconoMenu from "../assets/menú.svg";
 import MenuMobile from "./molecules/MenuMobile";
 import Menu from "./molecules/Menu";
 import { useNavigate } from "react-router-dom";
+import NuevoMenu from "./molecules/NuevoMenu";
 
 function Header({
   showBtnSignIn,
@@ -32,9 +33,13 @@ function Header({
       <IconoMenu onClick={() => setShowMenu(!showMenu)}>
         <img src={iconoMenu} alt={"img_alt"}/>
       </IconoMenu>
-      
 
-      <Menu
+      <Navegador showMenu={showMenu} setShowMenu={setShowMenu}>
+        <CloseIconStyle onClick={() => setShowMenu(false)}/>
+        <NuevoMenu/>
+      </Navegador>
+
+      {/* <Menu
         showBtnRegister={showBtnRegister}
         setShowBtnRegister={setShowBtnRegister}
         showBtnSignIn={showBtnSignIn}
@@ -50,7 +55,7 @@ function Header({
         setShowBtnSignIn={setShowBtnSignIn}
         user={user}
         setUser={setUser}
-      />
+      /> */}
     </Contenedor>
   );
 }
