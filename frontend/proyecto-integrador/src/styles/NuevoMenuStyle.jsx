@@ -4,7 +4,6 @@ export const ContenedorMenu = styled.div`
     height: 100vh;
 
     @media screen and (min-width: 768px) {
-        width: 350px;
         height: auto;
     }
 `

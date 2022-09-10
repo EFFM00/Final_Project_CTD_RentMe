@@ -55,7 +55,7 @@ function DetallesProducto() {
           <Text type="h1" color="white" text={dataProduct.title} />
         </div>
         <div>
-          <Link to={"/"}>
+          <Link to={"/home"}>
             <img className="arrow" src={Arrow} alt="arrow" />
           </Link>
         </div>

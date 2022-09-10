@@ -8,15 +8,10 @@ import Menu from "./molecules/Menu";
 import { useNavigate } from "react-router-dom";
 import NuevoMenu from "./molecules/NuevoMenu";
 
-function Header({
-  showBtnSignIn,
-  setShowBtnSignIn,
-  showBtnRegister,
-  setShowBtnRegister,
-  user,
-  setUser,
-}) {
+function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const [showBtnRegister, setShowBtnRegister] = useState(true);
+  const [showBtnSignIn, setShowBtnSignIn] = useState(true);
   const navigate = useNavigate();
 
   return (
@@ -25,7 +20,7 @@ function Header({
         onClick={() => {
           setShowBtnRegister(true);
           setShowBtnSignIn(true);
-          navigate("/");
+          navigate("/home");
         }}
       >
         <img style={{width: "150px", marginTop: "10px"}} src={logo} alt="logo" />
@@ -36,7 +31,12 @@ function Header({
 
       <Navegador showMenu={showMenu} setShowMenu={setShowMenu}>
         <CloseIconStyle onClick={() => setShowMenu(false)}/>
-        <NuevoMenu/>
+        <NuevoMenu
+          showBtnRegister={showBtnRegister}
+          setShowBtnRegister={setShowBtnRegister}
+          showBtnSignIn={showBtnSignIn}
+          setShowBtnSignIn={setShowBtnSignIn}
+        />
       </Navegador>
 
       {/* <Menu
