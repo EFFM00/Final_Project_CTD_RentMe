@@ -18,6 +18,7 @@ import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
 import { getProductByCityOrDates } from "../../services/Products";
 
+
 // import { click } from "@testing-library/user-event/dist/click";
 
 function Buscador({setDataFilterProd, setClickProd}) {
@@ -64,7 +65,8 @@ function Buscador({setDataFilterProd, setClickProd}) {
     const [tablet, setTablet] = useState(false);
     const [cityValue, setCityValue] = useState("");
     const [conFecha, setConFecha] = useState(true);
-    const [conCiudad, setConCiudad] = useState(true);
+    const [conCiudad] = useState(true);
+    const [visible, setVisible] = useState(true);
 
     //const [dataApiProducts, setDataApiProducts] = useState([]);
 
@@ -99,23 +101,14 @@ function Buscador({setDataFilterProd, setClickProd}) {
         window.addEventListener("resize", () => responsive());
     }, []);
 
-    const cambiarDecisionCiudad = () => {
-        setConCiudad(!conCiudad);
-    };
-
     const sinFechaDecidida = () => {
         setConFecha(!conFecha);
+        setVisible(!visible);
     };
 
     const handleSelectChange = (event) => {
         setCityValue(event.value);
     };
-
-    // let objSearch = {
-    //     city: cityValue,
-    //     startDate: startDateVar(),
-    //     endDate: endDateVar(),
-    // };
 
     let cityApi = cityValue;
     let startDateApi = startDateVar();
@@ -145,6 +138,14 @@ function Buscador({setDataFilterProd, setClickProd}) {
         //console.log(dataApiProducts, "ENVIAR DATOS");
     };
 
+    const mostrarFecha = (fecha) => {
+        if(visible === false){
+            return "";
+        } else {
+            return fecha;
+        }
+    }
+
     return (
         <BuscadorStyle>
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
@@ -167,17 +168,6 @@ function Buscador({setDataFilterProd, setClickProd}) {
                             isDisabled={!conCiudad}
                         />
                     </Section>
-                    <div onClick={() => setCityValue("")}>
-                        <input
-                            type="checkbox"
-                            id="buscarCiudad"
-                            value={conCiudad}
-                            onChange={cambiarDecisionCiudad}
-                        />
-                        <label htmlFor="buscarCiudad">
-                            Aún no he decidido mi destino
-                        </label>
-                    </div>
 
                     <Section
                         onClick={() =>
@@ -193,8 +183,7 @@ function Buscador({setDataFilterProd, setClickProd}) {
                         <InputStyle
                             type="text"
                             name="startDate"
-                            value={formatDate(dateValue[0])}
-                            placeholder="Ida"
+                            value={mostrarFecha(formatDate(dateValue[0]))}
                             onChange={(value) => setDateValue(value)}
                             readOnly
                         />
@@ -212,8 +201,7 @@ function Buscador({setDataFilterProd, setClickProd}) {
                         <InputStyle
                             type="text"
                             name="endDate"
-                            value={formatDate(dateValue[1])}
-                            placeholder="Vuelta"
+                            value={mostrarFecha(formatDate(dateValue[1]))}
                             onChange={(value) => setDateValue(value)}
                             readOnly
                         />
