@@ -11,22 +11,28 @@ export const Titulo = styled.h1`
     margin-bottom: 20px;
 `;
 
-export const Formulario = styled.div`
-    display: grid;
-    gap: 10px;
+export const Formulario = styled.form`
+    width: 400px;
+    //align-items: center;
+    grid-gap: 10px;
+    justify-content: center;
 
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    //grid-template-columns: 1fr 1fr 1fr;
+    //grid-template-columns: 1fr 1fr 1fr 1fr;
 
     position: relative;
 
     @media screen and (min-width: 768px) {
+        display: grid;
         justify-content: center;
-        grid-template-columns: 285px 285px 150px;
     }
 
     @media screen and (min-width: 1024px) {
+        grid-auto-columns: 300px 300px 300px 300px;
+        //grid-auto-columns:200px;
+        grid-template-rows: 1fr;
+        width: 60vw;
         justify-content: center;
-        grid-template-columns: 400px 400px 164px;
     }
 `;
 
@@ -38,6 +44,17 @@ export const Section = styled.div`
     background-color: ${({ theme }) => theme.white};
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
     padding: 0 5px;
+    grid-column-start: ${({ columnStar }) => columnStar};
+    grid-column-end: ${({ columnEnd }) => columnEnd};
+    grid-row-start: ${({ rowStart }) => rowStart};
+    grid-row-end: ${({ rowEnd }) => rowEnd};
+`;
+
+export const Div = styled.div`
+    grid-column-start: ${({ columnStar }) => columnStar};
+    grid-column-end: ${({ columnEnd }) => columnEnd};
+    grid-row-start: ${({ rowStart }) => rowStart};
+    grid-row-end: ${({ rowEnd }) => rowEnd};
 `;
 
 export const InputStyle = styled.input`
@@ -48,6 +65,11 @@ export const InputStyle = styled.input`
     &:focus {
         outline: none;
     }
+`;
+
+export const Form = styled.form`
+    display: flex;
+    align-items: center;
 `;
 
 export const Contenedor = styled.div`

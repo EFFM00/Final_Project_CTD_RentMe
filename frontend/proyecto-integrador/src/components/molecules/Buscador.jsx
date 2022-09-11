@@ -8,6 +8,7 @@ import {
     ContainerCalendar,
     Contenedor,
     InputStyle,
+    Div,
 } from "../../styles/BuscadorStyle";
 import Button from "../atoms/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -18,10 +19,9 @@ import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
 import { getProductByCityOrDates } from "../../services/Products";
 
-
 // import { click } from "@testing-library/user-event/dist/click";
 
-function Buscador({setDataFilterProd, setClickProd}) {
+function Buscador({ setDataFilterProd, setClickProd }) {
     const LocationOnIconStyle = styled(LocationOnIcon)`
         color: ${({ theme }) => theme.tertiary};
     `;
@@ -119,143 +119,150 @@ function Buscador({setDataFilterProd, setClickProd}) {
         const resp = await getProductByCityOrDates({
             cityApi,
             startDateApi,
-            endDateApi
+            endDateApi,
         });
         //setDataApiProducts(resp);
         setDataFilterProd(resp);
-        //console.log(resp, "RESP");
-        //console.log(dataApiProducts, "DATAAPIPRODUCTS");
     };
 
-    useEffect(() => {
-    }, [cityApi, startDateApi, endDateApi]);
+    useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
 
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
         setClickProd(true);
-        //console.log(objSearch, "OBJ");
-        //console.log(dataApiProducts, "ENVIAR DATOS");
     };
 
     const mostrarFecha = (fecha) => {
-        if(visible === false){
+        if (visible === false) {
             return "";
         } else {
             return fecha;
         }
-    }
+    };
 
     return (
         <BuscadorStyle>
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
 
-            <form
+            <Formulario
                 onSubmit={enviarDatos}
                 id="enviarElementosGet"
                 style={{ width: "100%" }}
             >
-                <Formulario>
-                    <Section>
-                        <LocationOnIconStyle />
-                        <SelectStyle
-                            value={optionsCity.filter(function (option) {
-                                return option.value === cityValue || "";
-                            })}
-                            onChange={handleSelectChange}
-                            options={optionsCity}
-                            //placeholder="¿A donde vamos?"
-                            isDisabled={!conCiudad}
-                        />
-                    </Section>
+                {/* <Formulario> */}
+                <Section columnStar={1} columnEnd={2} rowStart={1} rowEnd={1}>
+                    <LocationOnIconStyle />
+                    <SelectStyle
+                        value={optionsCity.filter(function (option) {
+                            return option.value === cityValue || "";
+                        })}
+                        onChange={handleSelectChange}
+                        options={optionsCity}
+                        //placeholder="¿A donde vamos?"
+                        isDisabled={!conCiudad}
+                    />
+                </Section>
 
-                    <Section
-                        onClick={() =>
-                            conFecha === true
-                                ? setShowCalendar(!showCalendar)
-                                : setShowCalendar(false)
-                        }
-                    >
-                        <EventIconStyle />
-                        <label htmlFor="startDate" disabled={true}>
-                            Ida
-                        </label>
-                        <InputStyle
-                            type="text"
-                            name="startDate"
-                            value={mostrarFecha(formatDate(dateValue[0]))}
-                            onChange={(value) => setDateValue(value)}
-                            readOnly
-                        />
-                    </Section>
+                <Section
+                    columnStar={2}
+                    columnEnd={3}
+                    rowStart={1}
+                    rowEnd={1}
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
+                    <EventIconStyle />
+                    <label htmlFor="startDate" disabled={true}>
+                        Ida
+                    </label>
+                    <InputStyle
+                        type="text"
+                        name="startDate"
+                        value={mostrarFecha(formatDate(dateValue[0]))}
+                        onChange={(value) => setDateValue(value)}
+                        readOnly
+                    />
+                </Section>
 
-                    <Section
-                        onClick={() =>
-                            conFecha === true
-                                ? setShowCalendar(!showCalendar)
-                                : setShowCalendar(false)
-                        }
-                    >
-                        <EventIconStyle />
-                        <label htmlFor="endDate">Vuelta</label>
-                        <InputStyle
-                            type="text"
-                            name="endDate"
-                            value={mostrarFecha(formatDate(dateValue[1]))}
-                            onChange={(value) => setDateValue(value)}
-                            readOnly
-                        />
-                    </Section>
-                    <div>
-                        <input
-                            type="checkbox"
-                            id="buscarFecha"
-                            value={conFecha}
-                            onChange={sinFechaDecidida}
-                        />
-                        <label htmlFor="buscarFecha">
-                            Aún no he decidido mis fechas
-                        </label>
-                    </div>
+                <Section
+                    columnStar={3}
+                    columnEnd={4}
+                    rowStart={1}
+                    rowEnd={1}
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
+                    <EventIconStyle />
+                    <label htmlFor="endDate">Vuelta</label>
+                    <InputStyle
+                        type="text"
+                        name="endDate"
+                        value={mostrarFecha(formatDate(dateValue[1]))}
+                        onChange={(value) => setDateValue(value)}
+                        readOnly
+                    />
+                </Section>
+                <Div columnStar={2} columnEnd={4} rowStart={2} rowEnd={3}>
+                    <input
+                        type="checkbox"
+                        id="buscarFecha"
+                        value={conFecha}
+                        onChange={sinFechaDecidida}
+                    />
+                    <label htmlFor="buscarFecha">
+                        Aún no he decidido mis fechas
+                    </label>
+                </Div>
 
-                    <Contenedor
-                        showCalendar={showCalendar}
-                        setShowCalendar={setShowCalendar}
-                    >
-                        <ContainerCalendar>
-                            {tablet ? (
-                                <CalendarStyle
-                                    showDoubleView={true}
-                                    selectRange={true}
-                                    minDate={minDate}
-                                    onChange={(value) => setDateValue(value)}
-                                    value={dateValue}
-                                />
-                            ) : (
-                                <CalendarStyle
-                                    showDoubleView={false}
-                                    selectRange={true}
-                                    minDate={minDate}
-                                    onChange={(value) => setDateValue(value)}
-                                    value={dateValue}
-                                />
-                            )}
-                        </ContainerCalendar>
-                        <Button
-                            text="Cerrar calendario"
-                            click={() => setShowCalendar(!showCalendar)}
-                            fullwidth
-                        />
-                    </Contenedor>
+                <Contenedor
+                    showCalendar={showCalendar}
+                    setShowCalendar={setShowCalendar}
+                >
+                    <ContainerCalendar>
+                        {tablet ? (
+                            <CalendarStyle
+                                showDoubleView={true}
+                                selectRange={true}
+                                minDate={minDate}
+                                onChange={(value) => setDateValue(value)}
+                                value={dateValue}
+                            />
+                        ) : (
+                            <CalendarStyle
+                                showDoubleView={false}
+                                selectRange={true}
+                                minDate={minDate}
+                                onChange={(value) => setDateValue(value)}
+                                value={dateValue}
+                            />
+                        )}
+                    </ContainerCalendar>
                     <Button
-                        text="Buscar"
-                        type="submit"
-                        value="Submit"
-                        form="enviarElementosGet"
+                        text="Cerrar calendario"
+                        click={() => setShowCalendar(!showCalendar)}
                         fullwidth
                     />
-                </Formulario>
-            </form>
+                </Contenedor>
+                <Button
+                    columnStar={4}
+                    columnEnd={5}
+                    rowStart={1}
+                    rowEnd={1}
+                    text="Buscar"
+                    type="submit"
+                    value="Submit"
+                    form="enviarElementosGet"
+                    fullwidth
+                />
+            </Formulario>
+            {/* </form> */}
         </BuscadorStyle>
     );
 }
