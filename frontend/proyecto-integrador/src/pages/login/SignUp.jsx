@@ -15,6 +15,7 @@ import { api } from "../../services/api/api";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
   const formik = useFormik ({
@@ -71,13 +72,13 @@ function SignUp() {
       )
 
       if(resp.status === 200) {
-        alert("El email ya existe")
+        setErrMsg("El email ya existe")
       } else if(resp.status === 201) {
         navigate("/sign-in");
       }
       
     } catch (error) {
-      alert("Lamentablemente no ha podido registrarse. Por favor intente más tarde")
+      setErrMsg("Lamentablemente no ha podido registrarse. Por favor intente más tarde")
     }
 
   };
@@ -85,6 +86,7 @@ function SignUp() {
   return (
     <section className="formurarios" >
       <div style={{ padding: "100px 10px" }}>
+        <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
         <div className="titulo">
           <Text type="h1" color="primary" text="Crear cuenta" />
         </div>

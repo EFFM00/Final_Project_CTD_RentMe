@@ -9,6 +9,11 @@
   height: 100vh;
   padding-top: 50px;
 }
+.errMesg {
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 10px;
+  font-size: 12px;
+}
 form {
   display: flex;
   flex-direction: column;

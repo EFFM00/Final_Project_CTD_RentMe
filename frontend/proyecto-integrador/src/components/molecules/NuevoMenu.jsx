@@ -8,7 +8,7 @@ import { UserContext } from "../../services/UserContext";
 
 function NuevoMenu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setShowBtnSignIn}) {
     const [ tablet, setTablet ] = useState(false);
-    const {user} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,6 +16,14 @@ function NuevoMenu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, 
         responsive();
         window.addEventListener("resize", ()=>responsive())
     }, [])
+
+    const handleClickLogout = (e) => {
+        setUser(null);
+        localStorage.removeItem("token")
+        navigate("/home");
+        setShowBtnSignIn(true);
+        setShowBtnRegister(true);
+    }
 
   return (
     <ContenedorMenu>
@@ -26,7 +34,7 @@ function NuevoMenu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, 
                 {
                     user === null ?
                     <Text type="h2" color="white" text="MENÚ" />
-                    : <Avatar name="Bruno Diaz" initials="BD"/>
+                    : <Avatar name={user.userData.email} initials={user.userData.email[0]}/>
                 }  
             </Titulo>
         }
@@ -109,7 +117,7 @@ function NuevoMenu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, 
             </BotonesIC> :
             <AvatarUser>
             {
-                tablet ? <Avatar name="Bruno Diaz" initials="BD"/>
+                tablet ? <Avatar name={user.userData.email} initials={user.userData.email[0]}/>
                 : null
             }
         
@@ -118,11 +126,13 @@ function NuevoMenu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, 
                 text="Cerrar sesión"
                 type="Outline"
                 width="xs"
+                click={handleClickLogout}
                 />
                 : <Button
                 text="Cerrar sesión" 
                 type="text"
                 fullwidth
+                click={handleClickLogout}
                 /> 
             }            
             </AvatarUser>

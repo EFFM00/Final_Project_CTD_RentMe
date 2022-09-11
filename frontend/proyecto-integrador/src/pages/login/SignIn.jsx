@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -13,6 +13,7 @@ import { UserContext } from "../../services/UserContext";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
   const {setUser} = useContext(UserContext);
   
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function SignIn() {
       )
 
       const token = localStorage.setItem('token', resp?.data?.respuesta?.token)
+      localStorage.getItem('token')
       setUser({userData})
 
       console.log(resp)
@@ -57,7 +59,11 @@ function SignIn() {
       }
       
     } catch (error) {
-      alert("Lamentablemente no ha podido registrarse. Por favor intente más tarde")
+      if(error.response.status === 403) {
+        setErrMsg("Email o contraseña incorrecta")
+      } else {
+        setErrMsg("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
+      }
     }
 
   
@@ -84,6 +90,7 @@ function SignIn() {
     
     <section className="formurarios">
       <div style={{ padding: "100px 10px" }}>
+        <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
         <div className="titulo">
           <Text type="h1" color="primary" text="Iniciar sesión" />
         </div>
