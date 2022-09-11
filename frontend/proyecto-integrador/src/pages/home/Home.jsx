@@ -18,37 +18,43 @@ function Home() {
     const [clickProd, setClickProd] = useState(false);
     const [idCat, setIdCat] = useState("");
     const [dataFilterProd, setDataFilterProd] = useState([]);
-    const [clickMostrarRecomendado, setClickMostrarRecomendado] = useState(true);
 
-    // const renderizarProdCat = () => {
-    //     if (clickCat) {
-    //         return (
-    //             <ListaBooking
-    //                 idCat={idCat}
-    //                 tipoProd={"productosFiltrados"}
-    //                 dataFilterProd={dataFilterProd}
-    //             />
-    //         );
-    //     }
-    // };
+    const renderizarProdCat = () => {
+        if (clickCat) {
+            return (
+                <ContenedorBooking>
+                    <Text type="h1" color="black" text={titleCat} />
+                    <GridBooking>
+                        <ListaBooking
+                            idCat={idCat}
+                            tipoProd={"productosFiltrados"}
+                            dataFilterProd={dataFilterProd}
+                        />
+                    </GridBooking>
+                </ContenedorBooking>
+            );
+        }
+    };
 
-    // const renderizarProdFiltrados = () => {
-    //     if (clickProd) {
-    //         return (
-    //             <>
-    //                 <h3>Resultados de la búsqueda</h3>
-    //                 <ListaBooking
-    //                     tipoProd="productsDateCity"
-    //                     dataFilterProd={dataFilterProd}
-    //                 />
-    //             </>
-    //         );
-    //     }
-    // };
-
-
-
-    
+    const renderizarProdFiltrados = () => {
+        if (clickProd) {
+            return (
+                <ContenedorBooking>
+                    <Text
+                        type="h1"
+                        color="black"
+                        text="Resultados de la búsqueda"
+                    />
+                    <GridBooking>
+                        <ListaBooking
+                            tipoProd="productsDateCity"
+                            dataFilterProd={dataFilterProd}
+                        />
+                    </GridBooking>
+                </ContenedorBooking>
+            );
+        }
+    };
 
     return (
         <>
@@ -57,7 +63,6 @@ function Home() {
                 setClickProd={setClickProd}
                 setDataFilterProd={setDataFilterProd}
             />
-
             <ContenedorCategorias>
                 <Text
                     type="h1"
@@ -75,43 +80,15 @@ function Home() {
                     />
                 </GridCategorias>
             </ContenedorCategorias>
-            
-
-            <ContenedorBooking renderizado={clickProd}>
-                <Text
-                    type="h1"
-                    color="black"
-                    text="Resultados de la búsqueda"
-                />
-                <GridBooking>
-                    <ListaBooking
-                        tipoProd="productsDateCity"
-                        dataFilterProd={dataFilterProd}
-                    />
-                </GridBooking>
-            </ContenedorBooking>
-
-
-
-            <ContenedorBooking renderizado={clickCat}>
-                <Text type="h1" color="black" text={titleCat} />
-                <GridBooking>
-                    <ListaBooking
-                        idCat={idCat}
-                        tipoProd={"productosFiltrados"}
-                        dataFilterProd={dataFilterProd}
-                    />
-                </GridBooking>
-            </ContenedorBooking>
-
-
-
-            <ContenedorBooking renderizado={clickMostrarRecomendado}>
+            {renderizarProdCat()}
+            {renderizarProdFiltrados()}
+            <ContenedorBooking>
                 <Text type="h1" color="black" text="Recomendaciones" />
                 <GridBooking>
                     <ListaBooking tipoProd="productsRandom" />
                 </GridBooking>
             </ContenedorBooking>
+            ;
         </>
     );
 }
