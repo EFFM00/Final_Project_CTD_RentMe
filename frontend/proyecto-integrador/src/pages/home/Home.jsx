@@ -18,30 +18,45 @@ function Home() {
     const [clickProd, setClickProd] = useState(false);
     const [idCat, setIdCat] = useState("");
     const [dataFilterProd, setDataFilterProd] = useState([]);
+    const [clickMostrarRecomendado, setClickMostrarRecomendado] = useState(true);
 
-    const renderizarProdCat = () => {
-        if (clickCat) {
-            return (
-                <ListaBooking idCat={idCat} tipoProd={"productosFiltrados"} dataFilterProd={dataFilterProd}/>
-            );
-        }
-    };
+    // const renderizarProdCat = () => {
+    //     if (clickCat) {
+    //         return (
+    //             <ListaBooking
+    //                 idCat={idCat}
+    //                 tipoProd={"productosFiltrados"}
+    //                 dataFilterProd={dataFilterProd}
+    //             />
+    //         );
+    //     }
+    // };
 
-    const renderizarProdFiltrados = () => {
-        if (clickProd) {
-            return (
-                <>
-                    <h3>Resultados de la búsqueda</h3>
-                    <ListaBooking tipoProd="productsDateCity" dataFilterProd={dataFilterProd}/>
-                </>
-            )
-        }
-    };
+    // const renderizarProdFiltrados = () => {
+    //     if (clickProd) {
+    //         return (
+    //             <>
+    //                 <h3>Resultados de la búsqueda</h3>
+    //                 <ListaBooking
+    //                     tipoProd="productsDateCity"
+    //                     dataFilterProd={dataFilterProd}
+    //                 />
+    //             </>
+    //         );
+    //     }
+    // };
+
+
+
+    
 
     return (
         <>
-            <Buscador clickProd={clickProd} setClickProd={setClickProd}  setDataFilterProd={setDataFilterProd} />
-            
+            <Buscador
+                clickProd={clickProd}
+                setClickProd={setClickProd}
+                setDataFilterProd={setDataFilterProd}
+            />
 
             <ContenedorCategorias>
                 <Text
@@ -60,17 +75,38 @@ function Home() {
                     />
                 </GridCategorias>
             </ContenedorCategorias>
+            
 
-            <div>
-                <h3>{titleCat}</h3>
-                {renderizarProdCat()}
-            </div>
+            <ContenedorBooking renderizado={clickProd}>
+                <Text
+                    type="h1"
+                    color="black"
+                    text="Resultados de la búsqueda"
+                />
+                <GridBooking>
+                    <ListaBooking
+                        tipoProd="productsDateCity"
+                        dataFilterProd={dataFilterProd}
+                    />
+                </GridBooking>
+            </ContenedorBooking>
 
-            <div>
-                {renderizarProdFiltrados()}
-            </div>
 
-            <ContenedorBooking>
+
+            <ContenedorBooking renderizado={clickCat}>
+                <Text type="h1" color="black" text={titleCat} />
+                <GridBooking>
+                    <ListaBooking
+                        idCat={idCat}
+                        tipoProd={"productosFiltrados"}
+                        dataFilterProd={dataFilterProd}
+                    />
+                </GridBooking>
+            </ContenedorBooking>
+
+
+
+            <ContenedorBooking renderizado={clickMostrarRecomendado}>
                 <Text type="h1" color="black" text="Recomendaciones" />
                 <GridBooking>
                     <ListaBooking tipoProd="productsRandom" />

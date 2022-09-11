@@ -1,3 +1,4 @@
+//import { render } from "@testing-library/react";
 import styled from "styled-components";
 
 export const ContenedorCategorias = styled.div`
@@ -19,6 +20,7 @@ export const ContenedorBooking = styled.div`
     background-color: ${({ theme }) => theme.tertiary};
     padding: 30px 15px 70px;
     text-align: center;
+    display: ${({ renderizado }) => (renderizado ? "block" : "none")};
     
 
     @media screen and (min-width: 768px) {
