@@ -22,7 +22,16 @@ function Home() {
     const renderizarProdCat = () => {
         if (clickCat) {
             return (
-                <ListaBooking idCat={idCat} tipoProd={"productosFiltrados"} dataFilterProd={dataFilterProd}/>
+                <ContenedorBooking>
+                    <Text type="h1" color="black" text={titleCat} />
+                    <GridBooking>
+                        <ListaBooking
+                            idCat={idCat}
+                            tipoProd={"productosFiltrados"}
+                            dataFilterProd={dataFilterProd}
+                        />
+                    </GridBooking>
+                </ContenedorBooking>
             );
         }
     };
@@ -30,19 +39,30 @@ function Home() {
     const renderizarProdFiltrados = () => {
         if (clickProd) {
             return (
-                <>
-                    <h3>Resultados de la búsqueda</h3>
-                    <ListaBooking tipoProd="productsDateCity" dataFilterProd={dataFilterProd}/>
-                </>
-            )
+                <ContenedorBooking>
+                    <Text
+                        type="h1"
+                        color="black"
+                        text="Resultados de la búsqueda"
+                    />
+                    <GridBooking>
+                        <ListaBooking
+                            tipoProd="productsDateCity"
+                            dataFilterProd={dataFilterProd}
+                        />
+                    </GridBooking>
+                </ContenedorBooking>
+            );
         }
     };
 
     return (
         <>
-            <Buscador clickProd={clickProd} setClickProd={setClickProd}  setDataFilterProd={setDataFilterProd} />
-            
-
+            <Buscador
+                clickProd={clickProd}
+                setClickProd={setClickProd}
+                setDataFilterProd={setDataFilterProd}
+            />
             <ContenedorCategorias>
                 <Text
                     type="h1"
@@ -60,22 +80,15 @@ function Home() {
                     />
                 </GridCategorias>
             </ContenedorCategorias>
-
-            <div>
-                <h3>{titleCat}</h3>
-                {renderizarProdCat()}
-            </div>
-
-            <div>
-                {renderizarProdFiltrados()}
-            </div>
-
+            {renderizarProdCat()}
+            {renderizarProdFiltrados()}
             <ContenedorBooking>
                 <Text type="h1" color="black" text="Recomendaciones" />
                 <GridBooking>
                     <ListaBooking tipoProd="productsRandom" />
                 </GridBooking>
             </ContenedorBooking>
+            ;
         </>
     );
 }
