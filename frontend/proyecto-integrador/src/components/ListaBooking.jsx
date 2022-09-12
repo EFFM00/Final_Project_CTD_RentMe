@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { getProducts, getProductsRandom } from '../services/Products';
 import Card from './Card'
 
-function ListaBooking({idCat, tipoProd}) {
+function ListaBooking({idCat, tipoProd, dataFilterProd}) {
   const [ products, setProducts ] = useState([]);
   const [ productsRandom, setProductsRandom ] = useState([]);
+  //const [ productsFiltrados, setProductsFiltrados ] = useState([]);
   
 
   let productosFiltrados = products.filter( prod => prod.category.id === idCat)
@@ -23,6 +24,8 @@ function ListaBooking({idCat, tipoProd}) {
       return productosFiltrados;
     } else if(tipo === "productsRandom") {
       return productsRandom
+    } else if(tipo==="productsDateCity") {
+      return dataFilterProd;
     }
   }
 

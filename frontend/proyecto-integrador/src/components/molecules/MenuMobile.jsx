@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Avatar from "../atoms/Avatar";
 
 function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true, setShowBtnSignIn, user, setUser }) {
+
   const MenuMobileStyle = styled.div`
     background-color: ${({ theme }) => theme.fondo};
     position: absolute;
@@ -16,6 +17,7 @@ function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnR
     width: 75%;
     height: 100vh;
     z-index: 10;
+    
     // transition: 0.5s all ease;
   `;
 
@@ -32,7 +34,7 @@ function MenuMobile({ showMenu, setShowMenu, showBtnRegister = true, setShowBtnR
     display: flex;
     justify-content: right;
     align-items: flex-end;
-    padding: 10px;
+    padding: 10px 18px 10px 10px;
   `;
 
   const ContainerSM = styled.div`

@@ -46,6 +46,16 @@ function Menu({ showBtnRegister = true, setShowBtnRegister, showBtnSignIn = true
         ) : null
       }
 
+          <Button
+            text="Cerrar sesión"
+            type="Outline"
+            width="xs"
+            click={() => {
+              localStorage.removeItem('token')
+              navigate("/sign-in");
+            }}
+          />
+
     </MenuStyle>
   );
 }

@@ -1,6 +1,4 @@
-// Esta es la hoja de iniciar sesión
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -8,18 +6,59 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../../styles/Form.css";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { api } from "../../services/api/api";
 
-function SignIn({ user, setUser }) {
+function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const [ usuario, setUsuario ] = useState({ email: "", passwordr: ""})
   const navigate = useNavigate();
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    if(usuario.email === user.email && usuario.passwordr === user.passwordr) {
-      setUser(usuario)
-      navigate("/");
+
+  const formik = useFormik ({
+      initialValues: {
+      email: "",
+      password: ""
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Ingresar email valido").required("Campo Requerido"),
+      password: Yup.string()
+      .required("Campo Obligatorio")
+    }),
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit(values){
+      handleLogin(values);
     }
+  });
+
+
+  const handleLogin = (values) => {
+    const userData = {
+      email: values.email,
+      password: values.password,
+    }
+
+    api.post("/auth/login", JSON.stringify (userData),
+    {
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(resp => {
+      console.log(resp)
+      localStorage.setItem('token', resp.data.respuesta.token)
+      localStorage.getItem('token')
+
+      if(resp.status === 200) {
+        navigate("/");
+      }
+    })
+    .catch(error => {
+      alert("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
+    })
   }
+
+  useEffect(() => {
+
+  }, [])
 
   return (
     
@@ -28,7 +67,7 @@ function SignIn({ user, setUser }) {
         <div className="titulo">
           <Text type="h1" color="primary" text="Iniciar sesión" />
         </div>
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={formik.handleSubmit}>
           <div>
             <div className="label">
             <Text type="p2" color="secondary" text="Correo electrónico" />
@@ -37,7 +76,7 @@ function SignIn({ user, setUser }) {
               <input
                 type="email"
                 name='email'
-                onChange={(e) => setUsuario({...usuario, email: e.target.value})}
+                onChange={formik.handleChange}
               />
             </div>
           </div>
@@ -48,8 +87,8 @@ function SignIn({ user, setUser }) {
             <div>
               <input
                 type={showPassword ? "text" : "password"}
-                name='passwordr'
-                onChange={(e) => setUsuario({...usuario, passwordr: e.target.value})}
+                name='password'
+                onChange={formik.handleChange}
               />
               {
                 showPassword === false ?

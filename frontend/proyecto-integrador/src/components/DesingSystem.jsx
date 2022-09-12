@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from './atoms/Button'
-import Input from './atoms/Input'
 import SocialMedia from './atoms/SocialMedia'
 import Text from './atoms/Text'
 import Footer from './molecules/Footer'
