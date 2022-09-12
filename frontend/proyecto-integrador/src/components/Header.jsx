@@ -3,10 +3,8 @@ import { CloseIconStyle, Contenedor, IconoMenu, Navegador } from "../styles/Head
 import { useState } from "react";
 import logo from "../assets/logo-db.png";
 import iconoMenu from "../assets/menú.svg";
-import MenuMobile from "./molecules/MenuMobile";
-import Menu from "./molecules/Menu";
 import { useNavigate } from "react-router-dom";
-import NuevoMenu from "./molecules/NuevoMenu";
+import Menu from "./molecules/Menu";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -31,31 +29,13 @@ function Header() {
 
       <Navegador showMenu={showMenu} setShowMenu={setShowMenu}>
         <CloseIconStyle onClick={() => setShowMenu(false)}/>
-        <NuevoMenu
+        <Menu
           showBtnRegister={showBtnRegister}
           setShowBtnRegister={setShowBtnRegister}
           showBtnSignIn={showBtnSignIn}
           setShowBtnSignIn={setShowBtnSignIn}
         />
       </Navegador>
-
-      {/* <Menu
-        showBtnRegister={showBtnRegister}
-        setShowBtnRegister={setShowBtnRegister}
-        showBtnSignIn={showBtnSignIn}
-        setShowBtnSignIn={setShowBtnSignIn}
-      />
-
-      <MenuMobile
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-        showBtnRegister={showBtnRegister}
-        setShowBtnRegister={setShowBtnRegister}
-        showBtnSignIn={showBtnSignIn}
-        setShowBtnSignIn={setShowBtnSignIn}
-        user={user}
-        setUser={setUser}
-      /> */}
     </Contenedor>
   );
 }

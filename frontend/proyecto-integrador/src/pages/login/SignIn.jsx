@@ -48,11 +48,9 @@ function SignIn() {
       }
       )
 
-      const token = localStorage.setItem('token', resp?.data?.respuesta?.token)
-      localStorage.getItem('token')
-      setUser({userData})
-
-      console.log(resp)
+     localStorage.setItem('token', resp?.data?.respuesta?.token)
+     const token =  localStorage.getItem('token')
+      setUser({userData, token})
 
       if(resp.status === 200) {
         navigate("/home");
@@ -65,25 +63,6 @@ function SignIn() {
         setErrMsg("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
       }
     }
-
-  
-    // api.post("/auth/login", JSON.stringify (userData),
-    // {
-    //   headers: {'Content-Type': 'application/json'}
-    // })
-    // .then(resp => {
-    //   // console.log(resp)
-    //   localStorage.setItem('token', resp.data.respuesta.token)
-    //   localStorage.getItem('token')
-
-    //   if(resp.status === 200) {
-    //     navigate("/home");
-    //   }
-      
-    // })
-    // .catch(error => {
-    //   alert("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
-    // })
   }
 
   return (
