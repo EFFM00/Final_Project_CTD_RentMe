@@ -3,7 +3,6 @@ package com.booking.dh.service;
 import com.booking.dh.exceptions.BadRequestException;
 import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Booking;
-import com.booking.dh.model.Product;
 import com.booking.dh.repository.BookingRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
