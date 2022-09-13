@@ -8,6 +8,7 @@ import {
     ContainerCalendar,
     Contenedor,
     InputStyle,
+    Div,
 } from "../../styles/BuscadorStyle";
 import Button from "../atoms/Button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -16,9 +17,11 @@ import Calendar from "react-calendar";
 import Select from "react-select";
 import dayjs from "dayjs"; // ES 2015
 import { getCities } from "../../services/Cities";
+import { getProductByCityOrDates } from "../../services/Products";
+
 // import { click } from "@testing-library/user-event/dist/click";
 
-function Buscador() {
+function Buscador({ setDataFilterProd, setClickProd }) {
     const LocationOnIconStyle = styled(LocationOnIcon)`
         color: ${({ theme }) => theme.tertiary};
     `;
@@ -52,17 +55,24 @@ function Buscador() {
         return dayjs(date).format("DD-MM-YYYY");
     };
 
+    const formatDateApi = (date) => {
+        return dayjs(date).format("YYYY-MM-DD");
+    };
+
     const [dateValue, setDateValue] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
     const [cities, setCities] = useState([]);
     const [tablet, setTablet] = useState(false);
     const [cityValue, setCityValue] = useState("");
     const [conFecha, setConFecha] = useState(true);
-    const [conCiudad, setConCiudad] = useState(true);
+    const [conCiudad] = useState(true);
+    const [visible, setVisible] = useState(true);
+
+    //const [dataApiProducts, setDataApiProducts] = useState([]);
 
     const optionsCity = cities.map((city) => ({
         label: city.name,
-        value: city.name,
+        value: city.id,
     }));
 
     const minDate = new Date();
@@ -70,14 +80,14 @@ function Buscador() {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[0]).toString();
+        return formatDateApi(dateValue[0]).toString();
     };
 
     const endDateVar = () => {
         if (conFecha === false) {
             return "";
         }
-        return formatDate(dateValue[1]).toString();
+        return formatDateApi(dateValue[1]).toString();
     };
 
     useEffect(() => {
@@ -91,24 +101,44 @@ function Buscador() {
         window.addEventListener("resize", () => responsive());
     }, []);
 
-    const cambiarDecisionCiudad = () => {
-        setConCiudad(!conCiudad);
-    };
-
     const sinFechaDecidida = () => {
         setConFecha(!conFecha);
-        console.log(conFecha);
+        setVisible(!visible);
     };
 
     const handleSelectChange = (event) => {
-        console.log(event.value, cityValue);
         setCityValue(event.value);
     };
 
-    let objSearch = {
-        city: cityValue,
-        startDate: startDateVar(),
-        endDate: endDateVar(),
+    let cityApi = cityValue;
+    let startDateApi = startDateVar();
+    let endDateApi = endDateVar();
+
+    // LLAMADO API GET
+    const getProdApi = async () => {
+        const resp = await getProductByCityOrDates({
+            cityApi,
+            startDateApi,
+            endDateApi,
+        });
+        //setDataApiProducts(resp);
+        setDataFilterProd(resp);
+    };
+
+    useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
+
+    const enviarDatos = (event) => {
+        event.preventDefault();
+        getProdApi();
+        setClickProd(true);
+    };
+
+    const mostrarFecha = (fecha) => {
+        if (visible === false) {
+            return "";
+        } else {
+            return fecha;
+        }
     };
 
     return (
@@ -116,11 +146,12 @@ function Buscador() {
             <Titulo>Busca ofertas en hoteles, casas y mucho más</Titulo>
 
             <Formulario
-                onSubmit={(ev) => {
-                    ev.preventDefault();
-                }}
+                onSubmit={enviarDatos}
+                id="enviarElementosGet"
+                style={{ width: "100%" }}
             >
-                <Section>
+                {/* <Formulario> */}
+                <Section columnStar={1} columnEnd={2} rowStart={1} rowEnd={1}>
                     <LocationOnIconStyle />
                     <SelectStyle
                         value={optionsCity.filter(function (option) {
@@ -132,19 +163,18 @@ function Buscador() {
                         isDisabled={!conCiudad}
                     />
                 </Section>
-                <div onClick={() => setCityValue("")}>
-                    <input
-                        type="checkbox"
-                        id="buscarCiudad"
-                        value={conCiudad}
-                        onChange={cambiarDecisionCiudad}
-                    />
-                    <label htmlFor="buscarCiudad">
-                        Aún no he decidido mi destino
-                    </label>
-                </div>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
+                <Section
+                    columnStar={2}
+                    columnEnd={3}
+                    rowStart={1}
+                    rowEnd={1}
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
                     <EventIconStyle />
                     <label htmlFor="startDate" disabled={true}>
                         Ida
@@ -152,26 +182,34 @@ function Buscador() {
                     <InputStyle
                         type="text"
                         name="startDate"
-                        value={formatDate(dateValue[0])}
-                        placeholder="Ida"
+                        value={mostrarFecha(formatDate(dateValue[0]))}
                         onChange={(value) => setDateValue(value)}
                         readOnly
                     />
                 </Section>
 
-                <Section onClick={() => conFecha === true ? setShowCalendar(!showCalendar) : setShowCalendar(false)}>
+                <Section
+                    columnStar={3}
+                    columnEnd={4}
+                    rowStart={1}
+                    rowEnd={1}
+                    onClick={() =>
+                        conFecha === true
+                            ? setShowCalendar(!showCalendar)
+                            : setShowCalendar(false)
+                    }
+                >
                     <EventIconStyle />
                     <label htmlFor="endDate">Vuelta</label>
                     <InputStyle
                         type="text"
                         name="endDate"
-                        value={formatDate(dateValue[1])}
-                        placeholder="Vuelta"
+                        value={mostrarFecha(formatDate(dateValue[1]))}
                         onChange={(value) => setDateValue(value)}
                         readOnly
                     />
                 </Section>
-                <div>
+                <Div columnStar={2} columnEnd={4} rowStart={2} rowEnd={3}>
                     <input
                         type="checkbox"
                         id="buscarFecha"
@@ -181,7 +219,7 @@ function Buscador() {
                     <label htmlFor="buscarFecha">
                         Aún no he decidido mis fechas
                     </label>
-                </div>
+                </Div>
 
                 <Contenedor
                     showCalendar={showCalendar}
@@ -213,11 +251,18 @@ function Buscador() {
                     />
                 </Contenedor>
                 <Button
+                    columnStar={4}
+                    columnEnd={5}
+                    rowStart={1}
+                    rowEnd={1}
                     text="Buscar"
-                    click={() => console.log(objSearch)}
+                    type="submit"
+                    value="Submit"
+                    form="enviarElementosGet"
                     fullwidth
                 />
             </Formulario>
+            {/* </form> */}
         </BuscadorStyle>
     );
 }

@@ -1,7 +1,9 @@
 package com.booking.dh.service;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Product;
 import com.booking.dh.repository.ProductRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.*;
 @Service
 public class ProductService {
 
+    static final Logger logger = Logger.getLogger(ProductService.class);
+
     @Autowired
     ProductRepository productRepository;
 
@@ -18,36 +22,49 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Optional<Product> findProductById(Long id){
-        return productRepository.findById(id);
+    public Optional<Product> findProductById(Long id) throws ResourceNotFoundException  {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()){
+            return product;
+        }else{
+            throw new ResourceNotFoundException("The id " + id + " does not correspond to any current product.");
+        }
     }
 
-    public List<Product> findProductByCityId(Long id){
+    public List<Product> findProductByCityId(Long id) throws ResourceNotFoundException {
         List<Product> productsByCity = productRepository.findProductByCityId(id);
-        return productsByCity;
+        if (!productsByCity.isEmpty()){
+            return productsByCity;
+        }else{
+            throw new ResourceNotFoundException("City id " + id + " does not correspond to any current product.");
+        }
     }
 
-    public List<Product> findProductByCategoryId(Long id){
+    public List<Product> findProductByCategoryId(Long id) throws ResourceNotFoundException {
         List<Product> productsByCategory = productRepository.findProductByCategoryId(id);
-        return productsByCategory;
+        if (!productsByCategory.isEmpty()){
+            return productsByCategory;
+        }else{
+            throw new ResourceNotFoundException("Category id " + id + " does not correspond to any current product.");
+        }
     }
 
     public List<Product> productList(){
         return productRepository.findAll();
     }
 
-    public Product editProduct(Product product){
-        if (findProductById(product.getId()).isPresent()){
+    public Product editProduct(Product product) throws ResourceNotFoundException {
+        if(product.getId() != null && findProductById(product.getId()).isPresent()){
             return productRepository.save(product);
         }else{
-            return null;
+            throw new ResourceNotFoundException("Product does not exist.");
         }
     }
 
-    public void deleteProduct(Long id){
-        if (findProductById(id).isPresent()){
-            productRepository.deleteById(id);
-        }
+    public void deleteProduct(Long id) throws ResourceNotFoundException {
+        findProductById(id).get();
+        logger.info("The product with id " + id + " has been successfully deleted.");
+        productRepository.deleteById(id);
     }
 
     public List<Product> randomProductList(){

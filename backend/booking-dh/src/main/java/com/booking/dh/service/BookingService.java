@@ -1,8 +1,10 @@
 package com.booking.dh.service;
 
+import com.booking.dh.exceptions.BadRequestException;
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Booking;
-import com.booking.dh.model.Product;
 import com.booking.dh.repository.BookingRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +14,35 @@ import java.util.*;
 @Service
 public class BookingService {
 
+    static final Logger logger = Logger.getLogger(BookingService.class);
+
     @Autowired
     BookingRepository bookingRepository;
 
-    public Booking saveBooking (Booking booking) {
+    public Booking saveBooking (Booking booking) throws BadRequestException {
+        if (booking.getCheckOutDate().isBefore(booking.getCheckInDate())){
+            throw new BadRequestException("Check-out date cannot be earlier than check-in date.");
+        }
+        if (booking.getCheckInDate().isBefore(LocalDate.now())){
+            throw new BadRequestException("Check-in date cannot be earlier than today.");
+        }
+        Collection<Booking> notAvailable = findNotAvailable(booking.getCheckInDate(), booking.getCheckOutDate());
+        for (Booking notAvailableBooking: notAvailable) {
+            if (notAvailableBooking.getProduct().getId() == booking.getProduct().getId()){
+                throw new BadRequestException("This product is not available between selected dates.");
+            }
+        }
+        logger.info("Booking successfully saved.");
         return bookingRepository.save(booking);
     }
 
-    public Optional<Booking> findBookingById(Long id){
-        return bookingRepository.findById(id);
+    public Optional<Booking> findBookingById(Long id) throws ResourceNotFoundException {
+        Optional<Booking> booking = bookingRepository.findById(id);
+        if (booking.isPresent()){
+            return booking;
+        }else{
+            throw new ResourceNotFoundException("The id " + id + " does not correspond to any current booking.");
+        }
     }
 
     public List<Booking> findBookingByProductId(Long id){
@@ -32,15 +54,18 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
-    public Booking updateBooking (Booking booking) {
-        if(findBookingById(booking.getId()).isPresent()){
+    public Booking updateBooking (Booking booking) throws ResourceNotFoundException {
+        if(booking.getId() != null && findBookingById(booking.getId()).isPresent()){
+            logger.info("Booking successfully updated.");
             return bookingRepository.save(booking);
         }else{
-            return null;
+            throw new ResourceNotFoundException("Booking does not exist.");
         }
     }
 
-    public void deleteBooking (Long id){
+    public void deleteBooking (Long id) throws ResourceNotFoundException{
+        findBookingById(id).get();
+        logger.info("The booking with id " + id + " has been successfully deleted.");
         bookingRepository.deleteById(id);
     }
 

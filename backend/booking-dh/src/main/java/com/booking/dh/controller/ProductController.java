@@ -1,5 +1,6 @@
 package com.booking.dh.controller;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Product;
 import com.booking.dh.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,8 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> findProductById(@PathVariable Long id) {
-        if (productService.findProductById(id).isPresent()) {
-            return ResponseEntity.ok(productService.findProductById(id).get());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<Product> findProductById(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productService.findProductById(id).get());
     }
 
     @GetMapping
@@ -50,7 +47,7 @@ public class ProductController {
      */
 
     @GetMapping("/city-dates")
-    public ResponseEntity<?> findProductByCityAndDates(@RequestParam (value="city_id", required=false) Long city_id, @RequestParam (value="checkInDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkInDate, @RequestParam (value="checkOutDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOutDate) {
+    public ResponseEntity<?> findProductByCityAndDates(@RequestParam (value="city_id", required=false) Long city_id, @RequestParam (value="checkInDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkInDate, @RequestParam (value="checkOutDate", required=false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate checkOutDate) throws ResourceNotFoundException {
         if ((checkInDate == null && checkOutDate != null && city_id != null) || (checkInDate != null && checkOutDate == null && city_id != null)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Check-in/check-out date must both be specified or null.");
         }
@@ -76,37 +73,23 @@ public class ProductController {
 
 
     @PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        ResponseEntity<Product> response;
-
-        if (product.getId() != null && productService.findProductById(product.getId()).isPresent()) {
-            response = ResponseEntity.ok(productService.editProduct(product));
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productService.editProduct(product));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
-        ResponseEntity<String> response;
-
-        if (productService.findProductById(id).isPresent()) {
-            productService.deleteProduct(id);
-            response = ResponseEntity.ok("Product successfully removed.");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id) throws ResourceNotFoundException {
+        productService.deleteProduct(id);
+        return ResponseEntity.ok("Product successfully removed.");
     }
 
     @GetMapping("/city/{id}")
-    public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) {
+    public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productService.findProductByCityId(id));
     }
 
     @GetMapping("/category/{id}")
-    public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) {
+    public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(productService.findProductByCategoryId(id));
     }
     

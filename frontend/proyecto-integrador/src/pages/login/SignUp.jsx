@@ -3,15 +3,14 @@
 import React, { useState } from "react";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "../../styles/Form.css";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { api } from "../../services/api/api";
-
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -83,20 +82,19 @@ function SignUp() {
 
   };
 
-  return (
+return (
     <section className="formurarios" >
-      <div style={{ padding: "100px 10px" }}>
+        <div style={{ padding: "100px 10px" }}>
         <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
         <div className="titulo">
           <Text type="h1" color="primary" text="Crear cuenta" />
         </div>
 
         <form onSubmit={formik.handleSubmit}>
-          <div className="nombre">
+        <div className="nombre">
             <div>
               <div className="label">
               <Text type="p2" color="secondary" text="Nombre" />
-
               </div>
               <div className="relative">
                 <input
@@ -111,7 +109,6 @@ function SignUp() {
             <div>
               <div className="label">
               <Text type="p2" color="secondary" text="Apellido" />
-
               </div>
               <div className="relative">
                 <input
@@ -123,74 +120,101 @@ function SignUp() {
                 { formik.errors.lastName && <p className="msg-error">{formik.errors.lastName}</p>}
               </div>
             </div>
-          </div>
-
-          <div>
+        </div>
+        <div>
             <div className="label">
-            <Text type="p2" color="secondary" text="Correo electrónico" />
-
+                <Text
+                    type="p2"
+                    color="secondary"
+                    text="Correo electrónico"
+                />
             </div>
             <div>
-              <input
-                type="email"
-                name='email'
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-              { formik.errors.email && <p className="msg-error">{formik.errors.email}</p>}
+                <input
+                    type="email"
+                    name="email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
+                />
+                {formik.errors.email && (
+                    <p className="msg-error">
+                        {formik.errors.email}
+                    </p>
+                )}
             </div>
-          </div>
-          <div className="password">
+        </div>
+        <div className="password">
             <div className="label">
-            <Text type="p2" color="secondary" text="Contraseña" />
-
+                <Text
+                    type="p2"
+                    color="secondary"
+                    text="Contraseña"
+                />
             </div>
             <div>
-              <input
+            <input
                 type={showPassword ? "text" : "password"}
-                name='password'
+                name="password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
-              />
-              { formik.errors.password && <p className="msg-error">{formik.errors.password}</p>}
-              {
-                showPassword === false ?
-                <VisibilityOffIcon className="visibility" onClick={() => {setShowPassword(!showPassword)} }/> : 
-                <VisibilityIcon className="visibility" onClick={() => {setShowPassword(!showPassword)} }/>
-              }
-            </div>
-          </div>
-          <div>
-            <div className="label">
-            <Text type="p2" color="secondary" text="Confirmar contraseña" />
-
-            </div>
-            <div>
-              <input
-                type="password"
-                name='password2'
-                onChange={formik.handleChange}
-                value={formik.values.password2}
-              />
-              { formik.errors.password2 && <p className="msg-error">{formik.errors.password2}</p>}
-            </div>
-          </div>
-
-          <div className="boton">
-            <Button
-              text="Crear cuenta"
-              width="s"
-              type="submit"
             />
-          </div>
-        </form>
-        
-        <div className="texto-cuenta">
-        <p>¿Ya tienes una cuenta? <Link to={'/sign-in'}>Iniciar sesión</Link></p>
+            {formik.errors.password && (
+                <p className="msg-error">
+                    {formik.errors.password}
+                </p>
+            )}
+            {showPassword === false ? (
+                <VisibilityOffIcon
+                className="visibility"
+                onClick={() => {
+                    setShowPassword(!showPassword);
+                }}
+                />
+            ) : (
+                <VisibilityIcon
+                className="visibility"
+                onClick={() => {
+                setShowPassword(!showPassword);
+                }}
+                />
+            )}
+            </div>
         </div>
-      </div>
+            <div>
+                <div className="label">
+                    <Text
+                        type="p2"
+                        color="secondary"
+                        text="Confirmar contraseña"
+                    />
+                </div>
+                <div>
+                <input
+                    type={showPassword ? "text" : "password"}
+                    name="password2"
+                    onChange={formik.handleChange}
+                    value={formik.values.password2}
+                />
+                {formik.errors.password2 && (
+                    <p className="msg-error">
+                        {formik.errors.password2}
+                    </p>
+                )}
+                </div>
+            </div>
+                <div className="boton">
+                    <Button text="Crear cuenta" width="s" type="submit" />
+                </div>
+        </form>
+        <div className="texto-cuenta">
+            <p>
+                ¿Ya tienes una cuenta?{" "}
+                <Link to={"/sign-in"}>Iniciar sesión</Link>
+            </p>
+        </div>
+        </div>
     </section>
-  );
+    );
 }
 
 export default SignUp;

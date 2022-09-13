@@ -1,9 +1,9 @@
 package com.booking.dh.controller;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Country;
 import com.booking.dh.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,27 +27,13 @@ public class CountryController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Country> updateCountry(@RequestBody Country country) {
-        ResponseEntity<Country> response;
-
-        if (country.getId() != null && countryService.readCountryById(country.getId()).isPresent()) {
-            response = ResponseEntity.ok(countryService.updateCountry(country));
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<Country> updateCountry(@RequestBody Country country) throws ResourceNotFoundException {
+        return ResponseEntity.ok(countryService.updateCountry(country));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCountry(@PathVariable Long id) {
-        ResponseEntity<String> response;
-
-        if (countryService.readCountryById(id).isPresent()) {
-            countryService.deleteCountry(id);
-            response = ResponseEntity.ok("Country successfully removed.");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<String> deleteCountry(@PathVariable Long id) throws ResourceNotFoundException {
+        countryService.deleteCountry(id);
+        return ResponseEntity.ok("Country successfully removed.");
     }
 }

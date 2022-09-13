@@ -45,7 +45,8 @@ public class BookingUser implements UserDetails{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @JoinColumn(name = "role_id", nullable = false)
+    @JoinColumn(name= "role_id", referencedColumnName = "id", nullable = false)
+    //@JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
     @JsonIgnoreProperties({"bookingUser"})
