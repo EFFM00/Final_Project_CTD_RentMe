@@ -129,7 +129,7 @@ function DetallesProducto() {
               >
                 {dataProduct?.characteristicsXProducts?.map((item) => (
                   <li className="itemCaracteristica" key={item.id}>
-                   <span><img src={item?.characteristic?.icon} alt="" /></span> 
+                   <span className="iconosC"><img src={item?.characteristic?.icon} alt="" /></span> 
                     {item?.characteristic?.description}
                   </li>
                 ))}
@@ -174,7 +174,7 @@ function DetallesProducto() {
                 <ul className="listaPoliticas" style={{ paddingLeft: "30px" }}>
                     {dataProduct?.policiesXProducts?.map((item) => (
                         <li className="itemPolitica" key={item.id}>
-                            {item?.policy?.policyType?.name} -{" "}
+                            <h3>{item?.policy?.policyType?.name}</h3>
                             {item?.policy?.description}
                         </li>
                     ))}
