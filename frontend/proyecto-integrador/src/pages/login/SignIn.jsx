@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -9,9 +9,13 @@ import "../../styles/Form.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { api } from "../../services/api/api";
+import { UserContext } from "../../services/UserContext";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const {setUser} = useContext(UserContext);
+  
   const navigate = useNavigate();
 
   const formik = useFormik ({
@@ -27,43 +31,45 @@ function SignIn() {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit(values){
-      handleLogin(values);
+      handleLogin(values); 
     }
   });
 
-
-  const handleLogin = (values) => {
+  const handleLogin = async (values) => {
     const userData = {
       email: values.email,
       password: values.password,
     }
 
-    api.post("/auth/login", JSON.stringify (userData),
-    {
-      headers: {'Content-Type': 'application/json'}
-    })
-    .then(resp => {
-      console.log(resp)
-      localStorage.setItem('token', resp.data.respuesta.token)
-      localStorage.getItem('token')
+    try{
+      const resp = await api.post("/auth/login", JSON.stringify (userData),
+      {
+        headers: {'Content-Type': 'application/json'}
+      }
+      )
+
+     localStorage.setItem('token', resp?.data?.respuesta?.token)
+     const token =  localStorage.getItem('token')
+      setUser({userData, token})
 
       if(resp.status === 200) {
         navigate("/");
       }
-    })
-    .catch(error => {
-      alert("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
-    })
+      
+    } catch (error) {
+      if(error.response.status === 403) {
+        setErrMsg("Email o contraseña incorrecta")
+      } else {
+        setErrMsg("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde")
+      }
+    }
   }
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     
     <section className="formurarios">
       <div style={{ padding: "100px 10px" }}>
+        <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
         <div className="titulo">
           <Text type="h1" color="primary" text="Iniciar sesión" />
         </div>

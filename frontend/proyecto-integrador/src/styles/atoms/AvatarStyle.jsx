@@ -6,7 +6,7 @@ export const Contenedor = styled.div`
         align-items: flex-end;
         gap: 5px;
         text-align: right;
-        width: 150px;
+        // width: 150px;
         
         @media screen and (min-width: 768px) {
             flex-direction: row;
@@ -14,7 +14,7 @@ export const Contenedor = styled.div`
             justify-content: space-between;
             align-items: flex-star;
             text-align: left;
-            width: 130px;
+            // width: 130px;
         }
     `
 
