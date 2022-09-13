@@ -1,9 +1,9 @@
 package com.booking.dh.controller;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Characteristic;
 import com.booking.dh.service.CharacteristicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +22,8 @@ public class CharacteristicController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Characteristic> findCharacteristicById(@PathVariable Long id) {
-        if(characteristicService.readCharacteristicById(id).isPresent()){
-            return ResponseEntity.ok(characteristicService.readCharacteristicById(id).get());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<Characteristic> findCharacteristicById(@PathVariable Long id) throws ResourceNotFoundException  {
+        return ResponseEntity.ok(characteristicService.readCharacteristicById(id).get());
     }
 
     @GetMapping
@@ -36,27 +32,13 @@ public class CharacteristicController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Characteristic> updateCharacteristic(@RequestBody Characteristic characteristic) {
-        ResponseEntity<Characteristic> response;
-
-        if (characteristic.getId() != null && characteristicService.readCharacteristicById(characteristic.getId()).isPresent()) {
-            response = ResponseEntity.ok(characteristicService.updateCharacteristic(characteristic));
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<Characteristic> updateCharacteristic(@RequestBody Characteristic characteristic) throws ResourceNotFoundException {
+        return ResponseEntity.ok(characteristicService.updateCharacteristic(characteristic));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCharacteristic(@PathVariable Long id) {
-        ResponseEntity<String> response;
-
-        if (characteristicService.readCharacteristicById(id).isPresent()) {
-            characteristicService.deleteCharacteristic(id);
-            response = ResponseEntity.ok("Characteristic successfully removed.");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<String> deleteCharacteristic(@PathVariable Long id) throws ResourceNotFoundException {
+        characteristicService.deleteCharacteristic(id);
+        return ResponseEntity.ok("Characteristic successfully removed.");
     }
 }

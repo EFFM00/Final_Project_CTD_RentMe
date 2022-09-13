@@ -1,0 +1,14 @@
+[2022-09-12 21:52:57] [ INFO ] [CategoryService:48] The category with the id 4 was successfully deleted.
+[2022-09-12 21:53:18] [ INFO ] [CategoryService:48] The category with the id 3 was successfully deleted.
+[2022-09-12 21:54:07] [ INFO ] [CountryService:48] The country with the id 1 was successfully deleted.
+[2022-09-12 21:59:51] [ INFO ] [CityService:48] The city with the id 2 was successfully deleted.
+[2022-09-12 22:01:24] [ INFO ] [ProductService:66] The product with the id 2 was successfully deleted.
+[2022-09-12 22:02:08] [ INFO ] [CharacteristicService:48] The characteristic with the id 1 was successfully deleted.
+[2022-09-12 22:03:18] [ INFO ] [CharacteristicXProductService:48] The product characteristic with the id 1 was successfully deleted.
+[2022-09-12 22:03:55] [ INFO ] [ImageService:48] The image with the id 1 was successfully deleted.
+[2022-09-12 22:04:36] [ INFO ] [PolicyTypeService:48] The policy type with the id 2 was successfully deleted.
+[2022-09-12 22:05:24] [ INFO ] [PolicyService:48] The policy with the id 1 was successfully deleted.
+[2022-09-12 22:06:11] [ INFO ] [PolicyXProductService:48] The product policy with the id 1 was successfully deleted.
+[2022-09-12 22:18:01] [ ERROR] [GlobalExceptionHandler:17] The id 40 does not correspond to any current category.
+[2022-09-12 22:18:18] [ ERROR] [GlobalExceptionHandler:17] The id 54 does not correspond to any current category.
+[2022-09-12 22:30:05] [ ERROR] [GlobalExceptionHandler:16] The id 9 does not correspond to any current characteristic.
