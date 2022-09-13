@@ -45,9 +45,13 @@ public class BookingService {
         }
     }
 
-    public List<Booking> findBookingByProductId(Long id){
+    public List<Booking> findBookingByProductId(Long id) throws ResourceNotFoundException {
         List<Booking> bookingsByProduct = bookingRepository.findBookingByProductId(id);
-        return bookingsByProduct;
+        if (!bookingsByProduct.isEmpty()){
+            return bookingsByProduct;
+        }else{
+            throw new ResourceNotFoundException("Product id " + id + " does not correspond to any current booking.");
+        }
     }
 
     public List<Booking> readAll() {
