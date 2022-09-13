@@ -46,7 +46,7 @@ public class AuthController {
         if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
             return ResponseEntity.ok("Email already exists");
         }
-        BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getCity(), registerBookingUser.getRole());
+        BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getRole());
         Role role = new Role();
         role = roleService.findByName(String.valueOf(RoleName.client)).get();
         if (registerBookingUser.getRole().equals("admin"))
