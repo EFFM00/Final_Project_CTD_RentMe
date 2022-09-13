@@ -8,7 +8,6 @@ import Footer from "./components/molecules/Footer";
 import Home from "./pages/home/Home";
 import SignUp from "./pages/login/SignUp";
 import SignIn from "./pages/login/SignIn";
-import { useState } from "react";
 import DetallesProducto from "./components/DetallesProducto";
 import ReservaExitosa from "./components/ReservaExitosa";
 import Reserva from "./pages/home/Reserva";
