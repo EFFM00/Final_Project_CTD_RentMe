@@ -39,7 +39,7 @@ public class BookingController {
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<List<Booking>> findBookingByProductId(@PathVariable Long id) {
+    public ResponseEntity<List<Booking>> findBookingByProductId(@PathVariable Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(bookingService.findBookingByProductId(id));
     }
 
