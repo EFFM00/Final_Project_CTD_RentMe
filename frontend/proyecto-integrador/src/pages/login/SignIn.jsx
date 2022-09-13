@@ -53,7 +53,7 @@ function SignIn() {
       setUser({userData, token})
 
       if(resp.status === 200) {
-        navigate("/home");
+        navigate("/");
       }
       
     } catch (error) {

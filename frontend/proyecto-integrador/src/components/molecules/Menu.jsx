@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../../services/UserContext";
 
 function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setShowBtnSignIn}) {
-    const [ tablet, setTablet ] = useState(true);
+    const [ tablet, setTablet ] = useState(false);
     const {user, setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -17,10 +17,10 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
         window.addEventListener("resize", ()=>responsive())
     }, [])
 
-    const handleClickLogout = (e) => {
+    const handleClickLogout = () => {
         setUser(null);
         localStorage.removeItem("token")
-        navigate("/home");
+        navigate("/");
         setShowBtnSignIn(true);
         setShowBtnRegister(true);
     }

@@ -24,7 +24,7 @@ function App() {
       <ThemeProvider theme={Colors}>
         <Header user={user} setUser={setUser}/>
         <Routes>
-          <Route path="/home" element={<Home/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>
           <Route path="/sign-in" element={<SignIn user={user} setUser={setUser}/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />

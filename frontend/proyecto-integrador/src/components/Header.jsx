@@ -18,7 +18,7 @@ function Header() {
         onClick={() => {
           setShowBtnRegister(true);
           setShowBtnSignIn(true);
-          navigate("/home");
+          navigate("/");
         }}
       >
         <img style={{width: "150px", marginTop: "10px"}} src={logo} alt="logo" />
