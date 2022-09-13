@@ -167,7 +167,7 @@ function DetallesProducto() {
             {/* Bloque de Politicas */}
 
             <div className="TituloP">
-                <Text type="h1" color="secondary" text="Qué tenes que saber" />
+                <Text type="h1" color="secondary" text="Qué tenés que saber" />
             </div>
 
             <div className="BloqueDePoliticas">

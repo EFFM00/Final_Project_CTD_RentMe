@@ -29,14 +29,6 @@ public class BookingUserService implements UserDetailsService{
         return bookingUserRepository.findAll();
     }
 
-    public BookingUser updateUser(BookingUser role) {
-        if(readUserById(role.getId()).isPresent()){
-            return bookingUserRepository.save(role);
-        }else{
-            return null;
-        }
-    }
-
     public void deleteUser(Long id) {
         bookingUserRepository.deleteById(id);
     }

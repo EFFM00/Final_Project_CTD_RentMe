@@ -26,14 +26,6 @@ public class RoleService {
         return roleRepository.findAll();
     }
 
-    public Role updateRole(Role role) {
-        if(readRoleById(role.getId()).isPresent()){
-            return roleRepository.save(role);
-        }else{
-            return null;
-        }
-    }
-
     public void deleteRole(Long id) {
         roleRepository.deleteById(id);
     }
