@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from '../atoms/Button';
 import Avatar from "../atoms/Avatar";
-import { AvatarUser, BotonesIC, ContenedorMenu, Titulo } from '../../styles/NuevoMenuStyle';
+import { AvatarUser, BotonesIC, ContenedorMenu, Titulo } from '../../styles/MenuStyle';
 import Text from '../atoms/Text';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../../services/UserContext";

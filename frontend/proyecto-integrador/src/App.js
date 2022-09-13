@@ -15,18 +15,16 @@ import Reserva from "./pages/home/Reserva";
 
 
 function App() {
-  const [ user, setUser ] = useState(null);
-
   return (
     <UserProvider>
     <BrowserRouter>
       <GlobalStyle />
       <ThemeProvider theme={Colors}>
-        <Header user={user} setUser={setUser}/>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/sign-up" element={<SignUp/>}/>
-          <Route path="/sign-in" element={<SignIn user={user} setUser={setUser}/>}/>
+          <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/products/:id/reserva" element={<Reserva/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
