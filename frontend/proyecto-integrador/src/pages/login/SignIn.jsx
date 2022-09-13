@@ -47,10 +47,11 @@ function SignIn() {
         headers: {'Content-Type': 'application/json'}
       }
       )
-
+      // guardamos en localstorage el token
      localStorage.setItem('token', resp?.data?.respuesta?.token)
-     const token =  localStorage.getItem('token')
-      setUser({userData, token})
+    //  const token =  localStorage.getItem('token')
+    // falta desencriptar el token y guradarlo en el contexto con el metodo setUser
+      setUser({userData})
 
       if(resp.status === 200) {
         navigate("/");
