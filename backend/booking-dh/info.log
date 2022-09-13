@@ -12,3 +12,4 @@
 [2022-09-12 22:18:01] [ ERROR] [GlobalExceptionHandler:17] The id 40 does not correspond to any current category.
 [2022-09-12 22:18:18] [ ERROR] [GlobalExceptionHandler:17] The id 54 does not correspond to any current category.
 [2022-09-12 22:30:05] [ ERROR] [GlobalExceptionHandler:16] The id 9 does not correspond to any current characteristic.
+[2022-09-13 15:02:49] [ ERROR] [GlobalExceptionHandler:28] No value present
