@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../services/Products";
 import Card from "./Card";
-import "../styles/ListaBooking.css";
 
 function ListaBooking({ idCat, tipoProd, dataFilterProd, recommendationPage }) {
   const [products, setProducts] = useState([]);
