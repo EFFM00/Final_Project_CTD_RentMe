@@ -119,41 +119,24 @@ function DetallesProducto() {
 
                     {/* Bloque Caracteristicas */}
 
-                    <div className="TituloC">
-                        <Text
-                            type="h1"
-                            color="secondary"
-                            text="¿Qué ofrece este lugar?"
-                        />
-                    </div>
-                    <div className="BloqueDeCaracteristicas">
-                        <div className="caracteristicas">
-                            <ul
-                                className="listaCaracteristicas"
-                                style={{ paddingLeft: "30px" }}
-                            >
-                                {dataProduct?.characteristicsXProducts?.map(
-                                    (item) => (
-                                        <li
-                                            className="itemCaracteristica"
-                                            key={item.id}
-                                        >
-                                            <span>
-                                                <img
-                                                    src={
-                                                        item?.characteristic
-                                                            ?.icon
-                                                    }
-                                                    alt=""
-                                                />
-                                            </span>
-                                            {item?.characteristic?.description}
-                                        </li>
-                                    )
-                                )}
-                            </ul>
-                        </div>
-                    </div>
+          <div className="TituloC">
+            <Text type="h1" color="secondary" text="¿Qué ofrece este lugar?" />
+          </div>
+          <div className="BloqueDeCaracteristicas">
+            <div className="caracteristicas">
+              <ul
+                className="listaCaracteristicas"
+                style={{ paddingLeft: "30px" }}
+              >
+                {dataProduct?.characteristicsXProducts?.map((item) => (
+                  <li className="itemCaracteristica" key={item.id}>
+                   <span className="iconosC"><img src={item?.characteristic?.icon} alt="" /></span> 
+                    {item?.characteristic?.description}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
                     {/* Bloque Calendario */}
 
@@ -200,7 +183,7 @@ function DetallesProducto() {
                 <ul className="listaPoliticas" style={{ paddingLeft: "30px" }}>
                     {dataProduct?.policiesXProducts?.map((item) => (
                         <li className="itemPolitica" key={item.id}>
-                            {item?.policy?.policyType?.name} -{" "}
+                            <h3>{item?.policy?.policyType?.name}</h3>
                             {item?.policy?.description}
                         </li>
                     ))}
