@@ -1,7 +1,7 @@
 import React from 'react'
 import Text from '../atoms/Text'
 import Calendar from 'react-calendar';
-import { ContainerCalendar, Titulo } from '../../styles/CalendarioReservaStyle';
+import { ContainerCalendar} from '../../styles/CalendarioReservaStyle';
 import { useState } from 'react';
 import { useEffect } from 'react';
 // import dayjs from "dayjs"; // ES 2015
