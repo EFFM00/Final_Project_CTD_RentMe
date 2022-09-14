@@ -1,6 +1,7 @@
 package com.booking.dh.security;
 
 
+import com.booking.dh.security.model.BookingUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,9 +20,11 @@ public class JWTUtil {
     int expiration =3600;
 
     public String generateToken(Authentication auth,UserDetails us) {
-        //BookingUser user = (BookingUser) authentication.getPrincipal();
+        BookingUser user = (BookingUser) auth.getPrincipal();
         Map<String,Object>claims = new HashMap<>();
-        claims.put("usuario",us);
+        claims.put("user",us);
+        claims.put("name",user.getName());
+        claims.put("lastName",user.getLastName());
         UserDetails u = (UserDetails) auth.getPrincipal();
         String jwt= Jwts .builder().setSubject(u.getUsername())
                 .setIssuedAt(new Date())

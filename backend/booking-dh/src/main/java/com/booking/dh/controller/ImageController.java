@@ -1,9 +1,9 @@
 package com.booking.dh.controller;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Image;
 import com.booking.dh.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,27 +27,13 @@ public class ImageController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Image> updateImage(@RequestBody Image image) {
-        ResponseEntity<Image> response;
-
-        if (image.getId() != null && imageService.readImageById(image.getId()).isPresent()) {
-            response = ResponseEntity.ok(imageService.updateImage(image));
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<Image> updateImage(@RequestBody Image image) throws ResourceNotFoundException {
+        return ResponseEntity.ok(imageService.updateImage(image));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteImage(@PathVariable Long id) {
-        ResponseEntity<String> response;
-
-        if (imageService.readImageById(id).isPresent()) {
-            imageService.deleteImage(id);
-            response = ResponseEntity.ok("Image successfully removed.");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<String> deleteImage(@PathVariable Long id) throws ResourceNotFoundException {
+        imageService.deleteImage(id);
+        return ResponseEntity.ok("Image successfully removed.");
     }
 }

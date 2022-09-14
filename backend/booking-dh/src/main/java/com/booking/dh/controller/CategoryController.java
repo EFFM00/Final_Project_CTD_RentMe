@@ -1,9 +1,9 @@
 package com.booking.dh.controller;
 
+import com.booking.dh.exceptions.ResourceNotFoundException;
 import com.booking.dh.model.Category;
 import com.booking.dh.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +20,7 @@ public class CategoryController {
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.createCategory(category));
     }
+
     @CrossOrigin(origins = "http://localhost:3000/")
     @GetMapping
     public ResponseEntity<List<Category>> listCategories(){
@@ -27,27 +28,13 @@ public class CategoryController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Category> updateCategory(@RequestBody Category category) {
-        ResponseEntity<Category> response;
-
-        if (category.getId() != null && categoryService.readCategoryById(category.getId()).isPresent()) {
-            response = ResponseEntity.ok(categoryService.updateCategory(category));
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<Category> updateCategory(@RequestBody Category category) throws ResourceNotFoundException {
+        return ResponseEntity.ok(categoryService.updateCategory(category));
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCategory(@PathVariable Long id) {
-        ResponseEntity<String> response;
-
-        if (categoryService.readCategoryById(id).isPresent()) {
-            categoryService.deleteCategory(id);
-            response = ResponseEntity.ok("Category successfully removed.");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return response;
+    public ResponseEntity<String> deleteCategory(@PathVariable Long id) throws ResourceNotFoundException {
+        categoryService.deleteCategory(id);
+        return ResponseEntity.ok("Category successfully removed.");
     }
 }
