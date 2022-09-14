@@ -74,6 +74,13 @@ public class BookingUser implements UserDetails{
         this.role = role;
     }
 
+    public BookingUser(String name, String lastName, String email, String password) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role.getName());

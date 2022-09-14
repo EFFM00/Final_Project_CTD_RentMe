@@ -1,5 +1,6 @@
 package com.booking.dh.security.controller;
 
+import com.booking.dh.exceptions.BadRequestException;
 import com.booking.dh.security.JWTUtil;
 import com.booking.dh.security.enums.RoleName;
 import com.booking.dh.security.model.*;
@@ -40,7 +41,7 @@ public class AuthController {
     @Autowired
     JWTUtil jwtUtil;
 
-
+/*
     @PostMapping(path = "/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody BookingUser registerBookingUser) {
         if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
@@ -49,8 +50,28 @@ public class AuthController {
         BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()), registerBookingUser.getRole());
         Role role = new Role();
         role = roleService.findByName(String.valueOf(RoleName.client)).get();
-        if (registerBookingUser.getRole().equals("admin"))
+        if (registerBookingUser.getRole().getId() == 2)
             role = roleService.findByName(String.valueOf(RoleName.admin)).get();
+        bookingUser.setRole(role);
+        bookingUserService.createUser(bookingUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body("User successfully created");
+    }
+ */
+
+    @PostMapping(path = "/register")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody BookingUser registerBookingUser) throws BadRequestException {
+        if (bookingUserService.existsByEmail(registerBookingUser.getEmail())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email already exists");
+        }
+        BookingUser bookingUser = new BookingUser(registerBookingUser.getName(), registerBookingUser.getLastName(), registerBookingUser.getEmail(), passwordEncoder.encode(registerBookingUser.getPassword()));
+        Role role = new Role();
+        if (registerBookingUser.getRole().getId() == 1) {
+            role = roleService.findByName(String.valueOf(RoleName.client)).get();
+        } else if (registerBookingUser.getRole().getId() == 2) {
+            role = roleService.findByName(String.valueOf(RoleName.admin)).get();
+        } else {
+            throw new BadRequestException("Role id must be 1 or 2");
+        }
         bookingUser.setRole(role);
         bookingUserService.createUser(bookingUser);
         return ResponseEntity.status(HttpStatus.CREATED).body("User successfully created");
