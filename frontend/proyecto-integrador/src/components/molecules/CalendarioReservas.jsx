@@ -37,6 +37,7 @@ function CalendarioReservas({ fechasOcupadas }) {
 
 
     let rangoSinArray = []
+    // eslint-disable-next-line array-callback-return
     rangosDeshabilitados.map(item => {
         item.map(item2 => {
             return rangoSinArray.push(new Date(item2))
@@ -61,7 +62,7 @@ function CalendarioReservas({ fechasOcupadas }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont3"
-                        tileDisabled={({date}) => date.getDate() === rangoSinArray.forEach(item => (item.getDate()))}
+                        tileDisabled={(date) => rangoSinArray.some(disabledDate => date.getDate() === disabledDate.getDate()) }
                     />
                 ) : (
                     <Calendar
@@ -71,7 +72,7 @@ function CalendarioReservas({ fechasOcupadas }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont4"
-                        tileDisabled={({date}) => date.getDate() === rangoSinArray.forEach(item => (item.getDate()))}
+                        tileDisabled={(date) => rangoSinArray.some(disabledDate => date.getDate() === disabledDate.getDate()) }
                     />
                 )}
             </ContainerCalendar>
