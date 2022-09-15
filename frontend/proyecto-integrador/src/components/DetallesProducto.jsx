@@ -21,6 +21,7 @@ import Reserva from "../pages/home/Reserva";
 function DetallesProducto() {
     const { id } = useParams();
     const [dataProduct, setDataProduct] = useState([]);
+    const [fechasOcupadas, setFechasOcupadas] = useState([]);
     const [showReservation, setShowReservation] = useState(false);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
 
@@ -40,12 +41,34 @@ function DetallesProducto() {
             };
         });
         setImages(img);
+
+        let dates = resp.bookings.map((item) => {
+            return {
+                checkIn: item.checkInDate,
+                checkOut: item.checkOutDate
+            };
+        });
+        setFechasOcupadas(dates);
     };
 
     useEffect(() => {
         getProd();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id]);
+        // console.log(dataProduct.bookings, "USE EFFECT");
+            
+    });
+    
+    // useEffect(() => {
+    //     getProd();
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    //     // console.log(dataProduct.bookings, "USE EFFECT");
+            
+    // }, [id]);
+
+
+    // if(dataProduct != []){
+    //     dataProduct.bookings.map(reserva => console.log(`Llegada: ${reserva.checkInDate}, Vuelta: ${reserva.checkOutDate}`));
+    // }
 
     return (
         <div style={{ width: "100%" }}>
@@ -119,24 +142,41 @@ function DetallesProducto() {
 
                     {/* Bloque Caracteristicas */}
 
-          <div className="TituloC">
-            <Text type="h1" color="secondary" text="¿Qué ofrece este lugar?" />
-          </div>
-          <div className="BloqueDeCaracteristicas">
-            <div className="caracteristicas">
-              <ul
-                className="listaCaracteristicas"
-                style={{ paddingLeft: "30px" }}
-              >
-                {dataProduct?.characteristicsXProducts?.map((item) => (
-                  <li className="itemCaracteristica" key={item.id}>
-                   <span className="iconosC"><img src={item?.characteristic?.icon} alt="" /></span> 
-                    {item?.characteristic?.description}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                    <div className="TituloC">
+                        <Text
+                            type="h1"
+                            color="secondary"
+                            text="¿Qué ofrece este lugar?"
+                        />
+                    </div>
+                    <div className="BloqueDeCaracteristicas">
+                        <div className="caracteristicas">
+                            <ul
+                                className="listaCaracteristicas"
+                                style={{ paddingLeft: "30px" }}
+                            >
+                                {dataProduct?.characteristicsXProducts?.map(
+                                    (item) => (
+                                        <li
+                                            className="itemCaracteristica"
+                                            key={item.id}
+                                        >
+                                            <span className="iconosC">
+                                                <img
+                                                    src={
+                                                        item?.characteristic
+                                                            ?.icon
+                                                    }
+                                                    alt=""
+                                                />
+                                            </span>
+                                            {item?.characteristic?.description}
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    </div>
 
                     {/* Bloque Calendario */}
 
@@ -149,7 +189,7 @@ function DetallesProducto() {
                             />
                         </Titulo>
 
-                        <CalendarioReservas />
+                        <CalendarioReservas fechasOcupadas={fechasOcupadas} />
                         <ContenedorBoton>
                             <Text
                                 type="h3"
