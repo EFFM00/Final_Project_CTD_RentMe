@@ -56,8 +56,15 @@ function DetallesProducto() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         // console.log(dataProduct.bookings, "USE EFFECT");
             
-    }, [id]);
+    });
     
+    // useEffect(() => {
+    //     getProd();
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    //     // console.log(dataProduct.bookings, "USE EFFECT");
+            
+    // }, [id]);
+
 
     // if(dataProduct != []){
     //     dataProduct.bookings.map(reserva => console.log(`Llegada: ${reserva.checkInDate}, Vuelta: ${reserva.checkOutDate}`));
