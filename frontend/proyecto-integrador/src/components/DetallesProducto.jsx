@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
+import { Titulo } from "../styles/CalendarioReservaStyle";
 import Arrow from "../assets/arrow.svg";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import ShareIcon from "@mui/icons-material/Share";
@@ -22,9 +23,9 @@ function DetallesProducto() {
     const [dataProduct, setDataProduct] = useState([]);
     const [showReservation, setShowReservation] = useState(false);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
-    
+
     // funcion para obtener los detalles de un solo producto por su id
-    
+
     const getProd = async () => {
         const resp = await getProductById(id);
         setDataProduct(resp);
@@ -98,23 +99,23 @@ function DetallesProducto() {
                         <FavoriteBorderIcon />
                     </div>
 
-          {/* Carrusel */}
-          <div className="carrusel">
-            <ImageGallery images={images} />
-          </div>
+                    {/* Carrusel */}
+                    <div className="carrusel">
+                        <ImageGallery images={images} />
+                    </div>
 
-          {/* Bloque Descripcion */}
+                    {/* Bloque Descripcion */}
 
-          <div className="BloqueDescripcion">
-            <Text
-              type="h1"
-              color="secondary"
-              text={`Alójate en el corazón de ${dataProduct?.city?.name}`}
-            />
-            <div className="TextoDeDescripcion">
-              <Text type="p1" text={dataProduct.description} />
-            </div>
-          </div>
+                    <div className="BloqueDescripcion">
+                        <Text
+                            type="h1"
+                            color="secondary"
+                            text={`Alójate en el corazón de ${dataProduct?.city?.name}`}
+                        />
+                        <div className="TextoDeDescripcion">
+                            <Text type="p1" text={dataProduct.description} />
+                        </div>
+                    </div>
 
                     {/* Bloque Caracteristicas */}
 
@@ -129,7 +130,7 @@ function DetallesProducto() {
               >
                 {dataProduct?.characteristicsXProducts?.map((item) => (
                   <li className="itemCaracteristica" key={item.id}>
-                   <span><img src={item?.characteristic?.icon} alt="" /></span> 
+                   <span className="iconosC"><img src={item?.characteristic?.icon} alt="" /></span> 
                     {item?.characteristic?.description}
                   </li>
                 ))}
@@ -140,6 +141,14 @@ function DetallesProducto() {
                     {/* Bloque Calendario */}
 
                     <SeccionReserva>
+                        <Titulo>
+                            <Text
+                                type="h1"
+                                color="secondary"
+                                text="Fechas disponibles"
+                            />
+                        </Titulo>
+
                         <CalendarioReservas />
                         <ContenedorBoton>
                             <Text
@@ -174,7 +183,7 @@ function DetallesProducto() {
                 <ul className="listaPoliticas" style={{ paddingLeft: "30px" }}>
                     {dataProduct?.policiesXProducts?.map((item) => (
                         <li className="itemPolitica" key={item.id}>
-                            {item?.policy?.policyType?.name} -{" "}
+                            <h3>{item?.policy?.policyType?.name}</h3>
                             {item?.policy?.description}
                         </li>
                     ))}

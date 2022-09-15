@@ -239,6 +239,7 @@
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
   gap: 15px;
+  width: 150%;
 }
 
 /* .itemPolitica {
