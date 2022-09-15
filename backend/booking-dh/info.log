@@ -41,3 +41,14 @@
 [2022-09-13 23:24:28] [ ERROR] [GlobalExceptionHandler:22] Role id must be 1 or 2
 [2022-09-13 23:38:09] [ ERROR] [GlobalExceptionHandler:28] Cannot invoke "com.booking.dh.security.model.Role.getId()" because the return value of "com.booking.dh.security.model.BookingUser.getRole()" is null
 [2022-09-13 23:41:44] [ ERROR] [GlobalExceptionHandler:28] Cannot invoke "com.booking.dh.security.model.Role.getId()" because the return value of "com.booking.dh.security.model.BookingUser.getRole()" is null
+[2022-09-14 15:39:38] [ ERROR] [GlobalExceptionHandler:22] Role id must be 1 or 2
+[2022-09-14 20:57:57] [ ERROR] [GlobalExceptionHandler:16] The id 2 does not correspond to any current product.
+[2022-09-14 21:38:05] [ ERROR] [GlobalExceptionHandler:28] Request method 'POST' not supported
+[2022-09-14 21:38:20] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-14 21:38:42] [ ERROR] [GlobalExceptionHandler:28] Request method 'POST' not supported
+[2022-09-14 21:39:45] [ ERROR] [GlobalExceptionHandler:16] Product id 2 does not correspond to any current booking.
+[2022-09-14 21:40:13] [ ERROR] [GlobalExceptionHandler:16] User id 1 does not correspond to any current booking.
+[2022-09-14 21:40:36] [ ERROR] [GlobalExceptionHandler:16] Booking does not exist.
+[2022-09-14 21:40:48] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-14 21:41:14] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
+[2022-09-14 21:41:19] [ ERROR] [GlobalExceptionHandler:28] Request method 'DELETE' not supported

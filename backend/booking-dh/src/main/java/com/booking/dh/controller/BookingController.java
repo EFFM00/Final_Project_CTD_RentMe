@@ -24,7 +24,17 @@ public class BookingController {
 
     @GetMapping
     public ResponseEntity<List<Booking>> listBookings(){
-        return ResponseEntity.ok(bookingService.readAll());
+        return ResponseEntity.ok(bookingService.findAll());
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<List<Booking>> findBookingsByProductId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(bookingService.findBookingsByProductId(id));
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Booking>> findBookingsByUserId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(bookingService.findBookingsByUserId(id));
     }
 
     @PutMapping("/update")
@@ -37,11 +47,4 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return ResponseEntity.ok("Booking successfully removed.");
     }
-
-    @GetMapping("/product/{id}")
-    public ResponseEntity<List<Booking>> findBookingByProductId(@PathVariable Long id) throws ResourceNotFoundException {
-        return ResponseEntity.ok(bookingService.findBookingByProductId(id));
-    }
-
-
 }
