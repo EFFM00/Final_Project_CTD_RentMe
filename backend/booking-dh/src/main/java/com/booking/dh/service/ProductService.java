@@ -53,6 +53,28 @@ public class ProductService {
         return productRepository.findAll();
     }
 
+    /*
+    public List<Product> randomProductList(){
+        List<Product> list = productRepository.findAll();
+        Collections.shuffle(list);
+        return list;
+    }
+     */
+
+    public List<Product> randomProductList(){
+        return productRepository.randomProducts();
+    }
+
+    public List<Product> findByCityAndDates(Long id, LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
+        List<Product> productsList = productRepository.findProductsByCityAndDates(id, wantedCheckInDate, wantedCheckOutDate);
+        return productsList;
+    }
+
+    public List<Product> findByDates(LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
+        List<Product> productsList = productRepository.findProductsByDates(wantedCheckInDate, wantedCheckOutDate);
+        return productsList;
+    }
+
     public Product editProduct(Product product) throws ResourceNotFoundException {
         if(product.getId() != null && findProductById(product.getId()).isPresent()){
             return productRepository.save(product);
@@ -65,21 +87,5 @@ public class ProductService {
         findProductById(id).get();
         logger.info("The product with id " + id + " has been successfully deleted.");
         productRepository.deleteById(id);
-    }
-
-    public List<Product> randomProductList(){
-        List<Product> list = productRepository.findAll();
-        Collections.shuffle(list);
-        return list;
-    }
-
-    public List<Product> findByCityAndDates(Long id, LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
-        List<Product> productsList = productRepository.findProductsByCityAndDates(id, wantedCheckInDate, wantedCheckOutDate);
-        return productsList;
-    }
-
-    public List<Product> findByDates(LocalDate wantedCheckInDate, LocalDate wantedCheckOutDate) {
-        List<Product> productsList = productRepository.findProductsByDates(wantedCheckInDate, wantedCheckOutDate);
-        return productsList;
     }
 }
