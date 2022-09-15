@@ -1,4 +1,4 @@
-package com.booking.dh.controller.security;
+package com.booking.dh.security.controller;
 
 import com.booking.dh.exceptions.BadRequestException;
 import com.booking.dh.security.JWTUtil;

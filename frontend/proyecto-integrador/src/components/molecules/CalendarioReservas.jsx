@@ -4,45 +4,31 @@ import Calendar from "react-calendar";
 import { ContainerCalendar } from "../../styles/CalendarioReservaStyle";
 import { useState } from "react";
 import { useEffect } from "react";
-import dayjs from "dayjs"; // ES 2015
+import { getAllBookings } from "../../services/Booking";
+//import { useParams } from "react-router-dom";
+// import dayjs from "dayjs"; // ES 2015
 
-function CalendarioReservas({ fechasOcupadas }) {
+function CalendarioReservas({ idProd }) {
     const [tablet, setTablet] = useState(false);
     const [dateValue, setDateValue] = useState(new Date());
     const minDate = new Date();
+    //const { id } = useParams();
+    const [fechasNoDisponibles, setFechasNoDisponibles] = useState([]);
 
-    const formatDate = (date) => {
-        return dayjs(date).format("YYYY-MM-DD");
+    // const formatDate = (date) => {
+    //     return dayjs(date).format("DD-MM-YYYY");
+    // };
+
+    const getBookings = async () => {
+        const resp = await getAllBookings(idProd);
+
+        setFechasNoDisponibles(resp);
     };
 
-    let diasEntreFechas = function (inicio, fin) {
-        let inicioDate = new Date(inicio);
-        let finDate = new Date(fin);
-        let fechas = [];
-
-        while (finDate.getTime() >= inicioDate.getTime()) {
-            fechas.push(formatDate(inicioDate));
-            inicioDate.setDate(inicioDate.getDate() + 1);
-        }
-
-        return fechas;
-    };
-
-    let rangosDeshabilitados = [];
-
-    fechasOcupadas.map((reserva) => {
-        let fecha = diasEntreFechas(reserva.checkIn, reserva.checkOut);
-        return rangosDeshabilitados.push(fecha);
+    useEffect(() => {
+        getBookings();
     });
-
-
-    let rangoSinArray = []
-    // eslint-disable-next-line array-callback-return
-    rangosDeshabilitados.map(item => {
-        item.map(item2 => {
-            return rangoSinArray.push(new Date(item2))
-        })
-    })
+    console.log(fechasNoDisponibles);
 
     useEffect(() => {
         const responsive = () =>
@@ -62,7 +48,6 @@ function CalendarioReservas({ fechasOcupadas }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont3"
-                        tileDisabled={(date) => rangoSinArray.some(disabledDate => date.getDate() === disabledDate.getDate()) }
                     />
                 ) : (
                     <Calendar
@@ -72,7 +57,6 @@ function CalendarioReservas({ fechasOcupadas }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont4"
-                        tileDisabled={(date) => rangoSinArray.some(disabledDate => date.getDate() === disabledDate.getDate()) }
                     />
                 )}
             </ContainerCalendar>
