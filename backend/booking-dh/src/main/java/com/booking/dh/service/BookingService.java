@@ -45,12 +45,39 @@ public class BookingService {
         }
     }
 
-    public List<Booking> findBookingByProductId(Long id){
-        List<Booking> bookingsByProduct = bookingRepository.findBookingByProductId(id);
-        return bookingsByProduct;
+    public List<Booking> findBookingsByProductId(Long id) throws ResourceNotFoundException {
+        List<Booking> bookingsByProduct = bookingRepository.findBookingsByProductId(id);
+        if (!bookingsByProduct.isEmpty()){
+            return bookingsByProduct;
+        }else{
+            throw new ResourceNotFoundException("Product id " + id + " does not correspond to any current booking.");
+        }
     }
 
-    public List<Booking> readAll() {
+    public List<Booking> findBookingsByUserId(Long id) throws ResourceNotFoundException {
+        List<Booking> bookingsByUser = bookingRepository.findBookingsByBookingUserId(id);
+        if (!bookingsByUser.isEmpty()){
+            return bookingsByUser;
+        }else{
+            throw new ResourceNotFoundException("User id " + id + " does not correspond to any current booking.");
+        }
+    }
+
+    public Collection<Booking> findNotAvailable(LocalDate checkInDate, LocalDate checkOutDate) {
+        Collection<Booking> bookings = bookingRepository.findAll();
+        Set<Booking> notAvailable = new HashSet<>();
+        for (Booking booking : bookings) {
+            if (booking.getCheckInDate().isBefore(checkOutDate) && booking.getCheckOutDate().isAfter(checkInDate)) {
+                notAvailable.add(booking);
+            }
+            if (booking.getCheckInDate().isEqual(checkOutDate) || booking.getCheckOutDate().isEqual(checkInDate)) {
+                notAvailable.add(booking);
+            }
+        }
+        return notAvailable;
+    }
+
+    public List<Booking> findAll() {
         return bookingRepository.findAll();
     }
 
@@ -67,19 +94,5 @@ public class BookingService {
         findBookingById(id).get();
         logger.info("The booking with id " + id + " has been successfully deleted.");
         bookingRepository.deleteById(id);
-    }
-
-    public Collection<Booking> findNotAvailable(LocalDate checkInDate, LocalDate checkOutDate) {
-        Collection<Booking> bookings = bookingRepository.findAll();
-        Set<Booking> notAvailable = new HashSet<>();
-        for (Booking booking : bookings) {
-            if (booking.getCheckInDate().isBefore(checkOutDate) && booking.getCheckOutDate().isAfter(checkInDate)) {
-                notAvailable.add(booking);
-            }
-            if (booking.getCheckInDate().isEqual(checkOutDate) || booking.getCheckOutDate().isEqual(checkInDate)) {
-                notAvailable.add(booking);
-            }
-        }
-        return notAvailable;
     }
 }

@@ -28,7 +28,7 @@ export const Formulario = styled.form`
     }
 
     @media screen and (min-width: 1024px) {
-        grid-auto-columns: 300px 300px 300px 300px;
+        grid-auto-columns: minmax(200px, 300px) minmax(200px, 300px) minmax(200px, 300px) minmax(200px, 300px);
         //grid-auto-columns:200px;
         grid-template-rows: 1fr;
         width: 60vw;
