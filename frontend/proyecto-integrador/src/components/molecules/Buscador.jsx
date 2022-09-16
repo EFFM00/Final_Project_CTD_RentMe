@@ -109,7 +109,16 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setCityValue(event);
     };
 
-    let cityApi = cityValue;
+    let ciudadONull = () => {
+        if(cityValue===null){
+            return "";
+        } else {
+            return cityValue.value;
+        }
+    }
+
+
+    let cityApi = ciudadONull();
     let startDateApi = startDateVar();
     let endDateApi = endDateVar();
 
@@ -125,11 +134,12 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     };
 
     useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
-
+    
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
         setClickProd(true);
+        console.log();
     };
 
     const mostrarFecha = (fecha) => {
