@@ -180,14 +180,40 @@ function DetallesProducto() {
             </div>
 
             <div className="BloqueDePoliticas">
-                <ul className="listaPoliticas" style={{ paddingLeft: "30px" }}>
-                    {dataProduct?.policiesXProducts?.map((item) => (
-                        <li className="itemPolitica" key={item.id}>
-                            <h3>{item?.policy?.policyType?.name}</h3>
-                            {item?.policy?.description}
-                        </li>
-                    ))}
-                </ul>
+                
+                <div>
+                    <Text type="h3" color="secondary" text="Normas de la casa" />
+                    <ul style={{ paddingLeft: "30px" }}>
+                        {
+                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Normas de la casa")
+                        .map(item => (
+                            <li key={item.id}>{item?.policy?.description}</li>
+                        ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <Text type="h3" color="secondary" text="Política de cancelación" />
+                    <ul style={{ paddingLeft: "30px" }}>
+                        {
+                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Política de cancelación")
+                        .map(item => (
+                            <li key={item.id}>{item?.policy?.description}</li>
+                        ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <Text type="h3" color="secondary" text="Salud y seguridad" />
+                    <ul style={{ paddingLeft: "30px" }}>
+                        {
+                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Salud y seguridad")
+                        .map(item => (
+                            <li key={item.id}>{item?.policy?.description}</li>
+                        ))
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     );
