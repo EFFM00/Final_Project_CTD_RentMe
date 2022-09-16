@@ -15,7 +15,7 @@ export const PaginaReserva = styled.div`
 
     @media screen and (min-width: 1024px) {
         display: grid;
-        grid-template-columns: 900px 450px;
+        grid-template-columns: 850px 450px;
         gap: 40px;
         padding: 110px 30px 30px;
     }
@@ -30,27 +30,56 @@ export const FormularioDatos = styled.form`
     /* margin-top:-30px; */
     width:100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns:1fr 1fr;
     gap: 20px;
+    width:100%;
+
+    @media screen and (max-width: 425px) {
+        grid-template-columns: 1fr;
+    }
 `
 export const Formurario = styled.input`
 background-color:#DFE4EA;
 opacity: 0.4;
+border: 1px solid #ffffff;
 border-radius: 5px;
 outline:none;
-width:388px;
+width:100%;
 height:40px;
+margin-top:5px;
+padding-left:15px;
 `
+export const Formurario2 = styled.input`
+background-color:#FFFFFF;
+box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+opacity: 0.4;
+border: 1px solid #ffffff;
+border-radius: 5px;
+outline:none;
+width:100%;
+height:40px;
+margin-top:5px;
+padding-left:15px;
+`
+
 
 export const Horario = styled.div`
     /* border: 1px solid black; */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     /* margin-top:-30px; */
-    width:100%;
+    width:95%;
     background-color: ${({ theme }) => theme.fondo};
     padding: 15px;
     margin-bottom: 30px;
+`
+export const FormularioHorario = styled.input`
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    outline:none;
+    border: 1px solid #ffffff;
+    height:30px;
+    margin-top:10px;
 `
 
 export const DetalleReserva = styled.div`
