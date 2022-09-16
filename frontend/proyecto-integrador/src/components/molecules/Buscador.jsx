@@ -109,14 +109,23 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setCityValue(event);
     };
 
-    //let cityApi = cityValue;
+    let ciudadONull = () => {
+        if(cityValue===null){
+            return "";
+        } else {
+            return cityValue.value;
+        }
+    }
+
+
+    let cityApi = ciudadONull();
     let startDateApi = startDateVar();
     let endDateApi = endDateVar();
 
     // LLAMADO API GET
     const getProdApi = async () => {
         const resp = await getProductByCityOrDates({
-            cityValue,
+            cityApi,
             startDateApi,
             endDateApi,
         });
@@ -124,12 +133,13 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setDataFilterProd(resp);
     };
 
-    useEffect(() => {}, [cityValue, startDateApi, endDateApi]);
-
+    useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
+    
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
         setClickProd(true);
+        console.log();
     };
 
     const mostrarFecha = (fecha) => {
@@ -153,6 +163,7 @@ function Buscador({ setDataFilterProd, setClickProd }) {
                 <Section columnStar={1} columnEnd={2} rowStart={1} rowEnd={1}>
                     <LocationOnIconStyle />
                     <SelectStyle
+                        defaultInputValue=""
                         value={cityValue}
                         onChange={handleSelectChange}
                         options={optionsCity}
