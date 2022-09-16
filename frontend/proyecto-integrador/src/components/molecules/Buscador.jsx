@@ -65,7 +65,6 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     const [tablet, setTablet] = useState(false);
     const [cityValue, setCityValue] = useState("");
     const [conFecha, setConFecha] = useState(true);
-    const [conCiudad] = useState(true);
     const [visible, setVisible] = useState(true);
 
     //const [dataApiProducts, setDataApiProducts] = useState([]);
@@ -107,17 +106,17 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     };
 
     const handleSelectChange = (event) => {
-        setCityValue(event.value);
+        setCityValue(event);
     };
 
-    let cityApi = cityValue;
+    //let cityApi = cityValue;
     let startDateApi = startDateVar();
     let endDateApi = endDateVar();
 
     // LLAMADO API GET
     const getProdApi = async () => {
         const resp = await getProductByCityOrDates({
-            cityApi,
+            cityValue,
             startDateApi,
             endDateApi,
         });
@@ -125,7 +124,7 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setDataFilterProd(resp);
     };
 
-    useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
+    useEffect(() => {}, [cityValue, startDateApi, endDateApi]);
 
     const enviarDatos = (event) => {
         event.preventDefault();
@@ -154,13 +153,11 @@ function Buscador({ setDataFilterProd, setClickProd }) {
                 <Section columnStar={1} columnEnd={2} rowStart={1} rowEnd={1}>
                     <LocationOnIconStyle />
                     <SelectStyle
-                        value={optionsCity.filter(function (option) {
-                            return option.value === cityValue || "";
-                        })}
+                        value={cityValue}
                         onChange={handleSelectChange}
                         options={optionsCity}
-                        //placeholder="¿A donde vamos?"
-                        isDisabled={!conCiudad}
+                        placeholder="¿A donde vamos?"
+                        isClearable={true}
                     />
                 </Section>
 
