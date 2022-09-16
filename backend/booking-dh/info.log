@@ -52,3 +52,27 @@
 [2022-09-14 21:40:48] [ INFO ] [BookingService:86] Booking successfully updated.
 [2022-09-14 21:41:14] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
 [2022-09-14 21:41:19] [ ERROR] [GlobalExceptionHandler:28] Request method 'DELETE' not supported
+[2022-09-15 22:19:51] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-15 22:20:50] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-15 22:21:06] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-15 22:55:21] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 22:56:34] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-15 22:57:05] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 22:57:14] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 22:59:32] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:02:17] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:04:06] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:04:42] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:07:17] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-15 23:07:38] [ ERROR] [GlobalExceptionHandler:28] Request method 'PUT' not supported
+[2022-09-15 23:07:51] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-15 23:08:13] [ INFO ] [BookingService:95] The booking with id 5 has been successfully deleted.
+[2022-09-15 23:08:27] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:09:04] [ INFO ] [BookingService:95] The booking with id 4 has been successfully deleted.
+[2022-09-15 23:09:33] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-15 23:10:07] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-15 23:10:14] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-15 23:11:43] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-15 23:13:20] [ ERROR] [GlobalExceptionHandler:28] Request method 'PUT' not supported
+[2022-09-15 23:13:56] [ INFO ] [CityService:48] The city with id 5 has been successfully deleted.
+[2022-09-15 23:16:47] [ ERROR] [JwtEntryPoint:21] Fail method commence
