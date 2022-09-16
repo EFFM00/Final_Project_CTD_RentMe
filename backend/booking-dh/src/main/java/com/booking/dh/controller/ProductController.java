@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> productList() {
+    public ResponseEntity<List<Product>> listProducts() {
         return ResponseEntity.ok(productService.randomProductList());
     }
 
@@ -71,6 +71,16 @@ public class ProductController {
         return ResponseEntity.ok(productService.findByCityAndDates(city_id, checkInDate, checkOutDate));
     }
 
+    @GetMapping("/city/{id}")
+    public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productService.findProductByCityId(id));
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productService.findProductByCategoryId(id));
+    }
+
 
     @PutMapping("/update")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) throws ResourceNotFoundException {
@@ -81,16 +91,6 @@ public class ProductController {
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) throws ResourceNotFoundException {
         productService.deleteProduct(id);
         return ResponseEntity.ok("Product successfully removed.");
-    }
-
-    @GetMapping("/city/{id}")
-    public ResponseEntity<List<Product>> findProductByCityId(@PathVariable Long id) throws ResourceNotFoundException {
-        return ResponseEntity.ok(productService.findProductByCityId(id));
-    }
-
-    @GetMapping("/category/{id}")
-    public ResponseEntity<List<Product>> findProductByCategoryId(@PathVariable Long id) throws ResourceNotFoundException {
-        return ResponseEntity.ok(productService.findProductByCategoryId(id));
     }
     
 }

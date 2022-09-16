@@ -105,7 +105,7 @@ function SignIn() {
           </div>
         
           <div className="boton">
-            <Button text="Ingresar" width="s"/>
+            <Button text="Ingresar" width="s" type="submit"/>
           </div>
         
         </form>
