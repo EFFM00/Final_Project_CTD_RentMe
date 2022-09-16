@@ -90,7 +90,12 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     };
 
     useEffect(() => {
-        getCities({ setCities });
+        try{
+            getCities({ setCities })
+        } catch (error) {
+            console.error(error)
+        }
+        
     }, []);
 
     useEffect(() => {
@@ -110,17 +115,20 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     };
 
     let ciudadONull = () => {
-        if(cityValue===null){
+        if(cityValue===null || cityValue===undefined || cityValue===""){
             return "";
         } else {
             return cityValue.value;
         }
     }
 
+    ciudadONull()
 
     let cityApi = ciudadONull();
     let startDateApi = startDateVar();
+    console.log(startDateApi);
     let endDateApi = endDateVar();
+    console.log(endDateApi);
 
     // LLAMADO API GET
     const getProdApi = async () => {
@@ -139,7 +147,6 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         event.preventDefault();
         getProdApi();
         setClickProd(true);
-        console.log();
     };
 
     const mostrarFecha = (fecha) => {

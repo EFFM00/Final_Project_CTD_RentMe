@@ -45,9 +45,28 @@ function Button({
                     </ButtonMobilStyle>
                 );
 
+            case "submit":
+                return (
+                    <ButtonStyle
+                        type="submit"
+                        style={style}
+                        onClick={click}
+                        fullwidth={fullwidth}
+                        width={width}
+                        widthButton={widthButton}
+                        columnStar={4}
+                        columnEnd={5}
+                        rowStart={1}
+                        rowEnd={1}
+                    >
+                        <Text type="h3" color="white" text={text} />
+                    </ButtonStyle>
+                );
+
             default:
                 return (
                     <ButtonStyle
+                        type="button"
                         style={style}
                         onClick={click}
                         fullwidth={fullwidth}
