@@ -84,14 +84,25 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/products/**").permitAll()
-                .antMatchers("/bookings/**").permitAll()
-                .antMatchers("/categories/**").permitAll()
-                .antMatchers("/cities/**").permitAll()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/bookings/add").hasAuthority("client")
-                .antMatchers(HttpMethod.GET, "/bookings").hasAuthority("admin")
-                .anyRequest().permitAll()
+                .antMatchers(HttpMethod.POST,"/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/products/**", "/categories/**"
+                        , "/cities/**", "/characteristics/**", "/policies/**", "/product-characteristics/**"
+                        , "/product-polices/**", "/policy-types/**", "/images/**", "/countries/**"
+                ).permitAll()
+                .antMatchers(HttpMethod.POST, "/products/**", "/categories/**"
+                        , "/cities/**", "/characteristics/**", "/policies/**", "/product-characteristics/**"
+                        , "/product-polices/**", "/policy-types/**", "/images/**", "/countries/**").hasAnyAuthority("admin")
+                .antMatchers(HttpMethod.PUT, "/products/**", "/categories/**"
+                        , "/cities/**", "/characteristics/**", "/policies/**", "/product-characteristics/**"
+                        , "/product-polices/**", "/policy-types/**", "/images/**", "/countries/**").hasAnyAuthority("admin")
+                .antMatchers(HttpMethod.DELETE, "/products/**", "/categories/**"
+                        , "/cities/**", "/characteristics/**", "/policies/**", "/product-characteristics/**"
+                        , "/product-polices/**", "/policy-types/**", "/images/**", "/countries/**").hasAnyAuthority("admin")
+                .antMatchers(HttpMethod.POST, "/bookings/**").hasAnyAuthority("client", "admin")
+                .antMatchers(HttpMethod.PUT, "/bookings/**").hasAnyAuthority("client", "admin")
+                .antMatchers(HttpMethod.DELETE, "/bookings/**").hasAnyAuthority("client", "admin")
+                .antMatchers(HttpMethod.GET, "/bookings/**").hasAnyAuthority("client", "admin")
+                //.anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()

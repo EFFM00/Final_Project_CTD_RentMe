@@ -90,7 +90,12 @@ function Buscador({ setDataFilterProd, setClickProd }) {
     };
 
     useEffect(() => {
-        getCities({ setCities });
+        try{
+            getCities({ setCities })
+        } catch (error) {
+            console.error(error)
+        }
+        
     }, []);
 
     useEffect(() => {
@@ -109,14 +114,26 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setCityValue(event);
     };
 
-    //let cityApi = cityValue;
+    let ciudadONull = () => {
+        if(cityValue===null || cityValue===undefined || cityValue===""){
+            return "";
+        } else {
+            return cityValue.value;
+        }
+    }
+
+    ciudadONull()
+
+    let cityApi = ciudadONull();
     let startDateApi = startDateVar();
+    console.log(startDateApi);
     let endDateApi = endDateVar();
+    console.log(endDateApi);
 
     // LLAMADO API GET
     const getProdApi = async () => {
         const resp = await getProductByCityOrDates({
-            cityValue,
+            cityApi,
             startDateApi,
             endDateApi,
         });
@@ -124,8 +141,8 @@ function Buscador({ setDataFilterProd, setClickProd }) {
         setDataFilterProd(resp);
     };
 
-    useEffect(() => {}, [cityValue, startDateApi, endDateApi]);
-
+    useEffect(() => {}, [cityApi, startDateApi, endDateApi]);
+    
     const enviarDatos = (event) => {
         event.preventDefault();
         getProdApi();
@@ -153,6 +170,7 @@ function Buscador({ setDataFilterProd, setClickProd }) {
                 <Section columnStar={1} columnEnd={2} rowStart={1} rowEnd={1}>
                     <LocationOnIconStyle />
                     <SelectStyle
+                        defaultInputValue=""
                         value={cityValue}
                         onChange={handleSelectChange}
                         options={optionsCity}
