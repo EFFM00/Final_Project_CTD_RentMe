@@ -34,7 +34,7 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
                 {
                     user === null ?
                     <Text type="h2" color="white" text="MENÚ" />
-                    : <Avatar name={user.userData.name} initials={`${user.userData.name[0]}${user.userData.lastName[0]}`}/>
+                    : <Avatar name={user.userData.name} lastName={user.userData.lastName} initials={`${user.userData.name[0]}${user.userData.lastName[0]}`}/>
                 }  
             </Titulo>
         }
@@ -117,7 +117,7 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
             </BotonesIC> :
             <AvatarUser>
             {
-                tablet ? <Avatar name={user.userData.name} initials={`${user.userData.name[0]}${user.userData.lastName[0]}`}/>
+                tablet ? <Avatar name={`${user.userData.name} ${user.userData.lastName}`} initials={`${user.userData.name[0]}${user.userData.lastName[0]}`}/>
                 : null
             }
         
