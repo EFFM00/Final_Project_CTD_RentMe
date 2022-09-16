@@ -14,7 +14,7 @@ export default function Reserva({ mainPictureUrl, category, title, address }) {
             <label>
             <Text type="p1" color='secondary' text="Nombre"/>
             </label>
-            <Formurario type={"text"} placeholder="nombre"/>
+            <Formurario type={"text"}/>
             </div>
 
             <div>
