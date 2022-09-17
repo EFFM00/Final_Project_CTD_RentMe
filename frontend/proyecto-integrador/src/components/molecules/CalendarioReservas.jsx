@@ -4,31 +4,46 @@ import Calendar from "react-calendar";
 import { ContainerCalendar } from "../../styles/CalendarioReservaStyle";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getAllBookings } from "../../services/Booking";
+import { isWithinInterval } from "date-fns";
 //import { useParams } from "react-router-dom";
 // import dayjs from "dayjs"; // ES 2015
 
-function CalendarioReservas({ idProd }) {
+function CalendarioReservas({ fechasOcupadas }) {
     const [tablet, setTablet] = useState(false);
     const [dateValue, setDateValue] = useState(new Date());
     const minDate = new Date();
-    //const { id } = useParams();
-    const [fechasNoDisponibles, setFechasNoDisponibles] = useState([]);
 
-    // const formatDate = (date) => {
-    //     return dayjs(date).format("DD-MM-YYYY");
-    // };
-
-    const getBookings = async () => {
-        const resp = await getAllBookings(idProd);
-
-        setFechasNoDisponibles(resp);
+    const stringToDate = (date) => {
+        return new Date(date);
     };
 
-    useEffect(() => {
-        getBookings();
+    let rangoFechas = [];
+    fechasOcupadas.map((reserva) => {
+        let fechas = [];
+
+        let ida = stringToDate(reserva.checkIn);
+        let vuelta = stringToDate(reserva.checkOut);
+
+        fechas.push(ida);
+        fechas.push(vuelta);
+
+        return rangoFechas.push(fechas);
     });
-    console.log(fechasNoDisponibles);
+    console.log(rangoFechas);
+
+    function isWithinRange(date, range) {
+        return isWithinInterval(date, { start: range[0], end: range[1] });
+    }
+
+    function isWithinRanges(date, ranges) {
+        return ranges.some((range) => isWithinRange(date, range));
+    }
+
+    function tileDisabled({ date, view }) {
+        if (view === "month") {
+            return isWithinRanges(date, rangoFechas);
+        }
+    }
 
     useEffect(() => {
         const responsive = () =>
@@ -48,6 +63,7 @@ function CalendarioReservas({ idProd }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont3"
+                        tileDisabled={tileDisabled}
                     />
                 ) : (
                     <Calendar
@@ -57,6 +73,7 @@ function CalendarioReservas({ idProd }) {
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
                         id="calendarCont4"
+                        tileDisabled={tileDisabled}
                     />
                 )}
             </ContainerCalendar>
