@@ -55,6 +55,8 @@ function SignIn() {
      
       setUser({userData: decoded.user})
 
+      
+
       if(resp.status === 200) {
         navigate("/");
       }
