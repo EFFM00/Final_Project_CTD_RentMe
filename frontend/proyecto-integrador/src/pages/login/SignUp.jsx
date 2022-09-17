@@ -77,7 +77,11 @@ function SignUp() {
       }
       
     } catch (error) {
+      if(error.response.status === 400) {
+        setErrMsg("El usuario ya se encuentra registrado")
+      } else {
       setErrMsg("Lamentablemente no ha podido registrarse. Por favor intente más tarde")
+      }
     }
 
   };

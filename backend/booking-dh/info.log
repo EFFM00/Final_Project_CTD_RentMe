@@ -13,6 +13,20 @@
 [2022-09-12 22:18:18] [ ERROR] [GlobalExceptionHandler:17] The id 54 does not correspond to any current category.
 [2022-09-12 22:30:05] [ ERROR] [GlobalExceptionHandler:16] The id 9 does not correspond to any current characteristic.
 [2022-09-13 15:02:49] [ ERROR] [GlobalExceptionHandler:28] No value present
+<<<<<<< HEAD
+[2022-09-13 18:45:04] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-13 18:45:25] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-13 18:45:55] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-13 19:04:54] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-13 19:05:27] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-13 19:06:37] [ ERROR] [GlobalExceptionHandler:28] Request method 'GET' not supported
+[2022-09-13 23:36:39] [ ERROR] [GlobalExceptionHandler:28] No value present
+[2022-09-15 10:21:26] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-15 10:22:29] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-15 10:23:54] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-15 10:26:12] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-15 12:31:54] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+=======
 [2022-09-13 20:50:35] [ ERROR] [GlobalExceptionHandler:28] Request method 'GET' not supported
 [2022-09-13 21:16:46] [ ERROR] [GlobalExceptionHandler:28] Cannot invoke "Object.equals(Object)" because the return value of "com.booking.dh.security.model.BookingUser.getRole()" is null
 [2022-09-13 22:22:55] [ ERROR] [GlobalExceptionHandler:22] Id must be 1 or 2
@@ -52,6 +66,9 @@
 [2022-09-14 21:40:48] [ INFO ] [BookingService:86] Booking successfully updated.
 [2022-09-14 21:41:14] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
 [2022-09-14 21:41:19] [ ERROR] [GlobalExceptionHandler:28] Request method 'DELETE' not supported
+<<<<<<< HEAD
+>>>>>>> development
+=======
 [2022-09-15 22:19:51] [ INFO ] [BookingService:35] Booking successfully saved.
 [2022-09-15 22:20:50] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
 [2022-09-15 22:21:06] [ INFO ] [BookingService:35] Booking successfully saved.
@@ -76,3 +93,4 @@
 [2022-09-15 23:13:20] [ ERROR] [GlobalExceptionHandler:28] Request method 'PUT' not supported
 [2022-09-15 23:13:56] [ INFO ] [CityService:48] The city with id 5 has been successfully deleted.
 [2022-09-15 23:16:47] [ ERROR] [JwtEntryPoint:21] Fail method commence
+>>>>>>> development

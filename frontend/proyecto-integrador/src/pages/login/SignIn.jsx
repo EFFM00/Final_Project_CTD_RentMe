@@ -10,6 +10,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { api } from "../../services/api/api";
 import { UserContext } from "../../services/UserContext";
+import { decodeToken } from "react-jwt";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -47,10 +48,14 @@ function SignIn() {
         headers: {'Content-Type': 'application/json'}
       }
       )
+      const token = resp?.data?.respuesta?.token
+     localStorage.setItem('token', token)
 
-     localStorage.setItem('token', resp?.data?.respuesta?.token)
-     const token =  localStorage.getItem('token')
-      setUser({userData, token})
+     const decoded = decodeToken(token);
+     
+      setUser({userData: decoded.user})
+
+      
 
       if(resp.status === 200) {
         navigate("/");
