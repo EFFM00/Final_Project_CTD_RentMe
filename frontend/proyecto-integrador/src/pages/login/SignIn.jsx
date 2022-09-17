@@ -48,13 +48,11 @@ function SignIn() {
         headers: {'Content-Type': 'application/json'}
       }
       )
-      // guardamos en localstorage el token
       const token = resp?.data?.respuesta?.token
      localStorage.setItem('token', token)
 
      const decoded = decodeToken(token);
      
-    // falta desencriptar el token y guradarlo en el contexto con el metodo setUser
       setUser({userData: decoded.user})
 
       if(resp.status === 200) {
