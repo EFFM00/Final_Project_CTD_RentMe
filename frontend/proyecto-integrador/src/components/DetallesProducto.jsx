@@ -23,6 +23,7 @@ function DetallesProducto() {
     const [dataProduct, setDataProduct] = useState([]);
     const [showReservation, setShowReservation] = useState(false);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
+    const [fechasOcupadas, setFechasOcupadas] = useState([]);
 
     // funcion para obtener los detalles de un solo producto por su id
 
@@ -40,6 +41,14 @@ function DetallesProducto() {
             };
         });
         setImages(img);
+
+        let dates = resp.bookings.map((item) => {
+            return {
+                checkIn: item.checkInDate,
+                checkOut: item.checkOutDate,
+            };
+        });
+        setFechasOcupadas(dates);
     };
 
     useEffect(() => {
@@ -119,24 +128,41 @@ function DetallesProducto() {
 
                     {/* Bloque Caracteristicas */}
 
-          <div className="TituloC">
-            <Text type="h1" color="secondary" text="¿Qué ofrece este lugar?" />
-          </div>
-          <div className="BloqueDeCaracteristicas">
-            <div className="caracteristicas">
-              <ul
-                className="listaCaracteristicas"
-                style={{ paddingLeft: "30px" }}
-              >
-                {dataProduct?.characteristicsXProducts?.map((item) => (
-                  <li className="itemCaracteristica" key={item.id}>
-                   <span className="iconosC"><img src={item?.characteristic?.icon} alt="" /></span> 
-                    {item?.characteristic?.description}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                    <div className="TituloC">
+                        <Text
+                            type="h1"
+                            color="secondary"
+                            text="¿Qué ofrece este lugar?"
+                        />
+                    </div>
+                    <div className="BloqueDeCaracteristicas">
+                        <div className="caracteristicas">
+                            <ul
+                                className="listaCaracteristicas"
+                                style={{ paddingLeft: "30px" }}
+                            >
+                                {dataProduct?.characteristicsXProducts?.map(
+                                    (item) => (
+                                        <li
+                                            className="itemCaracteristica"
+                                            key={item.id}
+                                        >
+                                            <span className="iconosC">
+                                                <img
+                                                    src={
+                                                        item?.characteristic
+                                                            ?.icon
+                                                    }
+                                                    alt=""
+                                                />
+                                            </span>
+                                            {item?.characteristic?.description}
+                                        </li>
+                                    )
+                                )}
+                            </ul>
+                        </div>
+                    </div>
 
                     {/* Bloque Calendario */}
 
@@ -149,7 +175,7 @@ function DetallesProducto() {
                             />
                         </Titulo>
 
-                        <CalendarioReservas />
+                        <CalendarioReservas fechasOcupadas={fechasOcupadas} />
                         <ContenedorBoton>
                             <Text
                                 type="h3"
@@ -180,38 +206,64 @@ function DetallesProducto() {
             </div>
 
             <div className="BloqueDePoliticas">
-                
                 <div>
-                    <Text type="h3" color="secondary" text="Normas de la casa" />
+                    <Text
+                        type="h3"
+                        color="secondary"
+                        text="Normas de la casa"
+                    />
                     <ul style={{ paddingLeft: "30px" }}>
-                        {
-                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Normas de la casa")
-                        .map(item => (
-                            <li key={item.id}>{item?.policy?.description}</li>
-                        ))
-                        }
+                        {dataProduct?.policiesXProducts
+                            ?.filter(
+                                (item) =>
+                                    item?.policy?.policyType?.name ===
+                                    "Normas de la casa"
+                            )
+                            .map((item) => (
+                                <li key={item.id}>
+                                    {item?.policy?.description}
+                                </li>
+                            ))}
                     </ul>
                 </div>
                 <div>
-                    <Text type="h3" color="secondary" text="Política de cancelación" />
+                    <Text
+                        type="h3"
+                        color="secondary"
+                        text="Política de cancelación"
+                    />
                     <ul style={{ paddingLeft: "30px" }}>
-                        {
-                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Política de cancelación")
-                        .map(item => (
-                            <li key={item.id}>{item?.policy?.description}</li>
-                        ))
-                        }
+                        {dataProduct?.policiesXProducts
+                            ?.filter(
+                                (item) =>
+                                    item?.policy?.policyType?.name ===
+                                    "Política de cancelación"
+                            )
+                            .map((item) => (
+                                <li key={item.id}>
+                                    {item?.policy?.description}
+                                </li>
+                            ))}
                     </ul>
                 </div>
                 <div>
-                    <Text type="h3" color="secondary" text="Salud y seguridad" />
+                    <Text
+                        type="h3"
+                        color="secondary"
+                        text="Salud y seguridad"
+                    />
                     <ul style={{ paddingLeft: "30px" }}>
-                        {
-                        dataProduct?.policiesXProducts?.filter(item => item?.policy?.policyType?.name === "Salud y seguridad")
-                        .map(item => (
-                            <li key={item.id}>{item?.policy?.description}</li>
-                        ))
-                        }
+                        {dataProduct?.policiesXProducts
+                            ?.filter(
+                                (item) =>
+                                    item?.policy?.policyType?.name ===
+                                    "Salud y seguridad"
+                            )
+                            .map((item) => (
+                                <li key={item.id}>
+                                    {item?.policy?.description}
+                                </li>
+                            ))}
                     </ul>
                 </div>
             </div>
