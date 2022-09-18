@@ -20,9 +20,10 @@ import { UserContext } from "../services/UserContext";
 
 function DetallesProducto() {
     const { id } = useParams();
-    const { dataProduct, setDataProduct } = useContext(UserContext);
+    const { dataProduct, setDataProduct,setIdProduct } = useContext(UserContext);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
     const [fechasOcupadas, setFechasOcupadas] = useState([]);
+    const token = localStorage.getItem('token')
     const navigate = useNavigate();
 
     // funcion para obtener los detalles de un solo producto por su id
@@ -55,6 +56,17 @@ function DetallesProducto() {
         getProd();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
+
+    const clickReserva = () => {
+        if(token !== null) {
+            //poner en nulo el id del context nuevo
+            navigate(`/products/${id}/reservation`)
+        } else {
+            //crear un nuevo context y guardar el id
+            setIdProduct(id)
+            navigate("/sign-in")
+        }
+    }
 
     return (
         <div style={{ width: "100%" }}>
@@ -184,7 +196,7 @@ function DetallesProducto() {
                             <Button
                                 text="Iniciar reserva"
                                 fullwidth
-                                click={() => navigate(`/products/${id}/reservation`)}
+                                click={clickReserva}
                             />
                         </ContenedorBoton>
                     </SeccionReserva>

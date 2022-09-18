@@ -224,3 +224,5 @@
 [2022-09-17 20:02:20] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
 [2022-09-17 20:06:51] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
 [2022-09-17 20:06:51] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 21:38:38] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 21:38:38] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"

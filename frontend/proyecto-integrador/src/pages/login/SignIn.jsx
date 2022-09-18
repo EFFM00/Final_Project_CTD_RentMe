@@ -15,7 +15,8 @@ import { decodeToken } from "react-jwt";
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const {setUser} = useContext(UserContext);
+  const {setUser, idProduct} = useContext(UserContext);
+ 
   
   const navigate = useNavigate();
 
@@ -55,11 +56,12 @@ function SignIn() {
      
       setUser({userData: decoded.user})
 
-      
-
       if(resp.status === 200) {
+        if (idProduct != null) {
+        navigate(`/products/${idProduct}/reservation`)
+      }else{
         navigate("/");
-      }
+      } }
       
     } catch (error) {
       if(error.response.status === 403) {
@@ -75,6 +77,9 @@ function SignIn() {
     <section className="formurarios">
       <div style={{ padding: "100px 10px" }}>
         <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
+        {idProduct!=null ?
+          <p className="errMsg">Para realizar una reserva necesita estar logueado</p>:null
+        }
         <div className="titulo">
           <Text type="h1" color="primary" text="Iniciar sesión" />
         </div>
@@ -115,7 +120,8 @@ function SignIn() {
         
         </form>
 
-        <p className="texto-cuenta">¿Aún no tenes cuenta? <Link to={"/sign-up"}>Registrate</Link> </p>
+        
+       <p className="texto-cuenta">¿Aún no tenes cuenta? <Link to={"/sign-up"}>Registrate</Link> </p>
       </div>
     </section>
   );
