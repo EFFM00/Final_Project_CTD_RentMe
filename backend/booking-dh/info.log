@@ -93,4 +93,11 @@
 [2022-09-15 23:13:20] [ ERROR] [GlobalExceptionHandler:28] Request method 'PUT' not supported
 [2022-09-15 23:13:56] [ INFO ] [CityService:48] The city with id 5 has been successfully deleted.
 [2022-09-15 23:16:47] [ ERROR] [JwtEntryPoint:21] Fail method commence
+<<<<<<< HEAD
+[2022-09-16 22:25:41] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.QueryException: JPA-style positional param was not an integral ordinal; nested exception is java.lang.IllegalArgumentException: org.hibernate.QueryException: JPA-style positional param was not an integral ordinal
+[2022-09-18 15:54:23] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-18 15:54:24] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-18 15:54:24] [ ERROR] [JwtEntryPoint:21] Fail method commence
+=======
 >>>>>>> development
+>>>>>>> 09c676d4680a425643b75c45c5b0d1054cce6496

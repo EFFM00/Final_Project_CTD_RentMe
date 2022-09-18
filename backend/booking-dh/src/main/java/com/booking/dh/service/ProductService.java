@@ -49,7 +49,7 @@ public class ProductService {
         }
     }
 
-    public List<Product> productList(){
+    public List<Product> productsList(){
         return productRepository.findAll();
     }
 
@@ -61,7 +61,7 @@ public class ProductService {
     }
      */
 
-    public List<Product> randomProductList(){
+    public List<Product> randomProductsList(){
         return productRepository.randomProducts();
     }
 
