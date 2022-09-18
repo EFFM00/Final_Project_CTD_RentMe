@@ -49,7 +49,9 @@ function CalendarioReservas({ fechasOcupadas }) {
     }
 
     function verificarRangoDentroDeOtroRango() {
+        // eslint-disable-next-line array-callback-return
         rangoFechas.map(reserva => {
+            // eslint-disable-next-line array-callback-return
             reserva.map(fecha => {
                 if(isWithinRange(fecha, dateValue)){
                     setEnableRange(false);
