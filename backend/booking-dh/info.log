@@ -94,3 +94,133 @@
 [2022-09-15 23:13:56] [ INFO ] [CityService:48] The city with id 5 has been successfully deleted.
 [2022-09-15 23:16:47] [ ERROR] [JwtEntryPoint:21] Fail method commence
 >>>>>>> development
+[2022-09-17 18:42:10] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:10] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:10] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:10] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:21] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:21] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:42:21] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:52] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:52] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:52] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:52] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:57] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:57] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:45:57] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:46:42] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:48:37] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:48:37] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:48:37] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:48:37] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:48:57] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:03] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:03] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:03] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:05] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:11] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:11] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:11] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:49:29] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:50:04] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:50:04] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 18:50:04] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-17 19:30:23] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:30:24] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:31:20] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:31:35] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:32:48] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:32:48] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:33:59] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:05] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:05] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:19] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:19] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:25] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:25] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:28] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:36:28] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:40:59] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:40:59] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:41:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:41:15] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:11] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:22] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:46] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:48] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:50] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:56] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:57] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:43:58] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:01] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:05] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:08] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:10] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:16] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:17] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:22] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:23] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:24] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:25] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:28] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:32] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:36] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:38] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:42] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:44] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:45] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:47] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:49] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:53] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:54] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:55] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:56] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:58] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:44:59] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:01] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:04] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:07] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:09] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:22] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:45:22] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:46:14] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:46:24] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:46:24] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:46:34] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:46:34] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:48:49] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:48:49] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:16] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:20] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:24] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:27] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:32] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:32] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:43] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:49:43] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:50:07] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:50:14] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:51:31] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:51:33] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:51:42] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:51:52] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:54:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:54:13] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:54:31] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:54:31] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:58:04] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:58:31] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-09-17 19:59:58] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 19:59:58] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:00:58] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:01:12] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:01:12] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:01:21] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:01:21] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:02:20] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:06:51] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-17 20:06:51] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"

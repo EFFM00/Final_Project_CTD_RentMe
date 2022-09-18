@@ -1,25 +1,47 @@
 import styled from "styled-components";
 
-export const Section = styled.section`
-    background-color: rgba(56, 59, 88, 0.1);
+// export const Section = styled.section`
+//     background-color: rgba(56, 59, 88, 0.1);
 
-    @media screen and (min-width: 1024px) {
-        display: flex;
-        justify-content: center;
+//     @media screen and (min-width: 1024px) {
+//         display: flex;
+//         justify-content: center;
+//     }
+// `
+
+export const ReservaStyle = styled.div`
+    padding-top: 90px;
+    padding-bottom: 100px;
+
+    // @media screen and (min-width: 1024px) {
+    //     display: flex;
+    //     justify-content: center;
+    // }
+`
+
+export const Header = styled.div`
+    background-color: ${({ theme }) => theme.tertiary};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    @media screen and (min-width: 768px) {
+        padding: 10px 30px;
     }
 `
 
-export const PaginaReserva = styled.div`
-    padding: 110px 10px 30px;
-    margin-left:70px;
+export const DatosReserva = styled.div`
+    background-color: rgba(56, 59, 88, 0.1);
+    padding: 50px 10px;
 
     @media screen and (min-width: 1024px) {
         display: grid;
         grid-template-columns: 850px 450px;
         gap: 40px;
-        padding: 110px 30px 30px;
     }
 `
+
 export const FormularioDatos = styled.form`
     border: 1px solid #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -119,4 +141,17 @@ export const CajaImagen = styled.div`
 export const Imagen = styled.img`
     width: 100%;
     height: 240px;
+`
+
+export const Politicas = styled.div`
+    border: 1px solid black;
+`
+
+export const TituloPoliticas = styled.div`
+    padding: 20px 10px;
+    border-bottom: 1px solid ${({ theme }) => theme.primary};
+
+    @media screen and (min-width: 768px) {
+        padding: 20px 30px;
+    }  
 `

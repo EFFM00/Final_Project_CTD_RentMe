@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
 import { Titulo } from "../styles/CalendarioReservaStyle";
@@ -16,14 +16,14 @@ import {
     ContenedorBoton,
     SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
-import Reserva from "../pages/home/Reserva";
+import { UserContext } from "../services/UserContext";
 
 function DetallesProducto() {
     const { id } = useParams();
-    const [dataProduct, setDataProduct] = useState([]);
-    const [showReservation, setShowReservation] = useState(false);
+    const { dataProduct, setDataProduct } = useContext(UserContext);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
     const [fechasOcupadas, setFechasOcupadas] = useState([]);
+    const navigate = useNavigate();
 
     // funcion para obtener los detalles de un solo producto por su id
 
@@ -77,7 +77,6 @@ function DetallesProducto() {
                 </div>
             </header>
 
-            {showReservation === false ? (
                 <div>
                     {/* Bloque Ubicacion */}
 
@@ -185,19 +184,18 @@ function DetallesProducto() {
                             <Button
                                 text="Iniciar reserva"
                                 fullwidth
-                                click={() => setShowReservation(true)}
+                                click={() => navigate(`/products/${id}/reservation`)}
                             />
                         </ContenedorBoton>
                     </SeccionReserva>
                 </div>
-            ) : (
-                <Reserva
+
+                {/* <Reserva
                     mainPictureUrl={dataProduct.mainPictureUrl}
                     category={dataProduct?.category?.title}
                     title={dataProduct.title}
                     address={dataProduct.address}
-                />
-            )}
+                /> */}
 
             {/* Bloque de Politicas */}
 
