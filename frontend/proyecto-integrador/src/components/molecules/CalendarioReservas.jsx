@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { isWithinInterval } from "date-fns";
 //import { useParams } from "react-router-dom";
-// import dayjs from "dayjs"; // ES 2015
+import dayjs from "dayjs"; // ES 2015
 
 function CalendarioReservas({ fechasOcupadas }) {
     const [tablet, setTablet] = useState(false);
@@ -18,18 +18,19 @@ function CalendarioReservas({ fechasOcupadas }) {
     };
 
     let rangoFechas = [];
+
     fechasOcupadas.map((reserva) => {
         let fechas = [];
-
         let ida = stringToDate(reserva.checkIn);
         let vuelta = stringToDate(reserva.checkOut);
+        vuelta = stringToDate(vuelta.setDate(vuelta.getDate() + 1));
 
         fechas.push(ida);
         fechas.push(vuelta);
 
         return rangoFechas.push(fechas);
     });
-    console.log(rangoFechas);
+    console.log(rangoFechas, "rangoFechas");
 
     function isWithinRange(date, range) {
         return isWithinInterval(date, { start: range[0], end: range[1] });
@@ -43,6 +44,10 @@ function CalendarioReservas({ fechasOcupadas }) {
         if (view === "month") {
             return isWithinRanges(date, rangoFechas);
         }
+    }
+
+    function verificarRangoDentroDeOtroRango() {
+        
     }
 
     useEffect(() => {
