@@ -10,3 +10,5 @@ export const UserProvider = ({children}) => {
     </UserContext.Provider>
   )
 }
+
+//usar el metodo set user
