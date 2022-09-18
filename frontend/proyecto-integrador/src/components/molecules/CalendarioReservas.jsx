@@ -47,7 +47,15 @@ function CalendarioReservas({ fechasOcupadas }) {
     }
 
     function verificarRangoDentroDeOtroRango() {
-        
+        rangoFechas.map(reserva => {
+            reserva.map(fecha => {
+                if(isWithinInterval(fecha, { start: dateValue[0], end: dateValue[1]})){
+                    return false;
+                }
+            })
+        })
+
+        return true;
     }
 
     useEffect(() => {
@@ -63,7 +71,7 @@ function CalendarioReservas({ fechasOcupadas }) {
                 {tablet ? (
                     <Calendar
                         showDoubleView={true}
-                        selectRange={true}
+                        selectRange={verificarRangoDentroDeOtroRango}
                         minDate={minDate}
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
@@ -73,7 +81,7 @@ function CalendarioReservas({ fechasOcupadas }) {
                 ) : (
                     <Calendar
                         showDoubleView={false}
-                        selectRange={true}
+                        selectRange={verificarRangoDentroDeOtroRango}
                         minDate={minDate}
                         onChange={(value) => setDateValue(value)}
                         value={dateValue}
