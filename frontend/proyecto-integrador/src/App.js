@@ -11,6 +11,7 @@ import SignIn from "./pages/login/SignIn";
 import { useContext, useEffect } from "react";
 import DetallesProducto from "./components/DetallesProducto";
 import ReservaExitosa from "./components/ReservaExitosa";
+import ProductoExitoso from "./components/ProductoExitoso";
 import Reserva from "./pages/home/Reserva";
 import { decodeToken } from "react-jwt";
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/products/:id/reserva" element={<Reserva/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
+          <Route path="/producto-exitoso" element={<ProductoExitoso/>} />
         </Routes>
         <Footer />
       </ThemeProvider>
