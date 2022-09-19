@@ -14,7 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findProductByCityId(Long id);
     List<Product> findProductByCategoryId(Long id);
 
-    @Query(value = "SELECT * FROM products ORDER BY rand();", nativeQuery = true)
+    @Query(value = "SELECT * FROM products ORDER BY rand() LIMIT 40;", nativeQuery = true)
     List<Product> randomProducts();
 
     @Query(value = "SELECT * FROM products p WHERE p.id NOT IN(SELECT bookings.product_id FROM bookings INNER JOIN products ON (bookings.product_id = products.id) WHERE (?1 BETWEEN bookings.check_in_date AND bookings.check_out_date) OR (?2 BETWEEN bookings.check_in_date AND bookings.check_out_date));", nativeQuery = true)

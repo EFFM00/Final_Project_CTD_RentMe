@@ -29,9 +29,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.findProductById(id).get());
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<Product>> listProducts() {
-        return ResponseEntity.ok(productService.randomProductList());
+        return ResponseEntity.ok(productService.productsList());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Product>> randomProducts() {
+        return ResponseEntity.ok(productService.randomProductsList());
     }
 
     @GetMapping("/dates/{startDate}/{endDate}")
@@ -58,7 +63,7 @@ public class ProductController {
             return ResponseEntity.ok(productService.findByDates(checkInDate, checkOutDate));
         }
         if (checkInDate == null && checkOutDate == null && city_id == null){
-            return ResponseEntity.ok(productService.randomProductList());
+            return ResponseEntity.ok(productService.randomProductsList());
         }
         if (checkInDate != null && checkOutDate != null && city_id != null) {
             if (checkOutDate.isBefore(checkInDate)) {
