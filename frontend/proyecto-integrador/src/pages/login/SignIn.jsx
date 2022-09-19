@@ -78,7 +78,7 @@ function SignIn() {
       <div style={{ padding: "100px 10px" }}>
         <p className={errMsg ? "errMesg" : "offscreen"}>{errMsg}</p>
         {idProduct!=null ?
-          <p className="errMsg">Para realizar una reserva necesita estar logueado</p>:null
+          <p style={{backgroundColor: "rgba(255, 0, 0, 0.1)", padding: "10px", fontSize: "14px", fontWeight: "bold", textAlign: "center", margin: "10px"}}>Para realizar una reserva necesita estar logueado</p>:null
         }
         <div className="titulo">
           <Text type="h1" color="primary" text="Iniciar sesión" />
