@@ -13,6 +13,7 @@ import DetallesProducto from "./components/DetallesProducto";
 import ReservaExitosa from "./components/ReservaExitosa";
 import Reserva from "./pages/home/Reserva";
 import { decodeToken } from "react-jwt";
+import {CreacionProducto} from "./pages/home/CreacionProducto"
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/products/:id/reserva" element={<Reserva/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
+          <Route path="/crear-producto" element={<CreacionProducto/>} />
         </Routes>
         <Footer />
       </ThemeProvider>
