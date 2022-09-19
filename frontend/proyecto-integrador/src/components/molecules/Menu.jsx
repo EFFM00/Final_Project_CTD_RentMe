@@ -8,7 +8,7 @@ import { UserContext } from "../../services/UserContext";
 
 function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setShowBtnSignIn}) {
     const [ tablet, setTablet ] = useState(true);
-    const {user, setUser} = useContext(UserContext);
+    const {user, setUser, idProduct} = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
 
     const handleClickLogout = () => {
         setUser(null);
-        localStorage.removeItem("token")
+        localStorage.clear("token", idProduct)
         navigate("/");
         setShowBtnSignIn(true);
         setShowBtnRegister(true);

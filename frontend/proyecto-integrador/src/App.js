@@ -39,7 +39,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp/>}/>
           <Route path="/sign-in" element={<SignIn/>}/>
           <Route path="/products/:id" element={<DetallesProducto/>} />
-          <Route path="/products/:id/reserva" element={<Reserva/>} />
+          <Route path="/products/:id/reservation" element={<Reserva/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
         </Routes>
         <Footer />
