@@ -5,12 +5,13 @@ import { ContainerCalendar } from "../../styles/CalendarioReservaStyle";
 import { useState } from "react";
 import { useEffect } from "react";
 import { isWithinInterval } from "date-fns";
-//import { useParams } from "react-router-dom";
-// import dayjs from "dayjs"; // ES 2015
+
 
 function CalendarioReservas({ fechasOcupadas }) {
     const [tablet, setTablet] = useState(false);
     const [dateValue, setDateValue] = useState(new Date());
+    console.log("start: " + dateValue[0], "end: " + dateValue[1]);
+    const [enableRange, setEnableRange] = useState(true);
     const minDate = new Date();
 
     const stringToDate = (date) => {
@@ -18,18 +19,18 @@ function CalendarioReservas({ fechasOcupadas }) {
     };
 
     let rangoFechas = [];
+
     fechasOcupadas.map((reserva) => {
         let fechas = [];
-
         let ida = stringToDate(reserva.checkIn);
         let vuelta = stringToDate(reserva.checkOut);
+        vuelta = stringToDate(vuelta.setDate(vuelta.getDate() + 1));
 
         fechas.push(ida);
         fechas.push(vuelta);
 
         return rangoFechas.push(fechas);
     });
-    console.log(rangoFechas);
 
     function isWithinRange(date, range) {
         return isWithinInterval(date, { start: range[0], end: range[1] });
@@ -39,10 +40,26 @@ function CalendarioReservas({ fechasOcupadas }) {
         return ranges.some((range) => isWithinRange(date, range));
     }
 
+
+
     function tileDisabled({ date, view }) {
         if (view === "month") {
             return isWithinRanges(date, rangoFechas);
         }
+    }
+
+    function verificarRangoDentroDeOtroRango() {
+        // eslint-disable-next-line array-callback-return
+        rangoFechas.map(reserva => {
+            // eslint-disable-next-line array-callback-return
+            reserva.map(fecha => {
+                if(isWithinRange(fecha, dateValue)){
+                    setEnableRange(false);
+                }
+            })
+        })
+
+        setEnableRange(true);
     }
 
     useEffect(() => {
@@ -58,9 +75,9 @@ function CalendarioReservas({ fechasOcupadas }) {
                 {tablet ? (
                     <Calendar
                         showDoubleView={true}
-                        selectRange={true}
+                        selectRange={enableRange}
                         minDate={minDate}
-                        onChange={(value) => setDateValue(value)}
+                        onChange={(value) => setDateValue(value) && verificarRangoDentroDeOtroRango}
                         value={dateValue}
                         id="calendarCont3"
                         tileDisabled={tileDisabled}
@@ -68,9 +85,9 @@ function CalendarioReservas({ fechasOcupadas }) {
                 ) : (
                     <Calendar
                         showDoubleView={false}
-                        selectRange={true}
+                        selectRange={enableRange}
                         minDate={minDate}
-                        onChange={(value) => setDateValue(value)}
+                        onChange={(value) => setDateValue(value) && verificarRangoDentroDeOtroRango}
                         value={dateValue}
                         id="calendarCont4"
                         tileDisabled={tileDisabled}
