@@ -126,9 +126,9 @@ function Buscador({ setDataFilterProd, setClickProd }) {
 
     let cityApi = ciudadONull();
     let startDateApi = startDateVar();
-    console.log(startDateApi);
+    // console.log(startDateApi);
     let endDateApi = endDateVar();
-    console.log(endDateApi);
+    // console.log(endDateApi);
 
     // LLAMADO API GET
     const getProdApi = async () => {

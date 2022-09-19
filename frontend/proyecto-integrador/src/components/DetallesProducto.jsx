@@ -24,7 +24,7 @@ function DetallesProducto() {
     const [showReservation, setShowReservation] = useState(false);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
     const [fechasOcupadas, setFechasOcupadas] = useState([]);
-
+    // console.log(fechasOcupadas, " fechas ocupadas");
     // funcion para obtener los detalles de un solo producto por su id
 
     const getProd = async () => {
