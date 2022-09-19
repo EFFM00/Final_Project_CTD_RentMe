@@ -1,27 +1,111 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import CalendarioReservas from '../../components/molecules/CalendarioReservas'
 import { CajaImagen, DetalleReserva, FormularioDatos, Formurario, Formurario2, Horario, FormularioHorario, Imagen, Titulo, DatosReserva, ReservaStyle, Header, Politicas, TituloPoliticas } from '../../styles/ReservaStyle'
 import Text from '../../components/atoms/Text'
 import Button from '../../components/atoms/Button'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Arrow from "../../assets/arrow.svg";
 import { getProductById } from '../../services/Products'
 import { UserContext } from '../../services/UserContext'
+import { api } from '../../services/api/api'
+import dayjs from "dayjs"; // ES 2015
 
 export default function Reserva() {
     const { id } = useParams();
-    const { dataProduct, setDataProduct } = useContext(UserContext)
+    const { dataProduct, setDataProduct, user, idProduct, dateValue } = useContext(UserContext)
+    const [fechasOcupadas, setFechasOcupadas] = useState([]);
+    const token = localStorage.getItem('token');
+    const navigate = useNavigate();
+
+    const formatDateApi = (date) => {
+        return dayjs(date).format("YYYY-MM-DD");
+    };
+
+    const selectDate = (num) => {
+        if(dateValue === null || dateValue === undefined) {
+            return ""
+        } else {
+            return formatDateApi(dateValue[num]) 
+        }
+    }
+    
+    let checkInInfo = selectDate(0);
+    let checkOutInfo = selectDate(1)
+
+    const [reservation, setReservation] = useState({
+        checkInTime: "14:00",
+        checkInDate: checkInInfo,
+        checkOutDate: checkOutInfo,
+        product: null,
+        bookingUser: null
+    });
+
+    const formatDate = (date) => {
+        return dayjs(date).format("DD-MM-YYYY");
+    };
+   
+    console.log(dateValue[0], "fecha Entrada")
+    console.log(dateValue[1], "fecha Salida")
 
     const getData = async () => {
         const resp = await getProductById(id);
         setDataProduct(resp);
-        console.log(resp, "reserva")
+        // console.log(resp, "reserva")
+
+        let dates = resp.bookings.map((item) => {
+            return {
+                checkIn: item.checkInDate,
+                checkOut: item.checkOutDate,
+            };
+        });
+        setFechasOcupadas(dates);
     };
 
     useEffect(() => {
         getData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
+
+    useEffect(() => {
+        setReservation({
+            ...reservation,
+            product: {id: idProduct},
+            bookingUser: {id: user.userData.id}
+            // product: {id: 2},
+            // bookingUser: {id: 9}
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    
+
+    const handleReservation = async (e) => {
+        e.preventDefault()
+        setReservation({
+            ...reservation,
+            // product: {id: 3},
+            // bookingUser: {id: 8}
+        })
+
+        try {
+            const resp = await api.post("/bookings/add", JSON.stringify(reservation),
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${token}`
+                }
+            }
+            )
+
+            console.log(resp, "reserva")
+
+            if(resp.status === 200) {
+                navigate("/reserva-exitosa")
+            }
+        } catch (error) {
+
+        }
+    }
 
   return (
     <ReservaStyle>
@@ -47,21 +131,21 @@ export default function Reserva() {
             <label>
             <Text type="p1" color='secondary' text="Nombre"/>
             </label>
-            <Formurario type={"text"}/>
+            <Formurario type="text" defaultValue={user ? user.userData.name : ""}/>
             </div>
 
             <div>
             <label>
             <Text type="p1" color='secondary' text="Apellido"/>
             </label>
-            <Formurario type={"text"}/>
+            <Formurario type={"text"} defaultValue={user ? user.userData.lastName : ""}/>
             </div>
 
             <div>
             <label>
             <Text type="p1" color='secondary' text="Correo electronico"/>
             </label>
-            <Formurario type={"email"}/>
+            <Formurario type={"email"} defaultValue={user ? user.userData.email : ""}/>
             </div>
             
             <div>
@@ -73,16 +157,18 @@ export default function Reserva() {
             
         </FormularioDatos>
 
-        {/* <div>
-            <CalendarioReservas/>
-        </div> */}
+        <div>
+            <CalendarioReservas
+                fechasOcupadas={fechasOcupadas}
+            />
+        </div>
 
         <Text type="h1" color='secondary' text="Tu horario de llegada"/>
         <Horario>
             <Text type="h4" color='secondary' text="Tu habitación va estar lista para el check-in entre las 10:00 AM y las 11:00 PM"/><br />
            <div>
            <label htmlFor="">Indicá tu horario estimado de llegada</label><br />
-            <FormularioHorario type={"time"}/>
+            <FormularioHorario type={"time"} placeholder="Ciudad"/>
            </div>
         </Horario>
 
@@ -97,9 +183,18 @@ export default function Reserva() {
             <div>
                 <Text type="h2" color='secondary' text={dataProduct?.category?.title}/>
                 <Text type="h1" color='secondary' text={dataProduct.title}/>
+                <Text type="p1" color="secondary" text={dataProduct.address}/>
                 <Text type="p1" color='secondary' text={`${dataProduct?.city?.name}, ${dataProduct?.city?.country?.name}`}/>
             </div>
-            <Button text="Confirmar reserva"  fullwidth />
+            <div>
+                <Text type="h3" color='secondary' text="Check in"/>
+                <Text type="p1" color='secondary' text={formatDate(dateValue[0])}/>
+            </div>
+            <div>
+                <Text type="h3" color='secondary' text="Check out"/>
+                <Text type="p1" color='secondary' text={formatDate(dateValue[1])}/>
+            </div>
+            <Button text="Confirmar reserva" click={handleReservation} fullwidth />
         </DetalleReserva>
     </DatosReserva>
 

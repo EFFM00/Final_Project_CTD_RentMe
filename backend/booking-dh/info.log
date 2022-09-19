@@ -226,3 +226,33 @@
 [2022-09-17 20:06:51] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
 [2022-09-17 21:38:38] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
 [2022-09-17 21:38:38] [ ERROR] [GlobalExceptionHandler:28] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: ":id"
+[2022-09-18 21:38:23] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-18 21:59:47] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-18 22:01:03] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-18 22:43:32] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-18 22:43:32] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.Booking.bookingUser -> com.booking.dh.security.model.BookingUser; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.Booking.bookingUser -> com.booking.dh.security.model.BookingUser
+[2022-09-18 22:44:57] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-18 22:46:43] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-18 22:48:39] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 10:17:14] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:18:05] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:18:34] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:19:23] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:20:26] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:23:14] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:27:19] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:29:01] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 10:29:43] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 10:29:53] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 10:31:21] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 10:32:29] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 10:36:36] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:37:42] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 10:40:02] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 10:40:37] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 10:58:21] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 11:11:26] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 11:15:00] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-19 14:59:02] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 15:03:54] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 15:07:35] [ INFO ] [BookingService:35] Booking successfully saved.

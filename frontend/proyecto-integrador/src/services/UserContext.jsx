@@ -5,6 +5,7 @@ export const UserContext = createContext();
 export const UserProvider = ({children}) => {
     const [ user, setUser ] = useState(null);
     const [ dataProduct, setDataProduct ] = useState([]);
+    const [dateValue, setDateValue] = useState(new Date());
 
     const idProductFromLocalS = localStorage.getItem("idProduct");
     const [ idProduct, setIDProductLS ] = useState(idProductFromLocalS);
@@ -15,7 +16,7 @@ export const UserProvider = ({children}) => {
     }
 
   return (
-    <UserContext.Provider value={{user, setUser, dataProduct, setDataProduct, idProduct, setIdProduct}}>
+    <UserContext.Provider value={{user, setUser, dataProduct, setDataProduct, idProduct, setIdProduct, dateValue, setDateValue}}>
         {children}
     </UserContext.Provider>
   )

@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 //import Text from "../atoms/Text";
 import Calendar from "react-calendar";
 import { ContainerCalendar } from "../../styles/CalendarioReservaStyle";
 import { useState } from "react";
 import { useEffect } from "react";
 import { isWithinInterval } from "date-fns";
+import { UserContext } from "../../services/UserContext";
 //import { useParams } from "react-router-dom";
 // import dayjs from "dayjs"; // ES 2015
 
-function CalendarioReservas({ fechasOcupadas }) {
+function CalendarioReservas({ fechasOcupadas}) {
     const [tablet, setTablet] = useState(false);
-    const [dateValue, setDateValue] = useState(new Date());
+    // const [dateValue, setDateValue] = useState(new Date());
+    const { dateValue, setDateValue } = useContext(UserContext);
     const minDate = new Date();
+
+    console.log(dateValue, "fecha Calendar")
 
     const stringToDate = (date) => {
         return new Date(date);
