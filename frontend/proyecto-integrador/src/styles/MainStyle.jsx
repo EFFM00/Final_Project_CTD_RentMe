@@ -5,18 +5,18 @@ export const ContenedorCategorias = styled.div`
     padding: 30px 15px 20px;
 
     @media screen and (min-width: 768px) {
-        padding: 30px 30px 20px;
+        padding: 30px 70px 20px;
     }
 
     @media screen and (min-width: 1024px) {
-        padding: 30px 60px 20px;
+        padding: 30px 40px 20px;
     }
 `
 
 export const GridCategorias = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 20px;
     padding: 10px 0;
 `
 

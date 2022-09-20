@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/DetallesProducto.css";
 import Text from "./atoms/Text";
 import { Titulo } from "../styles/CalendarioReservaStyle";
@@ -16,14 +16,15 @@ import {
     ContenedorBoton,
     SeccionReserva,
 } from "../styles/CalendarioReservaStyle";
-import Reserva from "../pages/home/Reserva";
+import { UserContext } from "../services/UserContext";
 
 function DetallesProducto() {
     const { id } = useParams();
-    const [dataProduct, setDataProduct] = useState([]);
-    const [showReservation, setShowReservation] = useState(false);
+    const { dataProduct, setDataProduct,setIdProduct } = useContext(UserContext);
     const [images, setImages] = useState([{ source: "", caption: "image" }]);
     const [fechasOcupadas, setFechasOcupadas] = useState([]);
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
     // funcion para obtener los detalles de un solo producto por su id
 
@@ -56,6 +57,17 @@ function DetallesProducto() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
+    const clickReserva = () => {
+        if(token !== null) {
+            //poner en nulo el id del context nuevo
+            navigate(`/products/${id}/reservation`)
+        } else {
+            //crear un nuevo context y guardar el id
+            setIdProduct(id)
+            navigate("/sign-in")
+        }
+    }
+
     return (
         <div style={{ width: "100%" }}>
             {/* Bloque Header */}
@@ -77,7 +89,6 @@ function DetallesProducto() {
                 </div>
             </header>
 
-            {showReservation === false ? (
                 <div>
                     {/* Bloque Ubicacion */}
 
@@ -185,19 +196,18 @@ function DetallesProducto() {
                             <Button
                                 text="Iniciar reserva"
                                 fullwidth
-                                click={() => setShowReservation(true)}
+                                click={clickReserva}
                             />
                         </ContenedorBoton>
                     </SeccionReserva>
                 </div>
-            ) : (
-                <Reserva
+
+                {/* <Reserva
                     mainPictureUrl={dataProduct.mainPictureUrl}
                     category={dataProduct?.category?.title}
                     title={dataProduct.title}
                     address={dataProduct.address}
-                />
-            )}
+                /> */}
 
             {/* Bloque de Politicas */}
 
@@ -207,12 +217,14 @@ function DetallesProducto() {
 
             <div className="BloqueDePoliticas">
                 <div>
+                    <div className="politicas">
                     <Text
                         type="h3"
                         color="secondary"
                         text="Normas de la casa"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    <ul>
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -220,19 +232,22 @@ function DetallesProducto() {
                                     "Normas de la casa"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
                     </ul>
                 </div>
                 <div>
+                    <div className="politicas">
                     <Text
                         type="h3"
                         color="secondary"
                         text="Política de cancelación"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    
+                    <ul className="listaPoliticas">
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -240,19 +255,21 @@ function DetallesProducto() {
                                     "Política de cancelación"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
                     </ul>
                 </div>
                 <div>
-                    <Text
+                    <div>
+                    <Text className="politicas"
                         type="h3"
                         color="secondary"
                         text="Salud y seguridad"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    <ul className="listaPoliticas">
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -260,7 +277,7 @@ function DetallesProducto() {
                                     "Salud y seguridad"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
