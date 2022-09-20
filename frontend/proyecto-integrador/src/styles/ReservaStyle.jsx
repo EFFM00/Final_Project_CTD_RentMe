@@ -159,7 +159,7 @@ export const Imagen = styled.img`
 export const DatosProducto = styled.div`
     margin: 0 15px;
     padding: 20px 0;
-    borderBottom: 1px solid #BEBEBE;
+    border-Bottom: 1px solid #BEBEBE;
 
     @media screen and (min-width: 768px) {
         padding: 0;
@@ -184,7 +184,7 @@ export const BotonReserva = styled.div`
 `
 
 export const Politicas = styled.div`
-    border: 1px solid black;
+    margin-top: 30px;
 `
 
 export const TituloPoliticas = styled.div`
