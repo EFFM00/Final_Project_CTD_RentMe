@@ -29,8 +29,9 @@ export const Titulo = styled.h1`
 
 export const ContainerCalendar = styled.div`
     /* ~~~ container styles ~~~ */
-    min-width: 700px;
-    max-width: 1000px;
+    // min-width: 700px;
+    // max-width: 1000px;
+    width: 100%;
     margin-top: 20px;
     margin-bottom: 30px;
     background-color: ${({ theme }) => theme.white};
@@ -39,8 +40,13 @@ export const ContainerCalendar = styled.div`
     border-radius: 0px 0px 5px 5px;
     position: relative;
 
+    // @media screen and (min-width: 768px) {
+    //     width: 700px;
+    // }
+
     @media screen and (min-width: 1024px) {
         border-radius: 5px;
+        width: 750px;
     }
 
     /* ~~~ navigation styles ~~~ */

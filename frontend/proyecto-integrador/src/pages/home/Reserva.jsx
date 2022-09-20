@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CalendarioReservas from '../../components/molecules/CalendarioReservas'
-import { CajaImagen, DetalleReserva, FormularioDatos, Formurario, Formurario2, Horario, FormularioHorario, Imagen, Titulo, DatosReserva, ReservaStyle, Header, Politicas, TituloPoliticas } from '../../styles/ReservaStyle'
+import { CajaImagen, DetalleReserva, FormularioDatos, Formurario, Formurario2, Horario, FormularioHorario, Imagen, Titulo, DatosReserva, ReservaStyle, Header, Politicas, TituloPoliticas, CheckInOut, DatosProducto, BotonReserva } from '../../styles/ReservaStyle'
 import Text from '../../components/atoms/Text'
 import Button from '../../components/atoms/Button'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -125,39 +125,42 @@ export default function Reserva() {
         </div>
         </Header>
     <DatosReserva>
-        <Text style={{gridColumn: "1 / 3"}} type="h1" color='secondary' text="Completá tus datos"/>
+        <Text style={{gridColumn: "1 / 3", marginBottom: "15px"}} type="h1" color='secondary' text="Completá tus datos"/>
         <FormularioDatos>
             <div>
             <label>
             <Text type="p1" color='secondary' text="Nombre"/>
             </label>
-            <Formurario type="text" defaultValue={user ? user.userData.name : ""}/>
+            <Formurario type="text" defaultValue={user ? user.userData.name : ""} disabled/>
             </div>
 
             <div>
             <label>
             <Text type="p1" color='secondary' text="Apellido"/>
             </label>
-            <Formurario type={"text"} defaultValue={user ? user.userData.lastName : ""}/>
+            <Formurario type={"text"} defaultValue={user ? user.userData.lastName : ""} disabled/>
             </div>
 
             <div>
             <label>
             <Text type="p1" color='secondary' text="Correo electronico"/>
             </label>
-            <Formurario type={"email"} defaultValue={user ? user.userData.email : ""}/>
+            <Formurario type={"email"} defaultValue={user ? user.userData.email : ""} disabled/>
             </div>
             
             <div>
             <label>
             <Text type="p1" color='secondary' text="Ciudad"/>
             </label>
-            <Formurario2 type={"text"}/>   
+            <Formurario2 type={"text"} placeholder="Ciudad"/>   
             </div>
             
         </FormularioDatos>
 
-        <div>
+        <div style={{marginTop: "15px", display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div>
+                <Text type="h1" color='secondary' text="Seleccioná tu fecha de reserva"/>
+            </div>
             <CalendarioReservas
                 fechasOcupadas={fechasOcupadas}
             />
@@ -168,7 +171,7 @@ export default function Reserva() {
             <Text type="h4" color='secondary' text="Tu habitación va estar lista para el check-in entre las 10:00 AM y las 11:00 PM"/><br />
            <div>
            <label htmlFor="">Indicá tu horario estimado de llegada</label><br />
-            <FormularioHorario type={"time"} placeholder="Ciudad"/>
+            <FormularioHorario type={"time"} />
            </div>
         </Horario>
 
@@ -181,20 +184,24 @@ export default function Reserva() {
                 <Imagen src={dataProduct.mainPictureUrl} alt="{dataProduct.title}"/>
             </CajaImagen>
             <div>
+            <DatosProducto>
                 <Text type="h2" color='secondary' text={dataProduct?.category?.title}/>
-                <Text type="h1" color='secondary' text={dataProduct.title}/>
+                <Text style={{marginBottom: "10px"}} type="h1" color='secondary' text={dataProduct.title}/>
                 <Text type="p1" color="secondary" text={dataProduct.address}/>
                 <Text type="p1" color='secondary' text={`${dataProduct?.city?.name}, ${dataProduct?.city?.country?.name}`}/>
-            </div>
-            <div>
+            </DatosProducto>
+            <CheckInOut>
                 <Text type="h3" color='secondary' text="Check in"/>
                 <Text type="p1" color='secondary' text={formatDate(dateValue[0])}/>
-            </div>
-            <div>
+            </CheckInOut>
+            <CheckInOut>
                 <Text type="h3" color='secondary' text="Check out"/>
                 <Text type="p1" color='secondary' text={formatDate(dateValue[1])}/>
+            </CheckInOut>
+            <BotonReserva>
+                <Button text="Confirmar reserva" click={handleReservation} fullwidth />
+            </BotonReserva>
             </div>
-            <Button text="Confirmar reserva" click={handleReservation} fullwidth />
         </DetalleReserva>
     </DatosReserva>
 
