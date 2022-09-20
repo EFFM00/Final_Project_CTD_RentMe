@@ -10,13 +10,13 @@ import styled from "styled-components";
 import Select from "react-select";
 import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
-import { getCharacteristics } from "../../services/Characteristics"
+import { getCharacteristics } from "../../services/Characteristics";
 export function CreacionProducto() {
     const [categorias, setCategorias] = useState([]);
     const [cities, setCities] = useState([]);
     const [categorieValue, setCategorieValue] = useState([]);
     const [cityValue, setCityValue] = useState("");
-    const [characteristics, setCharacteristics] = useState([])
+    const [characteristics, setCharacteristics] = useState([]);
     const [characteristicsValue, setCharacteristicsValue] = useState([]);
 
     useEffect(() => {
@@ -37,7 +37,6 @@ export function CreacionProducto() {
         getCategories({ setCategorias });
     }, []);
 
-
     const SelectStyle = styled(Select)`
         width: 100%;
 
@@ -47,10 +46,10 @@ export function CreacionProducto() {
         }
     `;
 
-    const optionsCharacteristics = characteristics.map(character => ({
+    const optionsCharacteristics = characteristics.map((character) => ({
         label: character.description,
-        value: character.id
-    }))
+        value: character.id,
+    }));
 
     const optionsCategories = categorias.map((categorie) => ({
         label: categorie.title,
@@ -71,9 +70,9 @@ export function CreacionProducto() {
     };
 
     const handleSelectCharacter = (event) => {
-        setCharacteristicsValue(event)
+        setCharacteristicsValue(event);
         console.log(characteristicsValue);
-    }
+    };
     console.log(characteristicsValue, "characteristicsValue");
 
     return (
@@ -84,70 +83,100 @@ export function CreacionProducto() {
                     color="secondary"
                     text="Administración de productos"
                 />
-                <FormularioDatos>
+
+                <div>
                     <Text type="h2" color="secondary" text="Crear producto" />
-                    <div>
-                        <label>
-                            <Text
-                                type="p1"
-                                color="secondary"
-                                text="Nombre del producto"
-                            />
-                        </label>
-                        <Formurario type={"text"} />
-                    </div>
+                    <form>
+                        <div>
+                            <label>
+                                <Text
+                                    type="p1"
+                                    color="secondary"
+                                    text="Nombre del producto"
+                                />
+                            </label>
+                            <Formurario type={"text"} />
+                        </div>
 
-                    <SelectStyle
-                        value={categorieValue}
-                        onChange={handleSelectCategorie}
-                        options={optionsCategories}
-                        placeholder="Seleccione una categoría"
-                        isClearable={true}
+                        <div>
+                            <label>
+                                <Text
+                                    type="p1"
+                                    color="secondary"
+                                    text="Descripción"
+                                />
+                            </label>
+                            <Formurario type={"textarea"} />
+                        </div>
+
+                        <div>
+                            <label>
+                                <Text
+                                    type="p1"
+                                    color="secondary"
+                                    text="Url imagen principal"
+                                />
+                            </label>
+                            <Formurario type={"text"} />
+                        </div>
+
+                        <div>
+                            <label>
+                                <Text
+                                    type="p1"
+                                    color="secondary"
+                                    text="Dirección"
+                                />
+                            </label>
+                            <Formurario type={"text"} />
+                        </div>
+
+                        <SelectStyle
+                            value={categorieValue}
+                            onChange={handleSelectCategorie}
+                            options={optionsCategories}
+                            placeholder="Seleccione una categoría"
+                            isClearable={true}
+                        />
+
+                        <SelectStyle
+                            defaultInputValue=""
+                            value={cityValue}
+                            onChange={handleSelectChange}
+                            options={optionsCity}
+                            placeholder="Seleccione una ciudad"
+                            isClearable={true}
+                        />
+                    </form>
+                    <Button text="Crear producto" fullwidth />
+                </div>
+
+                <div>
+                    <Text
+                        type="h2"
+                        color="secondary"
+                        text="Agregar características"
                     />
+                    <form>
+                        <SelectStyle
+                            value={characteristicsValue}
+                            onChange={handleSelectCharacter}
+                            options={optionsCharacteristics}
+                            placeholder="Seleccione las características"
+                            isClearable={true}
+                            isMulti={true}
+                        />
 
-                    <SelectStyle
-                        defaultInputValue=""
-                        value={cityValue}
-                        onChange={handleSelectChange}
-                        options={optionsCity}
-                        placeholder="Seleccione una ciudad"
-                        isClearable={true}
-                    />
-
-                    <div>
-                        <label>
+                        <form>
                             <Text
-                                type="p1"
+                                type="h3"
                                 color="secondary"
-                                text="Dirección"
+                                text="Crear características"
                             />
-                        </label>
-                        <Formurario type={"text"} />
-                    </div>
+                        </form>
+                    </form>
+                </div>
 
-                    <div>
-                        <label>
-                            <Text
-                                type="p1"
-                                color="secondary"
-                                text="Descripción"
-                            />
-                        </label>
-                        <Formurario type={"textarea"} />
-                    </div>
-
-                    <SelectStyle
-                        value={characteristicsValue}
-                        onChange={handleSelectCharacter}
-                        options={optionsCharacteristics}
-                        placeholder="Seleccione las características"
-                        isClearable={true}
-                        isMulti={true}
-                    />
-
-
-
-                </FormularioDatos>
                 <Button text="Confirmar reserva" fullwidth />
             </ReservaStyle>
         </>
