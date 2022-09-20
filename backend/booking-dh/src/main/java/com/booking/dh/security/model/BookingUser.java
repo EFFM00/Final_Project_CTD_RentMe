@@ -49,7 +49,6 @@ public class BookingUser implements UserDetails{
     @JoinColumn(name= "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 
-    //@JsonIgnoreProperties({"bookingUser"})
     @JsonIgnore
     @OneToMany(mappedBy = "bookingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();

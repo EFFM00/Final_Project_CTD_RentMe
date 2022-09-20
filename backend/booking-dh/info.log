@@ -291,3 +291,5 @@
 =======
 >>>>>>> development
 >>>>>>> 67fa2d9367aea122352c4bac689751e436eaff85
+[2022-09-19 23:07:34] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 23:07:49] [ INFO ] [BookingService:35] Booking successfully saved.
