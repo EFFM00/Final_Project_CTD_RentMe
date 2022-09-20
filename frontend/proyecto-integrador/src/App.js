@@ -11,7 +11,7 @@ import SignIn from "./pages/login/SignIn";
 import { useContext, useEffect } from "react";
 import DetallesProducto from "./components/DetallesProducto";
 import ReservaExitosa from "./components/ReservaExitosa";
-import ProductoExitoso from "./components/ProductoExitoso";
+// import ProductoExitoso from "./components/ProductoExitoso";
 import Reserva from "./pages/home/Reserva";
 import { decodeToken } from "react-jwt";
 import {CreacionProducto} from "./pages/home/CreacionProducto"

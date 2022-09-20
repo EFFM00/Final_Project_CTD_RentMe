@@ -15,6 +15,8 @@ export const UserProvider = ({children}) => {
       setIDProductLS(id);
     }
 
+    
+
   return (
     <UserContext.Provider value={{user, setUser, dataProduct, setDataProduct, idProduct, setIdProduct, dateValue, setDateValue}}>
         {children}
