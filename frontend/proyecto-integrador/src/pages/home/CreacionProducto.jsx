@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-    FormularioDatos,
+    // FormularioDatos,
     Formurario,
     ReservaStyle,
 } from "../../styles/ReservaStyle";
@@ -19,6 +19,15 @@ export function CreacionProducto() {
     const [characteristics, setCharacteristics] = useState([]);
     const [characteristicsValue, setCharacteristicsValue] = useState([]);
 
+    const SelectStyle = styled(Select)`
+        width: 100%;
+
+        .css-1s2u09g-control {
+            border: none;
+            text-align: left;
+        }
+    `;
+
     useEffect(() => {
         try {
             getCities({ setCities });
@@ -31,20 +40,11 @@ export function CreacionProducto() {
         getCharacteristics({ setCharacteristics });
     }, []);
 
-    console.log(characteristics, "Characteristics");
+    // console.log(characteristics, "Characteristics");
 
     useEffect(() => {
         getCategories({ setCategorias });
     }, []);
-
-    const SelectStyle = styled(Select)`
-        width: 100%;
-
-        .css-1s2u09g-control {
-            border: none;
-            text-align: left;
-        }
-    `;
 
     const optionsCharacteristics = characteristics.map((character) => ({
         label: character.description,
@@ -173,11 +173,19 @@ export function CreacionProducto() {
                                 color="secondary"
                                 text="Crear características"
                             />
+                            <label>
+                                <Text
+                                    type="p1"
+                                    color="secondary"
+                                    text="Descripción"
+                                />
+                            </label>
+                            <Formurario type={"text"} />
+                            <Button text="Crear característica" fullwidth/>
                         </form>
                     </form>
                 </div>
 
-                <Button text="Confirmar reserva" fullwidth />
             </ReservaStyle>
         </>
     );
