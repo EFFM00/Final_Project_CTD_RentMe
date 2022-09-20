@@ -144,7 +144,7 @@ export const Imagen = styled.img`
 `
 
 export const Politicas = styled.div`
-    border: 1px solid black;
+    margin-top: 30px;
 `
 
 export const TituloPoliticas = styled.div`
