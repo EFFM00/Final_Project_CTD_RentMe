@@ -247,7 +247,7 @@ function DetallesProducto() {
                     />
                     </div>
                     
-                    <ul className="listaPoliticas">
+                    <ul>
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -269,7 +269,7 @@ function DetallesProducto() {
                         text="Salud y seguridad"
                     />
                     </div>
-                    <ul className="listaPoliticas">
+                    <ul>
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
