@@ -1,0 +1,8 @@
+Informe Final Wiki
+
+- Página principal
+- Equipo
+- Metodología de trabajo
+- Bitácora del proyecto
+- Tecnologías utilizadas
+- Documentación técnica del proyecto (Glosario tal vez?)
