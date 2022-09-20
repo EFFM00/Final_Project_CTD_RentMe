@@ -8,14 +8,16 @@ import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import styled from "styled-components";
 import Select from "react-select";
-import { getCategoriesCrearProducto } from "../../services/Categories";
+import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
-
+import { getCharacteristics } from "../../services/Characteristics"
 export function CreacionProducto() {
-    const [categories, setCategories] = useState([]);
+    const [categorias, setCategorias] = useState([]);
     const [cities, setCities] = useState([]);
     const [categorieValue, setCategorieValue] = useState([]);
     const [cityValue, setCityValue] = useState("");
+    const [characteristics, setCharacteristics] = useState([])
+    const [characteristicsValue, setCharacteristicsValue] = useState([]);
 
     useEffect(() => {
         try {
@@ -26,10 +28,15 @@ export function CreacionProducto() {
     }, []);
 
     useEffect(() => {
-        getCategoriesCrearProducto({ setCategories });
+        getCharacteristics({ setCharacteristics });
     }, []);
 
-    console.log(categories, "CATEGORIES");
+    console.log(characteristics, "Characteristics");
+
+    useEffect(() => {
+        getCategories({ setCategorias });
+    }, []);
+
 
     const SelectStyle = styled(Select)`
         width: 100%;
@@ -40,7 +47,12 @@ export function CreacionProducto() {
         }
     `;
 
-    const optionsCategories = categories.map((categorie) => ({
+    const optionsCharacteristics = characteristics.map(character => ({
+        label: character.description,
+        value: character.id
+    }))
+
+    const optionsCategories = categorias.map((categorie) => ({
         label: categorie.title,
         value: categorie.id,
     }));
@@ -57,6 +69,12 @@ export function CreacionProducto() {
     const handleSelectCategorie = (event) => {
         setCategorieValue(event);
     };
+
+    const handleSelectCharacter = (event) => {
+        setCharacteristicsValue(event)
+        console.log(characteristicsValue);
+    }
+    console.log(characteristicsValue, "characteristicsValue");
 
     return (
         <>
@@ -118,7 +136,14 @@ export function CreacionProducto() {
                         <Formurario type={"textarea"} />
                     </div>
 
-
+                    <SelectStyle
+                        value={characteristicsValue}
+                        onChange={handleSelectCharacter}
+                        options={optionsCharacteristics}
+                        placeholder="Seleccione las características"
+                        isClearable={true}
+                        isMulti={true}
+                    />
 
 
 
