@@ -159,7 +159,7 @@ export const Imagen = styled.img`
 export const DatosProducto = styled.div`
     margin: 0 15px;
     padding: 20px 0;
-    borderBottom: 1px solid #BEBEBE;
+    border-Bottom: 1px solid #BEBEBE;
 
     @media screen and (min-width: 768px) {
         padding: 0;
