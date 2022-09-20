@@ -217,12 +217,14 @@ function DetallesProducto() {
 
             <div className="BloqueDePoliticas">
                 <div>
+                    <div className="politicas">
                     <Text
                         type="h3"
                         color="secondary"
                         text="Normas de la casa"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    <ul>
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -230,19 +232,22 @@ function DetallesProducto() {
                                     "Normas de la casa"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
                     </ul>
                 </div>
                 <div>
+                    <div className="politicas">
                     <Text
                         type="h3"
                         color="secondary"
                         text="Política de cancelación"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    
+                    <ul className="listaPoliticas">
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -250,19 +255,21 @@ function DetallesProducto() {
                                     "Política de cancelación"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
                     </ul>
                 </div>
                 <div>
-                    <Text
+                    <div>
+                    <Text className="politicas"
                         type="h3"
                         color="secondary"
                         text="Salud y seguridad"
                     />
-                    <ul style={{ paddingLeft: "30px" }}>
+                    </div>
+                    <ul className="listaPoliticas">
                         {dataProduct?.policiesXProducts
                             ?.filter(
                                 (item) =>
@@ -270,7 +277,7 @@ function DetallesProducto() {
                                     "Salud y seguridad"
                             )
                             .map((item) => (
-                                <li key={item.id}>
+                                <li className="listaPoliticas" key={item.id}>
                                     {item?.policy?.description}
                                 </li>
                             ))}
