@@ -2,6 +2,7 @@ package com.booking.dh.security.model;
 
 import com.booking.dh.model.Booking;
 import com.booking.dh.model.City;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,10 +47,10 @@ public class BookingUser implements UserDetails{
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name= "role_id", referencedColumnName = "id", nullable = false)
-    //@JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @JsonIgnoreProperties({"bookingUser"})
+    //@JsonIgnoreProperties({"bookingUser"})
+    @JsonIgnore
     @OneToMany(mappedBy = "bookingUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Booking> bookings = new HashSet<>();
 
