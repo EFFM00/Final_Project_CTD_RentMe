@@ -265,4 +265,31 @@
 [2022-09-19 15:07:35] [ INFO ] [BookingService:35] Booking successfully saved.
 =======
 >>>>>>> 09c676d4680a425643b75c45c5b0d1054cce6496
+<<<<<<< HEAD
+[2022-09-19 16:13:20] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 16:36:28] [ ERROR] [GlobalExceptionHandler:28] No value present
+[2022-09-19 16:54:54] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 16:56:54] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 17:06:40] [ INFO ] [CountryService:48] The country with id 1 has been successfully deleted.
+[2022-09-19 17:16:24] [ INFO ] [CityService:48] The city with id 2 has been successfully deleted.
+[2022-09-19 18:22:22] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 21:25:12] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 21:26:37] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-19 21:26:46] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:26:46] [ ERROR] [GlobalExceptionHandler:28] Could not write JSON: Cannot invoke "com.booking.dh.security.model.Role.getName()" because "this.role" is null; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Cannot invoke "com.booking.dh.security.model.Role.getName()" because "this.role" is null (through reference chain: com.booking.dh.model.Booking["bookingUser"]->com.booking.dh.security.model.BookingUser["authorities"])
+[2022-09-19 21:31:16] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 21:31:28] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 21:31:35] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:32:13] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:33:05] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:33:05] [ ERROR] [GlobalExceptionHandler:28] Could not write JSON: Cannot invoke "com.booking.dh.security.model.Role.getName()" because "this.role" is null; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Cannot invoke "com.booking.dh.security.model.Role.getName()" because "this.role" is null (through reference chain: com.booking.dh.model.Booking["bookingUser"]->com.booking.dh.security.model.BookingUser["authorities"])
+[2022-09-19 21:33:36] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 21:33:47] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:34:39] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-19 21:35:54] [ ERROR] [GlobalExceptionHandler:22] Check-in date cannot be earlier than today.
+[2022-09-19 21:36:03] [ INFO ] [BookingService:35] Booking successfully saved.
+=======
 >>>>>>> development
+>>>>>>> 67fa2d9367aea122352c4bac689751e436eaff85
+[2022-09-19 23:07:34] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
+[2022-09-19 23:07:49] [ INFO ] [BookingService:35] Booking successfully saved.
