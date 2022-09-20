@@ -54,32 +54,6 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
     }
 
-    /*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(bookingUserService);
-    }
-
-     */
-
-    /*
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/products/**").permitAll()
-                .antMatchers("/categories/**").permitAll()
-                .antMatchers("/cities/**").permitAll()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/booking/add").hasAuthority("client")
-                .and()
-                .exceptionHandling().authenticationEntryPoint(¡tokenEntryPoint)
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }
-     */
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
