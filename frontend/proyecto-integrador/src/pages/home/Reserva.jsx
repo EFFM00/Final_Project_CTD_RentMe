@@ -9,6 +9,7 @@ import { getProductById } from '../../services/Products'
 import { UserContext } from '../../services/UserContext'
 import { api } from '../../services/api/api'
 import dayjs from "dayjs"; // ES 2015
+import "../../styles/DetallesProducto.css"
 
 export default function Reserva() {
     const { id } = useParams();
@@ -209,14 +210,16 @@ export default function Reserva() {
         <TituloPoliticas>
             <Text type="h1" color="secondary" text="Qué tenes que saber" />
         </TituloPoliticas>
-        <div>
+        <div className="BloqueDePoliticas">
             <div>
+                <div className="politicas">
                 <Text
                 type="h3"
                 color="secondary"
                 text="Normas de la casa"
                 />
-                <ul style={{ paddingLeft: "30px" }}>
+                </div>
+                <ul>
                     {dataProduct?.policiesXProducts
                         ?.filter(
                             (item) =>
@@ -224,19 +227,21 @@ export default function Reserva() {
                                 "Normas de la casa"
                             )
                         .map((item) => (
-                            <li key={item.id}>
+                            <li className="listaPoliticas" key={item.id}>
                                 {item?.policy?.description}
                             </li>
                         ))}
                 </ul>
             </div>
             <div>
+                <div className="politicas">
                 <Text
                 type="h3"
                 color="secondary"
                 text="Política de cancelación"
                 />
-                <ul style={{ paddingLeft: "30px" }}>
+                </div>
+                <ul>
                     {dataProduct?.policiesXProducts
                         ?.filter(
                             (item) =>
@@ -244,19 +249,21 @@ export default function Reserva() {
                                 "Política de cancelación"
                         )
                         .map((item) => (
-                            <li key={item.id}>
+                            <li className="listaPoliticas" key={item.id}>
                                 {item?.policy?.description}
                             </li>
                     ))}
                 </ul>
             </div>
             <div>
+                <div className="politicas">
                 <Text
                 type="h3"
                 color="secondary"
                 text="Salud y seguridad"
                 />
-                <ul style={{ paddingLeft: "30px" }}>
+                </div>
+                <ul>
                     {dataProduct?.policiesXProducts
                         ?.filter(
                             (item) =>
@@ -264,7 +271,7 @@ export default function Reserva() {
                                 "Salud y seguridad"
                             )
                         .map((item) => (
-                            <li key={item.id}>
+                            <li className="listaPoliticas" key={item.id}>
                                 {item?.policy?.description}
                             </li>
                         ))}
