@@ -69,7 +69,7 @@ export default function Reserva() {
     useEffect(() => {
         setReservation({
             ...reservation,
-            product: {id: idProduct},
+            product: {id: idProduct || id },
             bookingUser: {id: user.userData.id}
             // product: {id: 2},
             // bookingUser: {id: 9}
