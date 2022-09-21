@@ -166,26 +166,58 @@ export function CreacionProducto() {
                             isClearable={true}
                             isMulti={true}
                         />
-
-                        <form>
+                    </form>
+                    <form>
+                        <Text
+                            type="h3"
+                            color="secondary"
+                            text="Crear nueva característica"
+                        />
+                        <label>
                             <Text
-                                type="h3"
+                                type="p1"
                                 color="secondary"
-                                text="Crear características"
+                                text="Descripción"
                             />
-                            <label>
-                                <Text
-                                    type="p1"
-                                    color="secondary"
-                                    text="Descripción"
-                                />
-                            </label>
-                            <Formurario type={"text"} />
-                            <Button text="Crear característica" fullwidth/>
-                        </form>
+                        </label>
+                        <Formurario type={"text"} />
+                        <label>
+                            <Text type="p1" color="secondary" text="Icono" />
+                        </label>
+                        <Formurario type={"text"} />
+                        <Button text="Crear característica" fullwidth />
                     </form>
                 </div>
 
+                <div>
+                    <Text type="h2" color="secondary" text="Agregar imágenes" />
+                    <form>
+                        <label>
+                            <Text
+                                type="p1"
+                                color="secondary"
+                                text="Url imagen"
+                            />
+                        </label>
+                        <Formurario type={"text"} />
+                        <Button text="Agregar imagen" fullwidth />
+                    </form>
+                </div>
+                
+                <div>
+                    <Text type="h2" color="secondary" text="Agregar políticas" />
+                    <form>
+                        <label>
+                            <Text
+                                type="p1"
+                                color="secondary"
+                                text="Agregar "
+                            />
+                        </label>
+                        <Formurario type={"text"} />
+                        <Button text="Agregar política" fullwidth />
+                    </form>
+                </div>
             </ReservaStyle>
         </>
     );
