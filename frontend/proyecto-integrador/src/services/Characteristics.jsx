@@ -1,7 +1,7 @@
 import { api } from "./api/api";
 
 // funcion para obtener o lista de caracteristicas
-export const getCharacteristics = async ({setCharacteristics, setDataCharacteristics}) => {
+export const getCharacteristics = async ({setCharacteristics}) => {
     const resp = await api.get('/characteristics');
     setCharacteristics(resp.data);
     // setDataCharacteristics(resp.data.characteristics)

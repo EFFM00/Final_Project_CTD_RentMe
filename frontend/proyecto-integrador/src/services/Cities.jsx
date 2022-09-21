@@ -6,7 +6,6 @@ export const getCities = async ({setCities}) => {
     setCities(resp.data);
   }
 
-
 // funcion para agregar ciudades
 
 // funcion para eliminar ciudad

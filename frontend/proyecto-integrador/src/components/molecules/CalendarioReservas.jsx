@@ -25,7 +25,6 @@ function CalendarioReservas({ fechasOcupadas}) {
     };
 
     let rangoFechas = [];
-
     fechasOcupadas.map((reserva) => {
         let fechas = [];
         let ida = stringToDate(reserva.checkIn);
@@ -54,18 +53,32 @@ function CalendarioReservas({ fechasOcupadas}) {
         }
     }
 
+    function validarFechaRango(inicio, fin, fecha) {
+        if(inicio <= fecha && fecha <= fin) {
+            return true;
+        }
+        return false;
+    }
+
     function verificarRangoDentroDeOtroRango() {
-        // eslint-disable-next-line array-callback-return
-        rangoFechas.map(reserva => {
-            // eslint-disable-next-line array-callback-return
-            reserva.map(fecha => {
-                if(isWithinRange(fecha, dateValue)){
+        rangoFechas.forEach(reserva => {
+            reserva.forEach(fecha => {
+                if(validarFechaRango(dateValue[0], dateValue[1], fecha)){
                     setEnableRange(false);
+                    console.log(enableRange, "enableRange False");
+                } else {
+                    setEnableRange(true);
+                    console.log(enableRange, "enableRange True");
                 }
             })
         })
 
         setEnableRange(true);
+    }
+
+    const onChangeRange = (value) => {
+        setDateValue(value)
+        verificarRangoDentroDeOtroRango()
     }
 
     useEffect(() => {
@@ -75,6 +88,10 @@ function CalendarioReservas({ fechasOcupadas}) {
         window.addEventListener("resize", () => responsive());
     }, []);
 
+    // console.log(enableRange, "enableRange");
+    // console.log(fechasOcupadas, "fechasOcupadas");
+    console.log(rangoFechas, "rangoFechas");
+
     return (
         <>
             <ContainerCalendar id="calendarCont2">
@@ -83,7 +100,7 @@ function CalendarioReservas({ fechasOcupadas}) {
                         showDoubleView={true}
                         selectRange={enableRange}
                         minDate={minDate}
-                        onChange={(value) => setDateValue(value) && verificarRangoDentroDeOtroRango}
+                        onChange={(value) => onChangeRange(value)}
                         value={dateValue}
                         id="calendarCont3"
                         tileDisabled={tileDisabled}
@@ -93,7 +110,7 @@ function CalendarioReservas({ fechasOcupadas}) {
                         showDoubleView={false}
                         selectRange={enableRange}
                         minDate={minDate}
-                        onChange={(value) => setDateValue(value) && verificarRangoDentroDeOtroRango}
+                        onChange={(value) => onChangeRange(value)}
                         value={dateValue}
                         id="calendarCont4"
                         tileDisabled={tileDisabled}
