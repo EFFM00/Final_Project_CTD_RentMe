@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const ContenedorCtg = styled.article`
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    border: 1px solid #F3F1ED;
+    gap: 20px;
+    /* border: 1px solid #F3F1ED; */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     max-width: 500px;
