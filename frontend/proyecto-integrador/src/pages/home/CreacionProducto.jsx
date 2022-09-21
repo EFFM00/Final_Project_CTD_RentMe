@@ -1,262 +1,343 @@
 import React, { useState, useEffect } from "react";
 import {
-    // FormularioDatos,
-    Formurario,
-    ReservaStyle,
+  // FormularioDatos,
+  Formurario,
+  ReservaStyle,
 } from "../../styles/ReservaStyle";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
-import styled from "styled-components";
-import Select from "react-select";
 import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
 import { getCharacteristics } from "../../services/Characteristics";
 import { getPoliciesType } from "../../services/Policies";
+import { useFormik } from "formik";
+import { api } from "../../services/api/api";
+import CustomSelect from "../../components/molecules/CustomSelect";
 export function CreacionProducto() {
-    const [categorias, setCategorias] = useState([]);
-    const [cities, setCities] = useState([]);
-    const [policiesTypes, setPoliciesTypes] = useState([]);
-    const [categorieValue, setCategorieValue] = useState([]);
-    const [cityValue, setCityValue] = useState("");
-    const [characteristics, setCharacteristics] = useState([]);
-    const [characteristicsValue, setCharacteristicsValue] = useState([]);
-    const [politicValue, setPoliticValue] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [cities, setCities] = useState([]);
+  const [policiesTypes, setPoliciesTypes] = useState([]);
+  const [characteristics, setCharacteristics] = useState([]);
+  const token = localStorage.getItem("token");
 
-    const SelectStyle = styled(Select)`
-        width: 100%;
+  useEffect(() => {
+    try {
+      getPoliciesType({ setPoliciesTypes });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-        .css-1s2u09g-control {
-            border: none;
-            text-align: left;
-        }
-    `;
+//   console.log("policies", policiesTypes);
 
-    useEffect(() => {
-        try {
-            getPoliciesType({ setPoliciesTypes });
-        } catch (error) {
-            console.error(error);
-        }
-    }, []);
+  useEffect(() => {
+    try {
+      getCities({ setCities });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-    console.log("policies", policiesTypes);
+  useEffect(() => {
+    getCharacteristics({ setCharacteristics });
+  }, []);
 
-    useEffect(() => {
-        try {
-            getCities({ setCities });
-        } catch (error) {
-            console.error(error);
-        }
-    }, []);
+  // console.log(characteristics, "Characteristics");
 
-    useEffect(() => {
-        getCharacteristics({ setCharacteristics });
-    }, []);
+  useEffect(() => {
+    getCategories({ setCategorias });
+  }, []);
 
-    // console.log(characteristics, "Characteristics");
+  const optionsCharacteristics = characteristics.map((character) => ({
+    label: character.description,
+    value: character.id,
+  }));
 
-    useEffect(() => {
-        getCategories({ setCategorias });
-    }, []);
+  const optionsCategories = categorias.map((categorie) => ({
+    label: categorie.title,
+    value: categorie.id,
+  }));
 
-    const optionsCharacteristics = characteristics.map((character) => ({
-        label: character.description,
-        value: character.id,
-    }));
+  const optionsCity = cities.map((city) => ({
+    label: city.name,
+    value: city.id,
+  }));
 
-    const optionsCategories = categorias.map((categorie) => ({
-        label: categorie.title,
-        value: categorie.id,
-    }));
+  const optionsPoliciesType = policiesTypes.map((politics) => ({
+    label: politics.description,
+    value: politics.id,
+  }));
 
-    const optionsCity = cities.map((city) => ({
-        label: city.name,
-        value: city.id,
-    }));
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      mainPictureUrl: "",
+      address: "",
+      longitude: 0.4,
+      latitude: 0.6,
+      price: 43.6,
+      category: -1,
+      city: -1,
+    },
+    onSubmit(values) {
+    //   console.log(values, "value");
+      handleCrearProducto(values);
+    },
+  });
 
-    const optionsPoliciesType = policiesTypes.map((politics => ({
-        label: politics.name,
-        value: politics.id
-    })))
-
-
-    const handleSelectChange = (event) => {
-        setCityValue(event);
+  const handleCrearProducto = async (values) => {
+    const productData = {
+      title: values.title,
+      description: values.description,
+      mainPictureUrl: values.mainPictureUrl,
+      address: values.address,
+      longitude: 0.4,
+      latitude: 0.6,
+      price: 43.6,
+      category: { id: values.category },
+      city: { id: values.city },
     };
 
-    const handleSelectPoliciesType = (event) => {
-        setPoliticValue(event);
-    };
+    try {
+      const resp = await api.post("/products/add", JSON.stringify(productData), {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      });
 
-    const handleSelectCategorie = (event) => {
-        setCategorieValue(event);
-    };
+      const idProducto = resp?.data?.id
 
-    const handleSelectCharacter = (event) => {
-        setCharacteristicsValue(event);
-        // console.log(characteristicsValue);
-    };
-    // console.log(characteristicsValue, "characteristicsValue");
+      console.log(resp, "producto creado");
+      console.log(idProducto)
+      formik2.setFieldValue("product", idProducto)
+      formik3.setFieldValue("product", idProducto)
+      formik4.setFieldValue("product", idProducto)
+    } catch (error) {}
+  };
 
-    return (
-        <>
-            <ReservaStyle>
-                <Text
-                    type="h1"
-                    color="secondary"
-                    text="Administración de productos"
+  const formik2 = useFormik({
+    initialValues: {
+        characteristic: -1,
+        product: -1
+    },
+    onSubmit(values) {
+      handleAgregarCaracteristicas(values)
+    },
+  });
+
+  const handleAgregarCaracteristicas = async (values) => {
+    const caracteristicasData = {
+        characteristic: {id: values.characteristic},
+        product: {id: values.product}
+    }
+
+    try {
+        const resp = await api.post("/product-characteristics/add", JSON.stringify(caracteristicasData),
+        {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
+        })
+
+        console.log(resp, "caract agregada");
+    } catch (error) {
+
+    }
+  }
+
+  const formik3 = useFormik({
+    initialValues: {
+        title: "",
+        url: "",
+        product: -1
+    },
+    onSubmit(values) {
+      console.log(values, "value");
+      handleAgregarImagenes(values)
+    },
+  });
+
+  const handleAgregarImagenes = async (values) => {
+    const imagenData = {
+        title: values.title,
+        url: values.url,
+        product: {id: values.product}
+    }
+
+    try {
+        const resp = await api.post("/images/add", JSON.stringify(imagenData),
+        {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
+        })
+
+        console.log(resp, "imagen agregada");
+    } catch (error) {
+
+    }
+  }
+
+  const formik4 = useFormik({
+    initialValues: {
+        policy: -1,
+        product: -1
+    },
+    onSubmit(values) {
+      console.log(values, "value");
+      handleAgregarPolitica(values)
+    },
+  });
+
+  const handleAgregarPolitica = async (values) => {
+    const politicasData = {
+        policy: {id: values.policy},
+        product: {id: values.product}
+    }
+
+    try {
+        const resp = await api.post("/product-polices/add", JSON.stringify(politicasData),
+        {
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`,
+              },
+        })
+
+        console.log(resp, "politica agregada");
+    } catch (error) {
+
+    }
+  }
+
+  return (
+    <>
+      <ReservaStyle>
+        <Text type="h1" color="secondary" text="Administración de productos" />
+
+        <div>
+          <Text type="h2" color="secondary" text="Crear producto" />
+          <form onSubmit={formik.handleSubmit}>
+            <div>
+              <label>
+                <Text type="p1" color="secondary" text="Nombre del producto" />
+              </label>
+              <Formurario
+                type={"text"}
+                name="title"
+                onChange={formik.handleChange}
+                value={formik.values.title}
+              />
+            </div>
+
+            <div>
+              <label>
+                <Text type="p1" color="secondary" text="Descripción" />
+              </label>
+              <Formurario
+                type={"textarea"}
+                name="description"
+                onChange={formik.handleChange}
+                value={formik.values.description}
+              />
+            </div>
+
+            <div>
+              <label>
+                <Text type="p1" color="secondary" text="Url imagen principal" />
+              </label>
+              <Formurario
+                type={"text"}
+                name="mainPictureUrl"
+                onChange={formik.handleChange}
+                value={formik.values.mainPictureUrl}
+              />
+            </div>
+
+            <div>
+              <label>
+                <Text type="p1" color="secondary" text="Dirección" />
+              </label>
+              <Formurario
+                type={"text"}
+                name="address"
+                onChange={formik.handleChange}
+                value={formik.values.address}
+              />
+            </div>
+
+            <CustomSelect
+              options={optionsCategories}
+              placeholder="Seleccione una categoría"
+              value={formik.values.category}
+              onChange={(value) => formik.setFieldValue("category", value.value)}
+            />
+            <label>{formik.values.category}</label>
+            <CustomSelect
+              options={optionsCity}
+              placeholder="Seleccione una ciudad"
+              value={formik.values.city}
+              onChange={(value) => formik.setFieldValue("city", value.value)}
+            />
+            <label>{formik.values.city}</label>
+            <Button text="Crear producto" fullwidth type="submit" />
+          </form>
+        </div>
+
+        <div>
+          <Text type="h2" color="secondary" text="Agregar características" />
+          <form onSubmit={formik2.handleSubmit}>
+          <CustomSelect
+              options={optionsCharacteristics}
+              placeholder="Seleccione las características"
+              value={formik2.values.characteristic}
+              onChange={(value) => formik2.setFieldValue("characteristic", value.value)}
+            />
+            <Button text="Agregar características" fullwidth type="submit"/>
+          </form>
+        </div>
+
+        <div>
+          <Text type="h2" color="secondary" text="Agregar imágenes" />
+          <form onSubmit={formik3.handleSubmit}>
+            <label>
+              <Text type="p1" color="secondary" text="Titulo imagen" />
+            </label>
+            <Formurario
+                type={"text"}
+                name="title"
+                onChange={formik3.handleChange}
+                value={formik3.values.title} />
+            <label>
+              <Text type="p1" color="secondary" text="Url imagen" />
+            </label>
+            <Formurario
+                type={"text"}
+                name="url"
+                onChange={formik3.handleChange}
+                value={formik3.values.url}
                 />
+            <Button text="Agregar imagen" fullwidth type="submit"/>
+          </form>
+        </div>
 
-                <div>
-                    <Text type="h2" color="secondary" text="Crear producto" />
-                    <form>
-                        <div>
-                            <label>
-                                <Text
-                                    type="p1"
-                                    color="secondary"
-                                    text="Nombre del producto"
-                                />
-                            </label>
-                            <Formurario type={"text"} />
-                        </div>
-
-                        <div>
-                            <label>
-                                <Text
-                                    type="p1"
-                                    color="secondary"
-                                    text="Descripción"
-                                />
-                            </label>
-                            <Formurario type={"textarea"} />
-                        </div>
-
-                        <div>
-                            <label>
-                                <Text
-                                    type="p1"
-                                    color="secondary"
-                                    text="Url imagen principal"
-                                />
-                            </label>
-                            <Formurario type={"text"} />
-                        </div>
-
-                        <div>
-                            <label>
-                                <Text
-                                    type="p1"
-                                    color="secondary"
-                                    text="Dirección"
-                                />
-                            </label>
-                            <Formurario type={"text"} />
-                        </div>
-
-                        <SelectStyle
-                            value={categorieValue}
-                            onChange={handleSelectCategorie}
-                            options={optionsCategories}
-                            placeholder="Seleccione una categoría"
-                            isClearable={true}
-                        />
-
-                        <SelectStyle
-                            defaultInputValue=""
-                            value={cityValue}
-                            onChange={handleSelectChange}
-                            options={optionsCity}
-                            placeholder="Seleccione una ciudad"
-                            isClearable={true}
-                        />
-                    </form>
-                    <Button text="Crear producto" fullwidth />
-                </div>
-
-                <div>
-                    <Text
-                        type="h2"
-                        color="secondary"
-                        text="Agregar características"
-                    />
-                    <form>
-                        <SelectStyle
-                            value={characteristicsValue}
-                            onChange={handleSelectCharacter}
-                            options={optionsCharacteristics}
-                            placeholder="Seleccione las características"
-                            isClearable={true}
-                            isMulti={true}
-                        />
-                    </form>
-                    <form>
-                        <Text
-                            type="h3"
-                            color="secondary"
-                            text="Crear nueva característica"
-                        />
-                        <label>
-                            <Text
-                                type="p1"
-                                color="secondary"
-                                text="Descripción"
-                            />
-                        </label>
-                        <Formurario type={"text"} />
-                        <label>
-                            <Text type="p1" color="secondary" text="Icono" />
-                        </label>
-                        <Formurario type={"text"} />
-                        <Button text="Crear característica" fullwidth />
-                    </form>
-                </div>
-
-                <div>
-                    <Text type="h2" color="secondary" text="Agregar imágenes" />
-                    <form>
-                        <label>
-                            <Text
-                                type="p1"
-                                color="secondary"
-                                text="Url imagen"
-                            />
-                        </label>
-                        <Formurario type={"text"} />
-                        <Button text="Agregar imagen" fullwidth />
-                    </form>
-                </div>
-
-                <div>
-                    <Text
-                        type="h2"
-                        color="secondary"
-                        text="Agregar políticas"
-                    />
-                    <form>
-                        <label>
-                            <Text
-                                type="p1"
-                                color="secondary"
-                                text="Política de la vivienda"
-                            />
-                        </label>
-                        <Formurario type={"text"} />
-
-                        <form>
-                            <SelectStyle
-                                value={politicValue}
-                                onChange={handleSelectPoliciesType}
-                                options={optionsPoliciesType}
-                                placeholder="Seleccione el tipo de política"
-                                isClearable={true}
-                            />
-                        </form>
-
-                        <Button text="Agregar política" fullwidth />
-                    </form>
-                </div>
-            </ReservaStyle>
-        </>
-    );
+        <div>
+          <Text type="h2" color="secondary" text="Agregar políticas" />
+          <form onSubmit={formik4.handleSubmit}>
+            <CustomSelect
+              options={optionsPoliciesType}
+              placeholder="Seleccione el tipo de política"
+              value={formik4.values.policy}
+              onChange={(value) => formik4.setFieldValue("policy", value.value)}
+            />
+            <Button text="Agregar política" fullwidth type="submit" />
+          </form>
+        </div>
+      </ReservaStyle>
+    </>
+  );
 }
