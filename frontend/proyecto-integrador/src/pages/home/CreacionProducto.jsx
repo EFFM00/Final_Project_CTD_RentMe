@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
     // FormularioDatos,
-    Formurario,
+    // Formurario,
     ReservaStyle,
 } from "../../styles/ReservaStyle";
+import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario } from "../../styles/CreacionProductoStyle.jsx";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import styled from "styled-components";
 import Select from "react-select";
+import Arrow from "../../assets/arrow.svg";
 import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
 import { getCharacteristics } from "../../services/Characteristics";
@@ -26,7 +29,7 @@ export function CreacionProducto() {
         width: 100%;
 
         .css-1s2u09g-control {
-            border: none;
+            margin-top:5px;
             text-align: left;
         }
     `;
@@ -101,15 +104,26 @@ export function CreacionProducto() {
     return (
         <>
             <ReservaStyle>
+                <TituloCP>
                 <Text
                     type="h1"
                     color="secondary"
                     text="Administración de productos"
                 />
+                <ArrowHeader>
+                    <Link to={"/"}>
+                        <img className="arrow" src={Arrow} alt="arrow" />
+                    </Link>
+                </ArrowHeader>
+                </TituloCP>
+                 
+                 <ContenedorFormurarios>
+                 {/* Formurario de creacion de producto */}
 
-                <div>
                     <Text type="h2" color="secondary" text="Crear producto" />
-                    <form>
+
+                <BloqueFormurario>
+                    <FormurariosCP>
                         <div>
                             <label>
                                 <Text
@@ -154,6 +168,7 @@ export function CreacionProducto() {
                             <Formurario type={"text"} />
                         </div>
 
+                        <div>
                         <SelectStyle
                             value={categorieValue}
                             onChange={handleSelectCategorie}
@@ -161,7 +176,9 @@ export function CreacionProducto() {
                             placeholder="Seleccione una categoría"
                             isClearable={true}
                         />
+                        </div>
 
+                        <div>
                         <SelectStyle
                             defaultInputValue=""
                             value={cityValue}
@@ -170,32 +187,26 @@ export function CreacionProducto() {
                             placeholder="Seleccione una ciudad"
                             isClearable={true}
                         />
-                    </form>
-                    <Button text="Crear producto" fullwidth />
-                </div>
+                        </div>
+                    </FormurariosCP>
+                    <BotonFormurario>
+                        <Button text="Crear producto" fullwidth/>
+                        </BotonFormurario>
+                    
+                </BloqueFormurario>
 
-                <div>
+                {/* Formurario de creacion de caracteristicas */}
+
                     <Text
                         type="h2"
                         color="secondary"
                         text="Agregar características"
                     />
-                    <form>
-                        <SelectStyle
-                            value={characteristicsValue}
-                            onChange={handleSelectCharacter}
-                            options={optionsCharacteristics}
-                            placeholder="Seleccione las características"
-                            isClearable={true}
-                            isMulti={true}
-                        />
-                    </form>
-                    <form>
-                        <Text
-                            type="h3"
-                            color="secondary"
-                            text="Crear nueva característica"
-                        />
+                <BloqueFormurario>
+                    
+                    <FormurariosCP>
+                       
+                        <div>
                         <label>
                             <Text
                                 type="p1"
@@ -204,17 +215,44 @@ export function CreacionProducto() {
                             />
                         </label>
                         <Formurario type={"text"} />
-                        <label>
+                        
+                        </div>
+                    
+                    <div>
+                    <label>
                             <Text type="p1" color="secondary" text="Icono" />
                         </label>
                         <Formurario type={"text"} />
-                        <Button text="Crear característica" fullwidth />
-                    </form>
-                </div>
+                    </div>
+                    <div>
+                    <label>
+                        <Text
+                                type="p1"
+                                color="secondary"
+                                text="Crear nueva característica"
+                            />
+                            </label>
+                        <SelectStyle
+                            value={characteristicsValue}
+                            onChange={handleSelectCharacter}
+                            options={optionsCharacteristics}
+                            placeholder="Seleccione las características"
+                            isClearable={true}
+                            isMulti={true}
+                        />
+                    </div>
+                    </FormurariosCP>
+                    <BotonFormurario>
+                        <Button text="Crear característica" fullwidth/>
+                    </BotonFormurario>
+                </BloqueFormurario>
 
-                <div>
+                  {/* Formurario de creacion de imagenes */}
+
                     <Text type="h2" color="secondary" text="Agregar imágenes" />
-                    <form>
+                <BloqueFormurario>
+                    <FormurariosCP>
+                        <div>
                         <label>
                             <Text
                                 type="p1"
@@ -223,17 +261,23 @@ export function CreacionProducto() {
                             />
                         </label>
                         <Formurario type={"text"} />
-                        <Button text="Agregar imagen" fullwidth />
-                    </form>
-                </div>
+                        </div>
+                    </FormurariosCP>
+                    <BotonFormurario>
+                        <Button text="Agregar imagen" fullwidth/>
+                    </BotonFormurario>
+                </BloqueFormurario>
 
-                <div>
+               {/* Formurario de creacion de politicas */}
+
                     <Text
                         type="h2"
                         color="secondary"
                         text="Agregar políticas"
                     />
-                    <form>
+                <BloqueFormurario>
+                    <FormurariosCP>
+                        <div>
                         <label>
                             <Text
                                 type="p1"
@@ -242,8 +286,17 @@ export function CreacionProducto() {
                             />
                         </label>
                         <Formurario type={"text"} />
+                        </div>
+                        
 
-                        <form>
+                        <div>
+                        <label>
+                            <Text
+                                type="p1"
+                                color="secondary"
+                                text="Tipo de politica"
+                            />
+                        </label>
                             <SelectStyle
                                 value={politicValue}
                                 onChange={handleSelectPoliciesType}
@@ -251,11 +304,14 @@ export function CreacionProducto() {
                                 placeholder="Seleccione el tipo de política"
                                 isClearable={true}
                             />
-                        </form>
+                        </div>
 
-                        <Button text="Agregar política" fullwidth />
-                    </form>
-                </div>
+                    </FormurariosCP>
+                    <BotonFormurario>
+                    <Button text="Agregar política" fullwidth />
+                    </BotonFormurario>
+                </BloqueFormurario>
+                </ContenedorFormurarios>
             </ReservaStyle>
         </>
     );
