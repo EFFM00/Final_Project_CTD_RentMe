@@ -11,13 +11,16 @@ import Select from "react-select";
 import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
 import { getCharacteristics } from "../../services/Characteristics";
+import { getPoliciesType } from "../../services/Policies";
 export function CreacionProducto() {
     const [categorias, setCategorias] = useState([]);
     const [cities, setCities] = useState([]);
+    const [policiesTypes, setPoliciesTypes] = useState([]);
     const [categorieValue, setCategorieValue] = useState([]);
     const [cityValue, setCityValue] = useState("");
     const [characteristics, setCharacteristics] = useState([]);
     const [characteristicsValue, setCharacteristicsValue] = useState([]);
+    const [politicValue, setPoliticValue] = useState([]);
 
     const SelectStyle = styled(Select)`
         width: 100%;
@@ -27,6 +30,16 @@ export function CreacionProducto() {
             text-align: left;
         }
     `;
+
+    useEffect(() => {
+        try {
+            getPoliciesType({ setPoliciesTypes });
+        } catch (error) {
+            console.error(error);
+        }
+    }, []);
+
+    console.log("policies", policiesTypes);
 
     useEffect(() => {
         try {
@@ -61,8 +74,18 @@ export function CreacionProducto() {
         value: city.id,
     }));
 
+    const optionsPoliciesType = policiesTypes.map((politics => ({
+        label: politics.name,
+        value: politics.id
+    })))
+
+
     const handleSelectChange = (event) => {
         setCityValue(event);
+    };
+
+    const handleSelectPoliciesType = (event) => {
+        setPoliticValue(event);
     };
 
     const handleSelectCategorie = (event) => {
@@ -71,9 +94,9 @@ export function CreacionProducto() {
 
     const handleSelectCharacter = (event) => {
         setCharacteristicsValue(event);
-        console.log(characteristicsValue);
+        // console.log(characteristicsValue);
     };
-    console.log(characteristicsValue, "characteristicsValue");
+    // console.log(characteristicsValue, "characteristicsValue");
 
     return (
         <>
@@ -203,18 +226,33 @@ export function CreacionProducto() {
                         <Button text="Agregar imagen" fullwidth />
                     </form>
                 </div>
-                
+
                 <div>
-                    <Text type="h2" color="secondary" text="Agregar políticas" />
+                    <Text
+                        type="h2"
+                        color="secondary"
+                        text="Agregar políticas"
+                    />
                     <form>
                         <label>
                             <Text
                                 type="p1"
                                 color="secondary"
-                                text="Agregar "
+                                text="Política de la vivienda"
                             />
                         </label>
                         <Formurario type={"text"} />
+
+                        <form>
+                            <SelectStyle
+                                value={politicValue}
+                                onChange={handleSelectPoliciesType}
+                                options={optionsPoliciesType}
+                                placeholder="Seleccione el tipo de política"
+                                isClearable={true}
+                            />
+                        </form>
+
                         <Button text="Agregar política" fullwidth />
                     </form>
                 </div>
