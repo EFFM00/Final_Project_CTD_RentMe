@@ -15,11 +15,11 @@ function Card({ id, mainPictureUrl, category, title, address, description }) {
             </div>
             <Info>
               {/* <Score score={8}/> */}
-              <Text type="h4" color='secondary' text={category}/>
+              <Text type="h4" color='secondary' text={category} style={{opacity:"0.5"}}/>
               <Text type="h1" color='secondary' text={title}/>
               <Text type="p1" color='secondary' text={address}/>
               <Text type="p1" color='secondary' text={description}/>
-              <Button click={() => navigate(`/products/${id}`)} text="ver más"  fullwidth />
+              <Button click={() => navigate(`/products/${id}`)} text="ver más"  fullwidth style={{ cursor: "pointer", opacity:"0.7", focus:"background-color: #F5C6AA;"}} />
             </Info>
       </ContenedorCard> 
   )

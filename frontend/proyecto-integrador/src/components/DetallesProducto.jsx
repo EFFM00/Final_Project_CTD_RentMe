@@ -202,13 +202,6 @@ function DetallesProducto() {
                     </SeccionReserva>
                 </div>
 
-                {/* <Reserva
-                    mainPictureUrl={dataProduct.mainPictureUrl}
-                    category={dataProduct?.category?.title}
-                    title={dataProduct.title}
-                    address={dataProduct.address}
-                /> */}
-
             {/* Bloque de Politicas */}
 
             <div className="TituloP">

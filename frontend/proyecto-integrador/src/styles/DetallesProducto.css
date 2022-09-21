@@ -213,8 +213,8 @@
 /* Bloque de Politicas */
 
 .TituloP {
-  position: relative;
   top: 100px;
+  margin-top: 30px;
   padding-left: 43px;
   width: 100%;
   height: 50px;
@@ -223,7 +223,7 @@
 
 .BloqueDePoliticas {
   position: relative;
-  top: 120px;
+  margin-top: 30px;
   padding-left: 43px;
   padding-bottom: 100px;
   display: grid;
