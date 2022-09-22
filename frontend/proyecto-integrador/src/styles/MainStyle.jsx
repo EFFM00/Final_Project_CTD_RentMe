@@ -21,17 +21,13 @@ export const GridCategorias = styled.div`
 `
 
 export const ContenedorBooking = styled.div`
-    background-color: ${({ theme }) => theme.tertiary};
+    background-color: #f4f2f2;
     padding: 30px 15px 70px;
     text-align: center;
     //display: ${({ renderizado }) => (renderizado ? "block" : "none")};
-    background-color: rgb(245 198 170 / 32%);
-    
 
     @media screen and (min-width: 768px) {
-        padding: 30px 30px 70px;
-        /* background-color: rgba(56, 59, 88, 0.1); */
-        background-color: rgb(245 198 170 / 32%);
+        padding: 30px 30px 70px;        
     }
 
     @media screen and (min-width: 1024px) {

@@ -5,7 +5,7 @@ const Colors = {
     quaternary: "#F3F1ED",
     fondo: "#FBFBFB",
     white: "#FFFFFF",
-    black: "#000000"
+    black: "#323232"
 }
 
 export { Colors }

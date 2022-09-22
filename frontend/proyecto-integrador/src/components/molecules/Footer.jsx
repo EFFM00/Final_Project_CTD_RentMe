@@ -8,7 +8,7 @@ export default function Footer() {
     const FooterStyle = styled.div`
         width: 100%;
         height: 58px;
-        background-color: ${({ theme }) => theme.primary};
+        background-color:${({ theme }) => theme.primary};
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -30,7 +30,7 @@ export default function Footer() {
 
   return (
     <FooterStyle>
-        <Text type="h4" color='white' text="©2022 Digital Booking"/>
+        <Text type="h4" color='white' text="©2022 Rent me up"/>
         <ContenedorSM>
           <SocialMedia/>
         </ContenedorSM>

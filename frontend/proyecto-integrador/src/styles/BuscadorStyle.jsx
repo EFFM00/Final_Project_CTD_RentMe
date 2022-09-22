@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
 export const BuscadorStyle = styled.div`
-    background-color: ${({ theme }) => theme.tertiary};
+    /* background-color: ${({ theme }) => theme.tertiary}; */
+    background-image: url("https://images.unsplash.com/photo-1544413660-299165566b1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+    background-repeat: no-repeat;
     padding: 110px 10px 15px;
     text-align: center;
+    background-size: cover;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const Titulo = styled.h1`
-    color: ${({ theme }) => theme.white};
+    color:   #242424;
     margin-bottom: 20px;
 `;
 
