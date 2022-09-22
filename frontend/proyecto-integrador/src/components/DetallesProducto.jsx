@@ -75,12 +75,12 @@ function DetallesProducto() {
                 <div className="CategoriaDelProducto">
                     <Text
                         type="h4"
-                        color="white"
+                        color="black"
                         text={dataProduct?.category?.title}
                     />
                 </div>
                 <div className="TituloDelProducto">
-                    <Text type="h1" color="white" text={dataProduct.title} />
+                    <Text type="h1" color="black" text={dataProduct.title} />
                 </div>
                 <div>
                     <Link to={"/"}>

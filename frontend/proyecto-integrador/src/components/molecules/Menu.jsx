@@ -119,7 +119,7 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
                 user.userData.role.id === 2 ?
                 <Button
                 text="Administracion"
-                type="text"
+                // type="Outline"
                 width='xs'
                 click={() => {
                 navigate("/administracion")

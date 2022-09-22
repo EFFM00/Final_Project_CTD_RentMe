@@ -10,6 +10,8 @@ export const ButtonNoBackgroundStyle = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.primary};
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 `;
 
 export const ButtonStyle = styled.button`
@@ -26,6 +28,8 @@ export const ButtonStyle = styled.button`
     grid-row-start: ${({ rowStart }) => rowStart};
     grid-row-end: ${({ rowEnd }) => rowEnd};
     padding: 0 1rem 0 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 `;
 
 export const ButtonMobilStyle = styled.button`
@@ -38,4 +42,6 @@ export const ButtonMobilStyle = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.secondary};
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
 `;
