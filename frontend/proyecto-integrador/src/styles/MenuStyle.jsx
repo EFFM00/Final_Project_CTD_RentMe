@@ -26,5 +26,6 @@ export const BotonesIC = styled.div`
 
 export const AvatarUser = styled.div`
     display: flex;
+    align-items: center;
     gap: 30px;
 `
