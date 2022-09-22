@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
-  // FormularioDatos,
-  Formurario,
-  ReservaStyle,
+    // FormularioDatos,
+    // Formurario,
+    ReservaStyle,
 } from "../../styles/ReservaStyle";
+import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario } from "../../styles/CreacionProductoStyle.jsx";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
+import Arrow from "../../assets/arrow.svg";
 import { getCategories } from "../../services/Categories";
 import { getCities } from "../../services/Cities";
 import { getCharacteristics } from "../../services/Characteristics";
@@ -13,6 +16,7 @@ import { getPoliciesType } from "../../services/Policies";
 import { useFormik } from "formik";
 import { api } from "../../services/api/api";
 import CustomSelect from "../../components/molecules/CustomSelect";
+
 export function CreacionProducto() {
   const [categorias, setCategorias] = useState([]);
   const [cities, setCities] = useState([]);
