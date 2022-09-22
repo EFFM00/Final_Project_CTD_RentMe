@@ -27,7 +27,6 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
 
   return (
     <ContenedorMenu>
-        
         {
             tablet ? null
             : <Titulo>
@@ -116,6 +115,19 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
             }
             </BotonesIC> :
             <AvatarUser>
+            {
+                user.userData.role.id === 2 ?
+                <Button
+                text="Administracion"
+                type="text"
+                width='xs'
+                click={() => {
+                navigate("/administracion")
+                }}
+                /> : null
+            } 
+
+                
             {
                 tablet ? <Avatar name={`${user.userData.name} ${user.userData.lastName}`} initials={`${user.userData.name[0]}${user.userData.lastName[0]}`}/>
                 : null
