@@ -142,8 +142,9 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
                 />
                 : <Button
                 text="Cerrar sesión" 
-                type="text"
-                fullwidth
+                type="Outline"
+                width="xs"
+                // fullwidth
                 click={handleClickLogout}
                 /> 
             }            

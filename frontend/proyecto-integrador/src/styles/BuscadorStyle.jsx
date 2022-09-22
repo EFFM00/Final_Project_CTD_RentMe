@@ -7,11 +7,14 @@ export const BuscadorStyle = styled.div`
     padding: 110px 10px 15px;
     text-align: center;
     background-size: cover;
-    height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media screen and (min-width: 768px) {
+        height: 45vh;
+    }
 `;
 
 export const Titulo = styled.h1`
@@ -20,10 +23,15 @@ export const Titulo = styled.h1`
 `;
 
 export const Formulario = styled.form`
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
     width: 400px;
     //align-items: center;
     grid-gap: 10px;
     justify-content: center;
+    background-color: rgba(245, 242, 240, 0.9);
+    border-radius: 5px;
 
     //grid-template-columns: 1fr 1fr 1fr;
     //grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -33,6 +41,7 @@ export const Formulario = styled.form`
     @media screen and (min-width: 768px) {
         display: grid;
         justify-content: center;
+        background: none;
     }
 
     @media screen and (min-width: 1024px) {
