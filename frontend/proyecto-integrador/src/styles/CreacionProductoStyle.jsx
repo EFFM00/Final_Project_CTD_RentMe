@@ -10,14 +10,23 @@ export const TituloCP = styled.div`
     @media screen and (max-width: 768px) {
         padding-left: 17px;
     }
-`;
-export const ArrowHeader = styled.div`
-    position: absolute;
-    top: 87px;
-    right: 20px;
-    cursor: pointer;
-    width: 30px;
-`;
+
+    @media screen and (max-width: 414px) {
+    height: 80px;
+  }
+`
+export const ArrowHeader = styled.div `
+position: absolute;
+  top: 87px;
+  right: 20px;
+  cursor: pointer;
+  width: 30px;
+
+  @media screen and (max-width: 414px) {
+    top: 95px;
+    width: 40px;
+  }
+`
 
 export const ContenedorFormurarios = styled.div`
     width: 90%;

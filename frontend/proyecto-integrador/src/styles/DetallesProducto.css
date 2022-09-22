@@ -1,4 +1,3 @@
-
 /* Bloque Header */
 
 .BloqueHeader {
@@ -20,6 +19,12 @@
   left: 15px;
   top: 45px;
   position: absolute;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 45px;
 }
 
 .arrow {
@@ -60,7 +65,7 @@
 
 .Ubi {
   position: absolute;
-  color: #F5C6AA;
+  color: #f5c6aa;
   left: 15px;
   top: 17px;
 }
@@ -71,7 +76,7 @@
   top: 110px;
   position: relative;
   left: 43px;
-  color: #F5C6AA;
+  color: #f5c6aa;
   width: 30px;
 }
 
@@ -79,7 +84,7 @@
   top: 83px;
   position: relative;
   left: 80px;
-  color: #F5C6AA;
+  color: #f5c6aa;
   width: 30px;
 }
 
@@ -118,13 +123,13 @@
   content: attr(data-see-more) " ";
   color: white;
   background: rgba(0, 0, 0, 0.65);
-  position:absolute;
+  position: absolute;
   inset: 0;
   /* z-index: 2; */
   display: flex;
   align-items: center;
   justify-content: center;
-  width:341px;
+  width: 341px;
   cursor: pointer;
 }
 
@@ -161,7 +166,7 @@
   padding-left: 43px;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid #FD866E;
+  border-bottom: 1px solid #fd866e;
 }
 
 .BloqueDeCaracteristicas {
@@ -218,7 +223,7 @@
   padding-left: 43px;
   width: 100%;
   height: 50px;
-  border-bottom: 1px solid #FD866E;
+  border-bottom: 1px solid #fd866e;
 }
 
 .BloqueDePoliticas {

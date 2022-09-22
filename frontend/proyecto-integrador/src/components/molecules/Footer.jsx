@@ -30,7 +30,7 @@ export default function Footer() {
 
   return (
     <FooterStyle>
-        <Text type="h4" color='white' text="©2022 Rent me up"/>
+        <Text type="h4" color='white' text="©2022 Rent Me Up"/>
         <ContenedorSM>
           <SocialMedia/>
         </ContenedorSM>
