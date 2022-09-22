@@ -290,6 +290,81 @@
 [2022-09-19 21:36:03] [ INFO ] [BookingService:35] Booking successfully saved.
 =======
 >>>>>>> development
+<<<<<<< HEAD
+[2022-09-21 12:32:04] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-21 12:33:29] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-21 14:35:10] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product
+[2022-09-21 14:37:26] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product
+[2022-09-21 14:37:50] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product
+[2022-09-21 14:38:46] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product
+[2022-09-21 14:53:59] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.CharacteristicXProduct.product -> com.booking.dh.model.Product
+[2022-09-21 15:28:42] [ ERROR] [JwtEntryPoint:21] Fail method commence
+[2022-09-21 15:48:14] [ ERROR] [GlobalExceptionHandler:28] org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.PolicyXProduct.policy -> com.booking.dh.model.Policy; nested exception is java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException: Not-null property references a transient value - transient instance must be saved before current operation : com.booking.dh.model.PolicyXProduct.policy -> com.booking.dh.model.Policy
+[2022-09-21 16:21:46] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-09-21 17:04:18] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-21 17:04:35] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-21 17:05:23] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+[2022-09-21 17:06:01] [ ERROR] [GlobalExceptionHandler:28] Unable to serialize claims object to json.
+=======
 >>>>>>> 67fa2d9367aea122352c4bac689751e436eaff85
 [2022-09-19 23:07:34] [ ERROR] [GlobalExceptionHandler:22] This product is not available between selected dates.
 [2022-09-19 23:07:49] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:14:00] [ INFO ] [CountryService:48] The country with id 1 has been successfully deleted.
+[2022-09-20 22:14:01] [ INFO ] [CityService:48] The city with id 2 has been successfully deleted.
+[2022-09-20 22:14:02] [ INFO ] [CategoryService:48] The category with id 4 has been successfully deleted.
+[2022-09-20 22:14:04] [ INFO ] [ProductService:88] The product with id 2 has been successfully deleted.
+[2022-09-20 22:14:05] [ INFO ] [CharacteristicService:48] The characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:14:05] [ INFO ] [CharacteristicXProductService:48] The product characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:14:06] [ INFO ] [ImageService:48] The image with id 1 has been successfully deleted.
+[2022-09-20 22:14:07] [ INFO ] [PolicyTypeService:48] The policy type with id 2 has been successfully deleted.
+[2022-09-20 22:14:08] [ INFO ] [PolicyService:48] The policy with id 1 has been successfully deleted.
+[2022-09-20 22:14:09] [ INFO ] [PolicyXProductService:48] The product policy with id 1 has been successfully deleted.
+[2022-09-20 22:14:09] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:14:09] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:14:10] [ ERROR] [GlobalExceptionHandler:16] Product id 2 does not correspond to any current booking.
+[2022-09-20 22:14:10] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:14:10] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:14:10] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
+[2022-09-20 22:14:10] [ INFO ] [BookingService:95] The booking with id 2 has been successfully deleted.
+[2022-09-20 22:20:14] [ ERROR] [GlobalExceptionHandler:16] User id 2 does not correspond to any current booking.
+[2022-09-20 22:20:46] [ ERROR] [GlobalExceptionHandler:16] User id 1 does not correspond to any current booking.
+[2022-09-20 22:21:12] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:21:35] [ ERROR] [GlobalExceptionHandler:16] User id 2 does not correspond to any current booking.
+[2022-09-20 22:21:52] [ ERROR] [GlobalExceptionHandler:16] User id 2 does not correspond to any current booking.
+[2022-09-20 22:22:23] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:23:11] [ ERROR] [GlobalExceptionHandler:16] User id 4 does not correspond to any current booking.
+[2022-09-20 22:25:20] [ INFO ] [CountryService:48] The country with id 1 has been successfully deleted.
+[2022-09-20 22:25:21] [ INFO ] [CityService:48] The city with id 2 has been successfully deleted.
+[2022-09-20 22:25:22] [ INFO ] [CategoryService:48] The category with id 4 has been successfully deleted.
+[2022-09-20 22:25:23] [ INFO ] [ProductService:88] The product with id 2 has been successfully deleted.
+[2022-09-20 22:25:24] [ INFO ] [CharacteristicService:48] The characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:25:25] [ INFO ] [CharacteristicXProductService:48] The product characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:25:26] [ INFO ] [ImageService:48] The image with id 1 has been successfully deleted.
+[2022-09-20 22:25:27] [ INFO ] [PolicyTypeService:48] The policy type with id 2 has been successfully deleted.
+[2022-09-20 22:25:28] [ INFO ] [PolicyService:48] The policy with id 1 has been successfully deleted.
+[2022-09-20 22:25:28] [ INFO ] [PolicyXProductService:48] The product policy with id 1 has been successfully deleted.
+[2022-09-20 22:25:28] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:25:29] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:25:29] [ ERROR] [GlobalExceptionHandler:16] Product id 2 does not correspond to any current booking.
+[2022-09-20 22:25:29] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:25:29] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:25:29] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
+[2022-09-20 22:25:29] [ INFO ] [BookingService:95] The booking with id 2 has been successfully deleted.
+[2022-09-20 22:28:02] [ INFO ] [CountryService:48] The country with id 1 has been successfully deleted.
+[2022-09-20 22:28:03] [ INFO ] [CityService:48] The city with id 2 has been successfully deleted.
+[2022-09-20 22:28:04] [ INFO ] [CategoryService:48] The category with id 4 has been successfully deleted.
+[2022-09-20 22:28:06] [ INFO ] [ProductService:88] The product with id 2 has been successfully deleted.
+[2022-09-20 22:28:07] [ INFO ] [CharacteristicService:48] The characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:28:08] [ INFO ] [CharacteristicXProductService:48] The product characteristic with id 1 has been successfully deleted.
+[2022-09-20 22:28:09] [ INFO ] [ImageService:48] The image with id 1 has been successfully deleted.
+[2022-09-20 22:28:10] [ INFO ] [PolicyTypeService:48] The policy type with id 2 has been successfully deleted.
+[2022-09-20 22:28:11] [ INFO ] [PolicyService:48] The policy with id 1 has been successfully deleted.
+[2022-09-20 22:28:12] [ INFO ] [PolicyXProductService:48] The product policy with id 1 has been successfully deleted.
+[2022-09-20 22:28:13] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:28:13] [ INFO ] [BookingService:35] Booking successfully saved.
+[2022-09-20 22:28:13] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:28:13] [ INFO ] [BookingService:86] Booking successfully updated.
+[2022-09-20 22:28:14] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
+[2022-09-20 22:28:14] [ INFO ] [BookingService:95] The booking with id 2 has been successfully deleted.
+>>>>>>> development
+[2022-09-21 22:13:53] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement

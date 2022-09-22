@@ -43,7 +43,7 @@ function App() {
           <Route path="/products/:id" element={<DetallesProducto/>} />
           <Route path="/products/:id/reservation" element={<Reserva/>} />
           <Route path="/reserva-exitosa" element={<ReservaExitosa/>} />
-          <Route path="/crear-producto" element={<CreacionProducto/>} />
+          <Route path="/administracion" element={<CreacionProducto/>} />
         </Routes>
         <Footer />
       </ThemeProvider>
