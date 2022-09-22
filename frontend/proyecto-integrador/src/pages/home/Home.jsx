@@ -86,9 +86,10 @@ function Home() {
           <ListaBooking tipoProd="productsRandom" recommendationPage={recommendationPage} />
         </GridBooking>
         <Button
+            style={{marginTop: "20px"}}
             type="Outline"
-            text="Ver mas recomendaciones"
-            fullwidth
+            text="Ver más recomendaciones"
+            
             click={() => setRecommendationPage(recommendationPage + 1)}
           />
       </ContenedorBooking>
