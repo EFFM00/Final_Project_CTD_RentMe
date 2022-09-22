@@ -5,7 +5,7 @@ import Card from "./Card";
 function ListaBooking({ idCat, tipoProd, dataFilterProd, recommendationPage }) {
   const [products, setProducts] = useState([]);
   const [recommendedProducts, setRecommendedProducts] = useState([]);
-  const numberOfRecommendations = 4;
+  const numberOfRecommendations = 10;
   let productosFiltrados = products.filter(
     (prod) => prod.category.id === idCat
   );
