@@ -1,21 +1,37 @@
 import styled from "styled-components";
 
 export const BuscadorStyle = styled.div`
-    background-color: ${({ theme }) => theme.tertiary};
+    /* background-color: ${({ theme }) => theme.tertiary}; */
+    background-image: url("https://group12-rent-me-up-images.s3.us-east-2.amazonaws.com/images/imagen1.avif");
+    background-repeat: no-repeat;
     padding: 110px 10px 15px;
     text-align: center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: 768px) {
+        height: 45vh;
+    }
 `;
 
 export const Titulo = styled.h1`
-    color: ${({ theme }) => theme.white};
+    color:   #242424;
     margin-bottom: 20px;
 `;
 
 export const Formulario = styled.form`
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
     width: 400px;
     //align-items: center;
     grid-gap: 10px;
     justify-content: center;
+    background-color: rgba(245, 242, 240, 0.9);
+    border-radius: 5px;
 
     //grid-template-columns: 1fr 1fr 1fr;
     //grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -25,6 +41,7 @@ export const Formulario = styled.form`
     @media screen and (min-width: 768px) {
         display: grid;
         justify-content: center;
+        background: none;
     }
 
     @media screen and (min-width: 1024px) {

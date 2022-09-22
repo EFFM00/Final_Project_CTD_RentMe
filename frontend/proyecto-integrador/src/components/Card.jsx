@@ -23,7 +23,7 @@ function Card({ id, mainPictureUrl, category, title, address, description }) {
               <Descripcion>
               <Text type="p1" color='secondary' text={description}/>
               </Descripcion>
-              <Button click={() => navigate(`/products/${id}`)} text="ver más"  fullwidth style={{ cursor: "pointer", opacity:"0.7", focus:"background-color: #F5C6AA;"}} />
+              <Button click={() => navigate(`/products/${id}`)} text="Ver más"  fullwidth/>
             </Info>
       </ContenedorCard> 
   )

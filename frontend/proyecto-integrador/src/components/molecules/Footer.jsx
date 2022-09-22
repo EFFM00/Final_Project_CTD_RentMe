@@ -8,7 +8,7 @@ export default function Footer() {
     const FooterStyle = styled.div`
         width: 100%;
         height: 58px;
-        background-color: ${({ theme }) => theme.primary};
+        background-color:${({ theme }) => theme.primary};
         display: flex;
         justify-content: space-between;
         align-items: center;

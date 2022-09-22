@@ -254,8 +254,8 @@ export function CreacionProducto() {
 
         <ContenedorFormurarios>
           {/* Formulario de creacion de producto */}
-          <Text type="h2" color="secondary" text="Crear producto" />
-
+          <Text type="h2" color="secondary" text="Crear producto" style={{textAlign: "center"}}/>
+          <Text type="h4" color="secondary" text="1.- Ingresar los datos necesarios para generar un nuevo producto." style={{textAlign:"center", marginTop:"20px", color:"#FD866E"}}/>
           <BloqueFormurario onSubmit={formik.handleSubmit}>
           <FormurariosCP>
             <div>
@@ -323,14 +323,14 @@ export function CreacionProducto() {
             </FormurariosCP>
             <p className={errMsgProd ? "errMesg" : "offscreen"}>{errMsgProd}</p>
             <BotonFormurario>
-              <Button text="Crear producto" fullwidth type="submit" />
+              <Button text="Enviar producto" fullwidth type="submit" />
             </BotonFormurario>
           </BloqueFormurario>
         
         {/* Formurario de creacion de caracteristicas */}
 
           <Text style={{textAlign: "center"}} type="h2" color="secondary" text="Agregar características" />
-
+          <Text type="h4" color="secondary" text="2.- Luego de enviar los datos del nuevo producto se pueden agregar sus características, imágenes y políticas." style={{textAlign:"center", marginTop:"20px", color:"#FD866E"}}/>
           <BloqueFormurario onSubmit={formik2.handleSubmit}>
           <FormularioAgregar>
           <CustomSelect

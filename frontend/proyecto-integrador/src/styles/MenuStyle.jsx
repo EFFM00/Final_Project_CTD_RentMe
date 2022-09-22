@@ -25,7 +25,15 @@ export const BotonesIC = styled.div`
 `
 
 export const AvatarUser = styled.div`
+    padding: 15px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
     gap: 30px;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+    }
 `

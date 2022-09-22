@@ -13,7 +13,7 @@ function Avatar({name, initials}) {
           <Text type="h2" color="white" text={initials.toUpperCase()} />
         </UserInitials>
         <div>
-            <Text type="h3" color="tertiary" text="Hola," />
+            <Text type="h3" color="secondary" text="Hola," />
             <Text type="h3" color="secondary" text={name} />
         </div>
       </Contenedor>

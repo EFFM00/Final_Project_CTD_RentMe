@@ -18,7 +18,7 @@ export default function ImageGallery(props) {
         {props?.images?.map((img, index) => (
           <div
             className="gallery-item"
-            data-see-more="Ver mas +"
+            data-see-more="Ver más +"
             onClick={() => setIndex(index)}
           >
             <img src={img.src} alt={img.title} className="gallery-item-image" />

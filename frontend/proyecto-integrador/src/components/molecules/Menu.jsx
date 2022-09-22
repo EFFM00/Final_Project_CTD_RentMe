@@ -118,8 +118,8 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
             {
                 user.userData.role.id === 2 ?
                 <Button
-                text="Administracion"
-                type="text"
+                text="Administración"
+                // type="Outline"
                 width='xs'
                 click={() => {
                 navigate("/administracion")
@@ -142,8 +142,9 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
                 />
                 : <Button
                 text="Cerrar sesión" 
-                type="text"
-                fullwidth
+                type="Outline"
+                width="xs"
+                // fullwidth
                 click={handleClickLogout}
                 /> 
             }            

@@ -75,12 +75,12 @@ function DetallesProducto() {
                 <div className="CategoriaDelProducto">
                     <Text
                         type="h4"
-                        color="white"
+                        color="black"
                         text={dataProduct?.category?.title}
                     />
                 </div>
                 <div className="TituloDelProducto">
-                    <Text type="h1" color="white" text={dataProduct.title} />
+                    <Text type="h1" color="black" text={dataProduct.title} />
                 </div>
                 <div>
                     <Link to={"/"}>
@@ -190,8 +190,8 @@ function DetallesProducto() {
                         <ContenedorBoton>
                             <Text
                                 type="h3"
-                                color="tertiary"
-                                text="Agregá tus fechas de viaje para obtener precios exactos"
+                                color="black"
+                                text="Agrega tus fechas de viaje para obtener precios exactos"
                             />
                             <Button
                                 text="Iniciar reserva"
@@ -205,7 +205,7 @@ function DetallesProducto() {
             {/* Bloque de Politicas */}
 
             <div className="TituloP">
-                <Text type="h1" color="secondary" text="Qué tenés que saber" />
+                <Text type="h1" color="secondary" text="Qué tienes que saber" />
             </div>
 
             <div className="BloqueDePoliticas">
