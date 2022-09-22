@@ -5,10 +5,15 @@ background-color:#F5C6AA;
 height:60px;
 padding-top:15px;
 padding-left:43px;
+padding-right:85px;
 
 @media screen and (max-width: 768px) {
       padding-left:17px;
     }
+
+    @media screen and (max-width: 414px) {
+    height: 80px;
+  }
 `
 export const ArrowHeader = styled.div `
 position: absolute;
@@ -16,6 +21,11 @@ position: absolute;
   right: 20px;
   cursor: pointer;
   width: 30px;
+
+  @media screen and (max-width: 414px) {
+    top: 95px;
+    width: 40px;
+  }
 `
 
 export const ContenedorFormurarios = styled.div`
