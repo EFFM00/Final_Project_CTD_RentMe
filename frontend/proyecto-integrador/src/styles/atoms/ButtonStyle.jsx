@@ -12,6 +12,14 @@ export const ButtonNoBackgroundStyle = styled.button`
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
+    &:hover {
+        border-color: #AEC0C1;
+        transform: scale(0.96);
+        transition: all 100ms;
+    }
+    &:focus {
+        transform: scale(0.96);
+    }
 `;
 
 export const ButtonStyle = styled.button`
@@ -30,6 +38,12 @@ export const ButtonStyle = styled.button`
     padding: 0 1rem 0 1rem;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
+    &:hover {
+        background-color: #AEC0C1;
+    }
+    &:focus {
+        background-color:#fc5736;
+    }
 `;
 
 export const ButtonMobilStyle = styled.button`

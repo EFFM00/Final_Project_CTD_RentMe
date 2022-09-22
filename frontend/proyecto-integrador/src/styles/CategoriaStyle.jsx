@@ -9,6 +9,11 @@ export const ContenedorCtg = styled.article`
     border-radius: 10px;
     max-width: 500px;
     cursor: pointer;
+    &:hover {
+        transform: scale(1.04);
+        transition: all 300ms;
+    }
+
 `
 
 export const Imagen = styled.img`
