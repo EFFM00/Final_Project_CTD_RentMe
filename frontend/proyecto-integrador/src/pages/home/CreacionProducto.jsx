@@ -323,7 +323,7 @@ export function CreacionProducto() {
             </FormurariosCP>
             <p className={errMsgProd ? "errMesg" : "offscreen"}>{errMsgProd}</p>
             <BotonFormurario>
-              <Button text="Crear producto" fullwidth type="submit" />
+              <Button text="Enviar producto" fullwidth type="submit" />
             </BotonFormurario>
           </BloqueFormurario>
         

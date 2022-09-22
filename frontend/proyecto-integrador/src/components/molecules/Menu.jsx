@@ -118,7 +118,7 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
             {
                 user.userData.role.id === 2 ?
                 <Button
-                text="Administracion"
+                text="Administración"
                 // type="Outline"
                 width='xs'
                 click={() => {
