@@ -19,7 +19,7 @@ export const Imagen = styled.img`
     height: 100%;
     border-radius: 8px 8px 0px 0px;
     object-fit:cover;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 640px) {
         border-radius: 8px 0px 0px 8px;
     }
 `
@@ -30,4 +30,19 @@ export const Info = styled.div`
     justify-content: space-around;
     padding: 10px;
     text-align:start;
+`
+export const TituloCard = styled.div `
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`
+
+export const Descripcion = styled.div `
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `

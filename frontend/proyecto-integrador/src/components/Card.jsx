@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContenedorCard, Imagen, Info } from '../styles/CardStyle'
+import { ContenedorCard, Imagen, Info,TituloCard, Descripcion } from '../styles/CardStyle'
 import Text from './atoms/Text'
 import Button from './atoms/Button'
 import { useNavigate } from 'react-router-dom'
@@ -16,9 +16,13 @@ function Card({ id, mainPictureUrl, category, title, address, description }) {
             <Info>
               {/* <Score score={8}/> */}
               <Text type="h4" color='secondary' text={category} style={{opacity:"0.5"}}/>
+              <TituloCard>
               <Text type="h1" color='secondary' text={title}/>
+              </TituloCard>
               <Text type="p1" color='secondary' text={address}/>
+              <Descripcion>
               <Text type="p1" color='secondary' text={description}/>
+              </Descripcion>
               <Button click={() => navigate(`/products/${id}`)} text="ver más"  fullwidth style={{ cursor: "pointer", opacity:"0.7", focus:"background-color: #F5C6AA;"}} />
             </Info>
       </ContenedorCard> 
