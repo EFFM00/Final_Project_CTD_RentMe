@@ -4,6 +4,7 @@ import Select from "react-select";
 
 const SelectStyle = styled(Select)`
   width: 100%;
+  margin-bottom: 20px;
 
   .css-1s2u09g-control {
     // border: none;

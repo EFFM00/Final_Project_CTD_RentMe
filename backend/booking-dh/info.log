@@ -367,3 +367,4 @@
 [2022-09-20 22:28:14] [ INFO ] [BookingService:95] The booking with id 1 has been successfully deleted.
 [2022-09-20 22:28:14] [ INFO ] [BookingService:95] The booking with id 2 has been successfully deleted.
 >>>>>>> development
+[2022-09-21 22:13:53] [ ERROR] [GlobalExceptionHandler:28] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
