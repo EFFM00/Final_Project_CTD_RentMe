@@ -22,6 +22,10 @@ export function CreacionProducto() {
   const [cities, setCities] = useState([]);
   const [policiesTypes, setPoliciesTypes] = useState([]);
   const [characteristics, setCharacteristics] = useState([]);
+  const [errMsgProd, setErrMsgProd] = useState("");
+  const [errMsgCaract, setErrMsgCaract] = useState("");
+  const [errMsgImg, setErrMsgImg] = useState("");
+  const [errMsgPolitica, setErrMsgPolitica] = useState("");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -113,12 +117,18 @@ export function CreacionProducto() {
 
       const idProducto = resp?.data?.id
 
-      console.log(resp, "producto creado");
-      console.log(idProducto)
+      // console.log(resp, "producto creado");
+      // console.log(idProducto)
       formik2.setFieldValue("product", idProducto)
       formik3.setFieldValue("product", idProducto)
       formik4.setFieldValue("product", idProducto)
-    } catch (error) {}
+
+      if(resp.status === 200) {
+        setErrMsgProd("Producto creado exitosamente")
+      }
+    } catch (error) {
+      setErrMsgProd("Producto no creado, vuelva a intentarlo")
+    }
   };
 
   const formik2 = useFormik({
@@ -146,9 +156,13 @@ export function CreacionProducto() {
               },
         })
 
-        console.log(resp, "caract agregada");
-    } catch (error) {
+        if(resp.status === 200) {
+          setErrMsgCaract("Característica agregada exitosamente")
+        }
 
+        // console.log(resp, "caract agregada");
+    } catch (error) {
+      setErrMsgCaract("Característica no agregada, vuelva a intentarlo")
     }
   }
 
@@ -159,7 +173,7 @@ export function CreacionProducto() {
         product: -1
     },
     onSubmit(values) {
-      console.log(values, "value");
+      // console.log(values, "value");
       handleAgregarImagenes(values)
     },
   });
@@ -180,9 +194,13 @@ export function CreacionProducto() {
               },
         })
 
-        console.log(resp, "imagen agregada");
-    } catch (error) {
+        if(resp.status === 200) {
+          setErrMsgImg("Imagen agregada exitosamente")
+        }
 
+        // console.log(resp, "imagen agregada");
+    } catch (error) {
+      setErrMsgImg("Imagen no agregada, vuelva a intentarlo")
     }
   }
 
@@ -192,7 +210,7 @@ export function CreacionProducto() {
         product: -1
     },
     onSubmit(values) {
-      console.log(values, "value");
+      // console.log(values, "value");
       handleAgregarPolitica(values)
     },
   });
@@ -212,9 +230,13 @@ export function CreacionProducto() {
               },
         })
 
-        console.log(resp, "politica agregada");
-    } catch (error) {
+        if(resp.status === 200) {
+          setErrMsgPolitica("Política agregada exitosamente")
+        }
 
+        // console.log(resp, "politica agregada");
+    } catch (error) {
+      setErrMsgPolitica("Política no agregada, vuelva a intentarlo")
     }
   }
 
@@ -299,6 +321,7 @@ export function CreacionProducto() {
             />
             {/* <label>{formik.values.city}</label> */}
             </FormurariosCP>
+            <p className={errMsgProd ? "errMesg" : "offscreen"}>{errMsgProd}</p>
             <BotonFormurario>
               <Button text="Crear producto" fullwidth type="submit" />
             </BotonFormurario>
@@ -317,6 +340,7 @@ export function CreacionProducto() {
               onChange={(value) => formik2.setFieldValue("characteristic", value.value)}
             />
           </FormularioAgregar>
+          <p className={errMsgCaract ? "errMesg" : "offscreen"}>{errMsgCaract}</p>
           <BotonFormurario>
             <Button text="Agregar características" fullwidth type="submit"/>
           </BotonFormurario>
@@ -346,6 +370,7 @@ export function CreacionProducto() {
                 value={formik3.values.url}
                 />
           </FormularioAgregar>
+          <p className={errMsgImg ? "errMesg" : "offscreen"}>{errMsgImg}</p>
           <BotonFormurario>
             <Button text="Agregar imagen" fullwidth type="submit"/>
           </BotonFormurario>
@@ -364,6 +389,7 @@ export function CreacionProducto() {
               onChange={(value) => formik4.setFieldValue("policy", value.value)}
             />
           </FormularioAgregar>
+          <p className={errMsgPolitica ? "errMesg" : "offscreen"}>{errMsgPolitica}</p>
           <BotonFormurario>
             <Button text="Agregar política" fullwidth type="submit" />
           </BotonFormurario>

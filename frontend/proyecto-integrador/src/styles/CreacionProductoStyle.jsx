@@ -50,6 +50,7 @@ border-radius: 8px; */
 export const FormurariosCP = styled.div`
 display: grid;
 gap: 20px;
+margin-bottom: 20px;
 
 @media screen and (min-width: 768px) {
   grid-template-columns: 1fr 1fr;
@@ -58,6 +59,8 @@ gap: 20px;
 `
 
 export const FormularioAgregar = styled.div`
+  margin-bottom: 20px;
+  
   @media screen and (min-width: 768px) {
     width: 500px;
     margin: auto;
