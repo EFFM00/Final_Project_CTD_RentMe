@@ -30,7 +30,7 @@ const ProductsByCategory = ({idCat}) => {
                             <Text type="h1" color='secondary' text={item.title}/>
                             <Text type="p1" color='secondary' text={item.address}/>
                             <Text type="p1" color='secondary' text={item.description}/>
-                            <Button text="ver más"  fullwidth />
+                            <Button text="Ver más"  fullwidth />
                         </Info>
                     </ContenedorCard> 
                     // <p key={item.id} >{item.title}. {item.category.title}</p>

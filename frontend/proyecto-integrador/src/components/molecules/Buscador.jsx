@@ -260,7 +260,7 @@ function Buscador({ setDataFilterProd, setClickProd }) {
                         )}
                     </ContainerCalendar>
                     <Button
-                        text="Cerrar calendario"
+                        text="Seleccionar fecha"
                         click={() => setShowCalendar(!showCalendar)}
                         fullwidth
                     />
