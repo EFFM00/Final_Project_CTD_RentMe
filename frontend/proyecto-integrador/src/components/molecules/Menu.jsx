@@ -120,8 +120,9 @@ function Menu({showBtnRegister = true , setShowBtnRegister, showBtnSignIn, setSh
                 <Button
                 text="Administracion"
                 type="text"
+                width='xs'
                 click={() => {
-                navigate("/crear-producto")
+                navigate("/administracion")
                 }}
                 /> : null
             } 

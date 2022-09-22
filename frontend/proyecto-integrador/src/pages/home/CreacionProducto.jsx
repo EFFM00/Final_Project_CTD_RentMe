@@ -5,7 +5,7 @@ import {
     // Formurario,
     ReservaStyle,
 } from "../../styles/ReservaStyle";
-import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario } from "../../styles/CreacionProductoStyle.jsx";
+import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario, FormularioAC, FormularioAI, FormularioAgregar } from "../../styles/CreacionProductoStyle.jsx";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import Arrow from "../../assets/arrow.svg";
@@ -221,11 +221,21 @@ export function CreacionProducto() {
   return (
     <>
       <ReservaStyle>
+        <TituloCP>
         <Text type="h1" color="secondary" text="Administración de productos" />
+        <ArrowHeader>
+          <Link to={"/"}>
+            <img className="arrow" src={Arrow} alt="arrow" />
+          </Link>
+        </ArrowHeader>
+        </TituloCP>
 
-        <div>
+        <ContenedorFormurarios>
+          {/* Formulario de creacion de producto */}
           <Text type="h2" color="secondary" text="Crear producto" />
-          <form onSubmit={formik.handleSubmit}>
+
+          <BloqueFormurario onSubmit={formik.handleSubmit}>
+          <FormurariosCP>
             <div>
               <label>
                 <Text type="p1" color="secondary" text="Nombre del producto" />
@@ -280,34 +290,44 @@ export function CreacionProducto() {
               value={formik.values.category}
               onChange={(value) => formik.setFieldValue("category", value.value)}
             />
-            <label>{formik.values.category}</label>
+            {/* <label>{formik.values.category}</label> */}
             <CustomSelect
               options={optionsCity}
               placeholder="Seleccione una ciudad"
               value={formik.values.city}
               onChange={(value) => formik.setFieldValue("city", value.value)}
             />
-            <label>{formik.values.city}</label>
-            <Button text="Crear producto" fullwidth type="submit" />
-          </form>
-        </div>
+            {/* <label>{formik.values.city}</label> */}
+            </FormurariosCP>
+            <BotonFormurario>
+              <Button text="Crear producto" fullwidth type="submit" />
+            </BotonFormurario>
+          </BloqueFormurario>
+        
+        {/* Formurario de creacion de caracteristicas */}
 
-        <div>
-          <Text type="h2" color="secondary" text="Agregar características" />
-          <form onSubmit={formik2.handleSubmit}>
+          <Text style={{textAlign: "center"}} type="h2" color="secondary" text="Agregar características" />
+
+          <BloqueFormurario onSubmit={formik2.handleSubmit}>
+          <FormularioAgregar>
           <CustomSelect
               options={optionsCharacteristics}
               placeholder="Seleccione las características"
               value={formik2.values.characteristic}
               onChange={(value) => formik2.setFieldValue("characteristic", value.value)}
             />
+          </FormularioAgregar>
+          <BotonFormurario>
             <Button text="Agregar características" fullwidth type="submit"/>
-          </form>
-        </div>
+          </BotonFormurario>
+          </BloqueFormurario>
 
-        <div>
-          <Text type="h2" color="secondary" text="Agregar imágenes" />
-          <form onSubmit={formik3.handleSubmit}>
+      {/* Formurario de creacion de imagenes */}
+    
+          <Text style={{textAlign: "center"}} type="h2" color="secondary" text="Agregar imágenes" />
+
+          <BloqueFormurario onSubmit={formik3.handleSubmit}>
+          <FormularioAgregar>
             <label>
               <Text type="p1" color="secondary" text="Titulo imagen" />
             </label>
@@ -325,22 +345,31 @@ export function CreacionProducto() {
                 onChange={formik3.handleChange}
                 value={formik3.values.url}
                 />
+          </FormularioAgregar>
+          <BotonFormurario>
             <Button text="Agregar imagen" fullwidth type="submit"/>
-          </form>
-        </div>
+          </BotonFormurario>
+          </BloqueFormurario>
+      
+        {/* Formurario de creacion de politicas */}
+        
+          <Text style={{textAlign: "center"}} type="h2" color="secondary" text="Agregar políticas" />
 
-        <div>
-          <Text type="h2" color="secondary" text="Agregar políticas" />
-          <form onSubmit={formik4.handleSubmit}>
+          <BloqueFormurario onSubmit={formik4.handleSubmit}>
+          <FormularioAgregar>
             <CustomSelect
               options={optionsPoliciesType}
               placeholder="Seleccione el tipo de política"
               value={formik4.values.policy}
               onChange={(value) => formik4.setFieldValue("policy", value.value)}
             />
+          </FormularioAgregar>
+          <BotonFormurario>
             <Button text="Agregar política" fullwidth type="submit" />
-          </form>
-        </div>
+          </BotonFormurario>
+          </BloqueFormurario>
+        
+        </ContenedorFormurarios>
       </ReservaStyle>
     </>
   );

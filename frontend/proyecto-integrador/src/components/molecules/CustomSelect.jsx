@@ -6,7 +6,7 @@ const SelectStyle = styled(Select)`
   width: 100%;
 
   .css-1s2u09g-control {
-    border: none;
+    // border: none;
     text-align: left;
   }
 `;

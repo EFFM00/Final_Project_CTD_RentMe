@@ -20,9 +20,10 @@ position: absolute;
 
 export const ContenedorFormurarios = styled.div`
 width: 90%;
-margin-top: 30px;
-margin-left: 43px;
-margin-bottom: 30px;
+margin: 30px auto;
+// margin-top: 30px;
+// margin-left: 43px;
+// margin-bottom: 30px;
 background-color:#FFFFFF;
 padding:20px;
 border: 1px solid #DFE4EA;
@@ -36,23 +37,36 @@ border-radius: 8px;
 
 export const BloqueFormurario = styled.form`
 width: 90%;
-margin-top: 20px;
-margin-left: 10px;
+margin: auto;
+// margin-top: 20px;
+// margin-left: 10px;
 margin-bottom: 30px;
 /* background-color:#FFFFFF; */
-padding:20px;
+padding: 20px 0;
 /* border: 1px solid #DFE4EA;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 8px; */
 `
-export const FormurariosCP = styled.form`
+export const FormurariosCP = styled.div`
 display: grid;
-grid-template-columns: 1fr 1fr;
 gap: 20px;
 
-@media screen and (max-width: 425px) {
-      grid-template-columns: 1fr;
+@media screen and (min-width: 768px) {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
     }
+`
+
+export const FormularioAgregar = styled.div`
+  @media screen and (min-width: 768px) {
+    width: 500px;
+    margin: auto;
+  }
+`
+
+export const FormularioAI = styled.div`
+    width: 500px;
+    margin: auto;
 `
 
 export const Formurario = styled.input`
@@ -65,10 +79,14 @@ width:100%;
 height:40px;
 margin-top:5px;
 padding-left:15px;
+margin-bottom: 20px;
 `
 export const BotonFormurario = styled.div`
 margin-top:20px;
-text-align:center;
-margin-left: 30%;
-    margin-right: 30%;
+
+@media screen and (min-width: 768px) {
+  width: 400px;
+  margin: auto;
+  margin-top:20px;
+}
 `
