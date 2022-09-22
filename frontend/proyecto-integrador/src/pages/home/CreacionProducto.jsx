@@ -5,7 +5,7 @@ import {
     // Formurario,
     ReservaStyle,
 } from "../../styles/ReservaStyle";
-import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario, FormularioAC, FormularioAI, FormularioAgregar } from "../../styles/CreacionProductoStyle.jsx";
+import { Formurario,TituloCP,ArrowHeader, ContenedorFormurarios, BloqueFormurario, FormurariosCP, BotonFormurario, FormularioAgregar } from "../../styles/CreacionProductoStyle.jsx";
 import Text from "../../components/atoms/Text";
 import Button from "../../components/atoms/Button";
 import Arrow from "../../assets/arrow.svg";
