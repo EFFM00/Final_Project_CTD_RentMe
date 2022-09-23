@@ -202,6 +202,7 @@ export const ContenedorBoton = styled.div`
     display: grid;
     justify-content: center;
     gap: 15px;
+    // z-index: 10;
     @media screen and (min-width: 768px) {
         //grid-template-columns: 1fr 1fr;
         align-items: center;

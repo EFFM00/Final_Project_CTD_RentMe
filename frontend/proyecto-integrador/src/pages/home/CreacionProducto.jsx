@@ -32,7 +32,7 @@ export function CreacionProducto() {
     try {
       getPoliciesType({ setPoliciesTypes });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }, []);
 
@@ -40,7 +40,7 @@ export function CreacionProducto() {
     try {
       getCities({ setCities });
     } catch (error) {
-      console.error(error);
+      // console.error(error);
     }
   }, []);
 
