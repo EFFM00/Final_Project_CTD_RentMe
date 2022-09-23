@@ -5,7 +5,7 @@ export const getProducts = async ({setProducts}) => {
     try {const resp = await api.get('/products');
     setProducts(resp.data);}
     catch(e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
