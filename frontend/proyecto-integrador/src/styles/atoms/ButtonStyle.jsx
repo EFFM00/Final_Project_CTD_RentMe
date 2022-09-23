@@ -17,7 +17,7 @@ export const ButtonNoBackgroundStyle = styled.button`
         transform: scale(0.96);
         transition: all 100ms;
     }
-    &:focus {
+    &:active {
         transform: scale(0.96);
     }
 `;
@@ -41,7 +41,7 @@ export const ButtonStyle = styled.button`
     &:hover {
         background-color: #AEC0C1;
     }
-    &:focus {
+    &:active {
         background-color:#fc5736;
     }
 `;

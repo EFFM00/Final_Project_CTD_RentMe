@@ -14,11 +14,9 @@ import { UserContext } from "../../services/UserContext";
 function CalendarioReservas({ fechasOcupadas}) {
     const [tablet, setTablet] = useState(false);
     const { dateValue, setDateValue } = useContext(UserContext);
-    // console.log("start: " + dateValue[0], "end: " + dateValue[1]);
     const [enableRange, setEnableRange] = useState(true);
     const minDate = new Date();
 
-    console.log(dateValue, "fecha Calendar")
 
     const stringToDate = (date) => {
         return new Date(date);
@@ -65,10 +63,8 @@ function CalendarioReservas({ fechasOcupadas}) {
             reserva.forEach(fecha => {
                 if(validarFechaRango(dateValue[0], dateValue[1], fecha)){
                     setEnableRange(false);
-                    console.log(enableRange, "enableRange False");
                 } else {
                     setEnableRange(true);
-                    console.log(enableRange, "enableRange True");
                 }
             })
         })
@@ -87,10 +83,6 @@ function CalendarioReservas({ fechasOcupadas}) {
         responsive();
         window.addEventListener("resize", () => responsive());
     }, []);
-
-    // console.log(enableRange, "enableRange");
-    // console.log(fechasOcupadas, "fechasOcupadas");
-    console.log(rangoFechas, "rangoFechas");
 
     return (
         <>

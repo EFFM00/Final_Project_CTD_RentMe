@@ -10,7 +10,7 @@ function Card({ id, mainPictureUrl, category, title, address, description }) {
   const navigate = useNavigate();
   return (
       <ContenedorCard>
-            <div>
+            <div style={{borderRadius: "8px 8px 0px 0px"}}>
               <Imagen src={mainPictureUrl} alt={title}/>
             </div>
             <Info>
