@@ -36,8 +36,6 @@ export function CreacionProducto() {
     }
   }, []);
 
-//   console.log("policies", policiesTypes);
-
   useEffect(() => {
     try {
       getCities({ setCities });
@@ -49,8 +47,6 @@ export function CreacionProducto() {
   useEffect(() => {
     getCharacteristics({ setCharacteristics });
   }, []);
-
-  // console.log(characteristics, "Characteristics");
 
   useEffect(() => {
     getCategories({ setCategorias });
@@ -89,7 +85,6 @@ export function CreacionProducto() {
       city: -1,
     },
     onSubmit(values) {
-    //   console.log(values, "value");
       handleCrearProducto(values);
     },
   });
@@ -117,8 +112,6 @@ export function CreacionProducto() {
 
       const idProducto = resp?.data?.id
 
-      // console.log(resp, "producto creado");
-      // console.log(idProducto)
       formik2.setFieldValue("product", idProducto)
       formik3.setFieldValue("product", idProducto)
       formik4.setFieldValue("product", idProducto)
@@ -160,7 +153,6 @@ export function CreacionProducto() {
           setErrMsgCaract("Característica agregada exitosamente")
         }
 
-        // console.log(resp, "caract agregada");
     } catch (error) {
       setErrMsgCaract("Característica no agregada, vuelva a intentarlo")
     }
@@ -173,7 +165,6 @@ export function CreacionProducto() {
         product: -1
     },
     onSubmit(values) {
-      // console.log(values, "value");
       handleAgregarImagenes(values)
     },
   });
@@ -198,7 +189,6 @@ export function CreacionProducto() {
           setErrMsgImg("Imagen agregada exitosamente")
         }
 
-        // console.log(resp, "imagen agregada");
     } catch (error) {
       setErrMsgImg("Imagen no agregada, vuelva a intentarlo")
     }
@@ -210,7 +200,6 @@ export function CreacionProducto() {
         product: -1
     },
     onSubmit(values) {
-      // console.log(values, "value");
       handleAgregarPolitica(values)
     },
   });
@@ -234,7 +223,6 @@ export function CreacionProducto() {
           setErrMsgPolitica("Política agregada exitosamente")
         }
 
-        // console.log(resp, "politica agregada");
     } catch (error) {
       setErrMsgPolitica("Política no agregada, vuelva a intentarlo")
     }
@@ -329,8 +317,8 @@ export function CreacionProducto() {
         
         {/* Formurario de creacion de caracteristicas */}
 
+          <Text type="h4" color="secondary" text="2.- Luego de enviar los datos del nuevo producto se pueden agregar, uno por uno sus características, imágenes y políticas." style={{textAlign:"center", marginTop:"20px", color:"#FD866E"}}/>
           <Text style={{textAlign: "center"}} type="h2" color="secondary" text="Agregar características" />
-          <Text type="h4" color="secondary" text="2.- Luego de enviar los datos del nuevo producto se pueden agregar sus características, imágenes y políticas." style={{textAlign:"center", marginTop:"20px", color:"#FD866E"}}/>
           <BloqueFormurario onSubmit={formik2.handleSubmit}>
           <FormularioAgregar>
           <CustomSelect
@@ -363,6 +351,7 @@ export function CreacionProducto() {
             <label>
               <Text type="p1" color="secondary" text="Url imagen" />
             </label>
+            <Text type="h4" color="secondary" text="Se sugiere agregar un mínimo de cinco (5) imágenes." style={{textAlign:"center", marginTop:"20px", color:"#FD866E"}}/>
             <Formurario
                 type={"text"}
                 name="url"
