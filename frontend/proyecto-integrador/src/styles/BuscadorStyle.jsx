@@ -79,7 +79,7 @@ export const InputStyle = styled.input`
     width: 100%;
     border: none;
 
-    &:active {
+    &:focus {
         outline: none;
     }
 `;

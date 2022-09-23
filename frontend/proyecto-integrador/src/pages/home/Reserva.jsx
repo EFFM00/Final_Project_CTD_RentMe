@@ -44,10 +44,14 @@ export default function Reserva() {
     const formatDate = (date) => {
         return dayjs(date).format("DD-MM-YYYY");
     };
+   
+    console.log(dateValue[0], "fecha Entrada")
+    console.log(dateValue[1], "fecha Salida")
 
     const getData = async () => {
         const resp = await getProductById(id);
         setDataProduct(resp);
+        // console.log(resp, "reserva")
 
         let dates = resp.bookings.map((item) => {
             return {
@@ -93,6 +97,8 @@ export default function Reserva() {
                 }
             }
             )
+
+            console.log(resp, "reserva")
 
             if(resp.status === 200) {
                 navigate("/reserva-exitosa")
